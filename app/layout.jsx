@@ -7,6 +7,20 @@ export const metadata = {
     template: '%s | MatAI',
   },
   description: 'MatAI ile matematik sorularınızı fotoğraf, metin veya sesle sorun; yapay zekâ destekli adım adım çözümleri saniyeler içinde alın.',
+  openGraph: {
+    title: 'MatAI - Yapay Zekâ Matematik Çözücü',
+    description: 'Matematik sorularınızı fotoğraf, metin veya sesle sorun; çözüm yolunu adım adım inceleyin.',
+    type: 'website',
+    locale: 'tr_TR',
+    siteName: 'MatAI',
+    images: [{ url: '/assets/og/matai-ai-matematik-cozucu.png', width: 1200, height: 630, alt: 'MatAI Yapay Zekâ Matematik Çözücü' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MatAI - Yapay Zekâ Matematik Çözücü',
+    description: 'Matematik sorularınızı yapay zekâ desteğiyle adım adım çözün.',
+    images: ['/assets/og/matai-ai-matematik-cozucu.png'],
+  },
   icons: {
     icon: [
       { url: '/assets/MatAI-logo.png', type: 'image/png' },

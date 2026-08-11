@@ -11,8 +11,16 @@ export const metadata = {
     description: 'Kısmi integrasyon yöntemini örnek bir AYT sorusuyla adım adım öğrenin.',
     type: 'article',
     locale: 'tr_TR',
+    url: '/makaleler/integral-sorusu-nasil-cozulur',
+    images: [{ url: '/assets/og/integral-sorusu-nasil-cozulur.png', width: 1200, height: 630, alt: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Örnek' }],
     publishedTime: '2026-08-11T00:00:00+03:00',
     modifiedTime: '2026-08-11T00:00:00+03:00',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'İntegral Sorusu Nasıl Çözülür?',
+    description: 'Kısmi integrasyon yöntemini çözümlü bir örnekle adım adım öğrenin.',
+    images: ['/assets/og/integral-sorusu-nasil-cozulur.png'],
   },
 };
 

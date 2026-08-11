@@ -5,6 +5,13 @@ export const metadata = {
   title: 'Matematik Makaleleri ve Çözümlü Örnekler',
   description: 'Matematik konularını anlaşılır anlatımlar, pratik yöntemler ve adım adım çözümlü örneklerle öğrenin.',
   alternates: { canonical: '/makaleler' },
+  openGraph: {
+    title: 'Matematik Makaleleri ve Çözümlü Örnekler | MatAI',
+    description: 'Matematik konularını anlaşılır anlatımlar ve adım adım çözümlü örneklerle öğrenin.',
+    type: 'website', locale: 'tr_TR', url: '/makaleler',
+    images: [{ url: '/assets/og/integral-sorusu-nasil-cozulur.png', width: 1200, height: 630, alt: 'MatAI matematik makaleleri' }],
+  },
+  twitter: { card: 'summary_large_image', images: ['/assets/og/integral-sorusu-nasil-cozulur.png'] },
 };
 
 export default function ArticlesPage() {

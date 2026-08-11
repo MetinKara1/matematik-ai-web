@@ -10,7 +10,9 @@ export const metadata = {
     title: 'Yapay Zekâ Matematik Çözücü | MatAI',
     description: 'Matematik sorularını fotoğraf, metin veya sesle sorun; yapay zekâ destekli adım adım çözümleri inceleyin.',
     type: 'website', locale: 'tr_TR', url: '/yapay-zeka-matematik-cozucu',
+    images: [{ url: '/assets/og/matai-ai-matematik-cozucu.png', width: 1200, height: 630, alt: 'MatAI Yapay Zekâ Matematik Çözücü' }],
   },
+  twitter: { card: 'summary_large_image', images: ['/assets/og/matai-ai-matematik-cozucu.png'] },
 };
 
 const topics = ['Cebir', 'Geometri', 'Trigonometri', 'Türev', 'İntegral', 'Limit', 'Problemler', 'Kalkülüs'];
