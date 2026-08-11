@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 const logo = "/assets/MatAI-logo.png";
+const appQrCode = "/assets/matai-ios-qr.png";
 const appStoreLink = "https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761";
 
 export default function PublicHeader() {
@@ -53,6 +54,21 @@ export default function PublicHeader() {
       {isMenuOpen && (
         <button type="button" className="landing-menu-backdrop" aria-label="Menüyü kapat" onClick={closeMenu} />
       )}
+
+      <a
+        href={appStoreLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="sticky-app-qr"
+        aria-label="MatAI iOS uygulamasını App Store'da aç"
+      >
+        <img src={appQrCode} alt="MatAI iOS uygulaması için QR kod" />
+        <span>
+          <strong>iOS için indirin</strong>
+          <small>QR kodu tarayın</small>
+          <em>Android yakında</em>
+        </span>
+      </a>
     </>
   );
 }

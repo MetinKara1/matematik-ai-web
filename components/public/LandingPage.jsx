@@ -62,21 +62,6 @@ function LandingPage() {
     <div className="landing-page">
       <PublicHeader />
 
-      <a
-        href={appStoreLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="sticky-app-qr"
-        aria-label="MatAI iOS uygulamasını App Store'da aç"
-      >
-        <img src={appQrCode} alt="MatAI iOS uygulaması için QR kod" />
-        <span>
-          <strong>iOS için indir</strong>
-          <small>QR kodu tarayın</small>
-          <em>Android yakında</em>
-        </span>
-      </a>
-
       {/* Hero Section */}
       <section className="hero-section" id="how-it-works">
         <div className="hero-content">
