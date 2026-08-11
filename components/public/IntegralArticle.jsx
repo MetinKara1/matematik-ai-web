@@ -1,37 +1,56 @@
 import Link from 'next/link';
+import PublicHeader from './PublicHeader';
 
-const logo = '/assets/MatAI-logo.png';
 const appQrCode = '/assets/matai-ios-qr.png';
+const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761';
 
 function IntegralArticle() {
   return (
     <div className="article-page">
-      <header className="article-site-header">
-        <div className="article-site-header-inner">
-          <Link href="/" className="article-brand" aria-label="MatAI ana sayfa">
-            <img src={logo} alt="" />
-            <span>MatAI</span>
-          </Link>
-          <Link href="/" className="article-home-link">Ana Sayfa</Link>
-        </div>
-      </header>
+      <PublicHeader />
 
       <main className="article-main">
         <article className="article-card">
           <header className="article-heading">
+            <nav className="article-breadcrumb" aria-label="Sayfa yolu">
+              <Link href="/">Ana Sayfa</Link>
+              <span aria-hidden="true">›</span>
+              <Link href="/makaleler">Makaleler</Link>
+              <span aria-hidden="true">›</span>
+              <span>İntegral Sorusu Nasıl Çözülür?</span>
+            </nav>
             <span className="article-category">İntegral · AYT Matematik</span>
             <h1>İntegral Sorusu Nasıl Çözülür? Adım Adım Bir Örnekle Anlatıyorum</h1>
             <p className="article-summary">
               Kısmi integrasyon yöntemini ne zaman kullanacağınızı ve doğru sonuca nasıl ulaşacağınızı
               örnek bir soru üzerinden birlikte inceleyelim.
             </p>
+            <div className="article-meta" aria-label="Makale bilgileri">
+              <time dateTime="2026-08-11">11 Ağustos 2026</time>
+              <span>8 dakika okuma</span>
+              <span>Adım adım anlatım</span>
+              <span>Çözümlü örnek</span>
+            </div>
           </header>
 
           <div className="article-content">
-            <p>İntegral, çoğu öğrencinin matematikte en çok zorlandığı konuların başında geliyor. Bunu hem kendi öğrencilik yıllarımdan hem de soru çözerken bana ulaşan öğrencilerden biliyorum. İşin ilginç tarafı şu: İntegral aslında zor bir konu değil, ama doğru yöntemi seçemediğinizde saatlerce aynı soruya bakıp kalabiliyorsunuz.</p>
-            <p>Bu yazıda AYT&apos;de sıkça karşımıza çıkan bir integral tipini, kısmi integrasyon (parçalı integral) gerektiren bir soruyu adım adım çözeceğim. Sonunda da bu tarz sorulara nasıl daha hızlı yaklaşabileceğinize dair birkaç tavsiyem olacak.</p>
+            <nav className="article-toc" aria-label="İçindekiler">
+              <span>Bu yazıda</span>
+              <a href="#soru">Soru</a>
+              <a href="#yontem">Yöntemi tanıyalım</a>
+              <a href="#uygulama">Formüle yerleştirelim</a>
+              <a href="#sonuc">Sonucu yazalım</a>
+              <a href="#saglama">Sağlaması</a>
+              <a href="#hatalar">Sık yapılan hatalar</a>
+            </nav>
 
-            <section>
+            <div className="article-body">
+              <div className="article-intro">
+                <p>İntegral, çoğu öğrencinin matematikte en çok zorlandığı konuların başında geliyor. Bunu hem kendi öğrencilik yıllarımdan hem de soru çözerken bana ulaşan öğrencilerden biliyorum. İşin ilginç tarafı şu: İntegral aslında zor bir konu değil, ama doğru yöntemi seçemediğinizde saatlerce aynı soruya bakıp kalabiliyorsunuz.</p>
+                <p>Bu yazıda AYT&apos;de sıkça karşımıza çıkan bir integral tipini, kısmi integrasyon (parçalı integral) gerektiren bir soruyu adım adım çözeceğim. Sonunda da bu tarz sorulara nasıl daha hızlı yaklaşabileceğinize dair birkaç tavsiyem olacak.</p>
+              </div>
+
+            <section id="soru">
               <h2>Soru</h2>
               <div className="article-math article-math-question" aria-label="x çarpı e üzeri x integralinin sonucu nedir">
                 ∫ x·e<sup>x</sup> dx integralinin sonucu nedir?
@@ -39,7 +58,7 @@ function IntegralArticle() {
               <p>Bu soru ilk bakışta basit görünüyor ama çok öğrencinin takıldığı bir nokta var: İçeride iki farklı fonksiyon çarpım halinde duruyor. Bir tarafta polinom (x), diğer tarafta üstel fonksiyon (e<sup>x</sup>). Böyle bir durumda doğrudan integral alamayız, kısmi integrasyon yöntemine başvurmamız gerekiyor.</p>
             </section>
 
-            <section>
+            <section id="yontem">
               <h2>Adım 1: Yöntemi Tanıyalım</h2>
               <p>Kısmi integrasyon formülü şu:</p>
               <div className="article-math">∫ u dv = u·v − ∫ v du</div>
@@ -50,13 +69,13 @@ function IntegralArticle() {
               </div>
             </section>
 
-            <section>
+            <section id="uygulama">
               <h2>Adım 2: Formüle Yerleştirelim</h2>
               <div className="article-math">∫ x·e<sup>x</sup> dx = x·e<sup>x</sup> − ∫ e<sup>x</sup> dx</div>
               <p>Bakın ne oldu? Sağ taraftaki integral artık çok basit. ∫ e<sup>x</sup> dx zaten e<sup>x</sup>&apos;in kendisi.</p>
             </section>
 
-            <section>
+            <section id="sonuc">
               <h2>Adım 3: Sonucu Yazalım</h2>
               <div className="article-math article-math-lines">
                 <span>∫ x·e<sup>x</sup> dx = x·e<sup>x</sup> − e<sup>x</sup> + C</span>
@@ -65,14 +84,14 @@ function IntegralArticle() {
               <p><strong>C sabitini unutmayın.</strong> Belirsiz integrallerde bunu yazmadığınızda sınavlarda puan kaybı yaşayabilirsiniz.</p>
             </section>
 
-            <section>
+            <section id="saglama">
               <h2>Sağlaması Nasıl Yapılır?</h2>
               <p>İntegralin en güzel yanı, sonucun doğru olup olmadığını her zaman kontrol edebilmeniz. Bulduğumuz sonucun türevini alalım:</p>
               <div className="article-math">d/dx [e<sup>x</sup>(x − 1) + C] = e<sup>x</sup>(x − 1) + e<sup>x</sup>·1 = e<sup>x</sup>·x</div>
               <p>Evet, başladığımız fonksiyona geri döndük. Demek ki çözümümüz doğru.</p>
             </section>
 
-            <section>
+            <section id="hatalar">
               <h2>Öğrencilerin En Sık Yaptığı Hatalar</h2>
               <p>Yıllardır gördüğüm iki klasik hata var. Birincisi, u ve dv seçimini ters yapmak. Eğer u = e<sup>x</sup> seçseydiniz, integral basitleşmek yerine daha karmaşık hale gelirdi ve soru içinden çıkılmaz bir hal alırdı. İkincisi, formüldeki eksi işaretini unutmak. Küçük gibi görünen bu hata, sınavda dört yanlış bir doğru götürürken gerçekten can yakıyor.</p>
               <p>Bir de şunu ekleyeyim: Kısmi integrasyon bazen bir kez yetmez. Mesela ∫ x²·e<sup>x</sup> dx sorusunda yöntemi iki kez üst üste uygulamanız gerekir. Panik yapmayın, mantık hep aynı.</p>
@@ -88,7 +107,7 @@ function IntegralArticle() {
               <div className="article-cta-copy">
                 <h2>Matematik sorularında takıldınız mı?</h2>
                 <p>MatAI ile sorunuzun fotoğrafını çekin, adım adım çözümü saniyeler içinde görün. iOS uygulaması şimdi App Store&apos;da; Android sürümü yakında.</p>
-                <Link href="/#download">MatAI&apos;ı keşfedin</Link>
+                <a href={appStoreLink} target="_blank" rel="noopener noreferrer">App Store&apos;dan indirin</a>
               </div>
               <div className="article-cta-qr">
                 <img src={appQrCode} alt="MatAI iOS uygulamasını App Store'da açmak için QR kod" />
@@ -97,6 +116,7 @@ function IntegralArticle() {
             </aside>
 
             <p className="article-next">Bir sonraki yazıda değişken değiştirme yöntemini örneklerle anlatacağım.</p>
+            </div>
           </div>
         </article>
       </main>

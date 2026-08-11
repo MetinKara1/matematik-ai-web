@@ -11,9 +11,74 @@ export const metadata = {
     description: 'Kısmi integrasyon yöntemini örnek bir AYT sorusuyla adım adım öğrenin.',
     type: 'article',
     locale: 'tr_TR',
+    publishedTime: '2026-08-11T00:00:00+03:00',
+    modifiedTime: '2026-08-11T00:00:00+03:00',
   },
 };
 
 export default function ArticlePage() {
-  return <IntegralArticle />;
+  const articleUrl = 'https://matematik-ai.com/makaleler/integral-sorusu-nasil-cozulur';
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${articleUrl}#article`,
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': articleUrl,
+        },
+        headline: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Bir Örnekle Anlatıyorum',
+        description: 'Kısmi integrasyon yöntemiyle ∫x·eˣ dx sorusunun çözümünü, sağlamasını ve öğrencilerin sık yaptığı hataları adım adım öğrenin.',
+        datePublished: '2026-08-11T00:00:00+03:00',
+        dateModified: '2026-08-11T00:00:00+03:00',
+        inLanguage: 'tr-TR',
+        articleSection: 'AYT Matematik',
+        keywords: ['integral sorusu nasıl çözülür', 'kısmi integrasyon', 'parçalı integral', 'AYT matematik', 'integral soru çözümü'],
+        publisher: {
+          '@type': 'Organization',
+          name: 'MatAI',
+          url: 'https://matematik-ai.com',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://matematik-ai.com/assets/MatAI-logo.png',
+          },
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${articleUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Ana Sayfa',
+            item: 'https://matematik-ai.com',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Makaleler',
+            item: 'https://matematik-ai.com/makaleler',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: 'İntegral Sorusu Nasıl Çözülür?',
+            item: articleUrl,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
+      />
+      <IntegralArticle />
+    </>
+  );
 }

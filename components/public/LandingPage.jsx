@@ -1,3 +1,5 @@
+import PublicHeader from "./PublicHeader";
+
 const logo = "/assets/MatAI-logo.png";
 const appQrCode = "/assets/matai-ios-qr.png";
 
@@ -23,12 +25,12 @@ function LandingPage() {
       icon: "⚡",
       title: "Hızlı ve Doğru",
       description:
-        "Saniyeler içinde sorunuzun çözümünü alın. Yapay zeka ile %99 doğruluk oranı.",
+        "Saniyeler içinde sorunuzun çözümünü alın. Yapay zekâ destekli açıklamalarla çözüm yolunu adım adım inceleyin.",
     },
     {
       icon: "📱",
       title: "Her Yerde Kullanın",
-      description: "iOS ve Android cihazlarınızda kullanın.",
+      description: "MatAI'ı iPhone ve iPad cihazlarınızda kullanın. Android sürümü yakında.",
     },
     {
       icon: "🎯",
@@ -58,29 +60,7 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
-      <header className="landing-header">
-        <div className="landing-header-inner">
-          <a
-            href="/"
-            className="landing-header-brand"
-            aria-label="MatAI ana sayfa"
-          >
-            <img src={logo} alt="" className="landing-header-logo" />
-            <span>MatAI</span>
-          </a>
-
-          <nav className="landing-header-nav" aria-label="Ana menü">
-            <a href="#features">Özellikler</a>
-            <a href="#how-it-works">Nasıl Çalışır?</a>
-            <a href="#download">Uygulamayı İndir</a>
-            <a href="/makaleler/integral-sorusu-nasil-cozulur">Makaleler</a>
-          </nav>
-
-          <a href="#download" className="landing-header-action">
-            Hemen Başla
-          </a>
-        </div>
-      </header>
+      <PublicHeader />
 
       <a
         href={appStoreLink}

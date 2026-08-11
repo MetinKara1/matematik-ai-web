@@ -7,6 +7,13 @@ export const metadata = {
     template: '%s | MatAI',
   },
   description: 'MatAI ile matematik sorularınızı fotoğraf, metin veya sesle sorun; yapay zekâ destekli adım adım çözümleri saniyeler içinde alın.',
+  icons: {
+    icon: [
+      { url: '/assets/MatAI-logo.png', type: 'image/png' },
+    ],
+    shortcut: '/assets/MatAI-logo.png',
+    apple: '/assets/MatAI-logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {
