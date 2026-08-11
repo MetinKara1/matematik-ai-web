@@ -33,6 +33,8 @@
 .article-content h2 { margin: 0 0 1.15rem; color: #332b59; font-size: clamp(1.55rem, 2vw, 1.9rem); line-height: 1.25; letter-spacing: -.025em; }
 .article-content p { margin: 0 0 1.45rem; color: #514d5d; font-size: 1.08rem; line-height: 1.92; }
 .article-content strong { color: #39334a; font-weight: 750; }
+.article-inline-link { color: #5d4fc0; font-weight: 700; text-decoration: underline; text-decoration-color: rgba(93,79,192,.3); text-underline-offset: 3px; }
+.article-inline-link:hover { text-decoration-color: currentColor; }
 .article-math { margin: 1.8rem 0; padding: 1.5rem 1.75rem; overflow-x: auto; color: #342a67; background: linear-gradient(135deg, #f6f4fd, #f0edfa); border: 1px solid #e4def4; border-left: 4px solid #667eea; border-radius: 14px; font-family: Georgia, 'Times New Roman', serif; font-size: 1.3rem; line-height: 1.6; text-align: center; white-space: nowrap; box-shadow: 0 8px 24px rgba(83, 67, 139, .06); }
 .article-math-question { padding-block: 1.8rem; font-size: 1.55rem; font-weight: 700; }
 .article-math-lines { display: flex; flex-direction: column; gap: .7rem; }
@@ -46,6 +48,12 @@
 .article-cta-qr img { width: 128px; height: 128px; padding: 5px; background: #fff; border-radius: 13px; box-shadow: 0 10px 25px rgba(32,20,70,.24); }
 .article-cta-qr span { color: rgba(255,255,255,.78); font-size: .72rem; font-weight: 650; }
 .article-next { margin-top: 2.75rem !important; padding: 1rem 1.25rem; color: #6a6278 !important; background: #faf9fc; border-radius: 10px; font-style: italic; text-align: center; }
+.article-related { margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid #ebe7f1; }
+.article-related > span { display: block; margin-bottom: .65rem; color: #777080; font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.article-related a { display: flex; padding: 1.1rem 1.2rem; flex-direction: column; gap: .25rem; background: #f6f3fc; border: 1px solid #e6dff3; border-radius: 12px; transition: transform .2s, border-color .2s; }
+.article-related a:hover { border-color: #cfc4eb; transform: translateY(-2px); }
+.article-related strong { color: #3a315c; }
+.article-related small { color: #706979; }
 @media (max-width: 900px) {
   .article-main { padding-top: 2rem; }
   .article-content { display: block; padding: 3rem clamp(1.75rem, 6vw, 4rem) 4rem; }

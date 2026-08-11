@@ -178,6 +178,11 @@ function LandingPage() {
             Matematik sorularınızı çözmek artık çok kolay. MatAI ile öğrenmeye
             bugün başlayın!
           </p>
+          <p className="landing-content-links">
+            <a href="/yapay-zeka-matematik-cozucu">AI matematik çözücüyü inceleyin</a>
+            <span aria-hidden="true">·</span>
+            <a href="/makaleler">Matematik makalelerini okuyun</a>
+          </p>
           <div className="app-qr app-qr-centered">
             <img
               src={appQrCode}

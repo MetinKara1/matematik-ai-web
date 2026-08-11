@@ -51,6 +51,18 @@ export default function ArticlesPage() {
               <strong>Yazıyı oku <span aria-hidden="true">→</span></strong>
             </div>
           </Link>
+
+          <Link href="/makaleler/belirsiz-integral-nedir" className="article-list-card">
+            <div className="article-list-visual article-list-visual-secondary" aria-hidden="true">
+              <span>∫</span><small>F(x) + C</small>
+            </div>
+            <div className="article-list-copy">
+              <div className="article-list-meta"><span>İntegral</span><span>7 dakika</span><span>AYT Matematik</span></div>
+              <h3>Belirsiz İntegral Nedir?</h3>
+              <p>Belirsiz integralin mantığını, C sabitinin neden kullanıldığını ve temel integral kurallarını çözümlü örneklerle öğrenin.</p>
+              <strong>Yazıyı oku <span aria-hidden="true">→</span></strong>
+            </div>
+          </Link>
         </section>
       </main>
     </div>

@@ -101,6 +101,7 @@ function IntegralArticle() {
               <h2>Takıldığınız Sorularda Ne Yapmalı?</h2>
               <p>Açıkçası integral, bol pratik isteyen bir konu. Ama hepimizin başına geliyor: Gece geç saatte ders çalışırken bir soruya takılıyorsunuz, çözümlü kaynak yok, hocaya soracak durum yok. Ben bu tarz anlar için öğrencilerime MatAI uygulamasını öneriyorum. Sorunun fotoğrafını çekiyorsunuz, yapay zeka saniyeler içinde adım adım çözümü karşınıza getiriyor. Sadece cevabı değil, çözüm yolunu da gösterdiği için yukarıda anlattığım gibi “hangi yöntemi seçmeliyim” kısmını da öğrenmiş oluyorsunuz.</p>
               <p>Tabii şunu da söylemeden geçmeyeyim: Uygulama ne kadar iyi olursa olsun, önce kendiniz uğraşın. On dakika düşünüp çözemediğiniz soruyu MatAI&apos;a sorun, çözümü inceleyin, sonra benzer bir soruyu kendiniz çözmeyi deneyin. Matematik böyle öğreniliyor.</p>
+              <p>Temel kurallar veya C sabiti konusunda eksiğiniz varsa önce <Link href="/makaleler/belirsiz-integral-nedir" className="article-inline-link">belirsiz integral konu anlatımını</Link> okuyabilirsiniz. Farklı soruların çözüm yöntemini görmek için de <Link href="/yapay-zeka-matematik-cozucu" className="article-inline-link">MatAI yapay zekâ matematik çözücü</Link> sayfasını inceleyin.</p>
             </section>
 
             <aside className="article-cta">
@@ -116,6 +117,13 @@ function IntegralArticle() {
             </aside>
 
             <p className="article-next">Bir sonraki yazıda değişken değiştirme yöntemini örneklerle anlatacağım.</p>
+            <div className="article-related">
+              <span>İlgili yazı</span>
+              <Link href="/makaleler/belirsiz-integral-nedir">
+                <strong>Belirsiz İntegral Nedir?</strong>
+                <small>Temel kuralları ve C sabitini öğrenin →</small>
+              </Link>
+            </div>
             </div>
           </div>
         </article>

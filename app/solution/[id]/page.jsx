@@ -22,9 +22,10 @@ export async function generateMetadata({ params }) {
       description,
       alternates: { canonical: `/solution/${id}` },
       openGraph: { title, description, type: 'article', images: question.ImageUri ? [question.ImageUri] : [] },
+      robots: { index: false, follow: true },
     };
   } catch {
-    return { title: 'Matematik Soru Çözümü' };
+    return { title: 'Matematik Soru Çözümü', robots: { index: false, follow: true } };
   }
 }
 
