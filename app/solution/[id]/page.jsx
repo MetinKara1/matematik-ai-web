@@ -21,11 +21,12 @@ export async function generateMetadata({ params }) {
       title,
       description,
       alternates: { canonical: `/solution/${id}` },
-      openGraph: { title, description, type: 'article', images: question.ImageUri ? [question.ImageUri] : [] },
-      robots: { index: false, follow: true },
+      openGraph: { title, description, type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: `/solution/${id}`, images: question.ImageUri ? [{ url: question.ImageUri, alt: title }] : [] },
+      twitter: { card: question.ImageUri ? 'summary_large_image' : 'summary', title, description, images: question.ImageUri ? [question.ImageUri] : [] },
+      robots: { index: false, follow: true, nocache: true, googleBot: { index: false, follow: true, noimageindex: true } },
     };
   } catch {
-    return { title: 'Matematik Soru Çözümü', robots: { index: false, follow: true } };
+    return { title: 'Matematik Soru Çözümü', description: 'Matematik sorusunun adım adım çözümünü inceleyin.', robots: { index: false, follow: true, nocache: true } };
   }
 }
 

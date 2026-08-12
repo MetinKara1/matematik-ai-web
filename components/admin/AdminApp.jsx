@@ -17,6 +17,15 @@ export default function AdminApp() {
   useEffect(() => {
     setIsAuthenticated(Boolean(localStorage.getItem('authToken')));
     setReady(true);
+
+    const handleUnauthorized = () => {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('isAuthenticated');
+      setIsAuthenticated(false);
+    };
+
+    window.addEventListener('unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('unauthorized', handleUnauthorized);
   }, []);
 
   const logout = () => {

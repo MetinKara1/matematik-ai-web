@@ -7,15 +7,16 @@ export const metadata = {
   title: 'Belirsiz İntegral Nedir? Kuralları ve Çözümlü Örnekler',
   description: 'Belirsiz integralin ne olduğunu, C sabitinin neden kullanıldığını ve temel integral kurallarını adım adım çözümlü örneklerle öğrenin.',
   alternates: { canonical: '/makaleler/belirsiz-integral-nedir' },
+  keywords: ['belirsiz integral nedir', 'belirsiz integral kuralları', 'C sabiti', 'AYT integral'],
   openGraph: {
     title: 'Belirsiz İntegral Nedir? Kuralları ve Örnekler',
     description: 'Belirsiz integral konusunu temel kurallar ve çözümlü örneklerle öğrenin.',
-    type: 'article', locale: 'tr_TR', url: '/makaleler/belirsiz-integral-nedir',
+    type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler/belirsiz-integral-nedir',
     images: [{ url: '/assets/og/integral-sorusu-nasil-cozulur.png', width: 1200, height: 630, alt: 'Belirsiz integral kuralları ve çözümlü örnekler' }],
     publishedTime: '2026-08-12T00:00:00+03:00',
     modifiedTime: '2026-08-12T00:00:00+03:00',
   },
-  twitter: { card: 'summary_large_image', images: ['/assets/og/integral-sorusu-nasil-cozulur.png'] },
+  twitter: { card: 'summary_large_image', title: 'Belirsiz İntegral Nedir? Kuralları ve Örnekler', description: 'Belirsiz integralin mantığını, temel kuralları ve C sabitini öğrenin.', images: ['/assets/og/integral-sorusu-nasil-cozulur.png'] },
 };
 
 export default function IndefiniteIntegralArticlePage() {
@@ -28,9 +29,11 @@ export default function IndefiniteIntegralArticlePage() {
         mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
         headline: 'Belirsiz İntegral Nedir? Kuralları ve Çözümlü Örnekler',
         description: 'Belirsiz integralin tanımı, temel kuralları, C sabiti ve çözümlü örnekler.',
+        image: ['https://matematik-ai.com/assets/og/integral-sorusu-nasil-cozulur.png'],
         datePublished: '2026-08-12T00:00:00+03:00', dateModified: '2026-08-12T00:00:00+03:00',
         inLanguage: 'tr-TR', articleSection: 'AYT Matematik',
         keywords: ['belirsiz integral nedir', 'belirsiz integral kuralları', 'integral sabiti C', 'integral örnekleri', 'AYT matematik'],
+        author: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com' },
         publisher: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com', logo: { '@type': 'ImageObject', url: 'https://matematik-ai.com/assets/MatAI-logo.png' } },
       },
       {

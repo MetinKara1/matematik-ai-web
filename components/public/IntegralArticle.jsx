@@ -116,12 +116,12 @@ function IntegralArticle() {
               </div>
             </aside>
 
-            <p className="article-next">Bir sonraki yazıda değişken değiştirme yöntemini örneklerle anlatacağım.</p>
+            <p className="article-next">Sıradaki konu: değişken değiştirme yöntemiyle karmaşık integralleri sadeleştirmek.</p>
             <div className="article-related">
-              <span>İlgili yazı</span>
-              <Link href="/makaleler/belirsiz-integral-nedir">
-                <strong>Belirsiz İntegral Nedir?</strong>
-                <small>Temel kuralları ve C sabitini öğrenin →</small>
+              <span>Sonraki okuma</span>
+              <Link href="/makaleler/integralde-degisken-degistirme">
+                <strong>İntegralde Değişken Değiştirme</strong>
+                <small>u dönüşümünü çözümlü örneklerle öğrenin →</small>
               </Link>
             </div>
             </div>
