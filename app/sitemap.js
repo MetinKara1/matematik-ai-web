@@ -1,3 +1,5 @@
+import { derivativeArticles } from '../lib/derivativeArticles';
+
 export default function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://matematik-ai.com';
   const lastModified = new Date('2026-08-12T00:00:00+03:00');
@@ -20,6 +22,12 @@ export default function sitemap() {
     ...['integralde-degisken-degistirme', 'belirli-integral-nedir', 'integral-ile-alan-hesabi'].map((slug) => ({
       url: `${baseUrl}/makaleler/${slug}`,
       lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })),
+    ...derivativeArticles.map(({ slug }) => ({
+      url: `${baseUrl}/makaleler/${slug}`,
+      lastModified: new Date('2026-08-14T00:00:00+03:00'),
       changeFrequency: 'monthly',
       priority: 0.8,
     })),

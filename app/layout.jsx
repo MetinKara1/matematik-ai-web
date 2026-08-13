@@ -42,6 +42,10 @@ export const metadata = {
     apple: '/assets/MatAI-logo.png',
   },
   manifest: '/manifest.webmanifest',
+  itunes: {
+    appId: '6756010761',
+    appArgument: 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761',
+  },
 };
 
 export default function RootLayout({ children }) {

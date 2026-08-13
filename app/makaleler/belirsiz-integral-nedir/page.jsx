@@ -29,10 +29,12 @@ export default function IndefiniteIntegralArticlePage() {
         mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
         headline: 'Belirsiz İntegral Nedir? Kuralları ve Çözümlü Örnekler',
         description: 'Belirsiz integralin tanımı, temel kuralları, C sabiti ve çözümlü örnekler.',
+        url: articleUrl,
         image: ['https://matematik-ai.com/assets/og/integral-sorusu-nasil-cozulur.png'],
         datePublished: '2026-08-12T00:00:00+03:00', dateModified: '2026-08-12T00:00:00+03:00',
         inLanguage: 'tr-TR', articleSection: 'AYT Matematik',
         keywords: ['belirsiz integral nedir', 'belirsiz integral kuralları', 'integral sabiti C', 'integral örnekleri', 'AYT matematik'],
+        about: { '@type': 'Thing', name: 'İntegral' }, educationalLevel: 'Lise ve üniversite sınavına hazırlık', isAccessibleForFree: true,
         author: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com' },
         publisher: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com', logo: { '@type': 'ImageObject', url: 'https://matematik-ai.com/assets/MatAI-logo.png' } },
       },
@@ -83,7 +85,7 @@ export default function IndefiniteIntegralArticlePage() {
 
               <section id="hatalar"><h2>Sık Yapılan Hatalar</h2><p>En sık yapılan hata, kuvvet kuralında üssü artırdıktan sonra yeni üsse bölmeyi unutmaktır. Bir diğer hata ise bütün terimler için ayrı ayrı C yazmaktır. Toplamın sonunda tek bir C sabiti yazmak yeterlidir.</p><p>x<sup>−1</sup> için kuvvet kuralı kullanılamaz. Bu özel durumda sonuç doğal logaritmadır:</p><div className="article-math">∫ 1/x dx = ln|x| + C</div></section>
 
-              <section><h2>Bir Sonraki Adım: İntegral Yöntemleri</h2><p>Temel kurallarla doğrudan çözülemeyen sorularda farklı yöntemler gerekir. İki fonksiyon çarpım halindeyse <Link href="/makaleler/integral-sorusu-nasil-cozulur" className="article-inline-link">kısmi integrasyonla çözülen örneğimizi</Link> inceleyebilirsiniz.</p><p>Sorunun hangi yöntemle çözüleceğinden emin değilseniz <Link href="/yapay-zeka-matematik-cozucu" className="article-inline-link">MatAI yapay zekâ matematik çözücü</Link> ile çözüm adımlarını inceleyebilirsiniz.</p></section>
+              <section><h2>Bir Sonraki Adım: İntegral Yöntemleri</h2><p>Temel kurallarla doğrudan çözülemeyen sorularda farklı yöntemler gerekir. İki fonksiyon çarpım halindeyse <Link href="/makaleler/integral-sorusu-nasil-cozulur" className="article-inline-link">kısmi integrasyonla çözülen örneğimizi</Link> inceleyebilirsiniz.</p><p>İntegral sonucunu türevle kontrol etme fikrini pekiştirmek için <Link href="/makaleler/turev-nedir" className="article-inline-link">türev nedir konu anlatımını</Link> okuyabilirsiniz. Sorunun hangi yöntemle çözüleceğinden emin değilseniz <Link href="/yapay-zeka-matematik-cozucu" className="article-inline-link">MatAI yapay zekâ matematik çözücü</Link> ile çözüm adımlarını inceleyebilirsiniz.</p></section>
 
               <aside className="article-cta"><div className="article-cta-copy"><h2>Benzer bir soruya mı takıldınız?</h2><p>Sorunun fotoğrafını çekin veya metin olarak yazın; çözüm yolunu MatAI ile adım adım inceleyin.</p><a href={appStoreLink} target="_blank" rel="noopener noreferrer">App Store&apos;dan indirin</a></div></aside>
               <div className="article-related"><span>İlgili yazı</span><Link href="/makaleler/integral-sorusu-nasil-cozulur"><strong>İntegral Sorusu Nasıl Çözülür?</strong><small>Kısmi integrasyonu adım adım öğrenin →</small></Link></div>

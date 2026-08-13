@@ -1,32 +1,37 @@
-import Link from 'next/link';
 import PublicHeader from '../../components/public/PublicHeader';
+import ArticlesGrid from '../../components/public/ArticlesGrid';
+import { derivativeArticles } from '../../lib/derivativeArticles';
 
 export const metadata = {
   title: 'Matematik Makaleleri ve Çözümlü Örnekler',
   description: 'Matematik konularını anlaşılır anlatımlar, pratik yöntemler ve adım adım çözümlü örneklerle öğrenin.',
   alternates: { canonical: '/makaleler' },
-  keywords: ['matematik makaleleri', 'AYT matematik konu anlatımı', 'integral konu anlatımı', 'çözümlü matematik örnekleri'],
+  keywords: ['matematik makaleleri', 'AYT matematik konu anlatımı', 'integral konu anlatımı', 'türev konu anlatımı', 'çözümlü matematik örnekleri'],
   openGraph: {
     title: 'Matematik Makaleleri ve Çözümlü Örnekler | MatAI',
     description: 'Matematik konularını anlaşılır anlatımlar ve adım adım çözümlü örneklerle öğrenin.',
     type: 'website', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler',
-    images: [{ url: '/assets/og/integral-sorusu-nasil-cozulur.png', width: 1200, height: 630, alt: 'MatAI matematik makaleleri' }],
+    images: [{ url: '/assets/og/turev-konu-anlatimi.jpg', width: 1200, height: 630, alt: 'MatAI türev ve integral matematik makaleleri' }],
   },
-  twitter: { card: 'summary_large_image', title: 'Matematik Makaleleri ve Çözümlü Örnekler | MatAI', description: 'Matematik konularını anlaşılır anlatımlar ve çözümlü örneklerle öğrenin.', images: ['/assets/og/integral-sorusu-nasil-cozulur.png'] },
+  twitter: { card: 'summary_large_image', title: 'Matematik Makaleleri ve Çözümlü Örnekler | MatAI', description: 'Matematik konularını anlaşılır anlatımlar ve çözümlü örneklerle öğrenin.', images: ['/assets/og/turev-konu-anlatimi.jpg'] },
 };
 
 export default function ArticlesPage() {
+  const integralArticles = [
+    { title: 'İntegral Sorusu Nasıl Çözülür?', slug: 'integral-sorusu-nasil-cozulur', description: 'Kısmi integrasyon yöntemini ve doğru yöntem seçimini adım adım öğrenin.', category: 'İntegral', readingTime: 8, symbol: '∫', formula: 'u · dv' },
+    { title: 'Belirsiz İntegral Nedir?', slug: 'belirsiz-integral-nedir', description: 'Belirsiz integralin mantığını, C sabitini ve temel kuralları öğrenin.', category: 'İntegral', readingTime: 7, symbol: '∫', formula: 'F(x) + C' },
+    { title: 'İntegralde Değişken Değiştirme', slug: 'integralde-degisken-degistirme', description: 'Karmaşık integralleri u dönüşümüyle sadeleştirmeyi örneklerle öğrenin.', category: 'İntegral', readingTime: 8, symbol: 'u', formula: 'du = g′(x)dx' },
+    { title: 'Belirli İntegral Nedir?', slug: 'belirli-integral-nedir', description: 'Alt ve üst sınırları, temel teoremi ve belirli integral özelliklerini öğrenin.', category: 'İntegral', readingTime: 8, symbol: '∫', formula: 'F(b) − F(a)' },
+    { title: 'İntegral ile Alan Hesabı', slug: 'integral-ile-alan-hesabi', description: 'Eğri ile eksen ve iki eğri arasında kalan alanı hesaplayın.', category: 'İntegral', readingTime: 9, symbol: '∫', formula: 'üst − alt' },
+  ];
   const articles = [
-    ['İntegral Sorusu Nasıl Çözülür?', 'integral-sorusu-nasil-cozulur'],
-    ['Belirsiz İntegral Nedir?', 'belirsiz-integral-nedir'],
-    ['İntegralde Değişken Değiştirme', 'integralde-degisken-degistirme'],
-    ['Belirli İntegral Nedir?', 'belirli-integral-nedir'],
-    ['İntegral ile Alan Hesabı', 'integral-ile-alan-hesabi'],
+    ...derivativeArticles.map(({ title, slug, description, readingTime, symbol, formula }) => ({ title, slug, description, readingTime, symbol, formula, category: 'Türev' })),
+    ...integralArticles,
   ];
   const pageUrl = 'https://matematik-ai.com/makaleler';
   const structuredData = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${pageUrl}#webpage`, url: pageUrl, name: metadata.title, description: metadata.description, inLanguage: 'tr-TR', isPartOf: { '@id': 'https://matematik-ai.com/#website' } },
-    { '@type': 'ItemList', '@id': `${pageUrl}#articles`, itemListElement: articles.map(([name, slug], index) => ({ '@type': 'ListItem', position: index + 1, name, url: `${pageUrl}/${slug}` })) },
+    { '@type': 'ItemList', '@id': `${pageUrl}#articles`, itemListElement: articles.map(({ title, slug }, index) => ({ '@type': 'ListItem', position: index + 1, name: title, url: `${pageUrl}/${slug}` })) },
     { '@type': 'BreadcrumbList', '@id': `${pageUrl}#breadcrumb`, itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: 'https://matematik-ai.com' }, { '@type': 'ListItem', position: 2, name: 'Makaleler', item: pageUrl }] },
   ] };
   return (
@@ -50,49 +55,10 @@ export default function ArticlesPage() {
             <p>Yeni anlatımlar düzenli olarak eklenecek.</p>
           </div>
 
-          <Link href="/makaleler/integral-sorusu-nasil-cozulur" className="article-list-card">
-            <div className="article-list-visual" aria-hidden="true">
-              <span>∫</span>
-              <small>u · dv</small>
-            </div>
-            <div className="article-list-copy">
-              <div className="article-list-meta">
-                <span>İntegral</span>
-                <span>8 dakika</span>
-                <span>AYT Matematik</span>
-              </div>
-              <h3>İntegral Sorusu Nasıl Çözülür?</h3>
-              <p>Kısmi integrasyon yöntemini ne zaman kullanacağınızı, doğru seçimi nasıl yapacağınızı ve sonucu nasıl kontrol edeceğinizi adım adım öğrenin.</p>
-              <strong>Yazıyı oku <span aria-hidden="true">→</span></strong>
-            </div>
-          </Link>
-
-          <Link href="/makaleler/belirsiz-integral-nedir" className="article-list-card">
-            <div className="article-list-visual article-list-visual-secondary" aria-hidden="true">
-              <span>∫</span><small>F(x) + C</small>
-            </div>
-            <div className="article-list-copy">
-              <div className="article-list-meta"><span>İntegral</span><span>7 dakika</span><span>AYT Matematik</span></div>
-              <h3>Belirsiz İntegral Nedir?</h3>
-              <p>Belirsiz integralin mantığını, C sabitinin neden kullanıldığını ve temel integral kurallarını çözümlü örneklerle öğrenin.</p>
-              <strong>Yazıyı oku <span aria-hidden="true">→</span></strong>
-            </div>
-          </Link>
-
-          <Link href="/makaleler/integralde-degisken-degistirme" className="article-list-card">
-            <div className="article-list-visual" aria-hidden="true"><span>u</span><small>du = g&apos;(x) dx</small></div>
-            <div className="article-list-copy"><div className="article-list-meta"><span>İntegral</span><span>8 dakika</span><span>AYT Matematik</span></div><h3>İntegralde Değişken Değiştirme</h3><p>Karmaşık integralleri u dönüşümüyle sadeleştirmeyi ve doğru değişkeni seçmeyi çözümlü örneklerle öğrenin.</p><strong>Yazıyı oku <span aria-hidden="true">→</span></strong></div>
-          </Link>
-
-          <Link href="/makaleler/belirli-integral-nedir" className="article-list-card">
-            <div className="article-list-visual article-list-visual-secondary" aria-hidden="true"><span>∫</span><small>F(b) − F(a)</small></div>
-            <div className="article-list-copy"><div className="article-list-meta"><span>İntegral</span><span>8 dakika</span><span>AYT Matematik</span></div><h3>Belirli İntegral Nedir?</h3><p>Alt ve üst sınırları, integralin temel teoremini ve belirli integral özelliklerini adım adım öğrenin.</p><strong>Yazıyı oku <span aria-hidden="true">→</span></strong></div>
-          </Link>
-
-          <Link href="/makaleler/integral-ile-alan-hesabi" className="article-list-card">
-            <div className="article-list-visual" aria-hidden="true"><span>∫</span><small>üst − alt</small></div>
-            <div className="article-list-copy"><div className="article-list-meta"><span>İntegral</span><span>9 dakika</span><span>AYT Matematik</span></div><h3>İntegral ile Alan Hesabı</h3><p>Eğri ile x ekseni ve iki eğri arasında kalan alanı doğru integral düzeniyle hesaplayın.</p><strong>Yazıyı oku <span aria-hidden="true">→</span></strong></div>
-          </Link>
+          <ArticlesGrid articles={articles} />
+          <noscript>
+            <div className="articles-noscript"><h2>Tüm makaleler</h2><ul>{articles.map(({ title, slug }) => <li key={slug}><a href={`/makaleler/${slug}`}>{title}</a></li>)}</ul></div>
+          </noscript>
         </section>
       </main>
     </div>

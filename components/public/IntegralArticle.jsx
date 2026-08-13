@@ -87,6 +87,7 @@ function IntegralArticle() {
             <section id="saglama">
               <h2>Sağlaması Nasıl Yapılır?</h2>
               <p>İntegralin en güzel yanı, sonucun doğru olup olmadığını her zaman kontrol edebilmeniz. Bulduğumuz sonucun türevini alalım:</p>
+              <p>Bu adımdaki kuralları hatırlamak isterseniz <Link href="/makaleler/turev-alma-kurallari" className="article-inline-link">türev alma kuralları rehberini</Link> inceleyebilirsiniz.</p>
               <div className="article-math">d/dx [e<sup>x</sup>(x − 1) + C] = e<sup>x</sup>(x − 1) + e<sup>x</sup>·1 = e<sup>x</sup>·x</div>
               <p>Evet, başladığımız fonksiyona geri döndük. Demek ki çözümümüz doğru.</p>
             </section>
