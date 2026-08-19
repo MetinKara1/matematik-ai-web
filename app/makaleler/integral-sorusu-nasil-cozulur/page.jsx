@@ -13,7 +13,7 @@ export const metadata = {
     locale: 'tr_TR',
     siteName: 'MatAI',
     url: '/makaleler/integral-sorusu-nasil-cozulur',
-    images: [{ url: '/assets/og/integral-sorusu-nasil-cozulur.png', width: 1200, height: 630, alt: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Örnek' }],
+    images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Örnek' }],
     publishedTime: '2026-08-11T00:00:00+03:00',
     modifiedTime: '2026-08-11T00:00:00+03:00',
   },
@@ -21,7 +21,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'İntegral Sorusu Nasıl Çözülür?',
     description: 'Kısmi integrasyon yöntemini çözümlü bir örnekle adım adım öğrenin.',
-    images: ['/assets/og/integral-sorusu-nasil-cozulur.png'],
+    images: ['/assets/articles/integral-alan.jpg'],
   },
 };
 
@@ -40,7 +40,7 @@ export default function ArticlePage() {
         headline: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Bir Örnekle Anlatıyorum',
         description: 'Kısmi integrasyon yöntemiyle ∫x·eˣ dx sorusunun çözümünü, sağlamasını ve öğrencilerin sık yaptığı hataları adım adım öğrenin.',
         url: articleUrl,
-        image: ['https://matematik-ai.com/assets/og/integral-sorusu-nasil-cozulur.png'],
+        image: ['https://matematik-ai.com/assets/articles/integral-alan.jpg'],
         datePublished: '2026-08-11T00:00:00+03:00',
         dateModified: '2026-08-11T00:00:00+03:00',
         inLanguage: 'tr-TR',
@@ -49,7 +49,7 @@ export default function ArticlePage() {
         about: { '@type': 'Thing', name: 'İntegral' },
         educationalLevel: 'Lise ve üniversite sınavına hazırlık',
         isAccessibleForFree: true,
-        author: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com' },
+        author: { '@type': 'Organization', name: 'MatAI İçerik Ekibi', url: 'https://matematik-ai.com/hakkimizda' },
         publisher: {
           '@type': 'Organization',
           name: 'MatAI',

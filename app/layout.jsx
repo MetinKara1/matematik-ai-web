@@ -12,21 +12,11 @@ export const metadata = {
   authors: [{ name: 'MatAI', url: 'https://matematik-ai.com' }],
   creator: 'MatAI',
   publisher: 'MatAI',
-  alternates: { canonical: '/' },
   category: 'education',
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
-  },
-  openGraph: {
-    title: 'MatAI - Yapay Zekâ Matematik Çözücü',
-    description: 'Matematik sorularınızı fotoğraf, metin veya sesle sorun; çözüm yolunu adım adım inceleyin.',
-    type: 'website',
-    url: '/',
-    locale: 'tr_TR',
-    siteName: 'MatAI',
-    images: [{ url: '/assets/og/matai-ai-matematik-cozucu.png', width: 1200, height: 630, alt: 'MatAI Yapay Zekâ Matematik Çözücü' }],
   },
   twitter: {
     card: 'summary_large_image',

@@ -1,4 +1,5 @@
 import PublicHeader from "./PublicHeader";
+import PublicFooter from "./PublicFooter";
 
 const logo = "/assets/MatAI-logo.png";
 const appQrCode = "/assets/matai-ios-qr.png";
@@ -238,11 +239,7 @@ function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="landing-footer">
-        <div className="container">
-          <p>&copy; 2026 MatAI. Tüm hakları saklıdır.</p>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }

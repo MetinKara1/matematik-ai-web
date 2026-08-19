@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import PublicHeader from './PublicHeader';
+import PublicFooter from './PublicFooter';
+import ArticleTrustBox from './ArticleTrustBox';
+import ArticleHeroVisual from './ArticleHeroVisual';
 
 const appQrCode = '/assets/matai-ios-qr.png';
 const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761';
@@ -31,8 +34,8 @@ function IntegralArticle() {
               <span>Adım adım anlatım</span>
               <span>Çözümlü örnek</span>
             </div>
+            <ArticleHeroVisual slug="integral-sorusu-nasil-cozulur" title="İntegral Sorusu Nasıl Çözülür?" priority />
           </header>
-
           <div className="article-content">
             <nav className="article-toc" aria-label="İçindekiler">
               <span>Bu yazıda</span>
@@ -45,6 +48,7 @@ function IntegralArticle() {
             </nav>
 
             <div className="article-body">
+              <div className="article-answer"><span>Kısaca</span><p>İntegral sorusunda önce ifadenin yapısını tanıyın; çarpım hâlindeki polinom ve üstel fonksiyonlarda kısmi integrasyon uygulayın ve sonucu türev alarak kontrol edin.</p></div>
               <div className="article-intro">
                 <p>İntegral, çoğu öğrencinin matematikte en çok zorlandığı konuların başında geliyor. Bunu hem kendi öğrencilik yıllarımdan hem de soru çözerken bana ulaşan öğrencilerden biliyorum. İşin ilginç tarafı şu: İntegral aslında zor bir konu değil, ama doğru yöntemi seçemediğinizde saatlerce aynı soruya bakıp kalabiliyorsunuz.</p>
                 <p>Bu yazıda AYT&apos;de sıkça karşımıza çıkan bir integral tipini, kısmi integrasyon (parçalı integral) gerektiren bir soruyu adım adım çözeceğim. Sonunda da bu tarz sorulara nasıl daha hızlı yaklaşabileceğinize dair birkaç tavsiyem olacak.</p>
@@ -62,7 +66,7 @@ function IntegralArticle() {
               <h2>Adım 1: Yöntemi Tanıyalım</h2>
               <p>Kısmi integrasyon formülü şu:</p>
               <div className="article-math">∫ u dv = u·v − ∫ v du</div>
-              <p>Buradaki asıl mesele u ve dv&apos;yi doğru seçmek. Benim öğrencilere hep söylediğim pratik kural şu: <strong>Türev alınca sadeleşen fonksiyonu u seç.</strong> Polinomlar türev alındıkça derecesi düşer, yani sadeleşir. O yüzden burada:</p>
+              <p>Buradaki asıl mesele u ve dv&apos;yi doğru seçmek. Kullanışlı pratik kural şudur: <strong>Türev alınca sadeleşen fonksiyonu u seç.</strong> Polinomlar türev alındıkça derecesi düşer, yani sadeleşir. O yüzden burada:</p>
               <div className="article-math article-math-lines">
                 <span>u = x → du = dx</span>
                 <span>dv = e<sup>x</sup> dx → v = e<sup>x</sup></span>
@@ -94,14 +98,14 @@ function IntegralArticle() {
 
             <section id="hatalar">
               <h2>Öğrencilerin En Sık Yaptığı Hatalar</h2>
-              <p>Yıllardır gördüğüm iki klasik hata var. Birincisi, u ve dv seçimini ters yapmak. Eğer u = e<sup>x</sup> seçseydiniz, integral basitleşmek yerine daha karmaşık hale gelirdi ve soru içinden çıkılmaz bir hal alırdı. İkincisi, formüldeki eksi işaretini unutmak. Küçük gibi görünen bu hata, sınavda dört yanlış bir doğru götürürken gerçekten can yakıyor.</p>
+              <p>Bu konuda iki klasik hata öne çıkar. Birincisi, u ve dv seçimini ters yapmaktır. Eğer u = e<sup>x</sup> seçilirse integral basitleşmek yerine daha karmaşık hale gelir. İkincisi ise formüldeki eksi işaretini unutmaktır; küçük görünen bu hata sonucu tamamen değiştirir.</p>
               <p>Bir de şunu ekleyeyim: Kısmi integrasyon bazen bir kez yetmez. Mesela ∫ x²·e<sup>x</sup> dx sorusunda yöntemi iki kez üst üste uygulamanız gerekir. Panik yapmayın, mantık hep aynı.</p>
             </section>
 
             <section>
               <h2>Takıldığınız Sorularda Ne Yapmalı?</h2>
-              <p>Açıkçası integral, bol pratik isteyen bir konu. Ama hepimizin başına geliyor: Gece geç saatte ders çalışırken bir soruya takılıyorsunuz, çözümlü kaynak yok, hocaya soracak durum yok. Ben bu tarz anlar için öğrencilerime MatAI uygulamasını öneriyorum. Sorunun fotoğrafını çekiyorsunuz, yapay zeka saniyeler içinde adım adım çözümü karşınıza getiriyor. Sadece cevabı değil, çözüm yolunu da gösterdiği için yukarıda anlattığım gibi “hangi yöntemi seçmeliyim” kısmını da öğrenmiş oluyorsunuz.</p>
-              <p>Tabii şunu da söylemeden geçmeyeyim: Uygulama ne kadar iyi olursa olsun, önce kendiniz uğraşın. On dakika düşünüp çözemediğiniz soruyu MatAI&apos;a sorun, çözümü inceleyin, sonra benzer bir soruyu kendiniz çözmeyi deneyin. Matematik böyle öğreniliyor.</p>
+              <p>İntegral bol pratik isteyen bir konudur. Çözümlü bir kaynağa veya öğretmene hemen ulaşılamadığında MatAI uygulamasıyla sorunun fotoğrafını çekebilir ve yapay zekâ tarafından oluşturulan adım adım çözümü inceleyebilirsiniz. Yalnızca sonucu değil, kullanılan çözüm yolunu görmek “hangi yöntemi seçmeliyim?” sorusunu anlamaya yardımcı olabilir.</p>
+              <p>Yapay zekâ desteğini kullanmadan önce soruyu kendiniz çözmeyi deneyin. Çözüme baktıktan sonra benzer bir soruyu yardım almadan yeniden çözmek, yöntemi gerçekten öğrenip öğrenmediğinizi kontrol etmenizi sağlar. Yapay zekâ çıktılarının hata içerebileceğini unutmayın ve kritik işlemleri ayrıca doğrulayın.</p>
               <p>Temel kurallar veya C sabiti konusunda eksiğiniz varsa önce <Link href="/makaleler/belirsiz-integral-nedir" className="article-inline-link">belirsiz integral konu anlatımını</Link> okuyabilirsiniz. Farklı soruların çözüm yöntemini görmek için de <Link href="/yapay-zeka-matematik-cozucu" className="article-inline-link">MatAI yapay zekâ matematik çözücü</Link> sayfasını inceleyin.</p>
             </section>
 
@@ -125,10 +129,11 @@ function IntegralArticle() {
                 <small>u dönüşümünü çözümlü örneklerle öğrenin →</small>
               </Link>
             </div>
+            <ArticleTrustBox />
             </div>
           </div>
         </article>
-      </main>
+      </main><PublicFooter />
     </div>
   );
 }

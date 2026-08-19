@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import PublicHeader from '../../../components/public/PublicHeader';
+import PublicFooter from '../../../components/public/PublicFooter';
+import ArticleTrustBox from '../../../components/public/ArticleTrustBox';
+import ArticleHeroVisual from '../../../components/public/ArticleHeroVisual';
 
 const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761';
 
@@ -12,11 +15,11 @@ export const metadata = {
     title: 'Belirsiz İntegral Nedir? Kuralları ve Örnekler',
     description: 'Belirsiz integral konusunu temel kurallar ve çözümlü örneklerle öğrenin.',
     type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler/belirsiz-integral-nedir',
-    images: [{ url: '/assets/og/integral-sorusu-nasil-cozulur.png', width: 1200, height: 630, alt: 'Belirsiz integral kuralları ve çözümlü örnekler' }],
+    images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'Belirsiz integral kuralları ve çözümlü örnekler' }],
     publishedTime: '2026-08-12T00:00:00+03:00',
     modifiedTime: '2026-08-12T00:00:00+03:00',
   },
-  twitter: { card: 'summary_large_image', title: 'Belirsiz İntegral Nedir? Kuralları ve Örnekler', description: 'Belirsiz integralin mantığını, temel kuralları ve C sabitini öğrenin.', images: ['/assets/og/integral-sorusu-nasil-cozulur.png'] },
+  twitter: { card: 'summary_large_image', title: 'Belirsiz İntegral Nedir? Kuralları ve Örnekler', description: 'Belirsiz integralin mantığını, temel kuralları ve C sabitini öğrenin.', images: ['/assets/articles/integral-alan.jpg'] },
 };
 
 export default function IndefiniteIntegralArticlePage() {
@@ -30,12 +33,12 @@ export default function IndefiniteIntegralArticlePage() {
         headline: 'Belirsiz İntegral Nedir? Kuralları ve Çözümlü Örnekler',
         description: 'Belirsiz integralin tanımı, temel kuralları, C sabiti ve çözümlü örnekler.',
         url: articleUrl,
-        image: ['https://matematik-ai.com/assets/og/integral-sorusu-nasil-cozulur.png'],
+        image: ['https://matematik-ai.com/assets/articles/integral-alan.jpg'],
         datePublished: '2026-08-12T00:00:00+03:00', dateModified: '2026-08-12T00:00:00+03:00',
         inLanguage: 'tr-TR', articleSection: 'AYT Matematik',
         keywords: ['belirsiz integral nedir', 'belirsiz integral kuralları', 'integral sabiti C', 'integral örnekleri', 'AYT matematik'],
         about: { '@type': 'Thing', name: 'İntegral' }, educationalLevel: 'Lise ve üniversite sınavına hazırlık', isAccessibleForFree: true,
-        author: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com' },
+        author: { '@type': 'Organization', name: 'MatAI İçerik Ekibi', url: 'https://matematik-ai.com/hakkimizda' },
         publisher: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com', logo: { '@type': 'ImageObject', url: 'https://matematik-ai.com/assets/MatAI-logo.png' } },
       },
       {
@@ -62,14 +65,15 @@ export default function IndefiniteIntegralArticlePage() {
             <span className="article-category">İntegral · AYT Matematik</span>
             <h1>Belirsiz İntegral Nedir? Kuralları ve Çözümlü Örnekler</h1>
             <p className="article-summary">Belirsiz integralin mantığını, temel kurallarını ve her sonucun yanına neden C sabiti yazdığımızı anlaşılır örneklerle inceleyelim.</p>
-            <div className="article-meta" aria-label="Makale bilgileri"><time dateTime="2026-08-12">12 Ağustos 2026</time><span>7 dakika okuma</span><span>Temel konu anlatımı</span></div>
+            <div className="article-meta" aria-label="Makale bilgileri"><time dateTime="2026-08-12">12 Ağustos 2026</time><span>7 dakika okuma</span><span>Temel konu anlatımı</span><span>MatAI İçerik Ekibi</span></div>
+            <ArticleHeroVisual slug="belirsiz-integral-nedir" title="Belirsiz İntegral Nedir?" priority />
           </header>
-
           <div className="article-content">
             <nav className="article-toc" aria-label="İçindekiler">
               <span>Bu yazıda</span><a href="#tanim">Tanımı</a><a href="#c-sabiti">C sabiti</a><a href="#kurallar">Temel kurallar</a><a href="#ornekler">Çözümlü örnekler</a><a href="#hatalar">Sık hatalar</a>
             </nav>
             <div className="article-body">
+              <div className="article-answer"><span>Kısaca</span><p>Belirsiz integral, türevi verilen ifadeye eşit olan bütün ilkel fonksiyonları bulur; sabitlerin türevi sıfır olduğu için sonuçta +C bulunur.</p></div>
               <div className="article-intro">
                 <p>Belirsiz integral, türevi verilen bir fonksiyon olan bütün fonksiyonları bulma işlemidir. Başka bir ifadeyle türev almanın ters yönünde ilerleriz. Türevde bir fonksiyonun değişim hızını bulurken, integralde bu değişim hızından başlangıçtaki fonksiyon ailesine ulaşmaya çalışırız.</p>
                 <p>Konuyu öğrenirken yalnızca formülleri ezberlemek yerine “hangi fonksiyonun türevi elimdeki ifadeyi verir?” sorusunu sormak, integral sorularını çok daha anlaşılır hale getirir.</p>
@@ -89,10 +93,11 @@ export default function IndefiniteIntegralArticlePage() {
 
               <aside className="article-cta"><div className="article-cta-copy"><h2>Benzer bir soruya mı takıldınız?</h2><p>Sorunun fotoğrafını çekin veya metin olarak yazın; çözüm yolunu MatAI ile adım adım inceleyin.</p><a href={appStoreLink} target="_blank" rel="noopener noreferrer">App Store&apos;dan indirin</a></div></aside>
               <div className="article-related"><span>İlgili yazı</span><Link href="/makaleler/integral-sorusu-nasil-cozulur"><strong>İntegral Sorusu Nasıl Çözülür?</strong><small>Kısmi integrasyonu adım adım öğrenin →</small></Link></div>
+              <ArticleTrustBox />
             </div>
           </div>
         </article>
-      </main>
+      </main><PublicFooter />
     </div>
   );
 }

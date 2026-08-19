@@ -2,6 +2,19 @@ import LandingPage from '../components/public/LandingPage';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'MatAI - Yapay Zekâ Matematik Çözücü',
+    description: 'Matematik sorularınızı fotoğraf, metin veya sesle sorun; çözüm yolunu adım adım inceleyin.',
+    type: 'website',
+    url: '/',
+    locale: 'tr_TR',
+    siteName: 'MatAI',
+    images: [{ url: '/assets/og/matai-ai-matematik-cozucu.png', width: 1200, height: 630, alt: 'MatAI Yapay Zekâ Matematik Çözücü' }],
+  },
+};
+
 export default function HomePage() {
   const structuredData = {
     '@context': 'https://schema.org',

@@ -25,6 +25,7 @@ export default function PublicHeader() {
             <a href="/#how-it-works" onClick={closeMenu}>Nasıl Çalışır?</a>
             <a href="/#download" onClick={closeMenu}>Uygulamayı İndir</a>
             <a href="/makaleler" onClick={closeMenu}>Makaleler</a>
+            <a href="/hakkimizda" onClick={closeMenu}>Hakkımızda</a>
           </nav>
 
           <a
