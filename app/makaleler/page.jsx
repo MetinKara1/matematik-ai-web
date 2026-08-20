@@ -18,6 +18,8 @@ export const metadata = {
 
 export default function ArticlesPage() {
   const integralArticles = [
+    { title: 'İntegral Formülleri', slug: 'integral-formulleri', description: 'AYT integral formüllerini kullanım koşulları ve kısa örneklerle tekrar edin.', category: 'İntegral', readingTime: 13, symbol: '∫', formula: 'formül tablosu' },
+    { title: 'İntegral Alma Kuralları', slug: 'integral-alma-kurallari', description: 'Temel integral formüllerini, yöntem seçimini ve çözümlü örnekleri öğrenin.', category: 'İntegral', readingTime: 12, symbol: '∫', formula: 'xⁿ⁺¹/(n+1)' },
     { title: 'İntegral Sorusu Nasıl Çözülür?', slug: 'integral-sorusu-nasil-cozulur', description: 'Kısmi integrasyon yöntemini ve doğru yöntem seçimini adım adım öğrenin.', category: 'İntegral', readingTime: 8, symbol: '∫', formula: 'u · dv' },
     { title: 'Belirsiz İntegral Nedir?', slug: 'belirsiz-integral-nedir', description: 'Belirsiz integralin mantığını, C sabitini ve temel kuralları öğrenin.', category: 'İntegral', readingTime: 7, symbol: '∫', formula: 'F(x) + C' },
     { title: 'İntegralde Değişken Değiştirme', slug: 'integralde-degisken-degistirme', description: 'Karmaşık integralleri u dönüşümüyle sadeleştirmeyi örneklerle öğrenin.', category: 'İntegral', readingTime: 8, symbol: 'u', formula: 'du = g′(x)dx' },

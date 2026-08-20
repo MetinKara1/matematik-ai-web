@@ -180,7 +180,7 @@ function LandingPage() {
             bugün başlayın!
           </p>
           <p className="landing-content-links">
-            <a href="/yapay-zeka-matematik-cozucu">AI matematik çözücüyü inceleyin</a>
+            <a href="/yapay-zeka-matematik-cozucu">Matematik çözen yapay zekâyı inceleyin</a>
             <span aria-hidden="true">·</span>
             <a href="/makaleler">Matematik makalelerini okuyun</a>
           </p>

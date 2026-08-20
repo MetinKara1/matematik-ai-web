@@ -35,6 +35,10 @@ export default function IntegralTopicArticle({ article, children }) {
           { '@type': 'ListItem', position: 3, name: article.shortTitle, item: articleUrl },
         ],
       },
+      ...(article.faq?.length ? [{
+        '@type': 'FAQPage', '@id': `${articleUrl}#faq`,
+        mainEntity: article.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })),
+      }] : []),
     ],
   };
 

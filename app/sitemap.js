@@ -3,10 +3,13 @@ import { derivativeArticles } from '../lib/derivativeArticles';
 export default function sitemap() {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://matematik-ai.com').replace(/\/$/, '');
   const lastModified = new Date('2026-08-12T00:00:00+03:00');
+  const solverLastModified = new Date('2026-08-20T00:00:00+03:00');
   return [
     { url: baseUrl, lastModified, changeFrequency: 'weekly', priority: 1 },
-    { url: `${baseUrl}/yapay-zeka-matematik-cozucu`, lastModified, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/yapay-zeka-matematik-cozucu`, lastModified: solverLastModified, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/makaleler`, lastModified, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/makaleler/integral-formulleri`, lastModified: solverLastModified, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${baseUrl}/makaleler/integral-alma-kurallari`, lastModified: solverLastModified, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/hakkimizda`, lastModified, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/icerik-politikasi`, lastModified, changeFrequency: 'monthly', priority: 0.5 },
     {

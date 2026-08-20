@@ -20,7 +20,7 @@ export default function PublicHeader() {
           </a>
 
           <nav className={`landing-header-nav${isMenuOpen ? " is-open" : ""}`} aria-label="Ana menü">
-            <a href="/yapay-zeka-matematik-cozucu" onClick={closeMenu}>AI Matematik Çözücü</a>
+            <a href="/yapay-zeka-matematik-cozucu" onClick={closeMenu}>Yapay Zekâ Matematik Çözücü</a>
             <a href="/#features" onClick={closeMenu}>Özellikler</a>
             <a href="/#how-it-works" onClick={closeMenu}>Nasıl Çalışır?</a>
             <a href="/#download" onClick={closeMenu}>Uygulamayı İndir</a>

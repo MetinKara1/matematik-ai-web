@@ -2,6 +2,8 @@
 
 Mevcut Vite uygulamasının tasarım ve rotalarını koruyan Next.js App Router sürümü.
 
+SEO ve içerik çalışmalarının güncel durumu ile sıradaki hedef [SEO devamlılık notunda](docs/SEO-CONTINUITY.md) tutulur.
+
 ## Çalıştırma
 
 ```bash

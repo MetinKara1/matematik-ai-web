@@ -3,17 +3,17 @@ import PublicHeader from '../../components/public/PublicHeader';
 const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761';
 
 export const metadata = {
-  title: 'Yapay Zekâ Matematik Çözücü – Fotoğrafla Soru Çözme',
-  description: 'MatAI yapay zekâ matematik çözücü ile sorunuzun fotoğrafını çekin veya metin olarak sorun; çözüm yolunu adım adım inceleyin.',
+  title: 'Matematik Çözen Yapay Zekâ – Fotoğrafla Soru Çözme',
+  description: 'MatAI ile fotoğrafla matematik sorusu çözün. Soruyu fotoğraf, metin veya sesle gönderin; yapay zekâ destekli çözüm yolunu adım adım inceleyin.',
   alternates: { canonical: '/yapay-zeka-matematik-cozucu' },
-  keywords: ['yapay zekâ matematik çözücü', 'fotoğrafla soru çözme', 'matematik soru çözme uygulaması', 'adım adım matematik çözümü'],
+  keywords: ['matematik çözen yapay zekâ', 'yapay zekâ matematik çözücü', 'fotoğrafla matematik sorusu çözme', 'matematik soru çözme uygulaması', 'adım adım matematik çözümü'],
   openGraph: {
-    title: 'Yapay Zekâ Matematik Çözücü | MatAI',
-    description: 'Matematik sorularını fotoğraf, metin veya sesle sorun; yapay zekâ destekli adım adım çözümleri inceleyin.',
+    title: 'Matematik Çözen Yapay Zekâ | MatAI',
+    description: 'Matematik sorularını fotoğraf, metin veya sesle gönderin; yapay zekâ destekli adım adım çözümleri inceleyin.',
     type: 'website', locale: 'tr_TR', siteName: 'MatAI', url: '/yapay-zeka-matematik-cozucu',
     images: [{ url: '/assets/og/matai-ai-matematik-cozucu.png', width: 1200, height: 630, alt: 'MatAI Yapay Zekâ Matematik Çözücü' }],
   },
-  twitter: { card: 'summary_large_image', title: 'Yapay Zekâ Matematik Çözücü | MatAI', description: 'Fotoğraf, metin veya sesle matematik sorun; çözüm adımlarını inceleyin.', images: ['/assets/og/matai-ai-matematik-cozucu.png'] },
+  twitter: { card: 'summary_large_image', title: 'Matematik Çözen Yapay Zekâ | MatAI', description: 'Fotoğraf, metin veya sesle matematik sorun; çözüm adımlarını inceleyin.', images: ['/assets/og/matai-ai-matematik-cozucu.png'] },
 };
 
 const topics = ['Cebir', 'Geometri', 'Trigonometri', 'Türev', 'İntegral', 'Limit', 'Problemler', 'Kalkülüs'];
@@ -21,6 +21,8 @@ const topics = ['Cebir', 'Geometri', 'Trigonometri', 'Türev', 'İntegral', 'Lim
 export default function AiMathSolverPage() {
   const pageUrl = 'https://matematik-ai.com/yapay-zeka-matematik-cozucu';
   const faq = [
+    ['Fotoğrafla matematik sorusu nasıl çözülür?', 'MatAI uygulamasında kamerayı açıp sorunun net bir fotoğrafını çekin veya galerinizden bir görsel seçin. Uygulama soruyu analiz eder ve çözüm adımlarını incelemeniz için gösterir.'],
+    ['Matematik çözen yapay zekâ hangi soru türlerinde kullanılabilir?', 'MatAI; cebir, geometri, trigonometri, limit, türev, integral, problemler ve kalkülüs gibi birçok konuda matematik sorularını inceleyebilir.'],
     ['MatAI yalnızca fotoğraftan mı soru çözer?', 'Hayır. Matematik sorunuzu fotoğrafla gönderebilir, metin olarak yazabilir veya sesli biçimde aktarabilirsiniz.'],
     ['MatAI hangi matematik konularını destekler?', 'Cebir, geometri, trigonometri, limit, türev, integral ve kalkülüs dahil birçok matematik konusunda çözüm desteği sunar.'],
     ['Uygulama yalnızca cevabı mı gösterir?', 'MatAI yalnızca nihai cevabı değil, sorunun çözüm yolunu adım adım inceleyebilmenizi amaçlar.'],
@@ -42,7 +44,7 @@ export default function AiMathSolverPage() {
         <section className="solver-hero">
           <div className="solver-hero-copy">
             <span className="solver-kicker">MatAI · iOS uygulaması</span>
-            <h1>Yapay zekâ matematik çözücü ile çözüm yolunu anlayın.</h1>
+            <h1>Matematik çözen yapay zekâ ile fotoğrafla soru çözün.</h1>
             <p>Matematik sorusunun fotoğrafını çekin, metin olarak yazın veya sesli sorun. MatAI yalnızca sonucu değil, çözüme götüren adımları da anlaşılır biçimde gösterir.</p>
             <div className="solver-actions">
               <a href={appStoreLink} target="_blank" rel="noopener noreferrer" className="solver-primary-action">App Store&apos;dan indirin</a>
@@ -81,6 +83,19 @@ export default function AiMathSolverPage() {
             <ul><li>Çözüm yöntemini adımlara ayırır.</li><li>İşlem sırasını takip etmeyi kolaylaştırır.</li><li>Eski çözümlerinize yeniden bakmanızı sağlar.</li><li>Çözümleri paylaşmanıza yardımcı olur.</li></ul>
           </div>
           <aside><strong>Desteklenen konular</strong><div>{topics.map((topic) => <span key={topic}>{topic}</span>)}</div></aside>
+        </section>
+
+        <section className="solver-section" aria-labelledby="fotografla-soru-cozme">
+          <div className="solver-section-heading">
+            <span>Yazmadan soru sorun</span>
+            <h2 id="fotografla-soru-cozme">Fotoğrafla matematik sorusu çözme</h2>
+            <p>Defterdeki veya kitaptaki soruyu kamerayla taratmak, özellikle uzun denklemleri telefonda yeniden yazma zahmetini ortadan kaldırır.</p>
+          </div>
+          <div className="solver-steps">
+            <article><b>01</b><h3>Net bir fotoğraf çekin</h3><p>Sorunun tamamını kadraja alın; sembollerin, üslerin ve kesirlerin okunabildiğinden emin olun.</p></article>
+            <article><b>02</b><h3>Soruyu kontrol edin</h3><p>MatAI&apos;ın görselden algıladığı matematik sorusunu inceleyin ve gerekirse metinle ayrıntı ekleyin.</p></article>
+            <article><b>03</b><h3>Adımları takip edin</h3><p>Yapay zekânın sunduğu işlemleri sırayla okuyun; yalnızca sonuca değil, kullanılan çözüm yöntemine odaklanın.</p></article>
+          </div>
         </section>
 
         <section className="solver-section solver-faq">
