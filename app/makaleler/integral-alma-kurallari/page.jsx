@@ -7,7 +7,7 @@ const description = 'İntegral alma kurallarını, temel integral formüllerini 
 export const metadata = {
   title,
   description,
-  alternates: { canonical: '/makaleler/integral-alma-kurallari' },
+  alternates: { canonical: '/makaleler/integral-alma-kurallari', languages: { tr: '/makaleler/integral-alma-kurallari', en: '/en/articles/integration-rules', 'x-default': '/makaleler/integral-alma-kurallari' } },
   keywords: ['integral alma kuralları', 'integral kuralları', 'temel integral formülleri', 'integral nasıl alınır', 'AYT integral'],
   openGraph: {
     title, description, type: 'article', locale: 'tr_TR', siteName: 'MatAI',

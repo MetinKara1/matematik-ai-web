@@ -5,7 +5,7 @@ const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/i
 export const metadata = {
   title: 'Matematik Çözen Yapay Zekâ – Fotoğrafla Soru Çözme',
   description: 'MatAI ile fotoğrafla matematik sorusu çözün. Soruyu fotoğraf, metin veya sesle gönderin; yapay zekâ destekli çözüm yolunu adım adım inceleyin.',
-  alternates: { canonical: '/yapay-zeka-matematik-cozucu' },
+  alternates: { canonical: '/yapay-zeka-matematik-cozucu', languages: { tr: '/yapay-zeka-matematik-cozucu', en: '/en/ai-math-solver', 'x-default': '/yapay-zeka-matematik-cozucu' } },
   keywords: ['matematik çözen yapay zekâ', 'yapay zekâ matematik çözücü', 'fotoğrafla matematik sorusu çözme', 'matematik soru çözme uygulaması', 'adım adım matematik çözümü'],
   openGraph: {
     title: 'Matematik Çözen Yapay Zekâ | MatAI',

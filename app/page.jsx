@@ -3,7 +3,7 @@ import LandingPage from '../components/public/LandingPage';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  alternates: { canonical: '/' },
+  alternates: { canonical: '/', languages: { tr: '/', en: '/en', 'x-default': '/' } },
   openGraph: {
     title: 'MatAI - Yapay Zekâ Matematik Çözücü',
     description: 'Matematik sorularınızı fotoğraf, metin veya sesle sorun; çözüm yolunu adım adım inceleyin.',

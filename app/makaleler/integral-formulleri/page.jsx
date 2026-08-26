@@ -7,7 +7,7 @@ const description = 'Temel, üstel, logaritmik ve trigonometrik integral formül
 export const metadata = {
   title,
   description,
-  alternates: { canonical: '/makaleler/integral-formulleri' },
+  alternates: { canonical: '/makaleler/integral-formulleri', languages: { tr: '/makaleler/integral-formulleri', en: '/en/articles/integral-formulas', 'x-default': '/makaleler/integral-formulleri' } },
   keywords: ['integral formülleri', 'integral formülleri tablosu', 'temel integral formülleri', 'AYT integral formülleri', 'trigonometrik integral formülleri'],
   openGraph: {
     title, description, type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler/integral-formulleri',

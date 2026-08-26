@@ -6,26 +6,40 @@ const logo = "/assets/MatAI-logo.png";
 const appQrCode = "/assets/matai-ios-qr.png";
 const appStoreLink = "https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761";
 
-export default function PublicHeader() {
+export default function PublicHeader({ locale = "tr", languageHref }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
+  const isEnglish = locale === "en";
+  const homeHref = isEnglish ? "/en" : "/";
+  const labels = isEnglish ? {
+    home: "MatAI home", menu: "Main navigation", solver: "AI Math Solver", features: "Features",
+    how: "How It Works", download: "Download", articles: "Articles", about: "About",
+    start: "Get Started", startLabel: "Download MatAI on the App Store", open: "Open menu", close: "Close menu",
+    ios: "Download for iOS", scan: "Scan the QR code", android: "Android coming soon", qr: "QR code for the MatAI iOS app",
+  } : {
+    home: "MatAI ana sayfa", menu: "Ana menü", solver: "Yapay Zekâ Matematik Çözücü", features: "Özellikler",
+    how: "Nasıl Çalışır?", download: "Uygulamayı İndir", articles: "Makaleler", about: "Hakkımızda",
+    start: "Hemen Başla", startLabel: "MatAI'ı App Store'dan indir", open: "Menüyü aç", close: "Menüyü kapat",
+    ios: "iOS için indirin", scan: "QR kodu tarayın", android: "Android yakında", qr: "MatAI iOS uygulaması için QR kod",
+  };
 
   return (
     <>
       <header className="landing-header public-header">
         <div className="landing-header-inner">
-          <a href="/" className="landing-header-brand" aria-label="MatAI ana sayfa">
+          <a href={homeHref} className="landing-header-brand" aria-label={labels.home}>
             <img src={logo} alt="" className="landing-header-logo" />
             <span>MatAI</span>
           </a>
 
-          <nav className={`landing-header-nav${isMenuOpen ? " is-open" : ""}`} aria-label="Ana menü">
-            <a href="/yapay-zeka-matematik-cozucu" onClick={closeMenu}>Yapay Zekâ Matematik Çözücü</a>
-            <a href="/#features" onClick={closeMenu}>Özellikler</a>
-            <a href="/#how-it-works" onClick={closeMenu}>Nasıl Çalışır?</a>
-            <a href="/#download" onClick={closeMenu}>Uygulamayı İndir</a>
-            <a href="/makaleler" onClick={closeMenu}>Makaleler</a>
-            <a href="/hakkimizda" onClick={closeMenu}>Hakkımızda</a>
+          <nav className={`landing-header-nav${isMenuOpen ? " is-open" : ""}`} aria-label={labels.menu}>
+            <a href={isEnglish ? "/en/ai-math-solver" : "/yapay-zeka-matematik-cozucu"} onClick={closeMenu}>{labels.solver}</a>
+            <a href={`${homeHref}#features`} onClick={closeMenu}>{labels.features}</a>
+            <a href={`${homeHref}#how-it-works`} onClick={closeMenu}>{labels.how}</a>
+            <a href={`${homeHref}#download`} onClick={closeMenu}>{labels.download}</a>
+            <a href={isEnglish ? "/en/articles" : "/makaleler"} onClick={closeMenu}>{labels.articles}</a>
+            {!isEnglish && <a href="/hakkimizda" onClick={closeMenu}>{labels.about}</a>}
+            <a href={languageHref || (isEnglish ? "/" : "/en")} hrefLang={isEnglish ? "tr" : "en"} lang={isEnglish ? "tr" : "en"} onClick={closeMenu}>{isEnglish ? "TR" : "EN"}</a>
           </nav>
 
           <a
@@ -33,15 +47,15 @@ export default function PublicHeader() {
             target="_blank"
             rel="noopener noreferrer"
             className="landing-header-action"
-            aria-label="MatAI'ı App Store'dan indir"
+            aria-label={labels.startLabel}
           >
-            Hemen Başla
+            {labels.start}
           </a>
 
           <button
             type="button"
             className={`landing-menu-toggle${isMenuOpen ? " is-open" : ""}`}
-            aria-label={isMenuOpen ? "Menüyü kapat" : "Menüyü aç"}
+            aria-label={isMenuOpen ? labels.close : labels.open}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((open) => !open)}
           >
@@ -53,7 +67,7 @@ export default function PublicHeader() {
       </header>
 
       {isMenuOpen && (
-        <button type="button" className="landing-menu-backdrop" aria-label="Menüyü kapat" onClick={closeMenu} />
+        <button type="button" className="landing-menu-backdrop" aria-label={labels.close} onClick={closeMenu} />
       )}
 
       <a
@@ -61,13 +75,13 @@ export default function PublicHeader() {
         target="_blank"
         rel="noopener noreferrer"
         className="sticky-app-qr"
-        aria-label="MatAI iOS uygulamasını App Store'da aç"
+        aria-label={labels.startLabel}
       >
-        <img src={appQrCode} alt="MatAI iOS uygulaması için QR kod" />
+        <img src={appQrCode} alt={labels.qr} />
         <span>
-          <strong>iOS için indirin</strong>
-          <small>QR kodu tarayın</small>
-          <em>Android yakında</em>
+          <strong>{labels.ios}</strong>
+          <small>{labels.scan}</small>
+          <em>{labels.android}</em>
         </span>
       </a>
     </>

@@ -1,12 +1,13 @@
 import PublicHeader from '../../components/public/PublicHeader';
 import ArticlesGrid from '../../components/public/ArticlesGrid';
 import { derivativeArticles } from '../../lib/derivativeArticles';
+import { foundationArticles } from '../../lib/foundationArticles';
 
 export const metadata = {
   title: 'Matematik Makaleleri ve Çözümlü Örnekler',
   description: 'Matematik konularını anlaşılır anlatımlar, pratik yöntemler ve adım adım çözümlü örneklerle öğrenin.',
-  alternates: { canonical: '/makaleler' },
-  keywords: ['matematik makaleleri', 'AYT matematik konu anlatımı', 'integral konu anlatımı', 'türev konu anlatımı', 'çözümlü matematik örnekleri'],
+  alternates: { canonical: '/makaleler', languages: { tr: '/makaleler', en: '/en/articles', 'x-default': '/makaleler' } },
+  keywords: ['matematik makaleleri', 'üniversite matematiğine hazırlık', 'fonksiyonlar', 'trigonometri', 'limit ve süreklilik', 'türev konu anlatımı', 'integral konu anlatımı', 'çözümlü matematik örnekleri'],
   openGraph: {
     title: 'Matematik Makaleleri ve Çözümlü Örnekler | MatAI',
     description: 'Matematik konularını anlaşılır anlatımlar ve adım adım çözümlü örneklerle öğrenin.',
@@ -27,9 +28,13 @@ export default function ArticlesPage() {
     { title: 'İntegral ile Alan Hesabı', slug: 'integral-ile-alan-hesabi', description: 'Eğri ile eksen ve iki eğri arasında kalan alanı hesaplayın.', category: 'İntegral', readingTime: 9, symbol: '∫', formula: 'üst − alt' },
   ];
   const articles = [
+    ...foundationArticles.map(({ title, slug, description, readingTime, symbol, formula, category }) => ({ title, slug, description, readingTime, symbol, formula, category })),
     ...derivativeArticles.map(({ title, slug, description, readingTime, symbol, formula }) => ({ title, slug, description, readingTime, symbol, formula, category: 'Türev' })),
     ...integralArticles,
-  ];
+  ].sort((a, b) => {
+    const order = ['Fonksiyonlar', 'Trigonometri', 'Limit ve Süreklilik', 'Türev', 'İntegral'];
+    return order.indexOf(a.category) - order.indexOf(b.category);
+  });
   const pageUrl = 'https://matematik-ai.com/makaleler';
   const structuredData = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${pageUrl}#webpage`, url: pageUrl, name: metadata.title, description: metadata.description, inLanguage: 'tr-TR', isPartOf: { '@id': 'https://matematik-ai.com/#website' } },
@@ -44,8 +49,8 @@ export default function ArticlesPage() {
       <main className="articles-main">
         <header className="articles-hero">
           <span className="articles-eyebrow">MatAI Kütüphane</span>
-          <h1>Matematiği ezberlemeden, mantığıyla öğrenin.</h1>
-          <p>Kısa anlatımlar, çözümlü örnekler ve sınavda işinize yarayacak pratik yöntemler.</p>
+          <h1>Fonksiyonlardan integrale, kalkülüsü doğru sırayla öğrenin.</h1>
+          <p>Üniversite matematiğine hazırlık için konu anlatımları, temel formüller ve adım adım çözümlü örnekler.</p>
         </header>
 
         <section className="articles-list" aria-labelledby="articles-title">
@@ -54,7 +59,7 @@ export default function ArticlesPage() {
               <span>Güncel içerikler</span>
               <h2 id="articles-title">Makaleler</h2>
             </div>
-            <p>Yeni anlatımlar düzenli olarak eklenecek.</p>
+            <p>Fonksiyonlar, trigonometri, limit, süreklilik, türev ve integral aynı öğrenme yolunda.</p>
           </div>
 
           <ArticlesGrid articles={articles} />
