@@ -1,0 +1,4 @@
+interface:
+  display_name: "Topical SEO Content"
+  short_description: "Create verified multilingual topical SEO pages"
+  default_prompt: "Use $topical-seo-content to evaluate and create a timely localized SEO page for this project."

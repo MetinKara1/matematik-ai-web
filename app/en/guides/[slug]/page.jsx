@@ -1,0 +1,6 @@
+import { notFound } from 'next/navigation';
+import TopicalArticle from '../../../../components/public/TopicalArticle';
+import { englishTopicalArticles, englishTopicalArticleMap } from '../../../../lib/topicalArticles';
+export function generateStaticParams() { return englishTopicalArticles.filter((item) => item.section === 'guides').map(({ slug }) => ({ slug })); }
+export async function generateMetadata({ params }) { const article = englishTopicalArticleMap[(await params).slug]; if (!article || article.section !== 'guides') return {}; const canonical = `/en/guides/${article.slug}`; const tr = `/${article.trSection}/${article.trSlug}`; return { title: article.title, description: article.description, alternates: { canonical, languages: { tr, en: canonical, 'x-default': tr } }, openGraph: { title: article.title, description: article.description, type: 'article', url: canonical, locale: 'en_US', siteName: 'MatAI' } }; }
+export default async function Page({ params }) { const article = englishTopicalArticleMap[(await params).slug]; if (!article || article.section !== 'guides') notFound(); const related = englishTopicalArticles.filter((item) => article.related.includes(item.key)); return <TopicalArticle article={article} locale="en" relatedArticles={related} />; }

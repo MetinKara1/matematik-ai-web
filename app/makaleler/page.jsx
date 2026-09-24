@@ -2,6 +2,7 @@ import PublicHeader from '../../components/public/PublicHeader';
 import ArticlesGrid from '../../components/public/ArticlesGrid';
 import { derivativeArticles } from '../../lib/derivativeArticles';
 import { foundationArticles } from '../../lib/foundationArticles';
+import { topicalArticles } from '../../lib/topicalArticles';
 
 export const metadata = {
   title: 'Matematik Makaleleri ve Çözümlü Örnekler',
@@ -28,17 +29,18 @@ export default function ArticlesPage() {
     { title: 'İntegral ile Alan Hesabı', slug: 'integral-ile-alan-hesabi', description: 'Eğri ile eksen ve iki eğri arasında kalan alanı hesaplayın.', category: 'İntegral', readingTime: 9, symbol: '∫', formula: 'üst − alt' },
   ];
   const articles = [
+    ...topicalArticles.map(({ title, slug, section, description, readingTime, symbol, formula, category }) => ({ title, slug, href: `/${section}/${slug}`, description, readingTime, symbol, formula, category })),
     ...foundationArticles.map(({ title, slug, description, readingTime, symbol, formula, category }) => ({ title, slug, description, readingTime, symbol, formula, category })),
     ...derivativeArticles.map(({ title, slug, description, readingTime, symbol, formula }) => ({ title, slug, description, readingTime, symbol, formula, category: 'Türev' })),
     ...integralArticles,
   ].sort((a, b) => {
-    const order = ['Fonksiyonlar', 'Trigonometri', 'Limit ve Süreklilik', 'Türev', 'İntegral'];
+    const order = ['Yapay zekâ ve matematik', 'YKS rehberi', 'YKS verileri', 'Yapay zekâ rehberi', 'Fonksiyonlar', 'Trigonometri', 'Limit ve Süreklilik', 'Türev', 'İntegral'];
     return order.indexOf(a.category) - order.indexOf(b.category);
   });
   const pageUrl = 'https://matematik-ai.com/makaleler';
   const structuredData = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${pageUrl}#webpage`, url: pageUrl, name: metadata.title, description: metadata.description, inLanguage: 'tr-TR', isPartOf: { '@id': 'https://matematik-ai.com/#website' } },
-    { '@type': 'ItemList', '@id': `${pageUrl}#articles`, itemListElement: articles.map(({ title, slug }, index) => ({ '@type': 'ListItem', position: index + 1, name: title, url: `${pageUrl}/${slug}` })) },
+    { '@type': 'ItemList', '@id': `${pageUrl}#articles`, itemListElement: articles.map(({ title, slug, href }, index) => ({ '@type': 'ListItem', position: index + 1, name: title, url: href ? `https://matematik-ai.com${href}` : `${pageUrl}/${slug}` })) },
     { '@type': 'BreadcrumbList', '@id': `${pageUrl}#breadcrumb`, itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: 'https://matematik-ai.com' }, { '@type': 'ListItem', position: 2, name: 'Makaleler', item: pageUrl }] },
   ] };
   return (

@@ -1,6 +1,7 @@
 import { derivativeArticles } from '../lib/derivativeArticles';
 import { foundationArticles } from '../lib/foundationArticles';
 import { englishArticles } from '../lib/enArticles';
+import { topicalArticles } from '../lib/topicalArticles';
 
 export default function sitemap() {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://matematik-ai.com').replace(/\/$/, '');
@@ -19,6 +20,13 @@ export default function sitemap() {
     { url: `${baseUrl}/en`, lastModified: englishLastModified, changeFrequency: 'weekly', priority: 0.9, alternates: { languages: { tr: baseUrl, en: `${baseUrl}/en` } } },
     { url: `${baseUrl}/en/ai-math-solver`, lastModified: englishLastModified, changeFrequency: 'monthly', priority: 0.9, alternates: { languages: { tr: `${baseUrl}/yapay-zeka-matematik-cozucu`, en: `${baseUrl}/en/ai-math-solver` } } },
     { url: `${baseUrl}/en/articles`, lastModified: englishLastModified, changeFrequency: 'weekly', priority: 0.8, alternates: { languages: { tr: `${baseUrl}/makaleler`, en: `${baseUrl}/en/articles` } } },
+    ...topicalArticles.flatMap((article) => {
+      const tr = `/${article.section}/${article.slug}`;
+      const en = `/en/${article.enSection}/${article.enSlug}`;
+      const alternates = languageAlternates(tr, en);
+      const common = { lastModified: new Date(`${article.publishedAt}T00:00:00+03:00`), changeFrequency: article.section === 'gundem' ? 'weekly' : 'monthly', priority: 0.85, alternates };
+      return [{ url: `${baseUrl}${tr}`, ...common }, { url: `${baseUrl}${en}`, ...common }];
+    }),
     ...englishArticles.map(({ slug: enSlug, trSlug }) => ({
       url: `${baseUrl}/en/articles/${enSlug}`,
       lastModified: englishLastModified,

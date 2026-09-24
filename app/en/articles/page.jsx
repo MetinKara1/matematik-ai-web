@@ -2,6 +2,7 @@ import PublicHeader from '../../../components/public/PublicHeader';
 import PublicFooter from '../../../components/public/PublicFooter';
 import ArticlesGrid from '../../../components/public/ArticlesGrid';
 import { englishArticles } from '../../../lib/enArticles';
+import { englishTopicalArticles } from '../../../lib/topicalArticles';
 
 export const metadata = {
   title: 'Math Articles, Formulas, and Worked Examples',
@@ -11,8 +12,8 @@ export const metadata = {
 };
 
 export default function EnglishArticlesPage() {
-  const articles = [...englishArticles].sort((a, b) => {
-    const order = ['Functions', 'Trigonometry', 'Limits & Continuity', 'Derivatives', 'Integrals'];
+  const articles = [...englishTopicalArticles.map((item) => ({ ...item, href: `/en/${item.section}/${item.slug}` })), ...englishArticles].sort((a, b) => {
+    const order = ['AI and mathematics', 'YKS guide', 'AI guide', 'Functions', 'Trigonometry', 'Limits & Continuity', 'Derivatives', 'Integrals'];
     return order.indexOf(a.category) - order.indexOf(b.category);
   });
   return <div className="articles-page"><PublicHeader locale="en" languageHref="/makaleler" /><main className="articles-main">

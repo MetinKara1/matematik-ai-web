@@ -28,13 +28,13 @@ export default function ArticlesGrid({ articles, locale = 'tr', basePath = '/mak
         ))}
       </div>
 
-      {featured && <Link href={`${basePath}/${featured.slug}`} className="article-featured-card">
+      {featured && <Link href={featured.href || `${basePath}/${featured.slug}`} className="article-featured-card">
         <div className={`article-featured-visual article-visual-${featured.category.toLocaleLowerCase(isEnglish ? 'en-US' : 'tr-TR')}`} aria-hidden="true"><span>{featured.symbol}</span><small>{featured.formula}</small></div>
         <div className="article-featured-copy"><div className="article-list-meta"><span>{featured.category}</span><span>{featured.readingTime} {isEnglish ? 'min read' : 'dakika'}</span><span>{isEnglish ? 'Featured' : 'Öne çıkan'}</span></div><h2>{featured.title}</h2><p>{featured.description}</p><strong>{isEnglish ? 'Read article' : 'Yazıyı oku'} <span aria-hidden="true">→</span></strong></div>
       </Link>}
 
       <div className="articles-wide-list">
-        {visible.map((article) => <Link href={`${basePath}/${article.slug}`} className="article-featured-card article-wide-card" key={article.slug}>
+        {visible.map((article) => <Link href={article.href || `${basePath}/${article.slug}`} className="article-featured-card article-wide-card" key={article.slug}>
           <div className={`article-featured-visual article-visual-${article.category.toLocaleLowerCase(isEnglish ? 'en-US' : 'tr-TR')}`} aria-hidden="true"><span>{article.symbol}</span><small>{article.formula}</small></div>
           <div className="article-featured-copy"><div className="article-list-meta"><span>{article.category}</span><span>{article.readingTime} {isEnglish ? 'min read' : 'dakika'}</span><span>{isEnglish ? 'Mathematics' : 'AYT Matematik'}</span></div><h2>{article.title}</h2><p>{article.description}</p><strong>{isEnglish ? 'Read article' : 'Yazıyı oku'} <span aria-hidden="true">→</span></strong></div>
         </Link>)}
