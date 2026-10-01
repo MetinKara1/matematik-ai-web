@@ -1,312 +1,384 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { solvedQuestionsAPI } from '../../../lib/api';
+import { useEffect, useState } from "react";
+import MathContent from "../MathContent";
+import { solvedQuestionsAPI } from "../../../lib/api";
 
-function SolvedQuestions() {
-  const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState('');
-  const [questions, setQuestions] = useState([]);
-  const [totalCount, setTotalCount] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(5);
-  const [totalPages, setTotalPages] = useState(0);
-  const [hasMore, setHasMore] = useState(false);
+const formatDate = (value) =>
+  value
+    ? new Date(value).toLocaleString("tr-TR", {
+        dateStyle: "medium",
+        timeStyle: "short",
+      })
+    : "-";
+const truncateText = (text, length = 100) =>
+  !text ? "-" : text.length <= length ? text : `${text.slice(0, length)}…`;
 
+function SolutionDetail({ question, onClose }) {
   useEffect(() => {
-    loadQuestions();
-  }, [currentPage]);
-
-  const loadQuestions = async () => {
-    setLoading(true);
-    setError('');
-    try {
-      const response = await solvedQuestionsAPI.getAll({ page: currentPage, pageSize });
-      // Response format: { Data: [], Page: 1, PageSize: 20, TotalCount: 0, TotalPages: 0, HasMore: false }
-      const questionsData = response.Data || response.data || (Array.isArray(response) ? response : []);
-      setQuestions(Array.isArray(questionsData) ? questionsData : []);
-      setTotalCount(response.TotalCount || response.totalCount || questionsData.length);
-      setTotalPages(response.TotalPages || response.totalPages || Math.ceil((response.TotalCount || questionsData.length) / pageSize) || 1);
-      setHasMore(response.HasMore !== undefined ? response.HasMore : (response.hasMore !== undefined ? response.hasMore : false));
-    } catch (err) {
-      const errorMessage = err.message || 'Sorular yüklenirken bir hata oluştu';
-      setError(errorMessage);
-      console.error('Solved Questions API Error:', err);
-      
-      // If it's a 401 error, check if we should logout
-      if (errorMessage.includes('Yetkilendirme') || errorMessage.includes('401')) {
-        const token = localStorage.getItem('authToken');
-        if (!token) {
-          window.location.href = '/malcolmX/login';
-        }
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm('Bu soruyu silmek istediğinize emin misiniz?')) {
-      return;
-    }
-    try {
-      await solvedQuestionsAPI.delete(id);
-      setQuestions(questions.filter(q => q.Id !== id));
-    } catch (err) {
-      alert(err.message || 'Soru silinirken bir hata oluştu');
-    }
-  };
-
-  const filteredQuestions = questions.filter(q =>
-    (q.Question || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (q.UserId || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (q.Solution || '').toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const formatDate = (dateString) => {
-    if (!dateString) return '-';
-    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    return new Date(dateString).toLocaleDateString('tr-TR', options);
-  };
-
-  const truncateText = (text, maxLength = 100) => {
-    if (!text) return '-';
-    if (text.length <= maxLength) return text;
-    return text.substring(0, maxLength) + '...';
-  };
-
-  if (loading) {
-    return (
-      <div className="page-container">
-        <div style={{ textAlign: 'center', padding: '2rem' }}>Yükleniyor...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="page-container">
-        <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--danger-color)' }}>
-          {error}
-        </div>
-      </div>
-    );
-  }
+    const closeOnEscape = (event) => event.key === "Escape" && onClose();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [onClose]);
 
   return (
-    <div className="page-container">
-      <div className="page-header">
-        <div className="search-box">
-          <input
-            type="text"
-            placeholder="Soru ara..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div className="page-actions">
-          <button className="btn-primary">İstatistikler</button>
-        </div>
-      </div>
-
-      <div className="table-count-info">
-        <span>Toplam: <strong>{searchTerm ? filteredQuestions.length : totalCount}</strong> çözülen soru</span>
-        {searchTerm && filteredQuestions.length !== questions.length && (
-          <span className="filtered-info">({questions.length} kayıttan {filteredQuestions.length} tanesi gösteriliyor)</span>
-        )}
-        {!searchTerm && (
-          <span className="filtered-info">(Sayfa {currentPage} / {totalPages})</span>
-        )}
-      </div>
-
-      {/* Desktop Table View */}
-      <div className="table-container">
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Tarih</th>
-              <th>Soru</th>
-              <th>Kullanıcı ID</th>
-              <th>Tip</th>
-              <th>Görsel</th>
-              <th>Çözüm</th>
-              <th>İşlemler</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredQuestions.length > 0 ? (
-              filteredQuestions.map((q) => (
-                <tr key={q.Id}>
-                  <td>{q.Id ? q.Id.substring(0, 8) : '-'}</td>
-                  <td>{formatDate(q.CreatedAt)}</td>
-                  <td className="question-text" title={q.Question || '-'}>
-                    {truncateText(q.Question, 80)}
-                  </td>
-                  <td>{q.UserId ? q.UserId.substring(0, 8) : '-'}</td>
-                  <td>
-                    <span className="status-badge" style={{ 
-                      backgroundColor: q.Type === 'image' ? '#3b82f620' : '#6b728020',
-                      color: q.Type === 'image' ? '#3b82f6' : '#6b7280'
-                    }}>
-                      {q.Type || '-'}
-                    </span>
-                  </td>
-                  <td>
-                    {q.Type === 'image' && q.ImageUri ? (
-                      <img 
-                        src={q.ImageUri} 
-                        alt="Soru görseli" 
-                        style={{ 
-                          maxWidth: '80px', 
-                          maxHeight: '60px', 
-                          objectFit: 'contain',
-                          cursor: 'pointer'
-                        }}
-                        onClick={() => {
-                          const newWindow = window.open();
-                          newWindow.document.write(`<img src="${q.ImageUri}" style="max-width: 100%; height: auto;" />`);
-                        }}
-                      />
-                    ) : (
-                      '-'
-                    )}
-                  </td>
-                  <td className="question-text" title={q.Solution || '-'}>
-                    {truncateText(q.Solution, 60)}
-                  </td>
-                  <td>
-                    <div className="action-buttons">
-                      <button 
-                        className="btn-icon" 
-                        title="Detay" 
-                        onClick={() => navigate(`/solution/${q.Id}`)}
-                      >
-                        👁️
-                      </button>
-                      <button className="btn-icon" title="Sil" onClick={() => handleDelete(q.Id)}>🗑️</button>
-                    </div>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="8" style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-secondary)' }}>
-                  Soru bulunamadı
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Mobile Card View */}
-      <div className="mobile-card-view">
-        {filteredQuestions.length > 0 ? (
-          filteredQuestions.map((q) => (
-            <div key={q.Id} className="mobile-card">
-              <div className="mobile-card-header">
-                <div className="mobile-card-title">Soru #{q.Id ? q.Id.substring(0, 8) : '-'}</div>
-                <div className="mobile-card-actions">
-                  <button 
-                    className="btn-icon" 
-                    title="Detay" 
-                    onClick={() => navigate(`/solution/${q.Id}`)}
-                  >
-                    👁️
-                  </button>
-                  <button className="btn-icon" title="Sil" onClick={() => handleDelete(q.Id)}>🗑️</button>
-                </div>
-              </div>
-              <div className="mobile-card-body">
-                {q.Type === 'image' && q.ImageUri && (
-                  <div className="mobile-card-row">
-                    <img 
-                      src={q.ImageUri} 
-                      alt="Soru görseli" 
-                      style={{ 
-                        width: '100%',
-                        maxHeight: '200px',
-                        objectFit: 'contain',
-                        borderRadius: '8px',
-                        marginTop: '0.5rem',
-                        cursor: 'pointer'
-                      }}
-                      onClick={() => {
-                        const newWindow = window.open();
-                        newWindow.document.write(`<img src="${q.ImageUri}" style="max-width: 100%; height: auto;" />`);
-                      }}
-                    />
-                  </div>
-                )}
-                <div className="mobile-card-row">
-                  <div className="mobile-card-label">Soru</div>
-                  <div className="mobile-card-value" style={{ fontFamily: 'monospace', fontSize: '0.875rem' }}>
-                    {truncateText(q.Question, 150)}
-                  </div>
-                </div>
-                <div className="mobile-card-row">
-                  <div className="mobile-card-label">Çözüm</div>
-                  <div className="mobile-card-value" style={{ fontFamily: 'monospace', fontSize: '0.875rem' }}>
-                    {truncateText(q.Solution, 150)}
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                  <div className="mobile-card-row" style={{ flex: '1', minWidth: '100px' }}>
-                    <div className="mobile-card-label">Tip</div>
-                    <div className="mobile-card-value">
-                      <span className="status-badge" style={{ 
-                        backgroundColor: q.Type === 'image' ? '#3b82f620' : '#6b728020',
-                        color: q.Type === 'image' ? '#3b82f6' : '#6b7280'
-                      }}>
-                        {q.Type || '-'}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="mobile-card-row" style={{ flex: '1', minWidth: '140px' }}>
-                    <div className="mobile-card-label">Tarih</div>
-                    <div className="mobile-card-value">{formatDate(q.CreatedAt)}</div>
-                  </div>
-                </div>
-                <div className="mobile-card-row">
-                  <div className="mobile-card-label">Kullanıcı ID</div>
-                  <div className="mobile-card-value" style={{ fontFamily: 'monospace', fontSize: '0.75rem' }}>{q.UserId ? q.UserId.substring(0, 8) : '-'}</div>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-secondary)' }}>
-            Soru bulunamadı
+    <div
+      className="solution-detail-backdrop"
+      onMouseDown={onClose}
+      role="presentation"
+    >
+      <section
+        className="solution-detail-panel"
+        onMouseDown={(event) => event.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="solution-detail-title"
+      >
+        <div className="solution-detail-handle" aria-hidden="true" />
+        <header className="solution-detail-header">
+          <div>
+            <span className="solution-detail-eyebrow">Çözüm kaydı</span>
+            <h2 id="solution-detail-title">Matematik çözümü</h2>
+            <p>
+              {formatDate(question.CreatedAt)} · {question.Type || "metin"} · #
+              {question.Id?.slice(0, 8)}
+            </p>
           </div>
-        )}
-      </div>
+          <button
+            className="solution-detail-close"
+            onClick={onClose}
+            aria-label="Detayı kapat"
+          >
+            ×
+          </button>
+        </header>
 
-      <div className="pagination">
-        <button 
-          className="pagination-btn" 
-          disabled={currentPage === 1 || loading}
-          onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-        >
-          Önceki
-        </button>
-        <span className="pagination-info">
-          Sayfa {currentPage} / {totalPages || 1} {!searchTerm && `(Toplam: ${totalCount})`}
-        </span>
-        <button 
-          className="pagination-btn" 
-          disabled={!hasMore && currentPage >= totalPages || loading}
-          onClick={() => setCurrentPage(prev => prev + 1)}
-        >
-          Sonraki
-        </button>
-      </div>
+        <div className="solution-detail-scroll">
+          {question.ImageUri && (
+            <figure className="solution-detail-image">
+              <img src={question.ImageUri} alt="Çözülen matematik sorusu" />
+            </figure>
+          )}
+          {(question.Question || question.Expression) && (
+            <section className="solution-detail-section question">
+              <div className="solution-section-heading">
+                <span>01</span>
+                <h3>Soru</h3>
+              </div>
+              <MathContent>
+                {question.Question || question.Expression}
+              </MathContent>
+            </section>
+          )}
+          {question.Solution && (
+            <section className="solution-detail-section answer">
+              <div className="solution-section-heading">
+                <span>02</span>
+                <h3>Sonuç</h3>
+              </div>
+              <MathContent>{question.Solution}</MathContent>
+            </section>
+          )}
+          {Array.isArray(question.Steps) && question.Steps.length > 0 && (
+            <section className="solution-detail-section steps">
+              <div className="solution-section-heading">
+                <span>03</span>
+                <h3>Çözüm adımları</h3>
+              </div>
+              <div className="admin-solution-steps">
+                {question.Steps.map((step, index) => (
+                  <article
+                    className="admin-solution-step"
+                    key={`${question.Id}-step-${index}`}
+                  >
+                    <span className="admin-step-number">{index + 1}</span>
+                    <MathContent>{step}</MathContent>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+          <footer className="solution-detail-meta">
+            <div>
+              <span>Kayıt ID</span>
+              <code>{question.Id || "-"}</code>
+            </div>
+            <div>
+              <span>Kullanıcı ID</span>
+              <code>{question.UserId || "Anonim"}</code>
+            </div>
+          </footer>
+        </div>
+      </section>
     </div>
   );
 }
 
-export default SolvedQuestions;
+export default function SolvedQuestions() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [questions, setQuestions] = useState([]);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [totalCount, setTotalCount] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [hasMore, setHasMore] = useState(false);
+  const pageSize = 10;
 
+  useEffect(() => {
+    let active = true;
+    const loadQuestions = async () => {
+      setLoading(true);
+      setError("");
+      try {
+        const response = await solvedQuestionsAPI.getAll({
+          page: currentPage,
+          pageSize,
+        });
+        if (!active) return;
+        const data =
+          response.Data ||
+          response.data ||
+          (Array.isArray(response) ? response : []);
+        setQuestions(Array.isArray(data) ? data : []);
+        setTotalCount(
+          response.TotalCount ?? response.totalCount ?? data.length,
+        );
+        setTotalPages(response.TotalPages ?? response.totalPages ?? 1);
+        setHasMore(response.HasMore ?? response.hasMore ?? false);
+      } catch (err) {
+        if (active)
+          setError(err.message || "Sorular yüklenirken bir hata oluştu");
+      } finally {
+        if (active) setLoading(false);
+      }
+    };
+    loadQuestions();
+    return () => {
+      active = false;
+    };
+  }, [currentPage]);
+
+  const handleDelete = async (event, id) => {
+    event.stopPropagation();
+    if (!window.confirm("Bu soruyu silmek istediğinize emin misiniz?")) return;
+    try {
+      await solvedQuestionsAPI.delete(id);
+      setQuestions((items) => items.filter((question) => question.Id !== id));
+      setSelectedQuestion((selected) =>
+        selected?.Id === id ? null : selected,
+      );
+    } catch (err) {
+      window.alert(err.message || "Soru silinirken bir hata oluştu");
+    }
+  };
+
+  const query = searchTerm.toLowerCase();
+  const filteredQuestions = questions.filter(
+    (question) =>
+      (question.Question || "").toLowerCase().includes(query) ||
+      (question.UserId || "").toLowerCase().includes(query) ||
+      (question.Solution || "").toLowerCase().includes(query),
+  );
+
+  return (
+    <div className="page-container solved-questions-page">
+      <div className="admin-page-intro">
+        <div>
+          <span className="admin-eyebrow">MatAI kayıtları</span>
+          <h2>Çözülmüş sorular</h2>
+          <p>
+            Soruya tıklayarak matematiksel çözümü ve tüm adımları inceleyin.
+          </p>
+        </div>
+        <div className="admin-intro-count">
+          <strong>{totalCount}</strong>
+          <span>toplam çözüm</span>
+        </div>
+      </div>
+      <div className="page-header">
+        <div className="search-box admin-search-box">
+          <span aria-hidden="true">⌕</span>
+          <input
+            type="search"
+            placeholder="Soru, çözüm veya kullanıcı ID ara..."
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+          />
+        </div>
+      </div>
+
+      {loading && (
+        <div className="admin-loading-state">Çözümler yükleniyor…</div>
+      )}
+      {error && <div className="admin-error-state">{error}</div>}
+
+      {!loading && !error && (
+        <>
+          <div className="table-container solved-table-container">
+            <table className="data-table solved-table">
+              <thead>
+                <tr>
+                  <th>Soru</th>
+                  <th>Tür</th>
+                  <th>Kullanıcı</th>
+                  <th>Tarih</th>
+                  <th aria-label="İşlemler" />
+                </tr>
+              </thead>
+              <tbody>
+                {filteredQuestions.map((question) => (
+                  <tr
+                    key={question.Id}
+                    onClick={() => setSelectedQuestion(question)}
+                    tabIndex="0"
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") setSelectedQuestion(question);
+                    }}
+                  >
+                    <td>
+                      <div className="solved-question-summary">
+                        {question.ImageUri && (
+                          <img src={question.ImageUri} alt="" />
+                        )}
+                        <div>
+                          <strong>
+                            {truncateText(
+                              question.Question || question.Expression,
+                              115,
+                            )}
+                          </strong>
+                          <span>{truncateText(question.Solution, 90)}</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span
+                        className={`question-type-badge ${question.Type === "image" ? "image" : ""}`}
+                      >
+                        {question.Type === "image" ? "Görsel" : "Metin"}
+                      </span>
+                    </td>
+                    <td>
+                      <code>
+                        {question.UserId
+                          ? `${question.UserId.slice(0, 8)}…`
+                          : "Anonim"}
+                      </code>
+                    </td>
+                    <td>{formatDate(question.CreatedAt)}</td>
+                    <td>
+                      <div className="row-actions">
+                        <button
+                          className="open-solution-button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            setSelectedQuestion(question);
+                          }}
+                        >
+                          İncele <span>→</span>
+                        </button>
+                        <button
+                          className="delete-row-button"
+                          title="Sil"
+                          onClick={(event) => handleDelete(event, question.Id)}
+                        >
+                          ⌫
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+                {filteredQuestions.length === 0 && (
+                  <tr>
+                    <td colSpan="5" className="empty-table-cell">
+                      Soru bulunamadı
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mobile-card-view solved-mobile-list">
+            {filteredQuestions.map((question) => (
+              <article
+                className="mobile-card solved-mobile-card"
+                key={question.Id}
+                onClick={() => setSelectedQuestion(question)}
+              >
+                <div className="solved-mobile-top">
+                  <span
+                    className={`question-type-badge ${question.Type === "image" ? "image" : ""}`}
+                  >
+                    {question.Type === "image" ? "Görsel" : "Metin"}
+                  </span>
+                  <time>{formatDate(question.CreatedAt)}</time>
+                </div>
+                {question.ImageUri && (
+                  <img
+                    className="solved-mobile-image"
+                    src={question.ImageUri}
+                    alt="Soru önizlemesi"
+                  />
+                )}
+                <h3>
+                  {truncateText(question.Question || question.Expression, 140)}
+                </h3>
+                <p>{truncateText(question.Solution, 120)}</p>
+                <div className="solved-mobile-footer">
+                  <code>
+                    {question.UserId
+                      ? `${question.UserId.slice(0, 8)}…`
+                      : "Anonim"}
+                  </code>
+                  <button
+                    className="open-solution-button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setSelectedQuestion(question);
+                    }}
+                  >
+                    Çözümü aç →
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </>
+      )}
+
+      <div className="pagination">
+        <button
+          className="pagination-btn"
+          disabled={currentPage === 1 || loading}
+          onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+        >
+          Önceki
+        </button>
+        <span className="pagination-info">
+          Sayfa {currentPage} / {totalPages || 1}
+        </span>
+        <button
+          className="pagination-btn"
+          disabled={!hasMore || loading}
+          onClick={() => setCurrentPage((page) => page + 1)}
+        >
+          Sonraki
+        </button>
+      </div>
+      {selectedQuestion && (
+        <SolutionDetail
+          question={selectedQuestion}
+          onClose={() => setSelectedQuestion(null)}
+        />
+      )}
+    </div>
+  );
+}

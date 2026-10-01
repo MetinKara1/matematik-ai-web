@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { authAPI } from '../../../lib/api';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { authAPI } from "../../../lib/api";
 
 function Login({ onLogin }) {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (!email || !password) {
-      setError('Lütfen tüm alanları doldurun');
+      setError("Lütfen tüm alanları doldurun");
       return;
     }
 
@@ -25,9 +25,11 @@ function Login({ onLogin }) {
       await authAPI.login(email, password);
       onLogin();
       // Redirect to dashboard after successful login
-      navigate('/malcolmX/dashboard');
+      navigate("/malcolmX/dashboard");
     } catch (err) {
-      setError(err.message || 'Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
+      setError(
+        err.message || "Giriş başarısız. Lütfen bilgilerinizi kontrol edin.",
+      );
     } finally {
       setLoading(false);
     }
@@ -37,8 +39,13 @@ function Login({ onLogin }) {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <h1>AI Math Solver</h1>
-          <p>Admin Paneli</p>
+          <img
+            src="/assets/MatAI-logo.png"
+            alt="MatAI"
+            className="login-brand-logo"
+          />
+          <h1>MatAI</h1>
+          <p>Yönetim merkezine hoş geldiniz</p>
         </div>
         <form onSubmit={handleSubmit} className="login-form">
           {error && <div className="error-message">{error}</div>}
@@ -65,7 +72,7 @@ function Login({ onLogin }) {
             />
           </div>
           <button type="submit" className="login-button" disabled={loading}>
-            {loading ? 'Giriş yapılıyor...' : 'Giriş Yap'}
+            {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
           </button>
         </form>
       </div>
@@ -74,4 +81,3 @@ function Login({ onLogin }) {
 }
 
 export default Login;
-
