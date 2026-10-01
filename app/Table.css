@@ -38,6 +38,67 @@
   gap: 0.75rem;
 }
 
+.purchase-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.purchase-filters select {
+  padding: 0.75rem 2rem 0.75rem 0.875rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.product-id,
+.purchase-table code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  word-break: break-all;
+}
+
+.purchase-table small {
+  color: var(--text-secondary);
+}
+
+.empty-table-cell,
+.admin-loading-state,
+.admin-error-state {
+  padding: 2rem !important;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.admin-error-state {
+  color: var(--danger-color);
+}
+
+.purchase-balance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.purchase-balance-grid > div {
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: var(--bg-secondary);
+}
+
+.purchase-balance-grid strong,
+.purchase-balance-grid small {
+  display: block;
+}
+
+.purchase-balance-grid small {
+  margin-top: 0.2rem;
+  color: var(--text-secondary);
+}
+
 .btn-primary {
   padding: 0.75rem 1.5rem;
   background-color: var(--primary-color);
@@ -327,6 +388,12 @@
     min-width: 100%;
   }
 
+  .purchase-filters,
+  .purchase-filters select,
+  .purchase-filters .btn-primary {
+    width: 100%;
+  }
+
   /* Hide table on mobile */
   .table-container {
     display: none;
@@ -360,4 +427,3 @@
     display: none;
   }
 }
-

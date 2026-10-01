@@ -11,6 +11,7 @@ function Layout({ onLogout }) {
     { path: '/malcolmX/dashboard', label: 'Dashboard', icon: '📊' },
     { path: '/malcolmX/users', label: 'Kullanıcılar', icon: '👥' },
     { path: '/malcolmX/subscribers', label: 'Aboneler', icon: '⭐' },
+    { path: '/malcolmX/one-time-purchases', label: 'Tek Seferlik Satın Alımlar', icon: '🧾' },
     { path: '/malcolmX/solved-questions', label: 'Çözülen Sorular', icon: '✅' },
     { path: '/malcolmX/feedback', label: 'Geri Bildirimler', icon: '💬' },
   ];
@@ -73,4 +74,3 @@ function Layout({ onLogout }) {
 }
 
 export default Layout;
-

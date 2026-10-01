@@ -7,6 +7,7 @@ import Feedback from './pages/Feedback';
 import Login from './pages/Login';
 import SolvedQuestions from './pages/SolvedQuestions';
 import Subscribers from './pages/Subscribers';
+import OneTimePurchases from './pages/OneTimePurchases';
 import Users from './pages/Users';
 import Layout from './layout/Layout';
 
@@ -45,6 +46,7 @@ export default function AdminApp() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="users" element={<Users />} />
           <Route path="subscribers" element={<Subscribers />} />
+          <Route path="one-time-purchases" element={<OneTimePurchases />} />
           <Route path="solved-questions" element={<SolvedQuestions />} />
           <Route path="feedback" element={<Feedback />} />
         </Route>
