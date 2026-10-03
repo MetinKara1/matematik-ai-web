@@ -7,7 +7,6 @@ import MathCalculator from '../../../components/public/MathCalculator';
 import MathToolCards from '../../../components/public/MathToolCards';
 import { getMathTool, mathTools } from '../../../lib/mathTools';
 
-export const dynamicParams = false;
 export function generateStaticParams() { return mathTools.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }) {
   const tool = getMathTool((await params).slug);

@@ -146,3 +146,11 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Mevcut ders URL/title/canonical/hreflang alanları korundu. Yeni sayfalara kendi metadata/canonical, CollectionPage/ItemList/BreadcrumbList ve sitemap kayıtları eklendi. Var olmayan İngilizce merkezler için hreflang eklenmedi.
 - Yeni metinler sınav müfredatı veya tüm matematik konularını kapsadığı iddiasında bulunmaz. Konu merkezi çalışma yolunu; makale tekil öğrenme ihtiyacını; araç hesaplama ihtiyacını karşılar.
 - Doğrulama: 6 yeni sayfada metadata/canonical/şema, 31 çift yönlü ders bağlantısı, 54 bağlantı/anchor ve 47 HTTP 200 sayfa kontrol edildi; sitemap kayıtları ve bilinmeyen konu için 404 doğru. Mobil 390px görünümde kontrol cevabı ve menü geçişi çalışıyor; yatay sayfa taşması yok. Son Cloudflare üretim derlemesi geçti. Yayın durumu yerel doğrulamadan ayrı takip edilmelidir.
+
+## 3 Ekim 2026 — 8. madde: ders odaklı makale kütüphanesi
+
+- `/makaleler` üst bölümüne bölüm bağlantıları ve “Çalışmaya başla” alanı eklendi. Konu seçiminin ardından 31 ders öğrenme sırasıyla listelenir; 9 gündem/rehber yazısı ayrı bölümde yayın tarihine göre sıralanır.
+- Ders ve gündem filtreleri ile “Daha fazla göster” durumları birbirinden bağımsızdır. İki bölümün JavaScript kapalı listeleri de doğru href adreslerini korur. ItemList sırası görünür bölüm sırasına uyar.
+- Kartlar ilgili bölüm başlığının altında h3 kullanır; ders kartlarında “Konu anlatımı”, diğerlerinde “Gündem ve rehber” etiketi gösterilir. İngilizce dizinin varsayılan davranışı korunur. Bu çalışma müfredat doğrulaması olan 9. maddenin yerine geçmez.
+- Bilinmeyen araç/konu slug'larında `dynamicParams=false` nedeniyle oluşan Next.js NoFallbackError günlüğünü önlemek için varsayılan fallback davranışı kullanılır; sayfa kendi `notFound()` kontrolüyle 404 döndürür. Bilinen sayfalar generateStaticParams ile önceden üretilmeye devam eder.
+- Doğrulama: Cloudflare/Next.js üretim derlemesi başarılı; sunucu günlüğünde Error/NoFallbackError yok. 40 öğeli şema ve 31+9 noscript bağlantısı, canonical ve İngilizce dizin 200 kontrol edildi. Tarayıcıda türev filtresi 6→12 kart, gündem filtresi 6→1 kart; iki bölüm birbirini etkilemiyor. Mobil 390px taşma ve konsol hatası yok. Konu merkezi bağlantı kontrolleri de yeniden geçti.

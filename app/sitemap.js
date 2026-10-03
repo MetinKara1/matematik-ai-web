@@ -17,7 +17,7 @@ export default function sitemap() {
     ...['/araclar', ...mathTools.map(({ slug }) => `/araclar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-03T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.8 })),
     { url: baseUrl, lastModified, changeFrequency: 'weekly', priority: 1, alternates: languageAlternates('', '/en') },
     { url: `${baseUrl}/yapay-zeka-matematik-cozucu`, lastModified: solverLastModified, changeFrequency: 'monthly', priority: 0.9, alternates: languageAlternates('/yapay-zeka-matematik-cozucu', '/en/ai-math-solver') },
-    { url: `${baseUrl}/makaleler`, lastModified, changeFrequency: 'weekly', priority: 0.9, alternates: languageAlternates('/makaleler', '/en/articles') },
+    { url: `${baseUrl}/makaleler`, lastModified: new Date('2026-10-03T00:00:00+03:00'), changeFrequency: 'weekly', priority: 0.9, alternates: languageAlternates('/makaleler', '/en/articles') },
     { url: `${baseUrl}/makaleler/integral-formulleri`, lastModified: solverLastModified, changeFrequency: 'monthly', priority: 0.8, alternates: languageAlternates('/makaleler/integral-formulleri', '/en/articles/integral-formulas') },
     { url: `${baseUrl}/makaleler/integral-alma-kurallari`, lastModified: solverLastModified, changeFrequency: 'monthly', priority: 0.8, alternates: languageAlternates('/makaleler/integral-alma-kurallari', '/en/articles/integration-rules') },
     { url: `${baseUrl}/hakkimizda`, lastModified, changeFrequency: 'monthly', priority: 0.6 },

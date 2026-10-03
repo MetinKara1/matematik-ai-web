@@ -4,7 +4,6 @@ import PublicHeader from '../../../components/public/PublicHeader';
 import PublicFooter from '../../../components/public/PublicFooter';
 import { getTopicHub, getTopicLesson, getTopicLessons, topicHubs } from '../../../lib/topicHubs';
 
-export const dynamicParams = false;
 export function generateStaticParams() { return topicHubs.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }) {
   const topic = getTopicHub((await params).slug); if (!topic) return {};
