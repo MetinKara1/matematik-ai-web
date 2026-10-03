@@ -78,7 +78,11 @@ export default function ArticlePage() {
           },
           {
             '@type': 'ListItem',
-            position: 3,
+            position: 3, name: 'İntegral', item: 'https://matematik-ai.com/konular/integral',
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
             name: 'İntegral Sorusu Nasıl Çözülür?',
             item: articleUrl,
           },

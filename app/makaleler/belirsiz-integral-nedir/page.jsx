@@ -46,7 +46,8 @@ export default function IndefiniteIntegralArticlePage() {
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: 'https://matematik-ai.com' },
           { '@type': 'ListItem', position: 2, name: 'Makaleler', item: 'https://matematik-ai.com/makaleler' },
-          { '@type': 'ListItem', position: 3, name: 'Belirsiz İntegral Nedir?', item: articleUrl },
+          { '@type': 'ListItem', position: 3, name: 'İntegral', item: 'https://matematik-ai.com/konular/integral' },
+          { '@type': 'ListItem', position: 4, name: 'Belirsiz İntegral Nedir?', item: articleUrl },
         ],
       },
     ],
@@ -60,7 +61,7 @@ export default function IndefiniteIntegralArticlePage() {
         <article className="article-card">
           <header className="article-heading">
             <nav className="article-breadcrumb" aria-label="Sayfa yolu">
-              <Link href="/">Ana Sayfa</Link><span aria-hidden="true">›</span><Link href="/makaleler">Makaleler</Link><span aria-hidden="true">›</span><span>Belirsiz İntegral Nedir?</span>
+              <Link href="/">Ana Sayfa</Link><span aria-hidden="true">›</span><Link href="/makaleler">Makaleler</Link><span aria-hidden="true">›</span><Link href="/konular/integral">İntegral</Link><span aria-hidden="true">›</span><span>Belirsiz İntegral Nedir?</span>
             </nav>
             <span className="article-category">İntegral · AYT Matematik</span>
             <h1>Belirsiz İntegral Nedir? Kuralları ve Çözümlü Örnekler</h1>
@@ -93,6 +94,7 @@ export default function IndefiniteIntegralArticlePage() {
 
               <aside className="article-cta"><div className="article-cta-copy"><h2>Benzer bir soruya mı takıldınız?</h2><p>Sorunun fotoğrafını çekin veya metin olarak yazın; çözüm yolunu MatAI ile adım adım inceleyin.</p><a href={appStoreLink} target="_blank" rel="noopener noreferrer">App Store&apos;dan indirin</a></div></aside>
               <div className="article-related"><span>İlgili yazı</span><Link href="/makaleler/integral-sorusu-nasil-cozulur"><strong>İntegral Sorusu Nasıl Çözülür?</strong><small>Kısmi integrasyonu adım adım öğrenin →</small></Link></div>
+              <nav className="article-series" aria-label="Konuya geri dön"><span>Bu konudaki diğer dersler</span><div><Link href="/konular/integral">İntegral çalışma sırası ve kontrol sorusu →</Link></div></nav>
               <ArticleTrustBox />
             </div>
           </div>

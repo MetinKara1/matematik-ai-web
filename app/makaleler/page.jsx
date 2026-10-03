@@ -1,3 +1,7 @@
+import Link from 'next/link';
+import TopicCards from '../../components/public/TopicCards';
+import PublicFooter from '../../components/public/PublicFooter';
+import { integralArticles } from '../../lib/integralArticleIndex';
 import PublicHeader from '../../components/public/PublicHeader';
 import ArticlesGrid from '../../components/public/ArticlesGrid';
 import { derivativeArticles } from '../../lib/derivativeArticles';
@@ -19,15 +23,7 @@ export const metadata = {
 };
 
 export default function ArticlesPage() {
-  const integralArticles = [
-    { title: 'İntegral Formülleri', slug: 'integral-formulleri', description: 'AYT integral formüllerini kullanım koşulları ve kısa örneklerle tekrar edin.', category: 'İntegral', readingTime: 13, symbol: '∫', formula: 'formül tablosu' },
-    { title: 'İntegral Alma Kuralları', slug: 'integral-alma-kurallari', description: 'Temel integral formüllerini, yöntem seçimini ve çözümlü örnekleri öğrenin.', category: 'İntegral', readingTime: 12, symbol: '∫', formula: 'xⁿ⁺¹/(n+1)' },
-    { title: 'İntegral Sorusu Nasıl Çözülür?', slug: 'integral-sorusu-nasil-cozulur', description: 'Kısmi integrasyon yöntemini ve doğru yöntem seçimini adım adım öğrenin.', category: 'İntegral', readingTime: 8, symbol: '∫', formula: 'u · dv' },
-    { title: 'Belirsiz İntegral Nedir?', slug: 'belirsiz-integral-nedir', description: 'Belirsiz integralin mantığını, C sabitini ve temel kuralları öğrenin.', category: 'İntegral', readingTime: 7, symbol: '∫', formula: 'F(x) + C' },
-    { title: 'İntegralde Değişken Değiştirme', slug: 'integralde-degisken-degistirme', description: 'Karmaşık integralleri u dönüşümüyle sadeleştirmeyi örneklerle öğrenin.', category: 'İntegral', readingTime: 8, symbol: 'u', formula: 'du = g′(x)dx' },
-    { title: 'Belirli İntegral Nedir?', slug: 'belirli-integral-nedir', description: 'Alt ve üst sınırları, temel teoremi ve belirli integral özelliklerini öğrenin.', category: 'İntegral', readingTime: 8, symbol: '∫', formula: 'F(b) − F(a)' },
-    { title: 'İntegral ile Alan Hesabı', slug: 'integral-ile-alan-hesabi', description: 'Eğri ile eksen ve iki eğri arasında kalan alanı hesaplayın.', category: 'İntegral', readingTime: 9, symbol: '∫', formula: 'üst − alt' },
-  ];
+
   const articles = [
     ...topicalArticles.map(({ title, slug, section, description, readingTime, symbol, formula, category }) => ({ title, slug, href: `/${section}/${slug}`, description, readingTime, symbol, formula, category })),
     ...foundationArticles.map(({ title, slug, description, readingTime, symbol, formula, category }) => ({ title, slug, description, readingTime, symbol, formula, category })),
@@ -55,6 +51,13 @@ export default function ArticlesPage() {
           <p>Üniversite matematiğine hazırlık için konu anlatımları, temel formüller ve adım adım çözümlü örnekler.</p>
         </header>
 
+        <section className="topic-library" aria-labelledby="topic-library-heading">
+          <h2 id="topic-library-heading">Konuları bir öğrenme sırasıyla çalış</h2>
+          <p>Nereden başlayacağını bilmiyorsan konu merkezini seç. Ön bilgiden derslere, kontrol sorusundan pratiğe adım adım ilerle.</p>
+          <TopicCards />
+          <Link href="/konular">Öğrenme yollarını incele →</Link>
+        </section>
+
         <section className="articles-list" aria-labelledby="articles-title">
           <div className="articles-list-heading">
             <div>
@@ -70,6 +73,7 @@ export default function ArticlesPage() {
           </noscript>
         </section>
       </main>
+      <PublicFooter />
     </div>
   );
 }

@@ -136,3 +136,13 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - `npm run test:math`: aritmetik öncelik, kesirler, giriş sınırları, türev/integral tersliği, denklem kökleri ve belirli integral uç durumları. Node 22 gerekir.
 - Tarayıcıda denklem/türev/integral hesaplama, Enter ile gönderme, hata mesajı, temizleme, girdi değişince eski sonucun kaldırılması doğrulandı. 390px ekranda sayfa taşması ve KaTeX hatası yok.
 - Bu kayıt yerel uygulamayı anlatır; canlı yayın ve Search Console dizin durumu ayrıca doğrulanmalıdır.
+
+## 3 Ekim 2026 — 7. madde: konu merkezleri
+
+- `/konular` ve beş merkez eklendi: `fonksiyonlar`, `trigonometri`, `limit-ve-sureklilik`, `turev`, `integral`.
+- Toplam 31 ders: 2 fonksiyon, 3 trigonometri, 7 limit/süreklilik, 12 türev, 7 integral. `lib/topicHubs.js` çalışma sırasını tutar; başlık ve açıklamalar mevcut ders kataloglarından alınır. İntegral dizini `lib/integralArticleIndex.js` içine taşındı; makale dizini de aynı kaynağı kullanır.
+- Her merkezde ön bilgi, öğrenme hedefi, ihtiyaca göre başlangıç, sıralı dersler, native details ile cevap açılan kontrol sorusu, sık hata ve pratik bağlantısı var. Mevcut türev grafiği/testi ile polinom araçlarına bağlantı verilir; merkezlerin çalışması JavaScript'e bağlı değildir.
+- Ana menü, altbilgi ve makale dizininden erişim sağlandı. Derslerde görünür breadcrumb, BreadcrumbList ve konuya dönüş bağlantısı birlikte güncellendi. Ayrı şablon kullanan belirsiz integral/kısmi integrasyon sayfaları da kapsandı.
+- Mevcut ders URL/title/canonical/hreflang alanları korundu. Yeni sayfalara kendi metadata/canonical, CollectionPage/ItemList/BreadcrumbList ve sitemap kayıtları eklendi. Var olmayan İngilizce merkezler için hreflang eklenmedi.
+- Yeni metinler sınav müfredatı veya tüm matematik konularını kapsadığı iddiasında bulunmaz. Konu merkezi çalışma yolunu; makale tekil öğrenme ihtiyacını; araç hesaplama ihtiyacını karşılar.
+- Doğrulama: 6 yeni sayfada metadata/canonical/şema, 31 çift yönlü ders bağlantısı, 54 bağlantı/anchor ve 47 HTTP 200 sayfa kontrol edildi; sitemap kayıtları ve bilinmeyen konu için 404 doğru. Mobil 390px görünümde kontrol cevabı ve menü geçişi çalışıyor; yatay sayfa taşması yok. Son Cloudflare üretim derlemesi geçti. Yayın durumu yerel doğrulamadan ayrı takip edilmelidir.

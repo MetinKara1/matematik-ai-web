@@ -1,3 +1,4 @@
+import { getArticleTopic } from '../../lib/topicHubs';
 import Link from 'next/link';
 import PublicHeader from './PublicHeader';
 import PublicFooter from './PublicFooter';
@@ -10,6 +11,7 @@ import { lessonPractice, lessonPracticeToc, getLessonUpdatedAt } from '../../lib
 const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761';
 
 export default function IntegralTopicArticle({ article, children }) {
+  const topic = getArticleTopic(article.slug);
   const lesson = lessonPractice[article.slug];
   const calculator = (article.category || 'İntegral') === 'İntegral'
     ? { slug: 'integral-hesaplama', label: 'Polinom integralini adım adım hesapla' }
@@ -48,7 +50,8 @@ export default function IntegralTopicArticle({ article, children }) {
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: 'https://matematik-ai.com' },
           { '@type': 'ListItem', position: 2, name: 'Makaleler', item: 'https://matematik-ai.com/makaleler' },
-          { '@type': 'ListItem', position: 3, name: article.shortTitle, item: articleUrl },
+          ...(topic ? [{ '@type': 'ListItem', position: 3, name: topic.title, item: `https://matematik-ai.com/konular/${topic.slug}` }] : []),
+          { '@type': 'ListItem', position: topic ? 4 : 3, name: article.shortTitle, item: articleUrl },
         ],
       },
       ...(article.faq?.length ? [{
@@ -64,7 +67,7 @@ export default function IntegralTopicArticle({ article, children }) {
       <PublicHeader languageHref={article.languageHref} />
       <main className="article-main"><article className="article-card">
         <header className="article-heading">
-          <nav className="article-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana Sayfa</Link><span aria-hidden="true">›</span><Link href="/makaleler">Makaleler</Link><span aria-hidden="true">›</span><span>{article.shortTitle}</span></nav>
+          <nav className="article-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana Sayfa</Link><span aria-hidden="true">›</span><Link href="/makaleler">Makaleler</Link><span aria-hidden="true">›</span>{topic && <><Link href={`/konular/${topic.slug}`}>{topic.title}</Link><span aria-hidden="true">›</span></>}<span>{article.shortTitle}</span></nav>
           <span className="article-category">{article.category || 'İntegral'} · AYT Matematik</span>
           <h1>{article.title}</h1><p className="article-summary">{article.summary}</p>
           <div className="article-meta" aria-label="Makale bilgileri"><time dateTime={article.date || '2026-08-12'}>{article.displayDate || '12 Ağustos 2026'}</time><span>{article.readingTime} dakika okuma</span>{article.updatedDisplayDate && <span>Güncellendi: <time dateTime={article.updatedAt}>{article.updatedDisplayDate}</time></span>}<span>{article.level}</span><span>MatAI İçerik Ekibi</span></div>
@@ -84,6 +87,7 @@ export default function IntegralTopicArticle({ article, children }) {
             </nav>}
             <aside className="article-cta"><div className="article-cta-copy"><h2>{article.category || 'İntegral'} sorusuna mı takıldınız?</h2><p>Sorunun fotoğrafını çekin veya metin olarak yazın; çözüm yolunu MatAI ile adım adım inceleyin.</p><a href={appStoreLink} target="_blank" rel="noopener noreferrer" aria-label="MatAI uygulamasını App Store'dan indirin">App Store&apos;dan indirin</a></div></aside>
             <div className="article-related"><span>Sonraki okuma</span><Link href={`/makaleler/${article.related.slug}`}><strong>{article.related.title}</strong><small>{article.related.text} →</small></Link></div>
+            {topic && <nav className="article-series" aria-label="Konuya geri dön"><span>Bu konudaki diğer dersler</span><div><Link href={`/konular/${topic.slug}`}>{topic.title} çalışma sırası ve kontrol sorusu →</Link></div></nav>}
             <ArticleTrustBox />
           </div>
         </div>

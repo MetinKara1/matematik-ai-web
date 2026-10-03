@@ -20,7 +20,7 @@ function IntegralArticle() {
               <span aria-hidden="true">›</span>
               <Link href="/makaleler">Makaleler</Link>
               <span aria-hidden="true">›</span>
-              <span>İntegral Sorusu Nasıl Çözülür?</span>
+              <Link href="/konular/integral">İntegral</Link><span aria-hidden="true">›</span><span>İntegral Sorusu Nasıl Çözülür?</span>
             </nav>
             <span className="article-category">İntegral · AYT Matematik</span>
             <h1>İntegral Sorusu Nasıl Çözülür? Adım Adım Bir Örnekle Anlatıyorum</h1>
@@ -129,6 +129,7 @@ function IntegralArticle() {
                 <small>u dönüşümünü çözümlü örneklerle öğrenin →</small>
               </Link>
             </div>
+            <nav className="article-series" aria-label="Konuya geri dön"><span>Bu konudaki diğer dersler</span><div><Link href="/konular/integral">İntegral çalışma sırası ve kontrol sorusu →</Link></div></nav>
             <ArticleTrustBox />
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { topicHubs } from '../lib/topicHubs';
 import { mathTools } from '../lib/mathTools';
 import { derivativeArticles } from '../lib/derivativeArticles';
 import { foundationArticles } from '../lib/foundationArticles';
@@ -12,6 +13,7 @@ export default function sitemap() {
   const englishLastModified = new Date('2026-08-27T00:00:00+03:00');
   const languageAlternates = (trPath, enPath) => ({ languages: { tr: `${baseUrl}${trPath}`, en: `${baseUrl}${enPath}` } });
   return [
+    ...['/konular', ...topicHubs.map(({ slug }) => `/konular/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-03T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.85 })),
     ...['/araclar', ...mathTools.map(({ slug }) => `/araclar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-03T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.8 })),
     { url: baseUrl, lastModified, changeFrequency: 'weekly', priority: 1, alternates: languageAlternates('', '/en') },
     { url: `${baseUrl}/yapay-zeka-matematik-cozucu`, lastModified: solverLastModified, changeFrequency: 'monthly', priority: 0.9, alternates: languageAlternates('/yapay-zeka-matematik-cozucu', '/en/ai-math-solver') },

@@ -14,6 +14,7 @@ export default function PublicFooter({ locale = 'tr' }) {
           </> : <>
             <Link href="/hakkimizda">Hakkımızda</Link>
             <Link href="/icerik-politikasi">İçerik Politikası</Link>
+            <Link href="/konular">Konu Merkezleri</Link>
             <Link href="/makaleler">Makaleler</Link>
             <Link href="/araclar">Matematik Araçları</Link>
           </>}

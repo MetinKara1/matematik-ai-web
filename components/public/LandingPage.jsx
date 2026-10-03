@@ -191,6 +191,8 @@ function LandingPage() {
           <p className="landing-content-links">
             <a href="/yapay-zeka-matematik-cozucu">Matematik çözen yapay zekâyı inceleyin</a>
             <span aria-hidden="true">·</span>
+            <a href="/konular">Matematik konularını sırayla öğrenin</a>
+            <span aria-hidden="true">·</span>
             <a href="/makaleler">Matematik makalelerini okuyun</a>
           </p>
           <div className="app-qr app-qr-centered">

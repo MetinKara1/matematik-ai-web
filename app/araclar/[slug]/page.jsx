@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getTopicHub } from '../../../lib/topicHubs';
 import { notFound } from 'next/navigation';
 import PublicHeader from '../../../components/public/PublicHeader';
 import PublicFooter from '../../../components/public/PublicFooter';
@@ -17,6 +18,7 @@ export async function generateMetadata({ params }) {
 export default async function ToolPage({ params }) {
   const tool = getMathTool((await params).slug);
   if (!tool) notFound();
+  const topic = getTopicHub(tool.kind === 'derivative' ? 'turev' : tool.kind === 'integral' ? 'integral' : 'fonksiyonlar');
   const url = `https://matematik-ai.com/araclar/${tool.slug}`;
   const schema = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'WebApplication', '@id': `${url}#tool`, name: tool.title, description: `${tool.description} ${tool.scope}`, url, inLanguage: 'tr-TR', applicationCategory: 'EducationalApplication', operatingSystem: 'Any', browserRequirements: 'Requires JavaScript', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY' } },
@@ -30,7 +32,7 @@ export default async function ToolPage({ params }) {
     <aside className="tool-scope"><h2>Bu araç neleri hesaplar?</h2><p>{tool.scope}</p><p>Parantez kullanabilirsiniz: (x + 1)^2. Bölme yalnız sabit sayılarla yapılır: x/2. Değişken olarak x kullanın.</p></aside>
     <section className="tool-reading"><h2>{tool.kind === 'equation' ? 'Denklem nasıl çözülür?' : `${tool.title} nasıl yapılır?`}</h2>{tool.guide.map(([heading, text]) => <div key={heading}><h3>{heading}</h3><p>{text}</p></div>)}</section>
     <section className="tool-faq"><h2>Sık sorulan sorular</h2>{tool.faq.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</section>
-    <section className="tool-reading"><h2>Konuyu daha iyi anla</h2><ul>{tool.related.map((link) => <li key={link.href}><Link href={link.href}>{link.title}</Link></li>)}</ul></section>
+    <section className="tool-reading"><h2>Konuyu daha iyi anla</h2><p><Link href={`/konular/${topic.slug}`}>{topic.title} çalışma rehberi ve ders sırası →</Link></p><ul>{tool.related.map((link) => <li key={link.href}><Link href={link.href}>{link.title}</Link></li>)}</ul></section>
     <section className="tools-related"><h2>Diğer matematik araçları</h2><MathToolCards exclude={tool.slug} /></section>
   </main><PublicFooter /></div>;
 }

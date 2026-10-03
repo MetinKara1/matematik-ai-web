@@ -81,3 +81,16 @@ Bir sorguda birden fazla sayfa görünmesi tek başına sorun değildir. Arama n
 - [BUders limit](https://www.buders.com/altsayfa/limit.html) ve [SınavUP limit testi](https://sinavup.com/test-coz/ayt/matematik/limit-ve-sureklilik): soru/video/test formatları. Çıkarım: çözümlü soru aramasını yalnız kısa tanımla karşılamak yetersiz kalır.
 
 Kaynakların içerik biçimleri değerlendirilmiştir; doğruluk, müfredat uyumu, trafik veya sıralama üstünlüğü onaylanmamıştır.
+
+## 7. madde uygulaması — konu merkezleri (3 Ekim 2026)
+
+| Arama / ihtiyaç | Hedef adres | Görev |
+|---|---|---|
+| matematik konuları; matematik çalışma sırası | `/konular` | Fonksiyonlardan integrale mevcut beş öğrenme yolunu tanıtmak. Tam sınav müfredatı iddiası yok. |
+| fonksiyonlar konu anlatımı; fonksiyonlar çalışma rehberi | `/konular/fonksiyonlar` | Grafik ve özel fonksiyon derslerine sıralı giriş. |
+| trigonometri konu anlatımı; trigonometri çalışma sırası | `/konular/trigonometri` | Oran, birim çember, radyan ve özdeşlikleri öğrenme sırasına yerleştirmek. |
+| limit ve süreklilik konu anlatımı | `/konular/limit-ve-sureklilik` | Yaklaşım, kurallar, belirsizlik ve süreklilik derslerini bir araya getirmek. |
+| türev konu anlatımı; türev çalışma sırası | `/konular/turev` | Tanım, kurallar, grafik, uygulamalar ve test için yol göstermek. |
+| integral konu anlatımı; integral çalışma sırası | `/konular/integral` | Kavram, yöntem seçimi, belirli integral ve alan derslerini sıralamak. |
+
+Merkezler bir çalışma rehberidir. Belirli bir kavramı veya yöntemi arayan kullanıcı mevcut makaleye, hesaplama yapmak isteyen kullanıcı `/araclar` altındaki araca yönlendirilir. Mevcut makale canonical adresleri ve başlıkları korundu. Her merkezde özgün yönlendirme, ön bilgi, hedefler, kontrol sorusu ve hata notu bulunur; makale metinleri kopyalanmadı. Haber/rehber içerikleri `/makaleler` dizininde kalır. Bunlar arama hacmi ölçümüne dayalı sıralama garantileri değildir.
