@@ -137,3 +137,9 @@
 .lesson-table-scroll caption { text-align: left; padding: .6rem 0; font-weight: 650; }
 .lesson-table-scroll th, .lesson-table-scroll td { padding: .65rem; border: 1px solid #ddd6fe; text-align: left; }
 .lesson-table-scroll thead { background: #ede9fe; color: #312e81; }
+
+.lesson-scope { margin: 1.25rem 0; padding: 1rem 1.25rem; border: 1px solid #d6dfed; border-radius: 12px; background: #f4f7fc; color: #26374d; text-align: left; overflow-wrap: anywhere; }
+.lesson-scope p { font-size: .95rem; line-height: 1.65; margin: .5rem 0; }
+.lesson-scope summary { cursor: pointer; font-weight: 600; }
+.lesson-scope a { color: #244fa2; text-decoration: underline; }
+.lesson-scope ul { padding-left: 1.25rem; }

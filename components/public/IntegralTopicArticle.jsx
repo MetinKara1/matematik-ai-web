@@ -1,5 +1,7 @@
 import { getArticleTopic } from '../../lib/topicHubs';
 import Link from 'next/link';
+import LessonScope from './LessonScope';
+import { getLessonScope } from '../../lib/lessonScope';
 import PublicHeader from './PublicHeader';
 import PublicFooter from './PublicFooter';
 import ArticleTrustBox from './ArticleTrustBox';
@@ -13,17 +15,18 @@ const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/i
 export default function IntegralTopicArticle({ article, children }) {
   const topic = getArticleTopic(article.slug);
   const lesson = lessonPractice[article.slug];
+  const scope = getLessonScope(article.slug);
   const calculator = (article.category || 'İntegral') === 'İntegral'
     ? { slug: 'integral-hesaplama', label: 'Polinom integralini adım adım hesapla' }
     : article.category === 'Türev' ? { slug: 'turev-hesaplama', label: 'Polinom türevini adım adım hesapla' } : null;
-  if (lesson) {
+  if (lesson || scope) {
     const updatedAt = getLessonUpdatedAt(article.slug, article.updatedAt);
     article = {
       ...article,
       updatedAt,
       updatedDisplayDate: new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Istanbul' }).format(new Date(`${updatedAt}T12:00:00+03:00`)),
       dateModified: `${updatedAt}T00:00:00+03:00`,
-      toc: [...article.toc, ...lessonPracticeToc],
+      toc: [...article.toc, ...(lesson ? lessonPracticeToc : [])],
     };
   }
   const articleUrl = `https://matematik-ai.com/makaleler/${article.slug}`;
@@ -38,9 +41,9 @@ export default function IntegralTopicArticle({ article, children }) {
         url: articleUrl,
         image: [`https://matematik-ai.com${visual.src}`],
         datePublished: article.datePublished || '2026-08-12T00:00:00+03:00', dateModified: article.dateModified || article.datePublished || '2026-08-12T00:00:00+03:00',
-        inLanguage: 'tr-TR', articleSection: 'AYT Matematik', keywords: article.keywords,
+        inLanguage: 'tr-TR', articleSection: article.category || 'İntegral', keywords: article.keywords,
         about: { '@type': 'Thing', name: article.category || 'İntegral' },
-        educationalLevel: 'Lise ve üniversite sınavına hazırlık',
+        educationalLevel: scope?.label,
         isAccessibleForFree: true,
         author: { '@type': 'Organization', name: 'MatAI İçerik Ekibi', url: 'https://matematik-ai.com/hakkimizda' },
         publisher: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com', logo: { '@type': 'ImageObject', url: 'https://matematik-ai.com/assets/MatAI-logo.png' } },
@@ -68,9 +71,10 @@ export default function IntegralTopicArticle({ article, children }) {
       <main className="article-main"><article className="article-card">
         <header className="article-heading">
           <nav className="article-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana Sayfa</Link><span aria-hidden="true">›</span><Link href="/makaleler">Makaleler</Link><span aria-hidden="true">›</span>{topic && <><Link href={`/konular/${topic.slug}`}>{topic.title}</Link><span aria-hidden="true">›</span></>}<span>{article.shortTitle}</span></nav>
-          <span className="article-category">{article.category || 'İntegral'} · AYT Matematik</span>
+          <span className="article-category">{article.category || 'İntegral'} · {scope?.label || article.level}</span>
           <h1>{article.title}</h1><p className="article-summary">{article.summary}</p>
           <div className="article-meta" aria-label="Makale bilgileri"><time dateTime={article.date || '2026-08-12'}>{article.displayDate || '12 Ağustos 2026'}</time><span>{article.readingTime} dakika okuma</span>{article.updatedDisplayDate && <span>Güncellendi: <time dateTime={article.updatedAt}>{article.updatedDisplayDate}</time></span>}<span>{article.level}</span><span>MatAI İçerik Ekibi</span></div>
+          <LessonScope slug={article.slug} />
           <ArticleHeroVisual slug={article.slug} title={article.title} priority />
         </header>
         <div className="article-content">

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import LessonScope from './LessonScope';
 import PublicHeader from './PublicHeader';
 import PublicFooter from './PublicFooter';
 import ArticleTrustBox from './ArticleTrustBox';
@@ -22,7 +23,7 @@ function IntegralArticle() {
               <span aria-hidden="true">›</span>
               <Link href="/konular/integral">İntegral</Link><span aria-hidden="true">›</span><span>İntegral Sorusu Nasıl Çözülür?</span>
             </nav>
-            <span className="article-category">İntegral · AYT Matematik</span>
+            <span className="article-category">İntegral · İleri / üniversiteye geçiş</span>
             <h1>İntegral Sorusu Nasıl Çözülür? Adım Adım Bir Örnekle Anlatıyorum</h1>
             <p className="article-summary">
               Kısmi integrasyon yöntemini ne zaman kullanacağınızı ve doğru sonuca nasıl ulaşacağınızı
@@ -34,6 +35,8 @@ function IntegralArticle() {
               <span>Adım adım anlatım</span>
               <span>Çözümlü örnek</span>
             </div>
+            <p className="article-meta">Güncellendi: <time dateTime="2026-10-03">3 Ekim 2026</time></p>
+            <LessonScope slug="integral-sorusu-nasil-cozulur" />
             <ArticleHeroVisual slug="integral-sorusu-nasil-cozulur" title="İntegral Sorusu Nasıl Çözülür?" priority />
           </header>
           <div className="article-content">
@@ -51,7 +54,7 @@ function IntegralArticle() {
               <div className="article-answer"><span>Kısaca</span><p>İntegral sorusunda önce ifadenin yapısını tanıyın; çarpım hâlindeki polinom ve üstel fonksiyonlarda kısmi integrasyon uygulayın ve sonucu türev alarak kontrol edin.</p></div>
               <div className="article-intro">
                 <p>İntegral, çoğu öğrencinin matematikte en çok zorlandığı konuların başında geliyor. Bunu hem kendi öğrencilik yıllarımdan hem de soru çözerken bana ulaşan öğrencilerden biliyorum. İşin ilginç tarafı şu: İntegral aslında zor bir konu değil, ama doğru yöntemi seçemediğinizde saatlerce aynı soruya bakıp kalabiliyorsunuz.</p>
-                <p>Bu yazıda AYT&apos;de sıkça karşımıza çıkan bir integral tipini, kısmi integrasyon (parçalı integral) gerektiren bir soruyu adım adım çözeceğim. Sonunda da bu tarz sorulara nasıl daha hızlı yaklaşabileceğinize dair birkaç tavsiyem olacak.</p>
+                <p>Bu yazıda kalkülüse geçiş için kısmi integrasyon (parçalı integral) gerektiren bir soruyu adım adım çözeceğim. Sonunda da bu tarz sorulara nasıl daha hızlı yaklaşabileceğinize dair birkaç tavsiyem olacak.</p>
               </div>
 
             <section id="soru">

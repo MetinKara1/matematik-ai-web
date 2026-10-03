@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import IntegralTopicArticle from '../../../components/public/IntegralTopicArticle';
 
-const title = 'İntegral Formülleri: AYT İçin Formül Tablosu ve Örnekler';
+const title = 'İntegral Formülleri: Temel ve İleri Formüller, Örnekler';
 const description = 'Temel, üstel, logaritmik ve trigonometrik integral formüllerini kullanım koşulları ve kısa çözümlü örneklerle tek tabloda inceleyin.';
 
 export const metadata = {
@@ -12,14 +12,14 @@ export const metadata = {
   openGraph: {
     title, description, type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler/integral-formulleri',
     images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'İntegral formülleri tablosu ve çözümlü örnekler' }],
-    publishedTime: '2026-08-20T00:00:00+03:00', modifiedTime: '2026-08-20T00:00:00+03:00', authors: ['MatAI'],
+    publishedTime: '2026-08-20T00:00:00+03:00', modifiedTime: '2026-10-03T00:00:00+03:00', authors: ['MatAI'],
   },
   twitter: { card: 'summary_large_image', title, description, images: ['/assets/articles/integral-alan.jpg'] },
 };
 
 const faq = [
   ['İntegral formülleri nasıl daha kolay öğrenilir?', 'Her formülü karşılık gelen türev formülüyle eşleştirin ve küçük örneklerde uygulayın. Formülü yalnız okumak yerine sonucunun türevini almak, işaret ve katsayıları kalıcı hâle getirir.'],
-  ['AYT için hangi integral formülleri bilinmeli?', 'Kuvvet, 1/x, üstel, temel trigonometrik integraller ile toplam, sabit katsayı ve belirli integral özellikleri temel düzeyde bilinmelidir. Sorunun yapısına göre değişken değiştirme ve kısmi integrasyon da gerekir.'],
+  ['AYT için hangi integral formülleri bilinmeli?', '2018 genel ortaöğretim programında kuvvet kuralı (n ≠ −1), toplam ve sabit katsayı, değişken değiştirme ile belirli integral bulunur. Buradaki 1/x, üstel ve trigonometrik formüller ile kısmi integrasyon ileri çalışmadır. AYT için sınav yılınızın resmî kapsamını takip edin.'],
   ['İçinde ax+b olan integral formülleri nasıl uygulanır?', 'İç fonksiyon doğrusal olduğunda temel formül uygulanır ve sonuç x’in katsayısı olan a’ya bölünür. Bu işlem zincir kuralından gelen katsayıyı dengeler.'],
   ['İntegral formülünün doğru olduğu nasıl kontrol edilir?', 'Bulduğunuz ilkel fonksiyonun türevini alın. Türev, integral işaretinin içindeki başlangıç fonksiyonunu veriyorsa sonuç doğrudur.'],
 ];
@@ -27,7 +27,7 @@ const faq = [
 const article = {
   slug: 'integral-formulleri', title, shortTitle: 'İntegral Formülleri', description,
   summary: 'İntegral formülü seçerken önce fonksiyon türünü belirleyin, içerideki doğrusal ifadenin katsayısını dengeleyin ve sonucu türev alarak kontrol edin.',
-  date: '2026-08-20', displayDate: '20 Ağustos 2026', datePublished: '2026-08-20T00:00:00+03:00', dateModified: '2026-08-20T00:00:00+03:00',
+  date: '2026-08-20', displayDate: '20 Ağustos 2026', datePublished: '2026-08-20T00:00:00+03:00', dateModified: '2026-10-03T00:00:00+03:00',
   readingTime: 13, level: 'Formül ve tekrar rehberi',
   keywords: ['integral formülleri', 'integral formülleri tablosu', 'temel integral formülleri', 'AYT integral formülleri', 'trigonometrik integral formülleri'],
   toc: [
