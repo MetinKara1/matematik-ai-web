@@ -44,7 +44,7 @@ Aşağıdaki adresler https://matematik-ai.com alan adına göredir.
 | P2 | trigonometrik integraller | `/makaleler/trigonometrik-integraller` | Özdeşlik ve tek/çift kuvvet seçimi, özgün çözümler. Mevcut integral formül tablosunun kopyası olmamalı. İlk yeni içerik adayı. |
 | P2 | çözümlü integral soruları | `/makaleler/cozumlu-integral-sorulari` | Birden çok yöntem ve zorluk düzeyi; öğrencinin önce deneyip çözümü inceleyebileceği yeterli özgün soru. |
 | P3 | limit çözümlü sorular; limit test çöz | `/makaleler/cozumlu-limit-sorulari` | Kavram yazısından ayrı, çeşitli soru türleri ve açıklamalı çözümler. “Limit nedir?” sayfası bu ihtiyacı tek örnekle karşılamıyor. |
-| P3 | türev hesaplama; integral hesaplama; denklem çözme | Araç geliştirilince belirlenecek | Çalışan giriş/sonuç deneyimi, adımlar ve sınırlar. Sadece uygulama indirme çağrısını “online hesaplayıcı” olarak sunma. |
+| P3 → uygulandı | türev hesaplama; integral hesaplama; denklem çözme | `/araclar/turev-hesaplama`, `/araclar/integral-hesaplama`, `/araclar/denklem-cozucu` | 6. madde kapsamında yerel kod hazır. Polinom türevi/integrali ve birinci/ikinci derece gerçek kökler; açıklamalı sonuç, kapsam sınırları ve ücretsiz/üyeliksiz kullanım. Yayın durumu ayrıca doğrulanmalı. |
 | P3 | ücretsiz matematik çözücü; üyeliksiz soru çözme | Ürün koşulları doğrulanınca belirlenecek | Ücretsiz kota ve üyelik koşulları gerçekten bu vaadi karşılamalı. Şimdilik başlık vaadi yapılmayacak. |
 
 ## Sayfalar arası görev sınırları

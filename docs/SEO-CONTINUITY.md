@@ -125,3 +125,14 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Aynı Türkçe/İngilizce konu sayfalarına sekiz soruluk mini test eklendi. Soru verisi `lib/derivativeQuiz.js`, ortak etkileşim `DerivativeMiniQuiz.jsx` içinde.
 - Eksik cevapta gönderme kapalı; sonuçta puan, seçeneğe özel yanlış açıklaması, çözüm ve ilgili bölümlere tekrar bağlantısı var. Yeniden çözme tüm cevapları sıfırlar.
 - Node 22 Cloudflare derlemesi geçti. Tarayıcıda İngilizce 7/8 ve normal doğrusu tekrar önerisi, sıfırlama ve Türkçe 8/8 doğrulandı; konsol hatası yok.
+
+
+## 3 Ekim 2026 — 6. madde: web matematik araçları
+
+- `/araclar`: araç dizini. `/araclar/denklem-cozucu`: birinci/ikinci derece gerçek kökler, diskriminant, özdeşlik ve çözümsüzlük. `/araclar/turev-hesaplama`: polinom türevi. `/araclar/integral-hesaplama`: polinomların belirli/belirsiz integrali.
+- Hesaplamalar tarayıcıda, ücretsiz ve üyeliksiz yapılır; girilen ifadeler sunucuya gönderilmez. Fotoğraf/AI çözümü mevcut uygulamanın ayrı işlevidir. Sinüs, logaritma, değişkenli payda ve genel sembolik çözüm iddiası yoktur.
+- `lib/math/polynomial.mjs` kısıtlı ayrıştırıcı ve BigInt rasyonel aritmetik kullanır; eval/Function yoktur. Girdi en fazla 160 karakter, 128 token, 16 parantez derinliği; üs/ara polinom derecesi 10, sayı başına 12 rakam, hesaplanmış kesirlerde 120 basamak sınırı vardır. İntegral sonucu 11. derece olabilir. Değişkenli paydalar sadeleşse bile reddedilir; tanım kümesi kaybolmaz.
+- Araçların ayrı metadata/canonical, WebApplication/BreadcrumbList verisi, sunucuda üretilen açıklama/örnek/SSS ve sitemap kaydı vardır. Ana sayfa, menü, altbilgi, ürün sayfası ve ilgili türev/integral dersleri araçlara bağlantı verir. İngilizce araç sayfası bulunmadığı için çeviri hreflang iddiası eklenmedi.
+- `npm run test:math`: aritmetik öncelik, kesirler, giriş sınırları, türev/integral tersliği, denklem kökleri ve belirli integral uç durumları. Node 22 gerekir.
+- Tarayıcıda denklem/türev/integral hesaplama, Enter ile gönderme, hata mesajı, temizleme, girdi değişince eski sonucun kaldırılması doğrulandı. 390px ekranda sayfa taşması ve KaTeX hatası yok.
+- Bu kayıt yerel uygulamayı anlatır; canlı yayın ve Search Console dizin durumu ayrıca doğrulanmalıdır.

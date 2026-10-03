@@ -11,6 +11,9 @@ const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/i
 
 export default function IntegralTopicArticle({ article, children }) {
   const lesson = lessonPractice[article.slug];
+  const calculator = (article.category || 'İntegral') === 'İntegral'
+    ? { slug: 'integral-hesaplama', label: 'Polinom integralini adım adım hesapla' }
+    : article.category === 'Türev' ? { slug: 'turev-hesaplama', label: 'Polinom türevini adım adım hesapla' } : null;
   if (lesson) {
     const updatedAt = getLessonUpdatedAt(article.slug, article.updatedAt);
     article = {
@@ -74,6 +77,7 @@ export default function IntegralTopicArticle({ article, children }) {
             <div className="article-intro">{article.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
             {children}
             {lesson && <LessonPractice lesson={lesson} slug={article.slug} />}
+            {calculator && <aside className="article-related"><span>Kendin dene</span><Link href={`/araclar/${calculator.slug}`}><strong>{calculator.label}</strong><small>Ücretsiz web aracında kendi polinomunu yaz ve işlem adımlarını incele →</small></Link></aside>}
             {article.seriesLinks?.length > 0 && <nav className="article-series" aria-label={`${article.category || 'İntegral'} makale serisi`}>
               <span>Bu seride</span>
               <div>{article.seriesLinks.map((item) => <Link href={`/makaleler/${item.slug}`} key={item.slug}>{item.title}</Link>)}</div>

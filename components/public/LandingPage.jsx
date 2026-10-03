@@ -1,5 +1,6 @@
 import PublicHeader from "./PublicHeader";
 import PublicFooter from "./PublicFooter";
+import MathToolCards from "./MathToolCards";
 
 const logo = "/assets/MatAI-logo.png";
 const appQrCode = "/assets/matai-ios-qr.png";
@@ -153,6 +154,14 @@ function LandingPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="home-tools" aria-labelledby="home-tools-heading">
+        <span className="tool-tag">Ücretsiz web araçları</span>
+        <h2 id="home-tools-heading">Hemen bir hesaplama yap</h2>
+        <p>Denklem çöz, polinom türevi ve integrali hesapla. Üyelik gerekmeden işlem adımlarını incele.</p>
+        <MathToolCards />
+        <a href="/araclar">Tüm matematik araçlarını incele →</a>
       </section>
 
       {/* Features Section */}

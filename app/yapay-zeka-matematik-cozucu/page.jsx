@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import PublicHeader from '../../components/public/PublicHeader';
 
 const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761';
@@ -108,6 +109,11 @@ export default function AiMathSolverPage() {
         <section className="solver-final-cta">
           <div><span>Bir soruya mı takıldınız?</span><h2>Fotoğrafını çekin, çözüm adımlarını MatAI ile inceleyin.</h2></div>
           <a href={appStoreLink} target="_blank" rel="noopener noreferrer">MatAI&apos;ı App Store&apos;da açın</a>
+        </section>
+      <section className="solver-section" aria-labelledby="web-tools-heading">
+          <h2 id="web-tools-heading">Tarayıcıda ücretsiz hesaplama yapın</h2>
+          <p>Birinci ve ikinci derece denklem çözmek, polinom türevi veya integrali hesaplamak için üyeliksiz web araçlarımızı kullanabilirsiniz. Sonuçları işlem adımlarıyla inceleyin.</p>
+          <Link href="/araclar">Matematik araçlarına geçin →</Link>
         </section>
       </main>
     </div>

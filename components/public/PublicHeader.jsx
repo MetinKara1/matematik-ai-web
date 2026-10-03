@@ -34,7 +34,7 @@ export default function PublicHeader({ locale = "tr", languageHref }) {
 
           <nav className={`landing-header-nav${isMenuOpen ? " is-open" : ""}`} aria-label={labels.menu}>
             <a href={isEnglish ? "/en/ai-math-solver" : "/yapay-zeka-matematik-cozucu"} onClick={closeMenu}>{labels.solver}</a>
-            <a href={`${homeHref}#features`} onClick={closeMenu}>{labels.features}</a>
+            <a href={isEnglish ? `${homeHref}#features` : "/araclar"} onClick={closeMenu}>{isEnglish ? labels.features : "Araçlar"}</a>
             <a href={`${homeHref}#how-it-works`} onClick={closeMenu}>{labels.how}</a>
             <a href={`${homeHref}#download`} onClick={closeMenu}>{labels.download}</a>
             <a href={isEnglish ? "/en/articles" : "/makaleler"} onClick={closeMenu}>{labels.articles}</a>
