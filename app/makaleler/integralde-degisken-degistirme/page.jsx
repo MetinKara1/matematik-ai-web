@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getLessonUpdatedAt } from '../../../lib/lessonPractice';
 import IntegralTopicArticle from '../../../components/public/IntegralTopicArticle';
 
 const title = 'İntegralde Değişken Değiştirme Yöntemi ve Örnekler';
@@ -6,7 +7,7 @@ const description = 'İntegralde değişken değiştirme yöntemini ne zaman ve 
 export const metadata = {
   title, description, alternates: { canonical: '/makaleler/integralde-degisken-degistirme' },
   keywords: ['integralde değişken değiştirme', 'u dönüşümü', 'integral çözüm yöntemleri', 'AYT integral'],
-  openGraph: { title, description, type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler/integralde-degisken-degistirme', images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: title }], publishedTime: '2026-08-12T00:00:00+03:00', modifiedTime: '2026-08-12T00:00:00+03:00', authors: ['MatAI'] },
+  openGraph: { title, description, type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler/integralde-degisken-degistirme', images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: title }], publishedTime: '2026-08-12T00:00:00+03:00', modifiedTime: `${getLessonUpdatedAt('integralde-degisken-degistirme', '2026-08-12')}T00:00:00+03:00`, authors: ['MatAI'] },
   twitter: { card: 'summary_large_image', title, description, images: ['/assets/articles/integral-alan.jpg'] },
 };
 const article = { slug: 'integralde-degisken-degistirme', title, shortTitle: 'Değişken Değiştirme', description, summary: 'Karmaşık görünen bir integrali doğru değişken seçimiyle nasıl temel bir integrale dönüştürebileceğinizi adım adım inceleyelim.', readingTime: 8, level: 'Çözüm yöntemi', keywords: ['integralde değişken değiştirme', 'u dönüşümü', 'integral örnekleri', 'AYT integral'], toc: [{ id: 'mantik', label: 'Yöntemin mantığı' }, { id: 'secim', label: 'u nasıl seçilir?' }, { id: 'ornekler', label: 'Çözümlü örnekler' }, { id: 'sinirlar', label: 'Belirli integral' }, { id: 'hatalar', label: 'Sık hatalar' }], intro: ['Değişken değiştirme, zincir kuralını ters yönde kullanmaktır. İntegralin içindeki bir ifadeyi yeni bir değişkenle adlandırarak hem ifadeyi hem de diferansiyeli sadeleştiririz.', 'Özellikle bir bileşke fonksiyonla onun iç fonksiyonunun türevi aynı ifadede bulunuyorsa bu yöntem güçlü bir ilk seçenektir.'], seriesLinks: [{ slug: 'integral-alma-kurallari', title: 'İntegral Alma Kuralları' }, { slug: 'belirli-integral-nedir', title: 'Belirli İntegral' }], related: { slug: 'belirli-integral-nedir', title: 'Belirli İntegral Nedir?', text: 'Sınırlar ve net değişim fikrine geçin' } };

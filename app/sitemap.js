@@ -2,6 +2,7 @@ import { derivativeArticles } from '../lib/derivativeArticles';
 import { foundationArticles } from '../lib/foundationArticles';
 import { englishArticles } from '../lib/enArticles';
 import { topicalArticles } from '../lib/topicalArticles';
+import { getLessonUpdatedAt } from '../lib/lessonPractice';
 
 export default function sitemap() {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://matematik-ai.com').replace(/\/$/, '');
@@ -27,9 +28,9 @@ export default function sitemap() {
       const common = { lastModified: new Date(`${article.publishedAt}T00:00:00+03:00`), changeFrequency: article.section === 'gundem' ? 'weekly' : 'monthly', priority: 0.85, alternates };
       return [{ url: `${baseUrl}${tr}`, ...common }, { url: `${baseUrl}${en}`, ...common }];
     }),
-    ...englishArticles.map(({ slug: enSlug, trSlug }) => ({
+    ...englishArticles.map(({ slug: enSlug, trSlug, updatedAt }) => ({
       url: `${baseUrl}/en/articles/${enSlug}`,
-      lastModified: englishLastModified,
+      lastModified: updatedAt ? new Date(`${updatedAt}T00:00:00+03:00`) : englishLastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
       alternates: { languages: { tr: `${baseUrl}/makaleler/${trSlug}`, en: `${baseUrl}/en/articles/${enSlug}` } },
@@ -48,15 +49,15 @@ export default function sitemap() {
     },
     ...['integralde-degisken-degistirme', 'belirli-integral-nedir', 'integral-ile-alan-hesabi'].map((slug) => ({
       url: `${baseUrl}/makaleler/${slug}`,
-      lastModified,
+      lastModified: new Date(`${getLessonUpdatedAt(slug, '2026-08-12')}T00:00:00+03:00`),
       changeFrequency: 'monthly',
       priority: 0.8,
     })),
-    ...derivativeArticles.map(({ slug, publishedAt }) => {
+    ...derivativeArticles.map(({ slug, publishedAt, updatedAt }) => {
       const englishVersion = englishArticles.find((item) => item.trSlug === slug);
       return {
         url: `${baseUrl}/makaleler/${slug}`,
-        lastModified: new Date(`${publishedAt || '2026-08-14'}T00:00:00+03:00`),
+        lastModified: new Date(`${getLessonUpdatedAt(slug, updatedAt || publishedAt || '2026-08-14')}T00:00:00+03:00`),
         changeFrequency: 'monthly', priority: 0.8,
         ...(englishVersion ? { alternates: languageAlternates(`/makaleler/${slug}`, `/en/articles/${englishVersion.slug}`) } : {}),
       };
@@ -65,7 +66,7 @@ export default function sitemap() {
       const englishVersion = englishArticles.find((item) => item.trSlug === slug);
       return {
         url: `${baseUrl}/makaleler/${slug}`,
-        lastModified: new Date(`${publishedAt || '2026-08-27'}T00:00:00+03:00`),
+        lastModified: new Date(`${getLessonUpdatedAt(slug, publishedAt || '2026-08-27')}T00:00:00+03:00`),
         changeFrequency: 'monthly', priority: 0.8,
         alternates: languageAlternates(`/makaleler/${slug}`, `/en/articles/${englishVersion.slug}`),
       };

@@ -66,7 +66,7 @@ export default function ArticlesPage() {
 
           <ArticlesGrid articles={articles} />
           <noscript>
-            <div className="articles-noscript"><h2>Tüm makaleler</h2><ul>{articles.map(({ title, slug }) => <li key={slug}><a href={`/makaleler/${slug}`}>{title}</a></li>)}</ul></div>
+            <div className="articles-noscript"><h2>Tüm makaleler</h2><ul>{articles.map(({ title, slug, href }) => <li key={slug}><a href={href || `/makaleler/${slug}`}>{title}</a></li>)}</ul></div>
           </noscript>
         </section>
       </main>

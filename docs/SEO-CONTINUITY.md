@@ -1,5 +1,22 @@
 # SEO ve İçerik Devamlılık Notu
 
+## 3 Ekim 2026 — Kısa derslerin genişletilmesi (4. madde)
+
+- 12 temel konu, 11 türev konusu ve iki integral konusu olmak üzere 25 Türkçe derse konuya özgü çözüm yaklaşımı, üç yeni çözümlü uygulama, iki hata açıklaması ve iki cevaplı alıştırma eklendi: toplam 75 yeni örnek ve 50 alıştırma.
+- Veriler `lib/foundationPractice.js` ve `lib/calculusPractice.js`; sunucu tarafında ortak gösterim `LessonPractice.jsx`. Cevaplar HTML `details` ile JavaScript olmadan da açılabilir. Mevcut etkileşimli teğet sayfası ve İngilizce içerikler bu pakete dahil değil.
+- Limit başlangıç dersine limit ile nokta değeri ayrımını gösteren SVG grafik ve sayısal yaklaşım tablosu eklendi. Ek bölümler içindekilere bağlandı.
+- Değişen sayfaların görünür güncelleme tarihi, Article dateModified, Open Graph modifiedTime ve sitemap lastModified bilgileri 3 Ekim 2026 ile eşitlendi; yayın tarihleri ve canonical adresler korundu.
+- Karekök türevinin x > 0 koşulu ve grafik analizindeki büküm açıklaması netleştirildi. Üniversite düzeyi uygunsuz integral ve L’Hôpital içeriğinde koşullar belirtildi; öğretmen incelemesi yapıldığı iddia edilmedi.
+- Doğrulama: Node 22 production build başarılı; 25 rotada HTTP 200, tüm yeni metinlerin SSR çıktısı, benzersiz bölüm kimlikleri, bölüm bağlantıları ve tarih tutarlılığı doğrulandı. 61 bağımsız sembolik matematik kontrolü geçti. Mobilde limit ve değişken değiştirme sayfalarında yatay taşma yok; cevap açma çalışıyor, tarayıcı konsol hatası görülmedi.
+- Yalnız yerel kaynaklar güncellendi; canlıya yayınlanmadı. Mevcut ESLint yapılandırma eksikliği devam ediyor; build lint çalıştırmıyor.
+
+## 3 Ekim 2026 — Arama niyeti haritası
+
+- `SEO-KEYWORD-MAP.md`: 20 mevcut hedef sayfa, beş içerik/ürün fırsatı, niyet sınırları ve uygulama sırası belirlendi.
+- Ürün sayfası ve integral kümesi ilk odak; türev ve limit mevcut içerik iyileştirmeleri ikinci aşama.
+- Öncelikler editoryal ve ürün uyumuna dayalıdır; güncel Search Console veya Türkiye arama hacmi ölçümü değildir. Aşağıdaki Ağustos sinyalleri tarihsel bağlam olarak korunmuştur.
+- Bu adımda canlı sayfa metadata veya URL değişikliği yapılmadı.
+
 Son güncelleme: 20 Ağustos 2026
 
 Bu dosya, sonraki çalışma turunda SEO ve içerik üretimine aynı stratejiyle devam edebilmek için tutulur.
@@ -94,3 +111,17 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Yeni URL'ler için Search Console'dan bir kez dizine ekleme isteği gönderilebilir.
 - Aynı URL için tekrar tekrar istek gönderilmemeli.
 - Sonraki içerik turundan önce mevcut değişikliklerin deploy edildiği doğrulanmalı.
+
+## 3 Ekim 2026 — Türevin geometrik yorumu
+
+- Türkçe sayfaya sürüklenebilir/klavyeyle kullanılabilir teğet grafiği, altı çözümlü soru, üç hata analizi ve üç açılır cevaplı alıştırma eklendi.
+- İngilizce karşılığı `/en/articles/geometric-meaning-of-derivative`; grafik etiketleri, örnekler ve alıştırmalar çevrildi. Karşılıklı dil geçişi, canonical, hreflang ve sitemap eklendi.
+- Node 22 ile production derlemesi geçti; iki dilde HTTP 200, HTML içeriği, canonical ve hreflang kontrol edildi. İngilizce kaydırıcı ve açılır cevap tarayıcıda doğrulandı.
+- Yerel ENOENT/React Client Manifest hatası, `next dev` çalışırken aynı `.next` dizinine `next build` yapılmasından kaynaklandı. Build/deploy sırasında dev sunucusunu durdurun; son build sonrasında `next start` ile production önizleme yapın.
+- Gerçek bir öğretmen incelemesi yapıldığı iddia edilmedi.
+
+### Türev mini testi
+
+- Aynı Türkçe/İngilizce konu sayfalarına sekiz soruluk mini test eklendi. Soru verisi `lib/derivativeQuiz.js`, ortak etkileşim `DerivativeMiniQuiz.jsx` içinde.
+- Eksik cevapta gönderme kapalı; sonuçta puan, seçeneğe özel yanlış açıklaması, çözüm ve ilgili bölümlere tekrar bağlantısı var. Yeniden çözme tüm cevapları sıfırlar.
+- Node 22 Cloudflare derlemesi geçti. Tarayıcıda İngilizce 7/8 ve normal doğrusu tekrar önerisi, sıfırlama ve Türkçe 8/8 doğrulandı; konsol hatası yok.
