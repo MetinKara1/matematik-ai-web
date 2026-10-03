@@ -1,3 +1,4 @@
+import { editorialIdentity } from '../../lib/editorialIdentity';
 import LessonNextSteps from './LessonNextSteps';
 import { getArticleTopic } from '../../lib/topicHubs';
 import Link from 'next/link';
@@ -43,7 +44,7 @@ export default function IntegralTopicArticle({ article, children }) {
         about: { '@type': 'Thing', name: article.category || 'İntegral' },
         educationalLevel: scope?.label,
         isAccessibleForFree: true,
-        author: { '@type': 'Organization', name: 'MatAI İçerik Ekibi', url: 'https://matematik-ai.com/hakkimizda' },
+        author: editorialIdentity,
         publisher: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com', logo: { '@type': 'ImageObject', url: 'https://matematik-ai.com/assets/MatAI-logo.png' } },
       },
       {

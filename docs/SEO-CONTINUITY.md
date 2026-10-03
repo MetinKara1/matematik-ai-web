@@ -172,3 +172,12 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Tek tip sonraki okuma ve ayrı hesaplayıcı kutusu ortak alanla değiştirildi; metin içi açıklayıcı bağlantılar ve konu merkezine dönüş korundu. Özel şablonlu iki integral dersi de kapsandı.
 - Ders değişiklik tarihleri 4 Ekim’e güncellendi; müfredat kaynak inceleme tarihi 3 Ekim olarak korundu.
 - Doğrulama: Node 22 Cloudflare/Next.js üretim derlemesi geçti, worker üretildi. 31 ders HTTP 200; düzey/şema, canonical, Article/sitemap tarihleri kontrol edildi. 93 öneride hedefler HTTP 200, alıştırma anchorları geçerli, yinelenen kart veya aynı dersin başlangıcına öz bağlantı yok. Tarayıcıda üç seçenek ve hedefleri doğrulandı. Yayın yapılmadı.
+
+## 4 Ekim 2026 — 11. madde: yayın sorumluluğu ve inceleme şeffaflığı
+
+- Türkçe derslerin yazar şemasında ortak Organization kimliği kullanılır; Hakkımızda sayfasındaki `#icerik-ekibi` açıklamasına bağlanır. Gündem şablonunun yazar kaydı da aynı kimliği kullanır.
+- İçerik kutusu kurumsal yayın sorumluluğunu, adı belirtilmiş bağımsız inceleme kaydı bulunmasından ayırır. Güncelleme tarihinin uzman onayı olmadığı açıklandı.
+- Politikada teknik test, matematik kontrolü ve gerçek uzman incelemesi ayrıldı. Önemli düzeltmelerin ne olduğunun açıklanması, kaynak/inceleme tarihlerinin yayın tarihinden ayrı tutulması belirtildi.
+- Kısmi integrasyon yazısındaki doğrulanmış bir kişiye atfedilmeyen öğrencilik/öğretmenlik deneyimi anlatımı kaldırıldı.
+- Kullanıcıdan yayımlanabilir yazar/uzman bilgisi ve destek e-postası istendi. Doğrulanmış kişi/uzmanlık veya iletişim adresi uydurulmadı. İletişim adresi sağlanana kadar politika sayfası yalnız hata bildiriminde gerekli bilgileri açıklar; gönderim kanalı kurulduğu iddia edilmez.
+- Doğrulama: Node 22 Next.js/Cloudflare üretim derlemesi geçti, worker üretildi. 31 dersin yazar @id bilgisi görünür ekip bağlantısıyla eşleşti. İki kurumsal sayfa HTTP 200 ve üç bölüm hedefi doğrulandı. Yayın yapılmadı.

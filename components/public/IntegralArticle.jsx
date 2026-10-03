@@ -54,7 +54,7 @@ function IntegralArticle() {
             <div className="article-body">
               <div className="article-answer"><span>Kısaca</span><p>İntegral sorusunda önce ifadenin yapısını tanıyın; çarpım hâlindeki polinom ve üstel fonksiyonlarda kısmi integrasyon uygulayın ve sonucu türev alarak kontrol edin.</p></div>
               <div className="article-intro">
-                <p>İntegral, çoğu öğrencinin matematikte en çok zorlandığı konuların başında geliyor. Bunu hem kendi öğrencilik yıllarımdan hem de soru çözerken bana ulaşan öğrencilerden biliyorum. İşin ilginç tarafı şu: İntegral aslında zor bir konu değil, ama doğru yöntemi seçemediğinizde saatlerce aynı soruya bakıp kalabiliyorsunuz.</p>
+                <p>İntegral sorularında yöntem seçimi, işlemler kadar önemlidir. Buradaki polinom ve üstel fonksiyon çarpımı örneği, kısmi integrasyonun neden işe yaradığını ve sonucun türevle nasıl kontrol edildiğini gösterir.</p>
                 <p>Bu yazıda kalkülüse geçiş için kısmi integrasyon (parçalı integral) gerektiren bir soruyu adım adım çözeceğim. Sonunda da bu tarz sorulara nasıl daha hızlı yaklaşabileceğinize dair birkaç tavsiyem olacak.</p>
               </div>
 

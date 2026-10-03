@@ -1,3 +1,4 @@
+import { editorialIdentity } from '../../../lib/editorialIdentity';
 import LessonNextSteps from '../../../components/public/LessonNextSteps';
 import Link from 'next/link';
 import LessonScope from '../../../components/public/LessonScope';
@@ -40,7 +41,7 @@ export default function IndefiniteIntegralArticlePage() {
         inLanguage: 'tr-TR', articleSection: 'İntegral',
         keywords: ['belirsiz integral nedir', 'belirsiz integral kuralları', 'integral sabiti C', 'integral örnekleri', 'AYT matematik'],
         about: { '@type': 'Thing', name: 'İntegral' }, educationalLevel: 'Lise + ileri bölümler', isAccessibleForFree: true,
-        author: { '@type': 'Organization', name: 'MatAI İçerik Ekibi', url: 'https://matematik-ai.com/hakkimizda' },
+        author: editorialIdentity,
         publisher: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com', logo: { '@type': 'ImageObject', url: 'https://matematik-ai.com/assets/MatAI-logo.png' } },
       },
       {

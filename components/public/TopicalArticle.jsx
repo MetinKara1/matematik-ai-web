@@ -1,3 +1,4 @@
+import { editorialIdentity } from '../../lib/editorialIdentity';
 import Link from 'next/link';
 import PublicHeader from './PublicHeader';
 import PublicFooter from './PublicFooter';
@@ -15,7 +16,7 @@ export default function TopicalArticle({ article, locale = 'tr', relatedArticles
     : `/en/${article.enSection}/${article.enSlug}`;
   const faq = article.faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } }));
   const structuredData = { '@context': 'https://schema.org', '@graph': [
-    { '@type': article.section === 'news' || article.section === 'gundem' ? 'NewsArticle' : 'Article', '@id': `${pageUrl}#article`, mainEntityOfPage: pageUrl, headline: article.title, description: article.description, datePublished: `${article.publishedAt}T00:00:00+03:00`, dateModified: `${article.publishedAt}T00:00:00+03:00`, inLanguage: en ? 'en' : 'tr-TR', articleSection: article.category, isAccessibleForFree: true, author: { '@type': 'Organization', name: en ? 'MatAI Content Team' : 'MatAI İçerik Ekibi' }, publisher: { '@type': 'Organization', name: 'MatAI', url: site } },
+    { '@type': article.section === 'news' || article.section === 'gundem' ? 'NewsArticle' : 'Article', '@id': `${pageUrl}#article`, mainEntityOfPage: pageUrl, headline: article.title, description: article.description, datePublished: `${article.publishedAt}T00:00:00+03:00`, dateModified: `${article.publishedAt}T00:00:00+03:00`, inLanguage: en ? 'en' : 'tr-TR', articleSection: article.category, isAccessibleForFree: true, author: { ...editorialIdentity, name: en ? 'MatAI Content Team' : editorialIdentity.name }, publisher: { '@type': 'Organization', name: 'MatAI', url: site } },
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: en ? 'Home' : 'Ana Sayfa', item: `${site}${en ? '/en' : ''}` }, { '@type': 'ListItem', position: 2, name: en ? 'Articles' : 'Makaleler', item: `${site}${en ? '/en/articles' : '/makaleler'}` }, { '@type': 'ListItem', position: 3, name: article.title, item: pageUrl }] },
     { '@type': 'FAQPage', mainEntity: faq },
   ] };

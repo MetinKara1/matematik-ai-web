@@ -1,3 +1,4 @@
+import { editorialIdentity } from '../../../lib/editorialIdentity';
 import IntegralArticle from '../../../components/public/IntegralArticle';
 
 export const dynamic = 'force-dynamic';
@@ -49,7 +50,7 @@ export default function ArticlePage() {
         about: { '@type': 'Thing', name: 'İntegral' },
         educationalLevel: 'İleri / üniversiteye geçiş',
         isAccessibleForFree: true,
-        author: { '@type': 'Organization', name: 'MatAI İçerik Ekibi', url: 'https://matematik-ai.com/hakkimizda' },
+        author: editorialIdentity,
         publisher: {
           '@type': 'Organization',
           name: 'MatAI',
