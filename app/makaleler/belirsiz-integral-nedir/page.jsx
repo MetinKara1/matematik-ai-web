@@ -1,3 +1,4 @@
+import LessonNextSteps from '../../../components/public/LessonNextSteps';
 import Link from 'next/link';
 import LessonScope from '../../../components/public/LessonScope';
 import PublicHeader from '../../../components/public/PublicHeader';
@@ -18,7 +19,7 @@ export const metadata = {
     type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler/belirsiz-integral-nedir',
     images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'Belirsiz integral kuralları ve çözümlü örnekler' }],
     publishedTime: '2026-08-12T00:00:00+03:00',
-    modifiedTime: '2026-10-03T00:00:00+03:00',
+    modifiedTime: '2026-10-04T00:00:00+03:00',
   },
   twitter: { card: 'summary_large_image', title: 'Belirsiz İntegral Nedir? Kuralları ve Örnekler', description: 'Belirsiz integralin mantığını, temel kuralları ve C sabitini öğrenin.', images: ['/assets/articles/integral-alan.jpg'] },
 };
@@ -35,7 +36,7 @@ export default function IndefiniteIntegralArticlePage() {
         description: 'Belirsiz integralin tanımı, temel kuralları, C sabiti ve çözümlü örnekler.',
         url: articleUrl,
         image: ['https://matematik-ai.com/assets/articles/integral-alan.jpg'],
-        datePublished: '2026-08-12T00:00:00+03:00', dateModified: '2026-10-03T00:00:00+03:00',
+        datePublished: '2026-08-12T00:00:00+03:00', dateModified: '2026-10-04T00:00:00+03:00',
         inLanguage: 'tr-TR', articleSection: 'İntegral',
         keywords: ['belirsiz integral nedir', 'belirsiz integral kuralları', 'integral sabiti C', 'integral örnekleri', 'AYT matematik'],
         about: { '@type': 'Thing', name: 'İntegral' }, educationalLevel: 'Lise + ileri bölümler', isAccessibleForFree: true,
@@ -68,7 +69,7 @@ export default function IndefiniteIntegralArticlePage() {
             <h1>Belirsiz İntegral Nedir? Kuralları ve Çözümlü Örnekler</h1>
             <p className="article-summary">Belirsiz integralin mantığını, temel kurallarını ve her sonucun yanına neden C sabiti yazdığımızı anlaşılır örneklerle inceleyelim.</p>
             <div className="article-meta" aria-label="Makale bilgileri"><time dateTime="2026-08-12">12 Ağustos 2026</time><span>7 dakika okuma</span><span>Temel konu anlatımı</span><span>MatAI İçerik Ekibi</span></div>
-            <p className="article-meta">Güncellendi: <time dateTime="2026-10-03">3 Ekim 2026</time></p>
+            <p className="article-meta">Güncellendi: <time dateTime="2026-10-04">4 Ekim 2026</time></p>
             <LessonScope slug="belirsiz-integral-nedir" />
             <ArticleHeroVisual slug="belirsiz-integral-nedir" title="Belirsiz İntegral Nedir?" priority />
           </header>
@@ -96,7 +97,7 @@ export default function IndefiniteIntegralArticlePage() {
               <section><h2>Bir Sonraki Adım: İntegral Yöntemleri</h2><p>Temel kurallarla doğrudan çözülemeyen sorularda farklı yöntemler gerekir. İki fonksiyon çarpım halindeyse <Link href="/makaleler/integral-sorusu-nasil-cozulur" className="article-inline-link">kısmi integrasyonla çözülen örneğimizi</Link> inceleyebilirsiniz.</p><p>İntegral sonucunu türevle kontrol etme fikrini pekiştirmek için <Link href="/makaleler/turev-nedir" className="article-inline-link">türev nedir konu anlatımını</Link> okuyabilirsiniz. Sorunun hangi yöntemle çözüleceğinden emin değilseniz <Link href="/yapay-zeka-matematik-cozucu" className="article-inline-link">MatAI yapay zekâ matematik çözücü</Link> ile çözüm adımlarını inceleyebilirsiniz.</p></section>
 
               <aside className="article-cta"><div className="article-cta-copy"><h2>Benzer bir soruya mı takıldınız?</h2><p>Sorunun fotoğrafını çekin veya metin olarak yazın; çözüm yolunu MatAI ile adım adım inceleyin.</p><a href={appStoreLink} target="_blank" rel="noopener noreferrer">App Store&apos;dan indirin</a></div></aside>
-              <div className="article-related"><span>İlgili yazı</span><Link href="/makaleler/integral-sorusu-nasil-cozulur"><strong>İntegral Sorusu Nasıl Çözülür?</strong><small>Kısmi integrasyonu adım adım öğrenin →</small></Link></div>
+              <LessonNextSteps slug="belirsiz-integral-nedir" />
               <nav className="article-series" aria-label="Konuya geri dön"><span>Bu konudaki diğer dersler</span><div><Link href="/konular/integral">İntegral çalışma sırası ve kontrol sorusu →</Link></div></nav>
               <ArticleTrustBox />
             </div>

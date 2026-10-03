@@ -15,7 +15,7 @@ export const metadata = {
     url: '/makaleler/integral-sorusu-nasil-cozulur',
     images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Örnek' }],
     publishedTime: '2026-08-11T00:00:00+03:00',
-    modifiedTime: '2026-10-03T00:00:00+03:00',
+    modifiedTime: '2026-10-04T00:00:00+03:00',
   },
   twitter: {
     card: 'summary_large_image',
@@ -42,7 +42,7 @@ export default function ArticlePage() {
         url: articleUrl,
         image: ['https://matematik-ai.com/assets/articles/integral-alan.jpg'],
         datePublished: '2026-08-11T00:00:00+03:00',
-        dateModified: '2026-10-03T00:00:00+03:00',
+        dateModified: '2026-10-04T00:00:00+03:00',
         inLanguage: 'tr-TR',
         articleSection: 'İntegral',
         keywords: ['integral sorusu nasıl çözülür', 'kısmi integrasyon', 'parçalı integral', 'integral soru çözümü'],

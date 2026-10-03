@@ -12,7 +12,7 @@ export const metadata = {
   openGraph: {
     title, description, type: 'article', locale: 'tr_TR', siteName: 'MatAI', url: '/makaleler/integral-formulleri',
     images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'İntegral formülleri tablosu ve çözümlü örnekler' }],
-    publishedTime: '2026-08-20T00:00:00+03:00', modifiedTime: '2026-10-03T00:00:00+03:00', authors: ['MatAI'],
+    publishedTime: '2026-08-20T00:00:00+03:00', modifiedTime: '2026-10-04T00:00:00+03:00', authors: ['MatAI'],
   },
   twitter: { card: 'summary_large_image', title, description, images: ['/assets/articles/integral-alan.jpg'] },
 };
@@ -27,7 +27,7 @@ const faq = [
 const article = {
   slug: 'integral-formulleri', title, shortTitle: 'İntegral Formülleri', description,
   summary: 'İntegral formülü seçerken önce fonksiyon türünü belirleyin, içerideki doğrusal ifadenin katsayısını dengeleyin ve sonucu türev alarak kontrol edin.',
-  date: '2026-08-20', displayDate: '20 Ağustos 2026', datePublished: '2026-08-20T00:00:00+03:00', dateModified: '2026-10-03T00:00:00+03:00',
+  date: '2026-08-20', displayDate: '20 Ağustos 2026', datePublished: '2026-08-20T00:00:00+03:00', dateModified: '2026-10-04T00:00:00+03:00',
   readingTime: 13, level: 'Formül ve tekrar rehberi',
   keywords: ['integral formülleri', 'integral formülleri tablosu', 'temel integral formülleri', 'AYT integral formülleri', 'trigonometrik integral formülleri'],
   toc: [

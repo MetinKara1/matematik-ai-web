@@ -1,3 +1,4 @@
+import LessonNextSteps from './LessonNextSteps';
 import { getArticleTopic } from '../../lib/topicHubs';
 import Link from 'next/link';
 import LessonScope from './LessonScope';
@@ -16,9 +17,6 @@ export default function IntegralTopicArticle({ article, children }) {
   const topic = getArticleTopic(article.slug);
   const lesson = lessonPractice[article.slug];
   const scope = getLessonScope(article.slug);
-  const calculator = (article.category || 'İntegral') === 'İntegral'
-    ? { slug: 'integral-hesaplama', label: 'Polinom integralini adım adım hesapla' }
-    : article.category === 'Türev' ? { slug: 'turev-hesaplama', label: 'Polinom türevini adım adım hesapla' } : null;
   if (lesson || scope) {
     const updatedAt = getLessonUpdatedAt(article.slug, article.updatedAt);
     article = {
@@ -84,13 +82,13 @@ export default function IntegralTopicArticle({ article, children }) {
             <div className="article-intro">{article.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
             {children}
             {lesson && <LessonPractice lesson={lesson} slug={article.slug} />}
-            {calculator && <aside className="article-related"><span>Kendin dene</span><Link href={`/araclar/${calculator.slug}`}><strong>{calculator.label}</strong><small>Ücretsiz web aracında kendi polinomunu yaz ve işlem adımlarını incele →</small></Link></aside>}
+
             {article.seriesLinks?.length > 0 && <nav className="article-series" aria-label={`${article.category || 'İntegral'} makale serisi`}>
               <span>Bu seride</span>
               <div>{article.seriesLinks.map((item) => <Link href={`/makaleler/${item.slug}`} key={item.slug}>{item.title}</Link>)}</div>
             </nav>}
             <aside className="article-cta"><div className="article-cta-copy"><h2>{article.category || 'İntegral'} sorusuna mı takıldınız?</h2><p>Sorunun fotoğrafını çekin veya metin olarak yazın; çözüm yolunu MatAI ile adım adım inceleyin.</p><a href={appStoreLink} target="_blank" rel="noopener noreferrer" aria-label="MatAI uygulamasını App Store'dan indirin">App Store&apos;dan indirin</a></div></aside>
-            <div className="article-related"><span>Sonraki okuma</span><Link href={`/makaleler/${article.related.slug}`}><strong>{article.related.title}</strong><small>{article.related.text} →</small></Link></div>
+            <LessonNextSteps slug={article.slug} />
             {topic && <nav className="article-series" aria-label="Konuya geri dön"><span>Bu konudaki diğer dersler</span><div><Link href={`/konular/${topic.slug}`}>{topic.title} çalışma sırası ve kontrol sorusu →</Link></div></nav>}
             <ArticleTrustBox />
           </div>

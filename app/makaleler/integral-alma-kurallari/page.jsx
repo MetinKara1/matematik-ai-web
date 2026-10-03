@@ -13,7 +13,7 @@ export const metadata = {
     title, description, type: 'article', locale: 'tr_TR', siteName: 'MatAI',
     url: '/makaleler/integral-alma-kurallari',
     images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'İntegral alma kuralları ve çözümlü örnekler' }],
-    publishedTime: '2026-08-20T00:00:00+03:00', modifiedTime: '2026-10-03T00:00:00+03:00', authors: ['MatAI'],
+    publishedTime: '2026-08-20T00:00:00+03:00', modifiedTime: '2026-10-04T00:00:00+03:00', authors: ['MatAI'],
   },
   twitter: { card: 'summary_large_image', title, description, images: ['/assets/articles/integral-alan.jpg'] },
 };
@@ -28,7 +28,7 @@ const faq = [
 const article = {
   slug: 'integral-alma-kurallari', title, shortTitle: 'İntegral Alma Kuralları', description,
   summary: 'İntegral alırken önce ifadeyi sadeleştirin, toplamı terimlerine ayırın ve her terime uygun temel formülü uygulayın; sonuç belirsiz integralse C sabitini ekleyin.',
-  date: '2026-08-20', displayDate: '20 Ağustos 2026', datePublished: '2026-08-20T00:00:00+03:00', dateModified: '2026-10-03T00:00:00+03:00',
+  date: '2026-08-20', displayDate: '20 Ağustos 2026', datePublished: '2026-08-20T00:00:00+03:00', dateModified: '2026-10-04T00:00:00+03:00',
   readingTime: 12, level: 'Temel konu anlatımı',
   keywords: ['integral alma kuralları', 'integral kuralları', 'temel integral formülleri', 'integral nasıl alınır', 'AYT integral'],
   toc: [

@@ -1,3 +1,4 @@
+import LessonNextSteps from './LessonNextSteps';
 import Link from 'next/link';
 import LessonScope from './LessonScope';
 import PublicHeader from './PublicHeader';
@@ -35,7 +36,7 @@ function IntegralArticle() {
               <span>Adım adım anlatım</span>
               <span>Çözümlü örnek</span>
             </div>
-            <p className="article-meta">Güncellendi: <time dateTime="2026-10-03">3 Ekim 2026</time></p>
+            <p className="article-meta">Güncellendi: <time dateTime="2026-10-04">4 Ekim 2026</time></p>
             <LessonScope slug="integral-sorusu-nasil-cozulur" />
             <ArticleHeroVisual slug="integral-sorusu-nasil-cozulur" title="İntegral Sorusu Nasıl Çözülür?" priority />
           </header>
@@ -125,13 +126,7 @@ function IntegralArticle() {
             </aside>
 
             <p className="article-next">Sıradaki konu: değişken değiştirme yöntemiyle karmaşık integralleri sadeleştirmek.</p>
-            <div className="article-related">
-              <span>Sonraki okuma</span>
-              <Link href="/makaleler/integralde-degisken-degistirme">
-                <strong>İntegralde Değişken Değiştirme</strong>
-                <small>u dönüşümünü çözümlü örneklerle öğrenin →</small>
-              </Link>
-            </div>
+            <LessonNextSteps slug="integral-sorusu-nasil-cozulur" />
             <nav className="article-series" aria-label="Konuya geri dön"><span>Bu konudaki diğer dersler</span><div><Link href="/konular/integral">İntegral çalışma sırası ve kontrol sorusu →</Link></div></nav>
             <ArticleTrustBox />
             </div>

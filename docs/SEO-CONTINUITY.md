@@ -164,3 +164,11 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - 2026–2027 yılında yeni program hazırlık, 9, 10 ve 11. sınıflarda; önceki program 12. sınıfta sürer. Sınav yılı ve okul türü ayrımı korunur. İngilizce içeriklere Türkçe sınav etiketi eklenmedi.
 - Değişen Türkçe derslerin görünür güncelleme, Article/Open Graph ve sitemap tarihleri eşitlendi. Yayın tarihleri korundu.
 - Doğrulama: Node 22 ile Cloudflare/Next.js üretim derlemesi geçti ve worker üretildi. 31 ders HTTP 200; görünür düzey–Article educationalLevel eşleşmesi, canonical, kaynaklar ve Article/sitemap tarihleri doğrulandı. 5 konu merkezi etiketleri kontrol edildi; tarayıcıda kaynak notu klavyeyle açıldı. Yayın yapılmadı.
+
+## 4 Ekim 2026 — 10. madde: ihtiyaca göre iç bağlantılar
+
+- 31 Türkçe derste ortak `LessonNextSteps` alanı: ön koşula dön, sonraki anlatıma geç, uygulama/alıştırmayla dene. `lib/lessonNextSteps.js` açık ders eşleşmelerini tutar; 93 öneri sunucuda HTML bağlantısı olarak üretilir.
+- Hedef dersin düzeyi ortak kapsam verisinden gösterilir. Polinom araçlarının sınırları bağlantı metninde açıklanır. Fonksiyonlar denklem aracına, trigonometri radyan alıştırmalarına, limit grubu cevaplı limit alıştırmalarına bağlanır.
+- Tek tip sonraki okuma ve ayrı hesaplayıcı kutusu ortak alanla değiştirildi; metin içi açıklayıcı bağlantılar ve konu merkezine dönüş korundu. Özel şablonlu iki integral dersi de kapsandı.
+- Ders değişiklik tarihleri 4 Ekim’e güncellendi; müfredat kaynak inceleme tarihi 3 Ekim olarak korundu.
+- Doğrulama: Node 22 Cloudflare/Next.js üretim derlemesi geçti, worker üretildi. 31 ders HTTP 200; düzey/şema, canonical, Article/sitemap tarihleri kontrol edildi. 93 öneride hedefler HTTP 200, alıştırma anchorları geçerli, yinelenen kart veya aynı dersin başlangıcına öz bağlantı yok. Tarayıcıda üç seçenek ve hedefleri doğrulandı. Yayın yapılmadı.

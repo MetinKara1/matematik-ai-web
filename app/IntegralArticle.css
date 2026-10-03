@@ -143,3 +143,11 @@
 .lesson-scope summary { cursor: pointer; font-weight: 600; }
 .lesson-scope a { color: #244fa2; text-decoration: underline; }
 .lesson-scope ul { padding-left: 1.25rem; }
+
+.lesson-next-steps { margin: 2rem 0; }
+.lesson-next-steps > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.lesson-next-steps a { display: flex; flex-direction: column; gap: .6rem; padding: 1.2rem; border: 1px solid #d6dfed; border-radius: 12px; color: #26374d; background: #f4f7fc; text-decoration: none; overflow-wrap: anywhere; }
+.lesson-next-steps a:hover, .lesson-next-steps a:focus-visible { border-color: #4255b8; outline: 2px solid #4255b8; outline-offset: 2px; }
+.lesson-next-steps span, .lesson-next-steps small { font-size: .85rem; color: #465575; }
+.lesson-next-steps p { font-size: .95rem; margin: 0; }
+@media (max-width: 760px) { .lesson-next-steps > div { grid-template-columns: 1fr; } }
