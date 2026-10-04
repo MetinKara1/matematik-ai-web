@@ -1,4 +1,5 @@
 import SiteAnalytics from '../components/public/SiteAnalytics';
+import { siteMeasurementId } from '../lib/siteAnalyticsConfig.mjs';
 import { validMeasurementId } from '../lib/analytics.mjs';
 import './globals.css';
 
@@ -44,7 +45,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body>{children}{validMeasurementId(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) && <SiteAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />}</body>
+      <body>{children}{validMeasurementId(siteMeasurementId) && <SiteAnalytics measurementId={siteMeasurementId} />}</body>
     </html>
   );
 }
