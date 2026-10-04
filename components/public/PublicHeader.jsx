@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const logo = "/assets/MatAI-logo.png";
+// Keep the source small even when the hosting image optimizer passes it through.
+const logo = "/assets/MatAI-logo-128.webp";
 const appQrCode = "/assets/matai-ios-qr.png";
 const appStoreLink = "https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761";
 

@@ -1,5 +1,12 @@
 # SEO ve İçerik Devamlılık Notu
 
+## 4 Ekim 2026 — canlı kapanış denetimi ve hesap kurulumu
+
+- Canlı sitemap'teki 87 URL, canonical/JSON-LD ve 56 dil eşleşmesi kontrol edildi; HTML tutarlılık hatası yok. Üç PDF yerel dosyalarla eşleşiyor. Ayrıntılar `SEO-LIVE-AUDIT.md` içinde.
+- GA4 web akışı trafik alıyor; üç özel boyut ve app_store_click önemli etkinliği tanımlandı. Search Console Domain mülkü MatAI Web akışına başarıyla bağlandı. Önceki kimlik/bağlantı bekliyor notları tarihsel kayıttır.
+- Canlı HTTP/www ana sayfa yönlendirmesinde literal `/:path*` nedeniyle 404 bulundu; root için ayrı kurallar eklendi. Cloudflare'ın orijinal büyük logoyu döndürmesine karşı 1.798 baytlık WebP kaynak eklendi. Derleme ve yerel kontroller geçti; yeni düzeltmeler henüz yayımlanmadı.
+- Search Console sitemap son okuması 1 Ekim (72 sayfa); dizin raporu 21 Eylül (23 indeksli). Yeni 87 URL'nin güncel dizin durumu doğrulanmadı. Sitemap yeniden gönderim başarı onayı alınamadı; tamamlandı olarak işaretlenmedi. Core Web Vitals için yeterli saha verisi yok.
+
 ## 3 Ekim 2026 — Kısa derslerin genişletilmesi (4. madde)
 
 - 12 temel konu, 11 türev konusu ve iki integral konusu olmak üzere 25 Türkçe derse konuya özgü çözüm yaklaşımı, üç yeni çözümlü uygulama, iki hata açıklaması ve iki cevaplı alıştırma eklendi: toplam 75 yeni örnek ve 50 alıştırma.

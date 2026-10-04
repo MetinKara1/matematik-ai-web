@@ -5,6 +5,23 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
+      // OpenNext leaves an empty wildcard literal in the root destination.
+      // Handle the homepage explicitly before the wildcard rules.
+      {
+        source: '/',
+        has: [{ type: 'host', value: '^www\\.matematik-ai\\.com$' }],
+        destination: 'https://matematik-ai.com/',
+        permanent: true,
+      },
+      {
+        source: '/',
+        has: [
+          { type: 'host', value: '^matematik-ai\\.com$' },
+          { type: 'header', key: 'x-forwarded-proto', value: '^http$' },
+        ],
+        destination: 'https://matematik-ai.com/',
+        permanent: true,
+      },
       {
         source: '/:path*',
         has: [{ type: 'host', value: '^www\\.matematik-ai\\.com$' }],
