@@ -32,8 +32,7 @@ export default function sitemap() {
       const en = `/en/${article.enSection}/${article.enSlug}`;
       const alternates = languageAlternates(tr, en);
       const common = { lastModified: new Date(`${article.publishedAt}T00:00:00+03:00`), changeFrequency: article.section === 'gundem' ? 'weekly' : 'monthly', priority: 0.85, alternates };
-      return [
-    ...['/kaynaklar', ...studyResources.map(({ slug }) => `/kaynaklar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.7 })),{ url: `${baseUrl}${tr}`, ...common }, { url: `${baseUrl}${en}`, ...common }];
+      return [{ url: `${baseUrl}${tr}`, ...common }, { url: `${baseUrl}${en}`, ...common }];
     }),
     ...englishArticles.map(({ slug: enSlug, trSlug, updatedAt }) => ({
       url: `${baseUrl}/en/articles/${enSlug}`,
