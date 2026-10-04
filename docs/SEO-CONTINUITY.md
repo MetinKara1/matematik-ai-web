@@ -269,3 +269,11 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Env şablonu ve kurulum rehberi gerçek akış bilgileriyle güncellendi. Mevcut visitor consent ve yalnız üretim hostname kontrolü korundu; localhost/preview gerçek Google akışına test verisi göndermez.
 - 11 test grubu geçti. Varsayılan ID ve boş env override ayrıca doğrulandı. Node 22 Next.js/Cloudflare derlemesi exit 0 ile tamamlandı ve worker üretildi. Üç örnek üretim HTML çıktısında gerçek ID bulundu; izin öncesi dış Google script etiketi yok.
 - Yalnız GA4 akışı oluşturuldu ve kod commitlendi. Git push, site deploy, Search Console doğrulaması veya canlı Realtime başarısı iddia edilmez. GA4 hesabındaki özel boyutlar ve canlı yayından sonra veri gelişi ayrıca doğrulanmalıdır.
+
+
+## 4 Ekim 2026 — ek teknik tarama ve simgeler
+
+- Canlı 87 sitemap sayfası, 90 iç hedef ve 813 fragment bağlantısı tarandı; kırık bağlantı/anchor, ana sayfadan ulaşılamayan sitemap sayfası veya yinelenen title/description bulunmadı.
+- Kök favicon ve Apple simgesi 1.304.309 baytlık orijinal logo yerine uygun 96×96/180×180 PNG kullanır. Manifest raster `sizes: any` yerine gerçek 192×192/512×512 simgeleri bildirir. Marka görseli korunur.
+- Node 22 Next.js/Cloudflare üretim derlemesi exit 0; worker önizlemesinde üç sayfanın icon metadata'sı, manifest ve dört PNG'nin erişimi/boyutları/dosya eşitliği geçti. Lint build tarafından atlandı. Push/yayın yapılmadı.
+- Güncel hesap doğrulamaları ve kalan yayın/Google takip işleri `docs/SEO-LIVE-AUDIT.md` içinde; önceki tarihsel bekliyor kayıtları bugünkü hesap durumu olarak okunmamalı.

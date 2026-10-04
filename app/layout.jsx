@@ -30,10 +30,10 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: '/assets/MatAI-logo.png', type: 'image/png' },
+      { url: '/assets/matai-icon-96.png', sizes: '96x96', type: 'image/png' },
     ],
-    shortcut: '/assets/MatAI-logo.png',
-    apple: '/assets/MatAI-logo.png',
+    shortcut: '/assets/matai-icon-96.png',
+    apple: [{ url: '/assets/matai-icon-180.png', sizes: '180x180', type: 'image/png' }],
   },
   manifest: '/manifest.webmanifest',
   itunes: {
