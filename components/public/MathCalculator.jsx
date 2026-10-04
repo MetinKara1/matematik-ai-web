@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import katex from 'katex';
+import 'katex/dist/katex.min.css';
 import { calculate } from '../../lib/math/polynomial.mjs';
 
 function MathResult({ value }) {

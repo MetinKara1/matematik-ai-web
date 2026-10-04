@@ -121,7 +121,7 @@ function IntegralArticle() {
                 <a href={appStoreLink} target="_blank" rel="noopener noreferrer">App Store&apos;dan indirin</a>
               </div>
               <div className="article-cta-qr">
-                <img src={appQrCode} alt="MatAI iOS uygulamasını App Store'da açmak için QR kod" />
+                <img src={appQrCode} width="256" height="256" loading="lazy" decoding="async" alt="MatAI iOS uygulamasını App Store'da açmak için QR kod" />
                 <span>iPhone ile tarayın · Android yakında</span>
               </div>
             </aside>

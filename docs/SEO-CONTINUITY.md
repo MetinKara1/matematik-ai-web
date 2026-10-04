@@ -205,3 +205,13 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Çevirisi olmayan sayfalardaki bağlantı “EN home” olarak etiketlenir; erişilebilir adı ana sayfa hedefini açıklar. Gerçekte bulunmayan çeviri için hreflang eklenmez.
 - Doğrulama: Node 22 Next.js/Cloudflare üretim derlemesi geçti. 28 çift/56 sayfa HTTP 200; iki yönde menü hedefi, self-canonical, tr/en/x-default hreflang ve sitemap tr/en bağlantıları eşleşti. Araç, konu ve çevirisiz integral sayfalarında yanlış alternate bulunmadığı kontrol edildi. Yayın yapılmadı.
 - Kaynak: https://developers.google.com/search/docs/specialty/international/localized-versions — karşılıklı hreflang ve her dilin kendi kaydının bulunması.
+
+## 4 Ekim 2026 — 15. madde: ölçülen sayfa yükünü azaltma
+
+- PublicHeader logosu ham 1024px PNG yerine Next/Image ile 64/128px boyutlarında sunulur. İlk ekranda eager yüklenir; küçük logo için yüksek öncelikli preload eklenmedi. Yerel üretim image endpoint ölçümü: eski PNG 1.304.309 bayt, 128px WebP 1.798 bayt. Bu oran yalnız logo kaynağı içindir, toplam hız veya Core Web Vitals artışı değildir.
+- KaTeX stylesheet global CSS’den çıkarılıp MathCalculator’a taşındı; SolutionPageClient kendi importunu korur. Formül işlemeyen ana sayfa ve derslerde KaTeX font tanımları artık yüklenmez.
+- Yerel üretim CSS toplamı ana sayfa ve limit dersinde 118.474 → 93.317 bayt; aynı gzip yöntemiyle 23.979 → 19.695 bayt. Hesaplayıcıda KaTeX CSS korunur. Bunlar dosya boyutu ölçümleridir; ağ gecikmesi/cihaz emülasyonu veya gerçek kullanıcı LCP/INP/CLS ölçümü değildir.
+- QR görsellerine doğal boyutlar ve async decode eklendi; sayfanın altındaki QR görselleri lazy yüklenir. İlk ekrandaki QR ve logo eager davranışı korunur.
+- Doğrulama: Node 22 Next.js/Cloudflare üretim derlemesi geçti, worker üretildi. Ana sayfa, ders ve hesaplayıcı HTTP 200; CSS ayrımı ve image endpoint WebP çıktısı kontrol edildi. Tarayıcıda türev hesabı 9x²−4x+5 verdi; KaTeX çıktıları oluştu, konsol hatası yok.
+- Canlı Cloudflare image endpoint davranışı ve gerçek kullanıcı Core Web Vitals yayından sonra ölçülmelidir. Yerel Next optimizer sonucu canlıya ait ölçüm olarak sunulmadı. Lighthouse performans puanı veya sıralama artışı iddia edilmedi. Yayın yapılmadı.
+- Kaynaklar: https://web.dev/articles/browser-level-image-lazy-loading ; https://web.dev/articles/optimize-cls

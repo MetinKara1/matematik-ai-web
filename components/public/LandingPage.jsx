@@ -1,3 +1,4 @@
+import Image from "next/image";
 import PublicHeader from "./PublicHeader";
 import PublicFooter from "./PublicFooter";
 import MathToolCards from "./MathToolCards";
@@ -68,7 +69,7 @@ function LandingPage() {
       <section className="hero-section" id="how-it-works">
         <div className="hero-content">
           <div className="logo-container">
-            <img src={logo} alt="MatAI Logo" className="logo-image" />
+            <Image src={logo} alt="MatAI Logo" width={160} height={160} sizes="(max-width: 768px) 100px, 160px" className="logo-image" />
             <div className="logo-text-container">
               <div className="logo">MatAI</div>
               <p className="tagline">Matematik Sorularınızı AI ile Çözün</p>
@@ -132,6 +133,7 @@ function LandingPage() {
           <div className="app-qr app-qr-hero">
             <img
               src={appQrCode}
+              width="256" height="256" decoding="async"
               alt="MatAI iOS uygulamasını App Store'dan indirmek için QR kod"
             />
             <div>
@@ -198,6 +200,8 @@ function LandingPage() {
           <div className="app-qr app-qr-centered">
             <img
               src={appQrCode}
+              loading="lazy"
+              width="256" height="256" decoding="async"
               alt="MatAI iOS uygulamasını App Store'dan indirmek için QR kod"
             />
             <div>

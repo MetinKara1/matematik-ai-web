@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const logo = "/assets/MatAI-logo.png";
 const appQrCode = "/assets/matai-ios-qr.png";
@@ -31,7 +32,7 @@ export default function PublicHeader({ locale = "tr", languageHref }) {
       <header className="landing-header public-header">
         <div className="landing-header-inner">
           <a href={homeHref} className="landing-header-brand" aria-label={labels.home}>
-            <img src={logo} alt="" className="landing-header-logo" />
+            <Image src={logo} alt="" width={64} height={64} loading="eager" className="landing-header-logo" />
             <span>MatAI</span>
           </a>
 
@@ -80,7 +81,7 @@ export default function PublicHeader({ locale = "tr", languageHref }) {
         className="sticky-app-qr"
         aria-label={labels.startLabel}
       >
-        <img src={appQrCode} alt={labels.qr} />
+        <img src={appQrCode} alt={labels.qr} width="256" height="256" decoding="async" />
         <span>
           <strong>{labels.ios}</strong>
           <small>{labels.scan}</small>
