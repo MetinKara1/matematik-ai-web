@@ -1,3 +1,4 @@
+import { serializeStructuredData } from '../../lib/structuredData';
 import Link from 'next/link';
 import TopicCards from '../../components/public/TopicCards';
 import PublicFooter from '../../components/public/PublicFooter';
@@ -33,7 +34,7 @@ export default function ArticlesPage() {
   ] };
   return (
     <div className="articles-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} />
       <PublicHeader languageHref="/en/articles" />
 
       <main className="articles-main">

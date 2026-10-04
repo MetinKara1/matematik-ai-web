@@ -1,3 +1,4 @@
+import { serializeStructuredData, applicationIdentity } from '../../../lib/structuredData';
 import PublicHeader from '../../../components/public/PublicHeader';
 import PublicFooter from '../../../components/public/PublicFooter';
 
@@ -21,11 +22,11 @@ export default function EnglishAiMathSolverPage() {
   const pageUrl = 'https://matematik-ai.com/en/ai-math-solver';
   const structuredData = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'WebPage', url: pageUrl, name: metadata.title, description: metadata.description, inLanguage: 'en' },
-    { '@type': 'SoftwareApplication', name: 'MatAI', operatingSystem: 'iOS, iPadOS', applicationCategory: 'EducationalApplication', url: pageUrl, installUrl: appStoreLink },
+    { ...applicationIdentity },
     { '@type': 'FAQPage', mainEntity: faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) },
   ] };
   return <div className="solver-landing-page">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} />
     <PublicHeader locale="en" languageHref="/yapay-zeka-matematik-cozucu" /><main>
       <section className="solver-hero"><div className="solver-hero-copy"><span className="solver-kicker">MatAI · iOS app</span><h1>Turn a photo into a step-by-step math explanation.</h1><p>Take a photo, type the problem, or ask by voice. MatAI helps you examine the method and each step—not only the final answer.</p><div className="solver-actions"><a href={appStoreLink} target="_blank" rel="noopener noreferrer" className="solver-primary-action">Download on the App Store</a><a href="#how-it-works" className="solver-secondary-action">See how it works</a></div><small>Available for iPhone and iPad · Android coming soon</small></div>
       <div className="solver-demo" aria-label="Example step-by-step solution"><div className="solver-demo-top"><span>MatAI</span><em>Step-by-step</em></div><div className="solver-demo-question">∫ x·e<sup>x</sup> dx = ?</div><ol><li><span>1</span><p><strong>Choose a method</strong>The integrand is a product, so use integration by parts.</p></li><li><span>2</span><p><strong>Assign terms</strong>Let u = x and dv = e<sup>x</sup>dx.</p></li><li><span>3</span><p><strong>Simplify</strong>e<sup>x</sup>(x − 1) + C</p></li></ol></div></section>

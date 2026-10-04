@@ -1,3 +1,4 @@
+import { serializeStructuredData, applicationIdentity, publisherIdentity } from '../../lib/structuredData';
 import PublicHeader from '../../components/public/PublicHeader';
 import PublicFooter from '../../components/public/PublicFooter';
 
@@ -20,11 +21,11 @@ export default function EnglishHomePage() {
     ['📤', 'Easy sharing', 'Share solved questions with classmates and friends.'],
   ];
   const structuredData = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'WebSite', '@id': 'https://matematik-ai.com/en#website', url: 'https://matematik-ai.com/en', name: 'MatAI', inLanguage: 'en' },
-    { '@type': 'SoftwareApplication', name: 'MatAI', applicationCategory: 'EducationalApplication', operatingSystem: 'iOS, iPadOS', url: 'https://matematik-ai.com/en', installUrl: appStoreLink, inLanguage: 'en' },
+    { '@type': 'WebSite', '@id': 'https://matematik-ai.com/en#website', url: 'https://matematik-ai.com/en', name: 'MatAI', inLanguage: 'en', publisher: publisherIdentity },
+    { ...applicationIdentity },
   ] };
   return <div className="landing-page">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} />
     <PublicHeader locale="en" languageHref="/" />
     <main>
       <section className="hero-section" id="how-it-works"><div className="hero-content">

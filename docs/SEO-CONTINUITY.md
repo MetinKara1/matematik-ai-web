@@ -215,3 +215,14 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Doğrulama: Node 22 Next.js/Cloudflare üretim derlemesi geçti, worker üretildi. Ana sayfa, ders ve hesaplayıcı HTTP 200; CSS ayrımı ve image endpoint WebP çıktısı kontrol edildi. Tarayıcıda türev hesabı 9x²−4x+5 verdi; KaTeX çıktıları oluştu, konsol hatası yok.
 - Canlı Cloudflare image endpoint davranışı ve gerçek kullanıcı Core Web Vitals yayından sonra ölçülmelidir. Yerel Next optimizer sonucu canlıya ait ölçüm olarak sunulmadı. Lighthouse performans puanı veya sıralama artışı iddia edilmedi. Yayın yapılmadı.
 - Kaynaklar: https://web.dev/articles/browser-level-image-lazy-loading ; https://web.dev/articles/optimize-cls
+
+
+## 4 Ekim 2026 — 16. madde: yapılandırılmış veri tutarlılığı
+
+- Tüm 15 JSON-LD üretim noktasında ortak `serializeStructuredData` kullanılır. Önceki çift kaçış, JSON.parse sonrasında `<` yerine literal `\u003c` metni bırakabiliyordu. Yeni kaçış matematik metnini korur ve HTML script kapanışı oluşturulmasını engeller; iç içe veri ve `</script>` içeren örnekle round-trip doğrulandı.
+- Makale yayıncısı ortak MatAI Organization @id kimliğini kullanır. Türkçe/İngilizce ana sayfa ve ürün sayfasında aynı uygulama @id, ana URL, App Store bağlantısı ve yayıncı kullanılır. Uygulama kimliği ile sayfanın kendi canonical adresi ayrıdır.
+- İngilizce 16 dersin Article @id/mainEntityOfPage ve kurumsal yazar bağlantısı tamamlandı. Türkçe/İngilizce gündem yazılarında da görünür ekip bağlantısı bulunur. Gerçek kişi, akademik unvan veya bağımsız inceleme kaydı eklenmedi.
+- Yerel üretim önizlemesindeki sitemap kapsamı: 83 sayfa HTTP 200 ve self-canonical; 65 Article/NewsArticle başlığı H1 ile, yazar kimliği görünür ekip bağlantısıyla eşleşti. 22 FAQPage içindeki soru ve yanıtlar görünür HTML ile karşılaştırıldı. 75 BreadcrumbList sıra ve son canonical adresi doğrulandı. Dört SoftwareApplication aynı uygulama kimliğine bağlanır. Sahte değerlendirme eklenmedi.
+- Node 22 Next.js/Cloudflare üretim derlemesi exit 0 ile geçti ve `.open-next/worker.js` üretildi. Kontroller yerel HTML/JSON tutarlılık kontrolleridir; Google Rich Results Test veya Search Console doğrulaması yapılmış gibi sunulmaz. Push/yayın yapılmadı.
+- FAQ schema görünür içeriğe uyduğu için korundu; Google FAQ rich results esas olarak yetkin sağlık/devlet siteleriyle sınırlıdır. Schema geçerliliği zengin sonuç veya sıralama artışı garantisi değildir. Ürün için doğrulanmamış fiyat/puan üretilmedi; ücretsiz web hesaplayıcılarının mevcut sıfır fiyat kaydı korundu.
+- Kaynaklar: https://developers.google.com/search/docs/appearance/structured-data/sd-policies ; https://developers.google.com/search/blog/2023/08/howto-faq-changes

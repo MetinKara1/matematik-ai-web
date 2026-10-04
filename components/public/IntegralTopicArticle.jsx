@@ -1,3 +1,4 @@
+import { serializeStructuredData, publisherIdentity } from '../../lib/structuredData';
 import { englishArticles } from '../../lib/enArticles';
 import { getLessonReadingTime } from '../../lib/lessonReadingTime';
 import LessonDiagram from './LessonDiagram';
@@ -50,7 +51,7 @@ export default function IntegralTopicArticle({ article, children }) {
         educationalLevel: scope?.label,
         isAccessibleForFree: true,
         author: editorialIdentity,
-        publisher: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com', logo: { '@type': 'ImageObject', url: 'https://matematik-ai.com/assets/MatAI-logo.png' } },
+        publisher: publisherIdentity,
       },
       {
         '@type': 'BreadcrumbList', '@id': `${articleUrl}#breadcrumb`,
@@ -70,7 +71,7 @@ export default function IntegralTopicArticle({ article, children }) {
 
   return (
     <div className="article-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} />
       <PublicHeader languageHref={languageHref} />
       <main className="article-main"><article className="article-card">
         <header className="article-heading">

@@ -1,3 +1,4 @@
+import { serializeStructuredData } from '../../../lib/structuredData';
 import { getLessonScope } from '../../../lib/lessonScope';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -21,7 +22,7 @@ export default async function TopicPage({ params }) {
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Ana sayfa', item: 'https://matematik-ai.com' }, { '@type': 'ListItem', position: 2, name: 'Konular', item: 'https://matematik-ai.com/konular' }, { '@type': 'ListItem', position: 3, name: topic.title, item: url }] },
   ] };
   return <div className="topic-page"><PublicHeader /><main className="topic-main topic-detail">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(schema) }} />
     <nav className="topic-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana sayfa</Link><span aria-hidden="true">/</span><Link href="/konular">Konular</Link><span aria-hidden="true">/</span><span>{topic.title}</span></nav>
     <header className="topic-hero"><span className="topic-eyebrow">{lessons.length} ders · Konu merkezi</span><h1>{topic.title}</h1><p className="topic-lead">{topic.summary}</p><p>{topic.intro}</p><a className="topic-start" href="#dersler">Çalışma sırasına geç <span aria-hidden="true">↓</span></a></header>
     <div className="topic-preparation"><section><h2>Başlamadan önce</h2><p>{topic.prerequisite}</p>{previous && <Link href={`/konular/${previous.slug}`}>{previous.title} merkezini gözden geçir →</Link>}</section><section><h2>Bu konuda hedefin</h2><ul>{topic.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul></section></div>

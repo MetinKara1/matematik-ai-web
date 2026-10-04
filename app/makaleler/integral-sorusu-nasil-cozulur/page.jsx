@@ -1,3 +1,4 @@
+import { serializeStructuredData, publisherIdentity } from '../../../lib/structuredData';
 import { editorialIdentity } from '../../../lib/editorialIdentity';
 import IntegralArticle from '../../../components/public/IntegralArticle';
 
@@ -51,15 +52,7 @@ export default function ArticlePage() {
         educationalLevel: 'İleri / üniversiteye geçiş',
         isAccessibleForFree: true,
         author: editorialIdentity,
-        publisher: {
-          '@type': 'Organization',
-          name: 'MatAI',
-          url: 'https://matematik-ai.com',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://matematik-ai.com/assets/MatAI-logo.png',
-          },
-        },
+        publisher: publisherIdentity,
       },
       {
         '@type': 'BreadcrumbList',
@@ -96,7 +89,7 @@ export default function ArticlePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }}
+        dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }}
       />
       <IntegralArticle />
     </>

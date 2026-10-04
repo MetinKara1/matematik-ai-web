@@ -1,3 +1,4 @@
+import { serializeStructuredData } from '../../lib/structuredData';
 import Link from 'next/link';
 import PublicHeader from '../../components/public/PublicHeader';
 import PublicFooter from '../../components/public/PublicFooter';
@@ -10,7 +11,7 @@ export const metadata = { title, description, alternates: { canonical: '/araclar
 export default function ToolsPage() {
   const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: 'https://matematik-ai.com/araclar', inLanguage: 'tr-TR', mainEntity: { '@type': 'ItemList', itemListElement: mathTools.map((tool, i) => ({ '@type': 'ListItem', position: i + 1, name: tool.title, url: `https://matematik-ai.com/araclar/${tool.slug}` })) } };
   return <div className="math-tools-page"><PublicHeader /><main className="tools-main">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(schema) }} />
     <nav className="tool-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana sayfa</Link><span aria-hidden="true">/</span><span>Matematik araçları</span></nav>
     <header className="tools-hero"><span className="tool-tag">Tarayıcıda hesapla · Adım adım öğren</span><h1>Matematik araçları</h1><p>Denklem çöz, türev al, integral hesapla. Ücretsiz araçlarla kendi örneğini dene ve sonuca giden işlemleri incele.</p><div className="tool-benefits"><span>Üyelik gerekmez</span><span>Telefonda ve bilgisayarda</span><span>Girdiler cihazında kalır</span></div></header>
     <MathToolCards />

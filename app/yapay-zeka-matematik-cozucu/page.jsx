@@ -1,3 +1,4 @@
+import { serializeStructuredData, applicationIdentity } from '../../lib/structuredData';
 import Link from 'next/link';
 import PublicHeader from '../../components/public/PublicHeader';
 
@@ -32,14 +33,14 @@ export default function AiMathSolverPage() {
   const structuredData = {
     '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebPage', '@id': `${pageUrl}#webpage`, url: pageUrl, name: metadata.title, description: metadata.description, inLanguage: 'tr-TR', isPartOf: { '@id': 'https://matematik-ai.com/#website' } },
-      { '@type': 'SoftwareApplication', '@id': 'https://matematik-ai.com/#app', name: 'MatAI', operatingSystem: 'iOS, iPadOS', applicationCategory: 'EducationalApplication', description: metadata.description, url: pageUrl, installUrl: appStoreLink, image: 'https://matematik-ai.com/assets/MatAI-logo.png' },
+      { ...applicationIdentity },
       { '@type': 'FAQPage', '@id': `${pageUrl}#faq`, mainEntity: faq.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) },
       { '@type': 'BreadcrumbList', '@id': `${pageUrl}#breadcrumb`, itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Ana Sayfa', item: 'https://matematik-ai.com' }, { '@type': 'ListItem', position: 2, name: 'Yapay Zekâ Matematik Çözücü', item: pageUrl }] },
     ],
   };
   return (
     <div className="solver-landing-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} />
       <PublicHeader languageHref="/en/ai-math-solver" />
       <main>
         <section className="solver-hero">

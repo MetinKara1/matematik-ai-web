@@ -1,3 +1,4 @@
+import { serializeStructuredData } from '../../../lib/structuredData';
 import Link from 'next/link';
 import { getTopicHub } from '../../../lib/topicHubs';
 import { notFound } from 'next/navigation';
@@ -24,7 +25,7 @@ export default async function ToolPage({ params }) {
     { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Ana sayfa', item: 'https://matematik-ai.com' }, { '@type': 'ListItem', position: 2, name: 'Matematik araçları', item: 'https://matematik-ai.com/araclar' }, { '@type': 'ListItem', position: 3, name: tool.title, item: url }] },
   ] };
   return <div className="math-tools-page"><PublicHeader /><main className="tools-main tool-detail">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(schema) }} />
     <nav className="tool-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana sayfa</Link><span aria-hidden="true">/</span><Link href="/araclar">Araçlar</Link><span aria-hidden="true">/</span><span>{tool.title}</span></nav>
     <header className="tools-hero"><span className="tool-tag">MatAI matematik araçları</span><h1>{tool.title}</h1><p>{tool.intro}</p></header>
     <MathCalculator tool={tool} />

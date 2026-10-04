@@ -1,3 +1,4 @@
+import { serializeStructuredData, publisherIdentity } from '../../../lib/structuredData';
 import { getLessonReadingTime } from '../../../lib/lessonReadingTime';
 import LessonDiagram from '../../../components/public/LessonDiagram';
 import { editorialIdentity } from '../../../lib/editorialIdentity';
@@ -44,7 +45,7 @@ export default function IndefiniteIntegralArticlePage() {
         keywords: ['belirsiz integral nedir', 'belirsiz integral kuralları', 'integral sabiti C', 'integral örnekleri', 'AYT matematik'],
         about: { '@type': 'Thing', name: 'İntegral' }, educationalLevel: 'Lise + ileri bölümler', isAccessibleForFree: true,
         author: editorialIdentity,
-        publisher: { '@type': 'Organization', name: 'MatAI', url: 'https://matematik-ai.com', logo: { '@type': 'ImageObject', url: 'https://matematik-ai.com/assets/MatAI-logo.png' } },
+        publisher: publisherIdentity,
       },
       {
         '@type': 'BreadcrumbList', '@id': `${articleUrl}#breadcrumb`,
@@ -60,7 +61,7 @@ export default function IndefiniteIntegralArticlePage() {
 
   return (
     <div className="article-page">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(structuredData) }} />
       <PublicHeader />
       <main className="article-main">
         <article className="article-card">

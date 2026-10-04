@@ -1,3 +1,4 @@
+import { serializeStructuredData } from '../../lib/structuredData';
 import Link from 'next/link';
 import PublicHeader from '../../components/public/PublicHeader';
 import PublicFooter from '../../components/public/PublicFooter';
@@ -10,7 +11,7 @@ export const metadata = { title, description, alternates: { canonical: '/konular
 export default function TopicsPage() {
   const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: 'https://matematik-ai.com/konular', inLanguage: 'tr-TR', mainEntity: { '@type': 'ItemList', itemListOrder: 'https://schema.org/ItemListOrderAscending', itemListElement: topicHubs.map((topic, i) => ({ '@type': 'ListItem', position: i + 1, name: topic.title, url: `https://matematik-ai.com/konular/${topic.slug}` })) } };
   return <div className="topic-page"><PublicHeader /><main className="topic-main">
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeStructuredData(schema) }} />
     <nav className="topic-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana sayfa</Link><span aria-hidden="true">/</span><span>Konular</span></nav>
     <header className="topic-hero"><span className="topic-eyebrow">MatAI öğrenme yolları</span><h1>Matematikte sıradaki adımını bul.</h1><p>Fonksiyonlardan integrale beş konu merkezi. Ön bilgini kontrol et, dersleri sırayla çalış ve öğrendiğini bir soruyla sına.</p></header>
     <section aria-labelledby="topic-list-heading"><h2 id="topic-list-heading">Konuya göre öğren</h2><p className="topic-section-intro">İlk kez çalışıyorsan aşağıdaki sıra iyi bir başlangıçtır. Bildiğin konuları geçip ihtiyacın olan merkezden de başlayabilirsin.</p><TopicCards /></section>
