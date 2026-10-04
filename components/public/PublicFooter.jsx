@@ -17,6 +17,7 @@ export default function PublicFooter({ locale = 'tr' }) {
             <Link href="/konular">Konu Merkezleri</Link>
             <Link href="/makaleler">Makaleler</Link>
             <Link href="/araclar">Matematik Araçları</Link>
+            <Link href="/kaynaklar">Çalışma Kağıtları</Link>
           </>}
         </nav>
       </div>

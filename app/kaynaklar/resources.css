@@ -1,0 +1,20 @@
+.resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+.resource-card { padding: 1.6rem; background: white; border: 1px solid #e6e2ef; border-radius: 18px; }
+.resource-card > span { color: #655c77; font-size: .85rem; }
+.resource-card h2 { font-size: 1.4rem; line-height: 1.35; }
+.resource-card p { line-height: 1.7; }
+.resource-card > a { display: block; margin-top: 1rem; font-weight: 700; color: #5949bc; }
+.resource-download, .resource-share button { display: inline-flex; padding: .85rem 1.1rem; border-radius: 10px; font: inherit; font-weight: 700; cursor: pointer; }
+.resource-download { background: #5949bc; color: white; }
+.resource-share { margin-top: 1rem; }
+.resource-share button { border: 1px solid #c8c0dc; background: white; color: #493b85; }
+.resource-share p { font-size: .85rem; overflow-wrap: anywhere; }
+.resource-share span { display: block; min-height: 1.5rem; font-size: .9rem; }
+.resource-detail .topic-study li { margin: .65rem 0; line-height: 1.7; }
+.resource-questions { margin: 2.5rem 0; }
+.resource-questions ol { padding-left: 1.6rem; }
+.resource-questions li { padding: 1rem 1rem 1.5rem; margin: 1rem 0; background: white; border: 1px solid #e6e2ef; border-radius: 12px; }
+.resource-questions h3 { font-size: 1.1rem; line-height: 1.7; margin: 0 0 1rem; overflow-wrap: anywhere; }
+.resource-questions summary { color: #5949bc; cursor: pointer; font-weight: 700; line-height: 1.5; }
+.resource-questions p { line-height: 1.7; }
+@media (max-width: 800px) { .resource-grid { grid-template-columns: 1fr; } }

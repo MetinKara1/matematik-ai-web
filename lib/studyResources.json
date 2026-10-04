@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "limit-sureklilik-calisma-kagidi", "topic": "limit-ve-sureklilik", "title": "Limit ve Süreklilik Çalışma Kağıdı", "description": "Limit ile fonksiyon değerini ayıran, tek taraflı limit ve süreklilik içeren 6 alıştırma ve açıklamalı cevap anahtarı.", "level": "Lise temeli", "updatedAt": "2026-10-04",
+    "intro": "Önce soruları kendi defterinde çöz. Sonra cevap anahtarında yalnız sonucu değil, limitin varlığı ve tanım koşullarını da karşılaştır.",
+    "summary": ["Limit, x bir noktaya yaklaşırken fonksiyonun davranışını anlatır; noktadaki fonksiyon değeri farklı olabilir.", "İki taraflı sonlu limit için sağ ve sol limit sonlu ve eşit olmalıdır.", "a noktasında süreklilik: f(a) tanımlıdır, limit vardır ve lim(x→a) f(x) = f(a).", "0/0 bir cevap değildir. Çarpanlara ayırma veya eşlenikle sadeleştirme gerekebilir."],
+    "questions": [
+      {"prompt": "lim(x→2) (x² - 4)/(x - 2) değerini bulun. İlk ifade x = 2'de tanımlı mı?", "answer": "Limit 4; ilk ifade x = 2'de tanımsızdır.", "explanation": "x ≠ 2 için x² - 4 = (x - 2)(x + 2) olduğundan ifade x + 2 olur. Noktadaki tanımsızlık yaklaşma limitini engellemez."},
+      {"prompt": "f(x) = x + 1 (x < 0), f(x) = 2x + 1 (x ≥ 0). 0'daki sağ limit, sol limit ve sürekliliği belirleyin.", "answer": "Sağ ve sol limit 1; f(0) = 1. Fonksiyon 0'da süreklidir.", "explanation": "Soldaki ifadede x→0 için x + 1→1; sağdaki ifadede 2x + 1→1. Ortak limit nokta değerine eşittir."},
+      {"prompt": "g(x) = -1 (x < 0), g(x) = 1 (x ≥ 0). lim(x→0) g(x) var mı?", "answer": "İki taraflı limit yoktur.", "explanation": "Sol limit -1, sağ limit 1'dir. İki taraflı limit için eşitlik koşulu sağlanmaz."},
+      {"prompt": "h(x) = (x² - 1)/(x - 1) (x ≠ 1), h(1) = k. Süreklilik için k kaç olmalı?", "answer": "k = 2.", "explanation": "x ≠ 1 için ifade x + 1'dir. 1'deki limit 2 olduğundan nokta değeri de 2 seçilmelidir."},
+      {"prompt": "lim(x→0) [√(1 + x) - 1]/x değerini bulun.", "answer": "1/2.", "explanation": "x ≠ 0 için eşlenikle çarpınca 1/[√(1 + x) + 1] elde edilir. x→0 için payda 2'ye yaklaşır."},
+      {"prompt": "|x| fonksiyonu 0'da sürekli mi, türevlenebilir mi?", "answer": "Süreklidir; türevlenebilir değildir.", "explanation": "Limit ve nokta değeri 0'dır. Ancak sağ türev 1, sol türev -1 olduğundan ortak türev yoktur."}
+    ],
+    "lessons": [{"slug": "limit-nedir", "title": "Limit nedir?"}, {"slug": "sureklilik-nedir", "title": "Süreklilik koşulları"}]
+  },
+  {
+    "slug": "turev-kurallari-calisma-kagidi", "topic": "turev", "title": "Türev Kuralları Çalışma Kağıdı", "description": "Kuvvet, çarpım ve zincir kuralları, teğet ve kritik nokta yorumuyla 6 alıştırma ve açıklamalı cevap anahtarı.", "level": "Lise temeli", "updatedAt": "2026-10-04",
+    "intro": "Her soruda hangi kuralı kullandığını yaz. Grafik yorumunda sıfır türevin tek başına maksimum veya minimum anlamına gelmediğini kontrol et.",
+    "summary": ["Kuvvet kuralı: (xⁿ)' = n·xⁿ⁻¹. Buradaki polinom örneklerinde n pozitif tam sayıdır.", "Çarpım kuralı: (u·v)' = u'·v + u·v'.", "Zincir kuralı: [f(g(x))]' = f'(g(x))·g'(x).", "a noktasında teğet: y - f(a) = f'(a)·(x - a). Kritik noktadan sonra işaret değişimini incele."],
+    "questions": [
+      {"prompt": "f(x) = 3x⁴ - 2x² + 5 için f'(x) ve f'(1) bulun.", "answer": "f'(x) = 12x³ - 4x; f'(1) = 8.", "explanation": "Her terime kuvvet kuralı uygulanır. Sabitin türevi sıfırdır; x = 1 yerine konur."},
+      {"prompt": "g(x) = (x² + 1)(x³ - 2) fonksiyonunun türevini bulun.", "answer": "g'(x) = 5x⁴ + 3x² - 4x.", "explanation": "Çarpım kuralı: 2x(x³ - 2) + (x² + 1)3x². Terimler açılıp toplanır."},
+      {"prompt": "h(x) = (2x + 1)³ fonksiyonunun türevini bulun.", "answer": "h'(x) = 6(2x + 1)².", "explanation": "Dış fonksiyonun türevi 3(2x + 1)², iç fonksiyonun türevi 2'dir. Zincir kuralıyla çarpılır."},
+      {"prompt": "y = x² eğrisinin x = 2 noktasındaki teğet denklemini bulun.", "answer": "y = 4x - 4.", "explanation": "Nokta (2, 4), eğim 2·2 = 4. y - 4 = 4(x - 2) denklemi düzenlenir."},
+      {"prompt": "f(x) = x³ için f'(0) = 0. Bu noktada yerel ekstremum var mı?", "answer": "Yerel maksimum veya minimum yoktur.", "explanation": "f'(x) = 3x², 0'ın iki yanında pozitiftir. Fonksiyon artmaya devam eder; türevin sıfır olması tek başına yeterli değildir."},
+      {"prompt": "f(x) = x² - 4x + 1 için artma, azalma aralıklarını ve minimum değerini bulun.", "answer": "(-∞, 2)'de azalır, (2, ∞)'de artar. Minimum değer f(2) = -3.", "explanation": "f'(x) = 2x - 4. İşaret 2'de negatiften pozitife geçer; bu noktada minimum oluşur."}
+    ],
+    "lessons": [{"slug": "turev-alma-kurallari", "title": "Türev alma kuralları"}, {"slug": "turevin-geometrik-yorumu", "title": "Teğetin geometrik anlamı"}]
+  },
+  {
+    "slug": "temel-integral-calisma-kagidi", "topic": "integral", "title": "Temel İntegral Çalışma Kağıdı", "description": "Kuvvet kuralı, değişken değiştirme, belirli integral ve geometrik alan için 6 alıştırma ve açıklamalı cevap anahtarı.", "level": "Lise temeli", "updatedAt": "2026-10-04",
+    "intro": "Belirsiz integralde bulduğun sonucun türevini alarak kontrol et. Belirli integralde işaretli sonuç ile geometrik alanı ayrı değerlendir.",
+    "summary": ["Kuvvet kuralı: ∫xⁿ dx = xⁿ⁺¹/(n + 1) + C; burada n negatif olmayan tam sayıdır.", "Sabit çarpan ve toplam kuralı terim terim uygulanır. Belirsiz integralde +C unutulmaz.", "f, [a, b] üzerinde sürekli ve F' = f ise ∫ₐᵇ f(x) dx = F(b) - F(a).", "Geometrik alan ∫|f(x)| dx ile hesaplanır. İşaret değişen noktalarda aralığı böl."],
+    "questions": [
+      {"prompt": "∫(3x² - 4x + 2) dx hesaplayın.", "answer": "x³ - 2x² + 2x + C.", "explanation": "Her terimin kuvveti bir artırılıp yeni kuvvete bölünür. Sonucun türevi başlangıç ifadesidir."},
+      {"prompt": "∫2x(x² + 1)² dx hesaplayın.", "answer": "(x² + 1)³/3 + C.", "explanation": "u = x² + 1 ve du = 2x dx seçilirse integral ∫u² du olur. Sonra x değişkenine dönülür."},
+      {"prompt": "0 ile 2 arasında ∫x dx hesaplayın.", "answer": "2.", "explanation": "F(x) = x²/2. F(2) - F(0) = 4/2 - 0 = 2."},
+      {"prompt": "-1 ile 1 arasında f(x) = x'in belirli integralini ve x ekseniyle arasındaki geometrik alanı bulun.", "answer": "Belirli integral 0; geometrik alan 1.", "explanation": "İşaretli katkılar birbirini götürür. Geometrik alan iki üçgenin toplamıdır: 1/2 + 1/2 = 1."},
+      {"prompt": "F'(x) = 2x ve F(1) = 5 ise F(x) nedir?", "answer": "F(x) = x² + 4.", "explanation": "İlkel fonksiyon x² + C'dir. 1 + C = 5 eşitliğinden C = 4 bulunur."},
+      {"prompt": "0 ile 3 arasında f(x) = x - 1'in belirli integralini ve geometrik alanını bulun.", "answer": "Belirli integral 3/2; geometrik alan 5/2.", "explanation": "F(x) = x²/2 - x ile F(3) - F(0) = 3/2. İşaret 1'de değişir; alan 1/2 + 2 = 5/2 olur."}
+    ],
+    "lessons": [{"slug": "integral-alma-kurallari", "title": "İntegral alma kuralları"}, {"slug": "integral-ile-alan-hesabi", "title": "İntegralle alan hesabı"}]
+  }
+]

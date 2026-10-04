@@ -1,3 +1,4 @@
+import { studyResources } from '../lib/studyResources';
 import { topicHubs } from '../lib/topicHubs';
 import { mathTools } from '../lib/mathTools';
 import { derivativeArticles } from '../lib/derivativeArticles';
@@ -13,6 +14,7 @@ export default function sitemap() {
   const englishLastModified = new Date('2026-08-27T00:00:00+03:00');
   const languageAlternates = (trPath, enPath) => ({ languages: { tr: `${baseUrl}${trPath}`, en: `${baseUrl}${enPath}` } });
   return [
+    ...['/kaynaklar', ...studyResources.map(({ slug }) => `/kaynaklar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.7 })),
     ...['/konular', ...topicHubs.map(({ slug }) => `/konular/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-03T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.85 })),
     ...['/araclar', ...mathTools.map(({ slug }) => `/araclar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-03T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.8 })),
     { url: baseUrl, lastModified, changeFrequency: 'weekly', priority: 1, alternates: languageAlternates('', '/en') },
@@ -30,7 +32,8 @@ export default function sitemap() {
       const en = `/en/${article.enSection}/${article.enSlug}`;
       const alternates = languageAlternates(tr, en);
       const common = { lastModified: new Date(`${article.publishedAt}T00:00:00+03:00`), changeFrequency: article.section === 'gundem' ? 'weekly' : 'monthly', priority: 0.85, alternates };
-      return [{ url: `${baseUrl}${tr}`, ...common }, { url: `${baseUrl}${en}`, ...common }];
+      return [
+    ...['/kaynaklar', ...studyResources.map(({ slug }) => `/kaynaklar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.7 })),{ url: `${baseUrl}${tr}`, ...common }, { url: `${baseUrl}${en}`, ...common }];
     }),
     ...englishArticles.map(({ slug: enSlug, trSlug, updatedAt }) => ({
       url: `${baseUrl}/en/articles/${enSlug}`,
