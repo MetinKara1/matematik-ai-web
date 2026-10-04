@@ -1,5 +1,6 @@
 'use client';
 
+import { emitAnalyticsEvent } from '../../lib/analytics.mjs';
 import { useRef, useState } from 'react';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
@@ -25,6 +26,7 @@ export default function MathCalculator({ tool }) {
     try {
       const answer = calculate(tool.kind, expression, { definite, lower, upper });
       setResult(answer); setError('');
+      emitAnalyticsEvent('calculator_success', { tool_kind: tool.kind });
       requestAnimationFrame(() => resultRef.current?.focus());
     } catch (problem) {
       setResult(null); setError(problem.message);

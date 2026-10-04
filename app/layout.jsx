@@ -1,8 +1,11 @@
+import SiteAnalytics from '../components/public/SiteAnalytics';
+import { validMeasurementId } from '../lib/analytics.mjs';
 import './globals.css';
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://matematik-ai.com'),
   applicationName: 'MatAI',
+  ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
   title: {
     default: 'MatAI - Matematik Sorularınızı AI ile Çözün',
     template: '%s | MatAI',
@@ -41,7 +44,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body>{children}</body>
+      <body>{children}{validMeasurementId(process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) && <SiteAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />}</body>
     </html>
   );
 }
