@@ -188,3 +188,12 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Grafikler gerçek fonksiyon koordinatlarıyla üretilir; birim çember aynı yatay/düşey ölçeği kullanır. Her grafikte görünür formül/açıklama, benzersiz title/desc ve erişilebilir isim vardır. Renge ek olarak metin etiketleri kullanılır. JavaScript ve yeni resim indirmesi gerektirmez.
 - Ortak kapakların açıklaması konuya giriş görseli olarak netleştirildi. Mevcut limit yaklaşım grafiği, türev etkileşimi ve içerik URL’leri korundu.
 - Doğrulama: Node 22 Cloudflare/Next.js üretim derlemesi geçti, worker üretildi. 19 ders HTTP 200; SSR SVG ve benzersiz erişilebilir açıklamalar doğrulandı. Birim çember masaüstünde görsel olarak kontrol edildi; birim çember ve belirli integral 390px görünümde yatay taşma yok. Yayın yapılmadı.
+
+## 4 Ekim 2026 — 13. madde: başlık ve okuma süresi
+
+- 31 Türkçe dersin içerik gövdesi ölçüldü; süreler ortak `lib/lessonReadingTime.js` kaynağında 180 kelime/dakika ve üst dakikaya yuvarlama ile hesaplanır. Menü, tanıtım, SVG etiketi ve kapalı cevap metinleri sayılmaz. Örnek açıklamaları dahildir; alıştırma çözme süresi ayrı tutulur.
+- Kartlar ve ders üst bilgisi aynı süreyi kullanır. Sayfalarda “Yaklaşık … dakika okuma (alıştırmalar hariç)” gösterilir. Sonuçlar yaklaşık 3–6 dakika aralığında; önceki 7–13 dakika değerleri ölçüme dayalı değildi. Bu, matematik dersini öğrenmenin toplam süresi değildir.
+- Kısmi integrasyon dersinin H1/title/Open Graph/Twitter/Article headline ve liste başlığı yöntemi açıkça belirtir: “İntegral Sorusu Nasıl Çözülür? Kısmi İntegrasyon Örneği”. URL/canonical korundu; diğer derslerin mevcut arama niyetleri ve başlıkları korundu.
+- `scripts/measure-lesson-reading.py` yerel üretim önizlemesini okuyarak gelecekteki ölçümleri tekrar üretir. İçerik değişikliklerinden sonra ölçüm kaydı yeniden güncellenmelidir; süreler her istekte hesaplanmaz.
+- Okuma süresi yaklaşımı İçerik Politikası’nda açıklandı. İngilizce ve gündem yazılarının mevcut süreleri bu Türkçe ders ölçümüne dahil değildir.
+- Doğrulama: Node 22 Cloudflare/Next.js üretim derlemesi geçti ve worker üretildi. 31 dersin HTTP çıktısındaki yaklaşık süreler ölçüm kaydıyla eşleşti; canonical adresler, değişen H1/title/Article headline ve kütüphane süre etiketi doğrulandı. Yayın yapılmadı.

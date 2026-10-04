@@ -1,3 +1,4 @@
+import { getLessonReadingTime } from '../../lib/lessonReadingTime';
 import LessonDiagram from './LessonDiagram';
 import { editorialIdentity } from '../../lib/editorialIdentity';
 import LessonNextSteps from './LessonNextSteps';
@@ -73,7 +74,7 @@ export default function IntegralTopicArticle({ article, children }) {
           <nav className="article-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana Sayfa</Link><span aria-hidden="true">›</span><Link href="/makaleler">Makaleler</Link><span aria-hidden="true">›</span>{topic && <><Link href={`/konular/${topic.slug}`}>{topic.title}</Link><span aria-hidden="true">›</span></>}<span>{article.shortTitle}</span></nav>
           <span className="article-category">{article.category || 'İntegral'} · {scope?.label || article.level}</span>
           <h1>{article.title}</h1><p className="article-summary">{article.summary}</p>
-          <div className="article-meta" aria-label="Makale bilgileri"><time dateTime={article.date || '2026-08-12'}>{article.displayDate || '12 Ağustos 2026'}</time><span>{article.readingTime} dakika okuma</span>{article.updatedDisplayDate && <span>Güncellendi: <time dateTime={article.updatedAt}>{article.updatedDisplayDate}</time></span>}<span>{article.level}</span><span>MatAI İçerik Ekibi</span></div>
+          <div className="article-meta" aria-label="Makale bilgileri"><time dateTime={article.date || '2026-08-12'}>{article.displayDate || '12 Ağustos 2026'}</time><span>Yaklaşık {getLessonReadingTime(article.slug, article.readingTime)} dakika okuma (alıştırmalar hariç)</span>{article.updatedDisplayDate && <span>Güncellendi: <time dateTime={article.updatedAt}>{article.updatedDisplayDate}</time></span>}<span>{article.level}</span><span>MatAI İçerik Ekibi</span></div>
           <LessonScope slug={article.slug} />
           <ArticleHeroVisual slug={article.slug} title={article.title} priority />
         </header>

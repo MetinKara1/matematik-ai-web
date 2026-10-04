@@ -1,3 +1,4 @@
+import { getLessonReadingTime } from '../../lib/lessonReadingTime';
 import LessonNextSteps from './LessonNextSteps';
 import Link from 'next/link';
 import LessonScope from './LessonScope';
@@ -25,14 +26,14 @@ function IntegralArticle() {
               <Link href="/konular/integral">İntegral</Link><span aria-hidden="true">›</span><span>İntegral Sorusu Nasıl Çözülür?</span>
             </nav>
             <span className="article-category">İntegral · İleri / üniversiteye geçiş</span>
-            <h1>İntegral Sorusu Nasıl Çözülür? Adım Adım Bir Örnekle Anlatıyorum</h1>
+            <h1>İntegral Sorusu Nasıl Çözülür? Kısmi İntegrasyon Örneği</h1>
             <p className="article-summary">
               Kısmi integrasyon yöntemini ne zaman kullanacağınızı ve doğru sonuca nasıl ulaşacağınızı
               örnek bir soru üzerinden birlikte inceleyelim.
             </p>
             <div className="article-meta" aria-label="Makale bilgileri">
               <time dateTime="2026-08-11">11 Ağustos 2026</time>
-              <span>8 dakika okuma</span>
+              <span>Yaklaşık {getLessonReadingTime('integral-sorusu-nasil-cozulur')} dakika okuma (alıştırmalar hariç)</span>
               <span>Adım adım anlatım</span>
               <span>Çözümlü örnek</span>
             </div>

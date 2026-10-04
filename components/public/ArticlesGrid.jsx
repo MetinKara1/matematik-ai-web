@@ -32,7 +32,7 @@ export default function ArticlesGrid({ articles, locale = 'tr', basePath = '/mak
       <div className="articles-wide-list">
         {visible.map((article) => <Link href={article.href || `${basePath}/${article.slug}`} className="article-featured-card article-wide-card" key={article.slug}>
           <div className={`article-featured-visual article-visual-${article.category.toLocaleLowerCase(isEnglish ? 'en-US' : 'tr-TR')}`} aria-hidden="true"><span>{article.symbol}</span><small>{article.formula}</small></div>
-          <div className="article-featured-copy"><div className="article-list-meta"><span>{article.category}</span><span>{article.readingTime} {isEnglish ? 'min read' : 'dakika'}</span><span>{(!isEnglish && getLessonScope(article.slug)?.label) || contentLabel || (isEnglish ? 'Mathematics' : 'Konu anlatımı')}</span></div><Heading>{article.title}</Heading><p>{article.description}</p><strong>{isEnglish ? 'Read article' : 'Yazıyı oku'} <span aria-hidden="true">→</span></strong></div>
+          <div className="article-featured-copy"><div className="article-list-meta"><span>{article.category}</span><span>{!isEnglish && getLessonScope(article.slug) ? '≈ ' : ''}{article.readingTime} {isEnglish ? 'min read' : 'dakika'}</span><span>{(!isEnglish && getLessonScope(article.slug)?.label) || contentLabel || (isEnglish ? 'Mathematics' : 'Konu anlatımı')}</span></div><Heading>{article.title}</Heading><p>{article.description}</p><strong>{isEnglish ? 'Read article' : 'Yazıyı oku'} <span aria-hidden="true">→</span></strong></div>
         </Link>)}
       </div>
 

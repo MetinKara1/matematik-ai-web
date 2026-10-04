@@ -4,23 +4,23 @@ import IntegralArticle from '../../../components/public/IntegralArticle';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Örnek',
+  title: 'İntegral Sorusu Nasıl Çözülür? Kısmi İntegrasyon Örneği',
   description: 'Kısmi integrasyon yöntemiyle ∫x·eˣ dx sorusunun çözümünü, sağlamasını ve öğrencilerin sık yaptığı hataları adım adım öğrenin.',
   alternates: { canonical: '/makaleler/integral-sorusu-nasil-cozulur' },
   openGraph: {
-    title: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Bir Örnek',
+    title: 'İntegral Sorusu Nasıl Çözülür? Kısmi İntegrasyon Örneği',
     description: 'Kısmi integrasyon yöntemini kalkülüs düzeyinde bir örnekle adım adım öğrenin.',
     type: 'article',
     locale: 'tr_TR',
     siteName: 'MatAI',
     url: '/makaleler/integral-sorusu-nasil-cozulur',
-    images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Örnek' }],
+    images: [{ url: '/assets/articles/integral-alan.jpg', width: 1536, height: 1024, alt: 'İntegral Sorusu Nasıl Çözülür? Kısmi İntegrasyon Örneği' }],
     publishedTime: '2026-08-11T00:00:00+03:00',
     modifiedTime: '2026-10-04T00:00:00+03:00',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'İntegral Sorusu Nasıl Çözülür?',
+    title: 'İntegral Sorusu Nasıl Çözülür? Kısmi İntegrasyon Örneği',
     description: 'Kısmi integrasyon yöntemini çözümlü bir örnekle adım adım öğrenin.',
     images: ['/assets/articles/integral-alan.jpg'],
   },
@@ -38,7 +38,7 @@ export default function ArticlePage() {
           '@type': 'WebPage',
           '@id': articleUrl,
         },
-        headline: 'İntegral Sorusu Nasıl Çözülür? Adım Adım Bir Örnekle Anlatıyorum',
+        headline: 'İntegral Sorusu Nasıl Çözülür? Kısmi İntegrasyon Örneği',
         description: 'Kısmi integrasyon yöntemiyle ∫x·eˣ dx sorusunun çözümünü, sağlamasını ve öğrencilerin sık yaptığı hataları adım adım öğrenin.',
         url: articleUrl,
         image: ['https://matematik-ai.com/assets/articles/integral-alan.jpg'],

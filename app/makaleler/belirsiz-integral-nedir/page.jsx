@@ -1,3 +1,4 @@
+import { getLessonReadingTime } from '../../../lib/lessonReadingTime';
 import LessonDiagram from '../../../components/public/LessonDiagram';
 import { editorialIdentity } from '../../../lib/editorialIdentity';
 import LessonNextSteps from '../../../components/public/LessonNextSteps';
@@ -70,7 +71,7 @@ export default function IndefiniteIntegralArticlePage() {
             <span className="article-category">İntegral · Lise + ileri bölümler</span>
             <h1>Belirsiz İntegral Nedir? Kuralları ve Çözümlü Örnekler</h1>
             <p className="article-summary">Belirsiz integralin mantığını, temel kurallarını ve her sonucun yanına neden C sabiti yazdığımızı anlaşılır örneklerle inceleyelim.</p>
-            <div className="article-meta" aria-label="Makale bilgileri"><time dateTime="2026-08-12">12 Ağustos 2026</time><span>7 dakika okuma</span><span>Temel konu anlatımı</span><span>MatAI İçerik Ekibi</span></div>
+            <div className="article-meta" aria-label="Makale bilgileri"><time dateTime="2026-08-12">12 Ağustos 2026</time><span>Yaklaşık {getLessonReadingTime('belirsiz-integral-nedir')} dakika okuma (alıştırmalar hariç)</span><span>Temel konu anlatımı</span><span>MatAI İçerik Ekibi</span></div>
             <p className="article-meta">Güncellendi: <time dateTime="2026-10-04">4 Ekim 2026</time></p>
             <LessonScope slug="belirsiz-integral-nedir" />
             <ArticleHeroVisual slug="belirsiz-integral-nedir" title="Belirsiz İntegral Nedir?" priority />
