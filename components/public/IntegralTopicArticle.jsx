@@ -1,3 +1,4 @@
+import { englishArticles } from '../../lib/enArticles';
 import { getLessonReadingTime } from '../../lib/lessonReadingTime';
 import LessonDiagram from './LessonDiagram';
 import { editorialIdentity } from '../../lib/editorialIdentity';
@@ -18,6 +19,8 @@ const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/i
 
 export default function IntegralTopicArticle({ article, children }) {
   const topic = getArticleTopic(article.slug);
+  const englishVersion = englishArticles.find((item) => item.trSlug === article.slug);
+  const languageHref = englishVersion ? `/en/articles/${englishVersion.slug}` : undefined;
   const lesson = lessonPractice[article.slug];
   const scope = getLessonScope(article.slug);
   if (lesson || scope) {
@@ -68,7 +71,7 @@ export default function IntegralTopicArticle({ article, children }) {
   return (
     <div className="article-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
-      <PublicHeader languageHref={article.languageHref} />
+      <PublicHeader languageHref={languageHref} />
       <main className="article-main"><article className="article-card">
         <header className="article-heading">
           <nav className="article-breadcrumb" aria-label="Sayfa yolu"><Link href="/">Ana Sayfa</Link><span aria-hidden="true">›</span><Link href="/makaleler">Makaleler</Link><span aria-hidden="true">›</span>{topic && <><Link href={`/konular/${topic.slug}`}>{topic.title}</Link><span aria-hidden="true">›</span></>}<span>{article.shortTitle}</span></nav>

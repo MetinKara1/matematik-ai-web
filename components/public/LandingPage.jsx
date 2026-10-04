@@ -62,7 +62,7 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
-      <PublicHeader />
+      <PublicHeader languageHref="/en" />
 
       {/* Hero Section */}
       <section className="hero-section" id="how-it-works">

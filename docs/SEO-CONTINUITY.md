@@ -197,3 +197,11 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - `scripts/measure-lesson-reading.py` yerel üretim önizlemesini okuyarak gelecekteki ölçümleri tekrar üretir. İçerik değişikliklerinden sonra ölçüm kaydı yeniden güncellenmelidir; süreler her istekte hesaplanmaz.
 - Okuma süresi yaklaşımı İçerik Politikası’nda açıklandı. İngilizce ve gündem yazılarının mevcut süreleri bu Türkçe ders ölçümüne dahil değildir.
 - Doğrulama: Node 22 Cloudflare/Next.js üretim derlemesi geçti ve worker üretildi. 31 dersin HTTP çıktısındaki yaklaşık süreler ölçüm kaydıyla eşleşti; canonical adresler, değişen H1/title/Article headline ve kütüphane süre etiketi doğrulandı. Yayın yapılmadı.
+
+## 4 Ekim 2026 — 14. madde: dil geçişleri ve eşleşmeler
+
+- Türkçe integral formülleri ve integral kuralları sayfalarının EN düğmeleri gerçek İngilizce derslerine bağlandı. Ortak ders şablonu karşılığı `englishArticles` kataloğundan bulur.
+- Türkçe ürün sayfası ve makale kütüphanesinin EN bağlantıları kendi karşılıklarına gider. Ana sayfa da eşleşmesini açıkça belirtir.
+- Çevirisi olmayan sayfalardaki bağlantı “EN home” olarak etiketlenir; erişilebilir adı ana sayfa hedefini açıklar. Gerçekte bulunmayan çeviri için hreflang eklenmez.
+- Doğrulama: Node 22 Next.js/Cloudflare üretim derlemesi geçti. 28 çift/56 sayfa HTTP 200; iki yönde menü hedefi, self-canonical, tr/en/x-default hreflang ve sitemap tr/en bağlantıları eşleşti. Araç, konu ve çevirisiz integral sayfalarında yanlış alternate bulunmadığı kontrol edildi. Yayın yapılmadı.
+- Kaynak: https://developers.google.com/search/docs/specialty/international/localized-versions — karşılıklı hreflang ve her dilin kendi kaydının bulunması.

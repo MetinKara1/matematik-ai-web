@@ -40,7 +40,7 @@ export default function AiMathSolverPage() {
   return (
     <div className="solver-landing-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
-      <PublicHeader />
+      <PublicHeader languageHref="/en/ai-math-solver" />
       <main>
         <section className="solver-hero">
           <div className="solver-hero-copy">

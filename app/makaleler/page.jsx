@@ -34,7 +34,7 @@ export default function ArticlesPage() {
   return (
     <div className="articles-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
-      <PublicHeader />
+      <PublicHeader languageHref="/en/articles" />
 
       <main className="articles-main">
         <header className="articles-hero">

@@ -23,6 +23,9 @@ export default function PublicHeader({ locale = "tr", languageHref }) {
     ios: "iOS için indirin", scan: "QR kodu tarayın", android: "Android yakında", qr: "MatAI iOS uygulaması için QR kod",
   };
 
+  const languageLabel = languageHref
+    ? (isEnglish ? "Bu sayfayı Türkçe oku" : "Read this page in English")
+    : (isEnglish ? "Türkçe ana sayfaya git" : "Go to the English home page");
   return (
     <>
       <header className="landing-header public-header">
@@ -39,7 +42,7 @@ export default function PublicHeader({ locale = "tr", languageHref }) {
             <a href={`${homeHref}#download`} onClick={closeMenu}>{labels.download}</a>
             <a href={isEnglish ? "/en/articles" : "/makaleler"} onClick={closeMenu}>{labels.articles}</a>
             {!isEnglish && <a href="/hakkimizda" onClick={closeMenu}>{labels.about}</a>}
-            <a href={languageHref || (isEnglish ? "/" : "/en")} hrefLang={isEnglish ? "tr" : "en"} lang={isEnglish ? "tr" : "en"} onClick={closeMenu}>{isEnglish ? "TR" : "EN"}</a>
+            <a href={languageHref || (isEnglish ? "/" : "/en")} aria-label={languageLabel} title={languageLabel} hrefLang={isEnglish ? "tr" : "en"} lang={isEnglish ? "tr" : "en"} onClick={closeMenu}>{languageHref ? (isEnglish ? "TR" : "EN") : (isEnglish ? "TR ana sayfa" : "EN home")}</a>
           </nav>
 
           <a
