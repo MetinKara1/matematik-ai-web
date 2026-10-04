@@ -181,3 +181,10 @@ Her iki yeni rota da Node 22 production build sırasında statik HTML olarak ba�
 - Kısmi integrasyon yazısındaki doğrulanmış bir kişiye atfedilmeyen öğrencilik/öğretmenlik deneyimi anlatımı kaldırıldı.
 - Kullanıcıdan yayımlanabilir yazar/uzman bilgisi ve destek e-postası istendi. Doğrulanmış kişi/uzmanlık veya iletişim adresi uydurulmadı. İletişim adresi sağlanana kadar politika sayfası yalnız hata bildiriminde gerekli bilgileri açıklar; gönderim kanalı kurulduğu iddia edilmez.
 - Doğrulama: Node 22 Next.js/Cloudflare üretim derlemesi geçti, worker üretildi. 31 dersin yazar @id bilgisi görünür ekip bağlantısıyla eşleşti. İki kurumsal sayfa HTTP 200 ve üç bölüm hedefi doğrulandı. Yayın yapılmadı.
+
+## 4 Ekim 2026 — 12. madde: açıklayıcı ders grafikleri
+
+- `LessonDiagram` ile 7 özgün SVG anlatımı 19 Türkçe derse eklendi: parabol/kök/minimum, birim çember, tek taraflı limit sıçraması, mutlak değer köşesi, parabol teğeti, ilkel fonksiyon ailesi, işaretli integral/geometrik alan.
+- Grafikler gerçek fonksiyon koordinatlarıyla üretilir; birim çember aynı yatay/düşey ölçeği kullanır. Her grafikte görünür formül/açıklama, benzersiz title/desc ve erişilebilir isim vardır. Renge ek olarak metin etiketleri kullanılır. JavaScript ve yeni resim indirmesi gerektirmez.
+- Ortak kapakların açıklaması konuya giriş görseli olarak netleştirildi. Mevcut limit yaklaşım grafiği, türev etkileşimi ve içerik URL’leri korundu.
+- Doğrulama: Node 22 Cloudflare/Next.js üretim derlemesi geçti, worker üretildi. 19 ders HTTP 200; SSR SVG ve benzersiz erişilebilir açıklamalar doğrulandı. Birim çember masaüstünde görsel olarak kontrol edildi; birim çember ve belirli integral 390px görünümde yatay taşma yok. Yayın yapılmadı.

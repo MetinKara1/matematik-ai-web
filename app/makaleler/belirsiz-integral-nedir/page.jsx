@@ -1,3 +1,4 @@
+import LessonDiagram from '../../../components/public/LessonDiagram';
 import { editorialIdentity } from '../../../lib/editorialIdentity';
 import LessonNextSteps from '../../../components/public/LessonNextSteps';
 import Link from 'next/link';
@@ -85,6 +86,7 @@ export default function IndefiniteIntegralArticlePage() {
                 <p>Konuyu öğrenirken yalnızca formülleri ezberlemek yerine “hangi fonksiyonun türevi elimdeki ifadeyi verir?” sorusunu sormak, integral sorularını çok daha anlaşılır hale getirir.</p>
               </div>
 
+              <LessonDiagram slug="belirsiz-integral-nedir" />
               <section id="tanim"><h2>Belirsiz İntegralin Tanımı</h2><p>F&apos;(x) = f(x) eşitliğini sağlayan F fonksiyonuna, f fonksiyonunun bir ilkel fonksiyonu denir. f(x)&apos;in belirsiz integrali bütün bu ilkel fonksiyonları temsil eder.</p><div className="article-math">∫ f(x) dx = F(x) + C</div><p>Burada integral işareti işlemi, f(x) integrali alınan fonksiyonu, dx ise değişkenin x olduğunu gösterir.</p></section>
 
               <section id="c-sabiti"><h2>C Sabiti Neden Yazılır?</h2><p>Sabit sayıların türevi sıfırdır. Bu nedenle birbirinden yalnızca sabit kadar farklı olan fonksiyonların türevleri aynıdır. Örneğin x², x² + 3 ve x² − 8 fonksiyonlarının türevi 2x&apos;tir.</p><div className="article-math article-math-lines"><span>∫ 2x dx = x² + C</span><span>d/dx [x² + C] = 2x</span></div><p><strong>C, bütün olası sabitleri temsil eder.</strong> Belirsiz integral sorularında C yazılmadığında sonuç yalnızca tek bir ilkel fonksiyonu göstermiş olur ve eksik kalır.</p></section>

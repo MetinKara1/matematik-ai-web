@@ -151,3 +151,8 @@
 .lesson-next-steps span, .lesson-next-steps small { font-size: .85rem; color: #465575; }
 .lesson-next-steps p { font-size: .95rem; margin: 0; }
 @media (max-width: 760px) { .lesson-next-steps > div { grid-template-columns: 1fr; } }
+
+.lesson-diagram { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid #ddd6fe; border-radius: 12px; background: #faf9ff; }
+.lesson-diagram svg { display: block; width: 100%; max-width: 600px; height: auto; margin: 1rem auto; background: white; border-radius: 8px; font: 16px system-ui, sans-serif; fill: #334155; }
+.lesson-diagram figcaption { font-size: 1rem; line-height: 1.7; color: #334155; }
+@media (max-width: 480px) { .lesson-diagram { padding: .75rem; } .lesson-diagram svg { font-size: 18px; } }

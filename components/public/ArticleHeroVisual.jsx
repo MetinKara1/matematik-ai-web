@@ -6,7 +6,7 @@ export default function ArticleHeroVisual({ slug, title, priority = false }) {
   return (
     <figure className="article-hero-visual">
       <Image src={visual.src} alt={visual.alt} width={1536} height={1024} sizes="(max-width: 640px) 100vw, (max-width: 1200px) 92vw, 1180px" quality={82} priority={priority} />
-      <figcaption>{title} için hazırlanan kavramsal görselleştirme.</figcaption>
+      <figcaption>{title} · Konuya giriş görseli.</figcaption>
     </figure>
   );
 }

@@ -1,3 +1,4 @@
+import LessonDiagram from './LessonDiagram';
 import { editorialIdentity } from '../../lib/editorialIdentity';
 import LessonNextSteps from './LessonNextSteps';
 import { getArticleTopic } from '../../lib/topicHubs';
@@ -81,6 +82,7 @@ export default function IntegralTopicArticle({ article, children }) {
           <div className="article-body">
             <div className="article-answer"><span>Kısaca</span><p>{article.summary}</p></div>
             <div className="article-intro">{article.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+            <LessonDiagram slug={article.slug} />
             {children}
             {lesson && <LessonPractice lesson={lesson} slug={article.slug} />}
 
