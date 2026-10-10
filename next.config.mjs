@@ -5,6 +5,13 @@ const nextConfig = {
   reactStrictMode: true,
   async redirects() {
     return [
+      // Recover visitors whose browser cached the former wildcard redirect.
+      // Match only the leaked placeholder; real missing pages must stay 404s.
+      ...['/\\:path\\*', '/%3Apath\\*', '/%3Apath%2A'].map((source) => ({
+        source,
+        destination: 'https://matematik-ai.com/',
+        permanent: true,
+      })),
       // OpenNext leaves an empty wildcard literal in the root destination.
       // Handle the homepage explicitly before the wildcard rules.
       {
