@@ -133,6 +133,7 @@ function SolutionDetail({ question, onClose }) {
 
 export default function SolvedQuestions() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [refreshVersion, setRefreshVersion] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [totalCount, setTotalCount] = useState(0);
@@ -175,7 +176,7 @@ export default function SolvedQuestions() {
     return () => {
       active = false;
     };
-  }, [currentPage]);
+  }, [currentPage, refreshVersion]);
 
   const handleDelete = async (event, id) => {
     event.stopPropagation();
@@ -224,6 +225,10 @@ export default function SolvedQuestions() {
             onChange={(event) => setSearchTerm(event.target.value)}
           />
         </div>
+        <button className="open-solution-button" disabled={loading}
+          onClick={() => { setSearchTerm(""); setCurrentPage(1); setRefreshVersion(value => value + 1); }}>
+          {loading ? "Yükleniyor…" : "Yenile"}
+        </button>
       </div>
 
       {loading && (
