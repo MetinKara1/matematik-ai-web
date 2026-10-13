@@ -14,6 +14,17 @@ const formatDate = (value) =>
 const truncateText = (text, length = 100) =>
   !text ? "-" : text.length <= length ? text : `${text.slice(0, length)}…`;
 
+function AiSource({ question }) {
+  const provider = question.AiProvider ?? question.aiProvider;
+  const model = question.AiModel ?? question.aiModel;
+  const fallback = question.AiIsFallback ?? question.aiIsFallback;
+  return <div className="ai-source">
+    <span className={`ai-source-badge ${provider === 'Qwen' ? 'qwen' : provider === 'OpenAI' ? 'openai' : 'unknown'}`}>{provider || "Kaydedilmemiş"}</span>
+    {model && <span className="ai-source-model">{model}</span>}
+    {fallback && <span className="ai-source-fallback">Fallback</span>}
+  </div>;
+}
+
 function SolutionDetail({ question, onClose }) {
   useEffect(() => {
     const closeOnEscape = (event) => event.key === "Escape" && onClose();
@@ -59,6 +70,7 @@ function SolutionDetail({ question, onClose }) {
         </header>
 
         <div className="solution-detail-scroll">
+          <AiSource question={question} />
           {question.ImageUri && (
             <figure className="solution-detail-image">
               <img src={question.ImageUri} alt="Çözülen matematik sorusu" />
@@ -227,6 +239,7 @@ export default function SolvedQuestions() {
                 <tr>
                   <th>Soru</th>
                   <th>Tür</th>
+                  <th>AI sağlayıcısı</th>
                   <th>Kullanıcı</th>
                   <th>Tarih</th>
                   <th aria-label="İşlemler" />
@@ -265,6 +278,7 @@ export default function SolvedQuestions() {
                         {question.Type === "image" ? "Görsel" : "Metin"}
                       </span>
                     </td>
+                    <td><AiSource question={question} /></td>
                     <td>
                       <code>
                         {question.UserId
@@ -297,7 +311,7 @@ export default function SolvedQuestions() {
                 ))}
                 {filteredQuestions.length === 0 && (
                   <tr>
-                    <td colSpan="5" className="empty-table-cell">
+                    <td colSpan="6" className="empty-table-cell">
                       Soru bulunamadı
                     </td>
                   </tr>
@@ -332,6 +346,7 @@ export default function SolvedQuestions() {
                   {truncateText(question.Question || question.Expression, 140)}
                 </h3>
                 <p>{truncateText(question.Solution, 120)}</p>
+                <AiSource question={question} />
                 <div className="solved-mobile-footer">
                   <code>
                     {question.UserId
