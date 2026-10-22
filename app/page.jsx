@@ -1,8 +1,6 @@
 import { serializeStructuredData, applicationIdentity, publisherIdentity } from '../lib/structuredData';
 import LandingPage from '../components/public/LandingPage';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata = {
   alternates: { canonical: '/', languages: { tr: '/', en: '/en', 'x-default': '/' } },
   openGraph: {

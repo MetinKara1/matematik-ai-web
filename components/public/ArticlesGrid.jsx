@@ -10,14 +10,18 @@ export default function ArticlesGrid({ articles, locale = 'tr', basePath = '/mak
   const filters = [isEnglish ? 'All' : 'Tümü', ...new Set(articles.map(({ category }) => category))];
   const allFilter = filters[0];
   const [activeFilter, setActiveFilter] = useState(allFilter);
-  const [visibleCount, setVisibleCount] = useState(6);
   const filtered = activeFilter === allFilter ? articles : articles.filter(({ category }) => category === activeFilter);
-  const visible = filtered.slice(0, visibleCount);
+  const visible = filtered.slice(0, 6);
+  const remaining = filtered.slice(6);
 
   const selectFilter = (filter) => {
     setActiveFilter(filter);
-    setVisibleCount(6);
   };
+
+  const renderCard = (article) => <Link href={article.href || `${basePath}/${article.slug}`} className="article-featured-card article-wide-card" key={article.slug}>
+          <div className={`article-featured-visual article-visual-${article.category.toLocaleLowerCase(isEnglish ? 'en-US' : 'tr-TR')}`} aria-hidden="true"><span>{article.symbol}</span><small>{article.formula}</small></div>
+          <div className="article-featured-copy"><div className="article-list-meta"><span>{article.category}</span><span>{!isEnglish && getLessonScope(article.slug) ? '≈ ' : ''}{article.readingTime} {isEnglish ? 'min read' : 'dakika'}</span><span>{(!isEnglish && getLessonScope(article.slug)?.label) || contentLabel || (isEnglish ? 'Mathematics' : 'Konu anlatımı')}</span></div><Heading>{article.title}</Heading><p>{article.description}</p><strong>{isEnglish ? 'Read article' : 'Yazıyı oku'} <span aria-hidden="true">→</span></strong></div>
+        </Link>;
 
   return (
     <>
@@ -30,13 +34,13 @@ export default function ArticlesGrid({ articles, locale = 'tr', basePath = '/mak
       </div>
 
       <div className="articles-wide-list">
-        {visible.map((article) => <Link href={article.href || `${basePath}/${article.slug}`} className="article-featured-card article-wide-card" key={article.slug}>
-          <div className={`article-featured-visual article-visual-${article.category.toLocaleLowerCase(isEnglish ? 'en-US' : 'tr-TR')}`} aria-hidden="true"><span>{article.symbol}</span><small>{article.formula}</small></div>
-          <div className="article-featured-copy"><div className="article-list-meta"><span>{article.category}</span><span>{!isEnglish && getLessonScope(article.slug) ? '≈ ' : ''}{article.readingTime} {isEnglish ? 'min read' : 'dakika'}</span><span>{(!isEnglish && getLessonScope(article.slug)?.label) || contentLabel || (isEnglish ? 'Mathematics' : 'Konu anlatımı')}</span></div><Heading>{article.title}</Heading><p>{article.description}</p><strong>{isEnglish ? 'Read article' : 'Yazıyı oku'} <span aria-hidden="true">→</span></strong></div>
-        </Link>)}
+        {visible.map(renderCard)}
       </div>
 
-      {visibleCount < filtered.length && <div className="articles-more"><button type="button" onClick={() => setVisibleCount((count) => count + 6)}>{isEnglish ? 'Show more' : 'Daha fazla göster'} <span>{filtered.length - visibleCount}</span></button></div>}
+      {remaining.length > 0 && <details className="articles-more" key={activeFilter}>
+        <summary>{isEnglish ? 'More articles' : 'Diğer makaleler'} <span>{remaining.length}</span></summary>
+        <div className="articles-wide-list">{remaining.map(renderCard)}</div>
+      </details>}
       {filtered.length === 0 && <p className="articles-empty">{isEnglish ? 'No articles are available in this category yet.' : 'Bu kategoride henüz makale bulunmuyor.'}</p>}
     </>
   );

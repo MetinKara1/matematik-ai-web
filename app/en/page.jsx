@@ -35,6 +35,16 @@ export default function EnglishHomePage() {
         <div className="store-buttons"><a href={appStoreLink} target="_blank" rel="noopener noreferrer" className="store-button app-store"><span className="store-button-text"><strong>Download on the App Store</strong><small>For iPhone and iPad</small></span></a></div>
       </div><div className="hero-image"><div className="phone-mockup"><div className="phone-screen"><div className="app-preview"><div className="preview-header">MatAI</div><div className="preview-content"><div className="preview-math">∫ x² dx = ?</div><div className="preview-solution">= x³/3 + C</div></div></div></div></div></div></section>
       <section className="features-section" id="features"><div className="container"><h2 className="section-title">Why MatAI?</h2><div className="features-grid">{features.map(([icon,title,description]) => <article className="feature-card" key={title}><div className="feature-icon">{icon}</div><h3 className="feature-title">{title}</h3><p className="feature-description">{description}</p></article>)}</div></div></section>
+      <section className="features-section" aria-labelledby="study-guides-title"><div className="container">
+        <h2 className="section-title" id="study-guides-title">Start with a worked math guide</h2>
+        <p className="section-description">Review a rule, follow an example, then use it in your own problem.</p>
+        <div className="features-grid">
+          <a className="feature-card" href="/en/articles/derivative-rules"><h3>Derivative rules</h3><p>Learn the power, product, quotient, and chain rules.</p></a>
+          <a className="feature-card" href="/en/articles/differentiability-and-continuity"><h3>Differentiability and continuity</h3><p>Understand why a continuous function may still have no derivative.</p></a>
+          <a className="feature-card" href="/en/articles/integration-rules"><h3>Integration rules</h3><p>Work from basic antiderivatives to choosing an integration method.</p></a>
+        </div>
+        <p className="landing-content-links"><a href="/en/articles">Browse all math articles →</a></p>
+      </div></section>
       <section className="cta-section" id="download"><div className="container"><h2 className="cta-title">Start solving and learning</h2><p className="cta-description">Use MatAI on iPhone or iPad. The Android version is coming soon.</p><p className="landing-content-links"><a href="/en/ai-math-solver">Explore the AI Math Solver</a><span aria-hidden="true">·</span><a href="/en/articles">Read math guides</a></p></div></section>
     </main><PublicFooter locale="en" />
   </div>;

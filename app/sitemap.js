@@ -9,9 +9,10 @@ import { getLessonUpdatedAt } from '../lib/lessonPractice';
 
 export default function sitemap() {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://matematik-ai.com').replace(/\/$/, '');
-  const lastModified = new Date('2026-08-12T00:00:00+03:00');
+  const lastModified = new Date('2026-10-22T00:00:00+03:00');
   const solverLastModified = new Date('2026-08-20T00:00:00+03:00');
   const englishLastModified = new Date('2026-08-27T00:00:00+03:00');
+  const discoveryUpdatedAt = new Date('2026-10-22T00:00:00+03:00');
   const languageAlternates = (trPath, enPath) => ({ languages: { tr: `${baseUrl}${trPath}`, en: `${baseUrl}${enPath}` } });
   return [
     ...['/kaynaklar', ...studyResources.map(({ slug }) => `/kaynaklar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.7 })),
@@ -19,14 +20,14 @@ export default function sitemap() {
     ...['/araclar', ...mathTools.map(({ slug }) => `/araclar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-03T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.8 })),
     { url: baseUrl, lastModified, changeFrequency: 'weekly', priority: 1, alternates: languageAlternates('', '/en') },
     { url: `${baseUrl}/yapay-zeka-matematik-cozucu`, lastModified: solverLastModified, changeFrequency: 'monthly', priority: 0.9, alternates: languageAlternates('/yapay-zeka-matematik-cozucu', '/en/ai-math-solver') },
-    { url: `${baseUrl}/makaleler`, lastModified: new Date('2026-10-03T00:00:00+03:00'), changeFrequency: 'weekly', priority: 0.9, alternates: languageAlternates('/makaleler', '/en/articles') },
+    { url: `${baseUrl}/makaleler`, lastModified: discoveryUpdatedAt, changeFrequency: 'weekly', priority: 0.9, alternates: languageAlternates('/makaleler', '/en/articles') },
     { url: `${baseUrl}/makaleler/integral-formulleri`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.8, alternates: languageAlternates('/makaleler/integral-formulleri', '/en/articles/integral-formulas') },
     { url: `${baseUrl}/makaleler/integral-alma-kurallari`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.8, alternates: languageAlternates('/makaleler/integral-alma-kurallari', '/en/articles/integration-rules') },
     { url: `${baseUrl}/hakkimizda`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/icerik-politikasi`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${baseUrl}/en`, lastModified: englishLastModified, changeFrequency: 'weekly', priority: 0.9, alternates: { languages: { tr: baseUrl, en: `${baseUrl}/en` } } },
+    { url: `${baseUrl}/en`, lastModified: discoveryUpdatedAt, changeFrequency: 'weekly', priority: 0.9, alternates: { languages: { tr: baseUrl, en: `${baseUrl}/en` } } },
     { url: `${baseUrl}/en/ai-math-solver`, lastModified: englishLastModified, changeFrequency: 'monthly', priority: 0.9, alternates: { languages: { tr: `${baseUrl}/yapay-zeka-matematik-cozucu`, en: `${baseUrl}/en/ai-math-solver` } } },
-    { url: `${baseUrl}/en/articles`, lastModified: englishLastModified, changeFrequency: 'weekly', priority: 0.8, alternates: { languages: { tr: `${baseUrl}/makaleler`, en: `${baseUrl}/en/articles` } } },
+    { url: `${baseUrl}/en/articles`, lastModified: discoveryUpdatedAt, changeFrequency: 'weekly', priority: 0.8, alternates: { languages: { tr: `${baseUrl}/makaleler`, en: `${baseUrl}/en/articles` } } },
     ...topicalArticles.flatMap((article) => {
       const tr = `/${article.section}/${article.slug}`;
       const en = `/en/${article.enSection}/${article.enSlug}`;
