@@ -12,7 +12,7 @@ export default function sitemap() {
   const lastModified = new Date('2026-10-22T00:00:00+03:00');
   const solverLastModified = new Date('2026-08-20T00:00:00+03:00');
   const englishLastModified = new Date('2026-08-27T00:00:00+03:00');
-  const discoveryUpdatedAt = new Date('2026-10-22T00:00:00+03:00');
+  const discoveryUpdatedAt = new Date('2026-10-23T00:00:00+03:00');
   const languageAlternates = (trPath, enPath) => ({ languages: { tr: `${baseUrl}${trPath}`, en: `${baseUrl}${enPath}` } });
   return [
     ...['/kaynaklar', ...studyResources.map(({ slug }) => `/kaynaklar/${slug}`)].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.7 })),
