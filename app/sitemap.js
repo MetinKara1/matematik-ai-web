@@ -23,7 +23,7 @@ export default function sitemap() {
     { url: `${baseUrl}/makaleler`, lastModified: discoveryUpdatedAt, changeFrequency: 'weekly', priority: 0.9, alternates: languageAlternates('/makaleler', '/en/articles') },
     { url: `${baseUrl}/makaleler/integral-formulleri`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.8, alternates: languageAlternates('/makaleler/integral-formulleri', '/en/articles/integral-formulas') },
     { url: `${baseUrl}/makaleler/integral-alma-kurallari`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.8, alternates: languageAlternates('/makaleler/integral-alma-kurallari', '/en/articles/integration-rules') },
-    { url: `${baseUrl}/hakkimizda`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${baseUrl}/hakkimizda`, lastModified: new Date('2026-10-23T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.6 },
     { url: `${baseUrl}/icerik-politikasi`, lastModified: new Date('2026-10-04T00:00:00+03:00'), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${baseUrl}/en`, lastModified: discoveryUpdatedAt, changeFrequency: 'weekly', priority: 0.9, alternates: { languages: { tr: baseUrl, en: `${baseUrl}/en` } } },
     { url: `${baseUrl}/en/ai-math-solver`, lastModified: englishLastModified, changeFrequency: 'monthly', priority: 0.9, alternates: { languages: { tr: `${baseUrl}/yapay-zeka-matematik-cozucu`, en: `${baseUrl}/en/ai-math-solver` } } },
