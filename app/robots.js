@@ -1,10 +1,1 @@
-export default function robots() {
-  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://matematik-ai.com').replace(/\/$/, '');
-  return {
-    rules: [
-      { userAgent: '*', allow: '/', disallow: ['/malcolmX', '/malcolmX/', '/api/'] },
-    ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
-  };
-}
+export default function robots() {const enabled=true;const origin="https://matematik-ai.com";return {rules:["*", "GPTBot", "CCBot", "Google-Extended", "ClaudeBot", "PerplexityBot", "OAI-SearchBot"].map(userAgent=>({userAgent,...(enabled?{allow:'/',disallow:["/ai-markdown/", "/api/", "/malcolmX", "/solution/"]}:{disallow:'/'} )})),...(enabled?{sitemap:origin+'/sitemap.xml'}:{})};}

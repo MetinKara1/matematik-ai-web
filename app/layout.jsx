@@ -22,6 +22,7 @@ export const metadata = {
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
   },
+  openGraph: {siteName:'MatAI',type:'website',images:[{url:'/assets/og/matai-ai-matematik-cozucu.png',width:1200,height:630}]},
   twitter: {
     card: 'summary_large_image',
     title: 'MatAI - Yapay Zekâ Matematik Çözücü',

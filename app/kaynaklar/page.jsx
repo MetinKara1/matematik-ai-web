@@ -5,7 +5,7 @@ import { studyResources } from '../../lib/studyResources';
 import { serializeStructuredData } from '../../lib/structuredData';
 const title = 'Matematik Çalışma Kağıtları: Limit, Türev ve İntegral';
 const description = 'Ücretsiz limit, türev ve integral çalışma kağıtları. Kısa özet, 6 alıştırma ve açıklamalı cevap anahtarını okuyun veya PDF indirin.';
-export const metadata = { title, description, alternates: { canonical: '/kaynaklar' }, openGraph: { title, description, url: '/kaynaklar', type: 'website', locale: 'tr_TR' } };
+export const metadata = { title, description, alternates: { canonical: '/kaynaklar' }, openGraph: { images: ["/assets/og/matai-ai-matematik-cozucu.png"], title, description, url: '/kaynaklar', type: 'website', locale: 'tr_TR' } };
 export default function ResourcesPage() {
   const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, url: 'https://matematik-ai.com/kaynaklar', inLanguage: 'tr-TR', mainEntity: { '@type': 'ItemList', itemListElement: studyResources.map((r, i) => ({ '@type': 'ListItem', position: i + 1, name: r.title, url: `https://matematik-ai.com/kaynaklar/${r.slug}` })) } };
   return <div className="topic-page"><PublicHeader /><main className="topic-main">

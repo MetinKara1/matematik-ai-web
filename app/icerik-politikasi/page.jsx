@@ -5,7 +5,7 @@ export const metadata = {
   title: 'İçerik Politikası',
   description: 'MatAI matematik içeriklerinin hazırlanma, kontrol, güncelleme ve hata düzeltme ilkelerini inceleyin.',
   alternates: { canonical: '/icerik-politikasi' },
-  openGraph: { title: 'MatAI İçerik Politikası', description: 'MatAI’ın editoryal ilkeleri ve düzeltme yaklaşımı.', type: 'website', url: '/icerik-politikasi', locale: 'tr_TR', siteName: 'MatAI' },
+  openGraph: { images: ["/assets/og/matai-ai-matematik-cozucu.png"], title: 'MatAI İçerik Politikası', description: 'MatAI’ın editoryal ilkeleri ve düzeltme yaklaşımı.', type: 'website', url: '/icerik-politikasi', locale: 'tr_TR', siteName: 'MatAI' },
 };
 
 export default function EditorialPolicyPage() {

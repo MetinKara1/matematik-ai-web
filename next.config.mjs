@@ -2,6 +2,8 @@ import { topicalArticles } from './lib/topicalArticles.js';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async headers(){return [{source:'/:file(llms\\.txt|llms-full\\.txt)',headers:[{key:'Content-Type',value:'text/plain; charset=utf-8'},{key:'Cache-Control',value:'public, max-age=3600'}]},{source:'/ai-markdown/:path*',headers:[{key:'Content-Type',value:'text/markdown; charset=utf-8'},{key:'Cache-Control',value:'public, max-age=0, s-maxage=3600'}]},{source:'/malcolmX/:path*',headers:[{key:'Cache-Control',value:'private, no-store'},{key:'X-Robots-Tag',value:'noindex, nofollow'}]},{source:'/api/:path*',headers:[{key:'Cache-Control',value:'private, no-store'}]},{source:'/solution/:path*',headers:[{key:'Cache-Control',value:'private, no-store'}]}];},
+
   reactStrictMode: true,
   async redirects() {
     return [

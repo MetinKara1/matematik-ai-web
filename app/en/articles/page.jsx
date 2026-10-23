@@ -8,7 +8,7 @@ export const metadata = {
   title: 'Math Articles, Formulas, and Worked Examples',
   description: 'Learn calculus and other math topics through clear explanations, essential formulas, and worked examples.',
   alternates: { canonical: '/en/articles', languages: { tr: '/makaleler', en: '/en/articles', 'x-default': '/makaleler' } },
-  openGraph: { title: 'Math Articles and Worked Examples | MatAI', description: 'Clear math explanations, formulas, and worked examples.', type: 'website', url: '/en/articles', locale: 'en_US', siteName: 'MatAI' },
+  openGraph: { images: ["/assets/og/matai-ai-matematik-cozucu.png"], title: 'Math Articles and Worked Examples | MatAI', description: 'Clear math explanations, formulas, and worked examples.', type: 'website', url: '/en/articles', locale: 'en_US', siteName: 'MatAI' },
 };
 
 export default function EnglishArticlesPage() {

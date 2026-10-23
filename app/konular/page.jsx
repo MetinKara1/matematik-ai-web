@@ -7,7 +7,7 @@ import { topicHubs } from '../../lib/topicHubs';
 
 const title = 'Matematik Konuları – Fonksiyonlardan İntegrale Çalışma Rehberi';
 const description = 'Fonksiyonlar, trigonometri, limit, türev ve integral konularını doğru sırayla çalışın. Konu merkezlerinde dersler, kontrol soruları ve pratik araçlarını bulun.';
-export const metadata = { title, description, alternates: { canonical: '/konular' }, openGraph: { title, description, url: '/konular', locale: 'tr_TR', type: 'website' }, twitter: { card: 'summary', title, description } };
+export const metadata = { title, description, alternates: { canonical: '/konular' }, openGraph: { images: ["/assets/og/matai-ai-matematik-cozucu.png"], title, description, url: '/konular', locale: 'tr_TR', type: 'website' }, twitter: { card: 'summary', title, description } };
 export default function TopicsPage() {
   const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: 'https://matematik-ai.com/konular', inLanguage: 'tr-TR', mainEntity: { '@type': 'ItemList', itemListOrder: 'https://schema.org/ItemListOrderAscending', itemListElement: topicHubs.map((topic, i) => ({ '@type': 'ListItem', position: i + 1, name: topic.title, url: `https://matematik-ai.com/konular/${topic.slug}` })) } };
   return <div className="topic-page"><PublicHeader /><main className="topic-main">

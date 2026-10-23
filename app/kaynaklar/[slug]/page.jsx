@@ -9,7 +9,7 @@ import { publisherIdentity, serializeStructuredData } from '../../../lib/structu
 export function generateStaticParams() { return studyResources.map(({ slug }) => ({ slug })); }
 export async function generateMetadata({ params }) {
   const r = getStudyResource((await params).slug); if (!r) return {};
-  return { title: `${r.title}: 6 Soru ve Cevaplı PDF`, description: r.description, alternates: { canonical: `/kaynaklar/${r.slug}` }, openGraph: { title: r.title, description: r.description, url: `/kaynaklar/${r.slug}`, type: 'website', locale: 'tr_TR' } };
+  return { title: `${r.title}: 6 Soru ve Cevaplı PDF`, description: r.description, alternates: { canonical: `/kaynaklar/${r.slug}` }, openGraph: { images: ["/assets/og/matai-ai-matematik-cozucu.png"], title: r.title, description: r.description, url: `/kaynaklar/${r.slug}`, type: 'website', locale: 'tr_TR' } };
 }
 export default async function ResourcePage({ params }) {
   const r = getStudyResource((await params).slug); if (!r) notFound();

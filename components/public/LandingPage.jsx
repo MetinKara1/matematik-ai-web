@@ -63,7 +63,7 @@ function LandingPage() {
 
   return (
     <div className="landing-page">
-      <PublicHeader languageHref="/en" />
+      <PublicHeader languageHref="/en" /><main>
 
       {/* Hero Section */}
       <section className="hero-section" id="how-it-works">
@@ -254,7 +254,7 @@ function LandingPage() {
       </section>
 
       {/* Footer */}
-      <PublicFooter />
+      </main><PublicFooter />
     </div>
   );
 }

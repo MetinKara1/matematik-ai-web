@@ -1,0 +1,6 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {prefersMarkdown} from '../lib/accept-markdown.js';
+import {markdown} from './build-ai-content.mjs';
+test('Accept honours quality, explicit refusal and HTML defaults',()=>{for(const [accept,expected] of [['',false],['*/*',false],['text/html',false],['text/markdown',true],['text/markdown;q=0',false],['text/markdown;q=0, */*',false],['text/markdown;q=0.5, text/html',false],['text/markdown, text/html;q=0.5',true],['TEXT/MARKDOWN',true],['text/markdown;q=NaN',false]])assert.equal(prefersMarkdown(accept),expected,accept);});
+test('Only public main content survives, including links, headings and TeX',()=>{const html='<header>Header</header><main><nav>Navigation</nav><h1>A &amp; B</h1><p>Text <a href="/guide?a=1&amp;b=2">guide</a>.</p><math><annotation encoding="application/x-tex">x^2</annotation></math><span class="katex-html">duplicate math</span><script>privatePayload</script><button>Click</button><ul><li>Check one</li></ul></main><footer>Footer</footer>';const out=markdown(html,'https://example.com');assert.match(out,/# A & B/);assert.match(out,/\[guide\]\(https:\/\/example.com\/guide\?a=1&b=2\)/);assert.ok(out.includes('$x^2$'));assert.match(out,/- Check one/);assert.doesNotMatch(out,/Navigation|privatePayload|duplicate math|Click|Footer|Header/);});

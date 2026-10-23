@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
   const tool = getMathTool((await params).slug);
   if (!tool) return {};
   const url = `/araclar/${tool.slug}`;
-  return { title: tool.seoTitle, description: tool.description, alternates: { canonical: url }, openGraph: { title: tool.seoTitle, description: tool.description, url, locale: 'tr_TR', type: 'website' }, twitter: { card: 'summary', title: tool.seoTitle, description: tool.description } };
+  return { title: tool.seoTitle, description: tool.description, alternates: { canonical: url }, openGraph: { images: ["/assets/og/matai-ai-matematik-cozucu.png"], title: tool.seoTitle, description: tool.description, url, locale: 'tr_TR', type: 'website' }, twitter: { card: 'summary', title: tool.seoTitle, description: tool.description } };
 }
 export default async function ToolPage({ params }) {
   const tool = getMathTool((await params).slug);

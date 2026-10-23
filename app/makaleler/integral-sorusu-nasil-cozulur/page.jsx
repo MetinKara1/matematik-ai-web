@@ -2,7 +2,7 @@ import { serializeStructuredData, publisherIdentity } from '../../../lib/structu
 import { editorialIdentity } from '../../../lib/editorialIdentity';
 import IntegralArticle from '../../../components/public/IntegralArticle';
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export const metadata = {
   title: 'İntegral Sorusu Nasıl Çözülür? Kısmi İntegrasyon Örneği',

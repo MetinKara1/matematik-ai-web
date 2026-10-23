@@ -12,3 +12,8 @@ cloudflare-env.d.ts
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Generated from the current production HTML after next build
+/public/ai-markdown/
+/public/llms.txt
+/public/llms-full.txt

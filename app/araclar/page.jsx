@@ -7,7 +7,7 @@ import { mathTools } from '../../lib/mathTools';
 
 const title = 'Ücretsiz Matematik Araçları – Denklem, Türev ve İntegral';
 const description = 'Denklem çözün, polinom türevi ve integrali hesaplayın. Ücretsiz ve üyeliksiz web araçlarında sonucu işlem adımlarıyla öğrenin.';
-export const metadata = { title, description, alternates: { canonical: '/araclar' }, openGraph: { title, description, url: '/araclar', locale: 'tr_TR', type: 'website' }, twitter: { card: 'summary', title, description } };
+export const metadata = { title, description, alternates: { canonical: '/araclar' }, openGraph: { images: ["/assets/og/matai-ai-matematik-cozucu.png"], title, description, url: '/araclar', locale: 'tr_TR', type: 'website' }, twitter: { card: 'summary', title, description } };
 export default function ToolsPage() {
   const schema = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, description, url: 'https://matematik-ai.com/araclar', inLanguage: 'tr-TR', mainEntity: { '@type': 'ItemList', itemListElement: mathTools.map((tool, i) => ({ '@type': 'ListItem', position: i + 1, name: tool.title, url: `https://matematik-ai.com/araclar/${tool.slug}` })) } };
   return <div className="math-tools-page"><PublicHeader /><main className="tools-main">

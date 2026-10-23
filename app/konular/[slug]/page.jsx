@@ -11,7 +11,7 @@ export function generateStaticParams() { return topicHubs.map(({ slug }) => ({ s
 export async function generateMetadata({ params }) {
   const topic = getTopicHub((await params).slug); if (!topic) return {};
   const title = `${topic.title} – Konu Anlatımları ve Çalışma Sırası`;
-  return { title, description: topic.description, alternates: { canonical: `/konular/${topic.slug}` }, openGraph: { title, description: topic.description, url: `/konular/${topic.slug}`, locale: 'tr_TR', type: 'website' }, twitter: { card: 'summary', title, description: topic.description } };
+  return { title, description: topic.description, alternates: { canonical: `/konular/${topic.slug}` }, openGraph: { images: ["/assets/og/matai-ai-matematik-cozucu.png"], title, description: topic.description, url: `/konular/${topic.slug}`, locale: 'tr_TR', type: 'website' }, twitter: { card: 'summary', title, description: topic.description } };
 }
 export default async function TopicPage({ params }) {
   const topic = getTopicHub((await params).slug); if (!topic) notFound();
