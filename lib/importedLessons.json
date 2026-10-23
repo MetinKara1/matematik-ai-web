@@ -1,0 +1,805 @@
+[
+  {
+    "slug": "bileske-fonksiyon-ve-ters-fonksiyon",
+    "shortTitle": "Bileşke ve Ters Fonksiyon",
+    "title": "Bileşke Fonksiyon ve Ters Fonksiyon",
+    "category": "Fonksiyonlar",
+    "symbol": "f ∘ g",
+    "formula": "f⁻¹(x)",
+    "description": "Bileşke fonksiyonda işlem sırasını, tanım kümesini ve ters fonksiyon bulmayı adım adım çözümlü örneklerle öğrenin.",
+    "summary": "İçteki fonksiyon önce çalışır. Ters fonksiyon ise uygun kümelerde giriş ile çıkışı yer değiştirir; bire birlik ve örtenlik koşulları kontrol edilir.",
+    "intro": [
+      "Fonksiyonlar konusunu bitirdiğimizde elimizde şu vardı: bir fonksiyon, bir sayıyı alıp başka bir sayıya götüren bir kuraldır. Ben bunu derste hep bir makineye benzetirim. Makinenin bir giriş deliği var, bir çıkış deliği var; içine 3 atıyorsun, kurala göre 7 çıkıyor. Bu yazıda iki yeni soru soracağız. Birincisi: iki makineyi arka arkaya bağlarsak ne olur? İkincisi: bir makineyi tersine çalıştırabilir miyiz, yani çıkan sayıdan giren sayıyı bulabilir miyiz? Birinci sorunun cevabı bileşke fonksiyon, ikincisininki ters fonksiyon."
+    ],
+    "sections": [
+      [
+        "bileske-fonksiyon-iki-makineyi-arka-arkaya-baglamak",
+        "Bileşke fonksiyon: iki makineyi arka arkaya bağlamak",
+        [
+          "Elimizde iki fonksiyon olsun:",
+          "g(x) = x²  ve  f(x) = 2x + 1",
+          "Şimdi bir sayı alalım, mesela 3. Önce g makinesine atalım: g(3) = 9. Çıkan 9'u alıp bu kez f makinesine atalım: f(9) = 19. Yani 3 sayısı iki makineden geçince 19 oldu. İşte bu \"önce g, sonra f\" işlemine f ile g'nin bileşkesi diyoruz ve şöyle yazıyoruz:",
+          "(f ∘ g)(x) = f(g(x))",
+          "Bu gösterimde en çok karıştırılan şey işlem sırası. f(g(x)) yazısını soldan okuyunca sanki önce f yapılıyormuş gibi geliyor ama tam tersi. İçteki fonksiyon önce çalışır. Parantezin en içinde ne varsa o ilk adımdır. Yani f(g(x)) demek \"önce g'yi uygula, çıkan sonucu f'ye ver\" demek. Bunu aklında tutmanın en kolay yolu şu: sayı içeriden dışarıya doğru yolculuk eder.",
+          "Şimdi aynı bileşkeyi sayı vermeden, genel olarak yazalım. f(g(x)) demek, f'nin kuralındaki x'in yerine g(x)'i yazmak demek:",
+          "f(g(x)) = f(x²) = 2·x² + 1 = 2x² + 1",
+          "Kontrol edelim: x = 3 için 2·9 + 1 = 19. Az önce bulduğumuz sonuç, tutuyor.",
+          "Peki sırayı değiştirirsek? Yani (g ∘ f)(x) = g(f(x)) ne olur? Bu kez önce f çalışıyor, sonra g:",
+          "g(f(x)) = g(2x + 1) = (2x + 1)²",
+          "x = 3 için: (7)² = 49. Bakın, 19 ile 49 aynı şey değil. Bu çok önemli bir ders: bileşkede sıra değişince sonuç genellikle değişir. f ∘ g ile g ∘ f farklı fonksiyonlardır. Sınavlarda yapılan hataların büyük kısmı tam da buradan geliyor; hangisinin içte hangisinin dışta olduğuna bakmadan yazmaktan.",
+          "Bir örnek daha yapalım ki eliniz alışsın. f(x) = x − 4 ve g(x) = 3x olsun.",
+          "(f ∘ g)(x) = f(3x) = 3x − 4\n(g ∘ f)(x) = g(x − 4) = 3(x − 4) = 3x − 12",
+          "Yine farklı çıktılar. Şunu da not edelim: bileşke alırken fonksiyonu bir bütün olarak yerine yazıyoruz. g(x − 4) hesaplarken g'nin kuralı \"aldığını 3 ile çarp\" olduğu için aldığı şeyin tamamını, yani (x − 4)'ün tamamını 3 ile çarpıyoruz. Paranteze dikkat."
+        ],
+        [],
+        2
+      ],
+      [
+        "bileske-her-zaman-alinabilir-mi-tanim-kumesi-sarti",
+        "Bileşke her zaman alınabilir mi? Tanım kümesi şartı",
+        [
+          "Makine benzetmesine dönelim. İkinci makineye ancak birinci makineden çıkan şeyi verebiliyoruz. Eğer birinci makineden çıkan sayıyı ikinci makine kabul etmiyorsa bileşke orada tanımsız olur.",
+          "Örnek: f(x) = √x ve g(x) = x − 3 olsun. f(g(x)) = √(x − 3). Karekök makinesi negatif sayı kabul etmez. O yüzden g'den çıkan şeyin, yani x − 3'ün, sıfır veya pozitif olması lazım: x − 3 ≥ 0, yani x ≥ 3. Demek ki f ∘ g fonksiyonu sadece 3 ve daha büyük sayılar için tanımlı.",
+          "Kural olarak söylersek: f ∘ g'nin tanımlı olması için g'nin ürettiği değerlerin f'nin kabul ettiği değerler arasında olması gerekir. Yani g'nin değer kümesi, f'nin tanım kümesinin içinde kalmalı. Bunu ezberlemeyin, makineyi düşünün: ikinci makine birincinin çıktısını yiyebiliyor mu?"
+        ],
+        [],
+        3
+      ],
+      [
+        "bileskeyle-ilgili-iki-kucuk-ozellik",
+        "Bileşkeyle ilgili iki küçük özellik",
+        [
+          "Birincisi birim fonksiyon. I(x) = x diye bir fonksiyon düşünün; aldığını aynen geri veriyor. Bu makineyi herhangi bir makineye bağlarsanız hiçbir şey değişmez: f ∘ I = I ∘ f = f. Birazdan ters fonksiyonda bu makine karşımıza çıkacak.",
+          "İkincisi, üç fonksiyon bağlarken parantez önemli değil: (f ∘ g) ∘ h = f ∘ (g ∘ h). Üç makineyi arka arkaya koyuyorsunuz, hangi ikisini önce \"paketlediğiniz\" sonucu değiştirmiyor. Ama sıra yine değişemez."
+        ],
+        [],
+        3
+      ],
+      [
+        "bileskesi-verilen-fonksiyonu-bulmak",
+        "Bileşkesi verilen fonksiyonu bulmak",
+        [
+          "Sorular bazen tersten gelir: bileşke verilir, parçalardan biri istenir.",
+          "Örnek: f(x) = x + 2 ve (f ∘ g)(x) = 3x − 1 ise g(x) nedir?",
+          "f(g(x)) demek g(x)'in üzerine 2 eklemek demek: g(x) + 2. Bu, 3x − 1'e eşit olacak:",
+          "g(x) + 2 = 3x − 1  →  g(x) = 3x − 3",
+          "Bir de dış fonksiyonun istendiği tür var. Örnek: f(2x + 1) = 6x + 5 ise f(x) nedir?",
+          "Burada numara şu: parantezin içindekine yeni bir isim verin. 2x + 1 = t diyelim. O zaman x = (t − 1)/2 olur. Bunu sağ tarafa yazalım:",
+          "f(t) = 6·(t − 1)/2 + 5 = 3(t − 1) + 5 = 3t + 2",
+          "Harfin adı önemli olmadığı için f(x) = 3x + 2. Kontrol: f(2x + 1) = 3(2x + 1) + 2 = 6x + 5. Tutuyor."
+        ],
+        [],
+        3
+      ],
+      [
+        "ters-fonksiyon-makineyi-geri-cevirmek",
+        "Ters fonksiyon: makineyi geri çevirmek",
+        [
+          "f(x) = 3x − 5 fonksiyonunu düşünün. İçine 4 attım, 7 çıktı. Şimdi soru şu: elimde sadece çıkan 7 var, giren sayıyı bulabilir miyim? Tabii. f'nin yaptığı şey \"3 ile çarp, 5 çıkar\". Bunu geri almak için adımları tersten ve ters işlemle yaparım: önce 5 ekle (12), sonra 3'e böl (4). İşte bu geri alma işlemi f'nin ters fonksiyonu ve f⁻¹ ile gösteriliyor.",
+          "Burada ilk uyarıyı yapayım: f⁻¹ üzerindeki −1 bir üs değildir. f⁻¹(x), 1/f(x) demek değildir. Bu, \"f'nin tersi\" anlamına gelen bir semboldür, o kadar."
+        ],
+        [],
+        2
+      ],
+      [
+        "her-fonksiyonun-tersi-var-mi",
+        "Her fonksiyonun tersi var mı?",
+        [
+          "Hayır, ve nedenini anlamak formülü ezberlemekten daha değerli. f(x) = x² fonksiyonunu düşünün. İçine 2 attım, 4 çıktı. İçine −2 attım, yine 4 çıktı. Şimdi birisi bana \"çıkan sayı 4, giren neydi?\" dese cevap veremem; 2 de olabilir −2 de. Geri yol belirsiz. Böyle bir fonksiyonun tersi olmaz.",
+          "Demek ki tersin var olması için fonksiyonun iki farklı girişi asla aynı çıkışa götürmemesi gerekiyor. Buna bire bir olmak diyoruz. Grafikte bunu görmenin yolu yatay doğru testi: grafiği herhangi bir yatay doğru iki yerden kesiyorsa, iki farklı x aynı y'ye gitmiş demektir, fonksiyon bire bir değildir.",
+          "Bir de belirtilen hedef kümeye örten olması gerekiyor: f: A → B için f⁻¹: B → A ancak B’deki her elemana ulaşılmışsa tanımlanabilir. Bire bir bir fonksiyonun hedef kümesi görüntü kümesine daraltılırsa, bu görüntü kümesi üzerinde tersi vardır. Pratikte çoğu soru fonksiyonu zaten \"f: A → B, bire bir ve örten\" diye verir ve siz tersini bulursunuz. Ama kendi başınıza bir fonksiyonun tersi var mı diye düşünürken sormanız gereken tek soru şudur: çıkıştan girişi tek bir şekilde bulabiliyor muyum?",
+          "x² örneğine dönersek: eğer sadece x ≥ 0 için düşünürsek artık her çıkışın tek bir girişi var ve tersi √x olur. Yani bazen bir fonksiyonun tanım kümesini daraltarak tersini alınabilir hale getiririz."
+        ],
+        [],
+        3
+      ],
+      [
+        "ters-fonksiyon-nasil-bulunur",
+        "Ters fonksiyon nasıl bulunur?",
+        [
+          "Yöntem her zaman aynı üç adım:",
+          "1. y = f(x) yazın.\n2. Bu denklemde x'i yalnız bırakın (x'i y cinsinden çözün).\n3. Harflerin adını değiştirin: x yerine y, y yerine x yazın. Çıkan şey f⁻¹(x)'tir.",
+          "Üçüncü adımın mantığı şu: ters fonksiyonda eskiden çıkış olan şey artık giriş. Biz girişe her zaman x demeye alıştığımız için harfleri takas ediyoruz.",
+          "Örnek 1: f(x) = 3x − 5",
+          "y = 3x − 5\ny + 5 = 3x\nx = (y + 5)/3",
+          "Harfleri takas edince: f⁻¹(x) = (x + 5)/3. Baştaki akıl yürütmemizle aynı: 5 ekle, 3'e böl.",
+          "Kontrol etmenin en güzel yolu bileşke: f⁻¹(f(x)) = ((3x − 5) + 5)/3 = 3x/3 = x. Makineyi ileri sonra geri çalıştırınca başladığın sayıya dönüyorsun. Bu her zaman böyledir: f ∘ f⁻¹ = f⁻¹ ∘ f = I. Biraz önce bahsettiğim birim fonksiyon burada karşımıza çıktı.",
+          "Örnek 2: f(x) = (2x + 1)/(x − 3), x ≠ 3",
+          "y = (2x + 1)/(x − 3)\ny(x − 3) = 2x + 1\nyx − 3y = 2x + 1\nyx − 2x = 3y + 1\nx(y − 2) = 3y + 1\nx = (3y + 1)/(y − 2)",
+          "Dolayısıyla f⁻¹(x) = (3x + 1)/(x − 2), x ≠ 2.",
+          "Bu tür kesirli fonksiyonlarda pratik bir kural vardır: f(x) = (ax + b)/(cx + d), ad − bc ≠ 0 ise ve uygun tanım–görüntü kümeleri seçilmişse f⁻¹(x) = (−dx + b)/(cx − a). Paydaların sıfır olduğu değerler dışlanır. Yani köşedeki a ile d yer değiştirip işaret değiştirir, b ile c olduğu gibi kalır. Yukarıdaki örnekte a = 2, b = 1, c = 1, d = −3; formülden (3x + 1)/(x − 2) çıkar. Kuralı kullanabilirsiniz ama bir kez elle çözmüş olmanız lazım, yoksa hangi harfin nereye gittiğini karıştırırsınız."
+        ],
+        [],
+        3
+      ],
+      [
+        "tanim-kumesi-ve-deger-kumesi-yer-degistirir",
+        "Tanım kümesi ve değer kümesi yer değiştirir",
+        [
+          "Ters fonksiyonda giriş ile çıkış yer değiştirdiği için tanım kümesi ile değer kümesi de yer değiştirir. f: A → B ise f⁻¹: B → A. Yukarıdaki kesirli örnekte f'nin tanım kümesinde 3 yoktu (paydayı sıfır yapar), f⁻¹'in tanım kümesinde ise 2 yok. Bu tesadüf değil: f'nin asla üretemediği değer 2'dir (pay/payda oranı 2'ye yaklaşır ama ulaşmaz), dolayısıyla f'nin değer kümesinde 2 yoktur; f⁻¹'in tanım kümesi de f'nin değer kümesi olduğu için orada da 2 yok.",
+          "Bu bilgi soru olarak da gelir: \"f(x) = 3x − 5 fonksiyonunda f⁻¹(7) kaçtır?\" Burada ters fonksiyonu bulmaya bile gerek yok. f⁻¹(7) demek \"f'nin 7 ürettiği giriş\" demek: 3x − 5 = 7, x = 4. Bitti."
+        ],
+        [],
+        3
+      ],
+      [
+        "grafikte-ters-fonksiyon",
+        "Grafikte ters fonksiyon",
+        [
+          "f ile f⁻¹'in grafikleri y = x doğrusuna göre simetriktir. Nedeni basit: f'nin grafiğinde (2, 7) noktası varsa (f(2) = 7), f⁻¹'in grafiğinde (7, 2) noktası vardır. Bir noktanın koordinatlarını yer değiştirmek, onu y = x doğrusuna göre yansıtmak demektir. Hatta bu yüzden f'nin grafiği y = x doğrusunu bir noktada kesiyorsa, f⁻¹ de aynı noktadan geçer."
+        ],
+        [],
+        3
+      ],
+      [
+        "bileskenin-tersi-corap-ve-ayakkabi",
+        "Bileşkenin tersi: çorap ve ayakkabı",
+        [
+          "Son bir özellik: (f ∘ g)⁻¹ = g⁻¹ ∘ f⁻¹. Sıra ters dönüyor. Bunu şöyle hatırlayın: sabah önce çorabı sonra ayakkabıyı giyersiniz. Akşam geri alırken önce ayakkabıyı sonra çorabı çıkarırsınız. Son yapılan ilk geri alınır."
+        ],
+        [],
+        3
+      ],
+      [
+        "sik-yapilan-hatalar",
+        "Sık yapılan hatalar",
+        [
+          "Bu konuda öğrencilerin takıldığı yerler neredeyse hep aynı dört nokta:",
+          "f(g(x))'te önce f'yi uygulamak. İçteki önce çalışır, dıştaki sonra.",
+          "f⁻¹(x) ile 1/f(x)'i karıştırmak. Üstteki −1 bir üs değil, \"ters\" anlamına gelen bir etiket.",
+          "Ters fonksiyonu bulurken harfleri takas etmeyi unutmak ve cevabı y cinsinden bırakmak. Son adım her zaman harf takası.",
+          "Bileşkenin tanım kümesini düşünmemek. Kök, payda, logaritma gibi \"seçici\" fonksiyonlar varsa içteki fonksiyonun ürettiği değerlerin dıştakine uygun olup olmadığını kontrol edin.",
+          "Bir sonraki adım olarak, bu konuda öğrendiğiniz \"makineyi geri çevirme\" fikri trigonometride de karşınıza çıkacak: sin x = 1/2 denkleminde aslında sinüs makinesini geri çevirip x'i arıyoruz. Bunu trigonometrik denklemler yazısında göreceğiz."
+        ],
+        [],
+        2
+      ]
+    ],
+    "publishedAt": "2026-10-24",
+    "updatedAt": "2026-10-24",
+    "level": "Lise temeli",
+    "readingTime": 10,
+    "preserveLineBreaks": true,
+    "keywords": [
+      "bileşke ve ters fonksiyon",
+      "konu anlatımı",
+      "çözümlü örnekler"
+    ]
+  },
+  {
+    "slug": "trigonometrik-denklemler",
+    "shortTitle": "Trigonometrik Denklemler",
+    "title": "Trigonometrik Denklemler ve Çözümlü Sorular",
+    "category": "Trigonometri",
+    "symbol": "sin x",
+    "formula": "x = α + 2kπ",
+    "description": "Sinüs, kosinüs ve tanjant denklemlerinin genel çözümünü, belirli aralıktaki kökleri ve kök kaybetmeden çözüm yöntemlerini öğrenin.",
+    "summary": "Birim çemberde aynı değeri veren açıları bul, periyodu ekle ve istenen aralıktaki kökleri seç.",
+    "intro": [
+      "Birim çember ve temel özdeşlikler yazılarında sinüs, kosinüs ve tanjantın ne olduğunu, özel açılardaki değerlerini öğrendik. Şimdiye kadar hep \"açı verildi, değeri bul\" diye çalıştık: sin 30° kaç, cos 120° kaç. Bu yazıda soruyu tersine çeviriyoruz: değer verildi, açıyı bul. \"sin x = 1/2 ise x kaçtır?\" İşte buna trigonometrik denklem diyoruz.",
+      "Baştan söyleyeyim: bu konuda cevap neredeyse hiçbir zaman tek bir sayı değildir. Bunun nedenini anladığınızda konunun yüzde sekseni bitmiş olacak. Ben bu yazıda açıları radyan cinsinden yazacağım, çünkü sınavlarda ağırlıklı olarak öyle geliyor; ama her yerde derece karşılığını da düşünebilirsiniz (π = 180°, π/6 = 30°, π/4 = 45°, π/3 = 60°, π/2 = 90°)."
+    ],
+    "sections": [
+      [
+        "neden-birden-fazla-cevap-var",
+        "Neden birden fazla cevap var?",
+        [
+          "sin x = 1/2 denklemini birim çemberde düşünelim. Sinüs, çember üzerindeki noktanın yüksekliğiydi (y koordinatı). \"Yüksekliği 1/2 olan nokta hangisi?\" diye sorduğumuzda çember üzerinde böyle iki nokta görürsünüz: biri sağ üstte, biri sol üstte. Sağ üsttekinin açısı π/6 (30°). Sol üstteki onun y eksenine göre yansıması, yani açısı π − π/6 = 5π/6 (150°).",
+          "Demek ki daha 0 ile 2π arasında bile iki cevap var: π/6 ve 5π/6.",
+          "Şimdi ikinci mesele. Çemberde bir tam tur 2π'dir. Eğer π/6 açısına bir tam tur daha eklerseniz (π/6 + 2π = 13π/6) aynı noktaya gelirsiniz, dolayısıyla sinüs yine 1/2 olur. Bir tur daha eklesem yine. Geriye doğru bir tur alsam (π/6 − 2π) yine aynı nokta. Yani aslında sonsuz tane cevap var. Hepsini tek tek yazamayacağımız için şöyle yazıyoruz:",
+          "x = π/6 + 2kπ  veya  x = 5π/6 + 2kπ,  k ∈ Z",
+          "Buradaki k bir tam sayı; 0 alırsanız ilk turdaki cevaplar, 1 alırsanız bir tur sonrakiler, −1 alırsanız bir tur öncekiler çıkar. Bu yazıma genel çözüm diyoruz. 2kπ'nin anlamı \"istediğin kadar tam tur ekle ya da çıkar\"."
+        ],
+        [],
+        2
+      ],
+      [
+        "uc-temel-denklemin-genel-cozumu",
+        "Üç temel denklemin genel çözümü",
+        [
+          "Her trigonometrik denklem, sonunda şu üçünden birine dönüşür. Her birini birim çemberdeki resmiyle birlikte öğrenin, ezber yapmayın."
+        ],
+        [],
+        2
+      ],
+      [
+        "sin-x-a",
+        "sin x = a",
+        [
+          "Yüksekliği a olan iki nokta var; biri α açısında, diğeri π − α'da (y eksenine göre simetrik). Genel çözüm:",
+          "x = α + 2kπ  veya  x = π − α + 2kπ",
+          "Burada α, sinüsü a olan \"tanıdık\" açıdır; yani tablodan bildiğiniz açı."
+        ],
+        [],
+        3
+      ],
+      [
+        "cos-x-a",
+        "cos x = a",
+        [
+          "Kosinüs, noktanın x koordinatıydı (yatay konumu). x koordinatı a olan iki nokta var; biri α'da, diğeri onun x eksenine göre yansıması olan −α'da. Genel çözüm:",
+          "x = α + 2kπ  veya  x = −α + 2kπ",
+          "Kısaca x = ±α + 2kπ diye yazılır. Sinüsten farkı burada: sinüste π − α, kosinüste −α."
+        ],
+        [],
+        3
+      ],
+      [
+        "tan-x-a",
+        "tan x = a",
+        [
+          "Tanjantta bir fark var. Tanjantın periyodu 2π değil, π'dir; çünkü çemberde birbirine tam zıt iki nokta (α ile α + π) aynı tanjant değerini verir (hem sinüs hem kosinüs işaret değiştirir, oran aynı kalır). O yüzden iki ayrı aile yazmaya gerek yok, tek aile yeter:",
+          "x = α + kπ",
+          "Dikkat: burada 2kπ değil kπ var. Bu, en çok yapılan hatalardan biri."
+        ],
+        [],
+        3
+      ],
+      [
+        "kucuk-bir-hatirlatma-cozum-olmayan-denklemler",
+        "Küçük bir hatırlatma: çözüm olmayan denklemler",
+        [
+          "sin x = 2 ya da cos x = −3 gibi bir denklem görürseniz hiç uğraşmayın: sinüs ve kosinüs −1 ile 1 arasında değer alır, bunların dışında bir sayıya asla eşit olamazlar. Çözüm kümesi boştur. Tanjant ise her gerçek sayı olabilir, orada böyle bir sınır yok."
+        ],
+        [],
+        3
+      ],
+      [
+        "belirli-aralikta-kok-bulma",
+        "Belirli aralıkta kök bulma",
+        [
+          "Sorular çoğu zaman \"x ∈ [0, 2π) için çözüm kümesini bulunuz\" der. O zaman genel çözümü yazıp k'ya sırayla değer vererek aralığa düşenleri seçeriz.",
+          "Örnek 1: [0, 2π) aralığında sin x = −√2/2",
+          "Önce tanıdık açıyı bulalım: sinüsü √2/2 olan açı π/4. Ama bizim değerimiz negatif, demek ki noktalar çemberin alt yarısında. Sinüsü −√2/2 olan açılardan biri −π/4'tür; genel çözüm:",
+          "x = −π/4 + 2kπ  veya  x = π − (−π/4) + 2kπ = 5π/4 + 2kπ",
+          "Şimdi [0, 2π) aralığına düşenleri seçelim. Birinci aileden k = 1: −π/4 + 2π = 7π/4. k = 0 negatif verir, aralık dışı. İkinci aileden k = 0: 5π/4. k = 1 aralığı aşar.",
+          "Çözüm: {5π/4, 7π/4}. Birim çemberde bakarsanız ikisi de alt yarıda, biri sol altta biri sağ altta; yüksekliği −√2/2 olan tam olarak o iki nokta. Resim ile hesap uyuşuyor mu diye her zaman kontrol edin, bu sizi pek çok hatadan kurtarır.",
+          "Örnek 2: [0, 2π) aralığında 2cos x − 1 = 0",
+          "Önce denklemi temel hale getirin: cos x = 1/2. Kosinüsü 1/2 olan tanıdık açı π/3. Genel çözüm x = ±π/3 + 2kπ.",
+          "k = 0: π/3 ve −π/3. Negatif olan aralık dışı, ama k = 1 ile −π/3 + 2π = 5π/3 aralığa girer.",
+          "Çözüm: {π/3, 5π/3}.",
+          "Örnek 3: [0, 2π) aralığında tan x = −√3",
+          "Tanjantı √3 olan tanıdık açı π/3. Negatif olduğu için −π/3 alıyoruz. Genel çözüm x = −π/3 + kπ.",
+          "k = 1: 2π/3. k = 2: 5π/3. k = 0 negatif, k = 3 aralık dışı.",
+          "Çözüm: {2π/3, 5π/3}. Bakın, tanjantta kπ kullandığımız için ikinci kökü otomatik bulduk; π'nin katlarını eklemek bizi zıt noktaya götürdü."
+        ],
+        [],
+        2
+      ],
+      [
+        "acinin-kati-olan-denklemler",
+        "Açının katı olan denklemler",
+        [
+          "Örnek 4: [0, 2π) aralığında sin 2x = √3/2",
+          "Buradaki tuzak şu: öğrenci sinüsü √3/2 olan açının π/3 olduğunu görüp \"x = π/3\" deyip bırakıyor. Halbuki sinüsü alınan şey x değil, 2x. O yüzden önce 2x'i çözüp sonra 2'ye böleceğiz.",
+          "2x = π/3 + 2kπ  veya  2x = 2π/3 + 2kπ",
+          "Her tarafı 2'ye bölelim:",
+          "x = π/6 + kπ  veya  x = π/3 + kπ",
+          "Dikkat: 2kπ de 2'ye bölündü ve kπ oldu. Bu demek ki x artık her π'de bir tekrarlıyor, 2π'de değil. Bu yüzden [0, 2π) aralığında daha çok kök çıkacak:",
+          "Birinci aileden k = 0: π/6, k = 1: 7π/6.\nİkinci aileden k = 0: π/3, k = 1: 4π/3.",
+          "Çözüm: {π/6, π/3, 7π/6, 4π/3}. Dört kök. Genel kural: açı n ile çarpılmışsa, [0, 2π) aralığındaki kök sayısı da yaklaşık n katına çıkar. İki kök bulup bırakırsanız sorunun yarısını çözmüş olursunuz."
+        ],
+        [],
+        2
+      ],
+      [
+        "ikinci-dereceye-donusen-denklemler",
+        "İkinci dereceye dönüşen denklemler",
+        [
+          "Örnek 5: [0, 2π) aralığında 2sin²x − sin x − 1 = 0",
+          "Burada sin x'e bir isim verin, mesela t = sin x. Denklem şuna dönüşüyor:",
+          "2t² − t − 1 = 0",
+          "Bu sıradan bir ikinci dereceden denklem. Çarpanlarına ayıralım: (2t + 1)(t − 1) = 0, buradan t = −1/2 veya t = 1.",
+          "Şimdi geri dönelim:",
+          "sin x = 1 → birim çemberde en tepe nokta, x = π/2.\nsin x = −1/2 → sinüsü 1/2 olan açı π/6; negatif olduğu için alt yarıdayız: x = 7π/6 ve 11π/6.",
+          "Çözüm: {π/2, 7π/6, 11π/6}.",
+          "Bu tür sorularda özdeşlikler de devreye girer. Mesela denklemde hem sin²x hem cos x varsa, sin²x = 1 − cos²x yazıp her şeyi kosinüs cinsine çevirirsiniz, sonra aynı yöntem."
+        ],
+        [],
+        2
+      ],
+      [
+        "sinus-ve-kosinusun-bir-arada-oldugu-denklemler",
+        "Sinüs ve kosinüsün bir arada olduğu denklemler",
+        [
+          "Örnek 6: sin x = cos x denkleminin genel çözümü",
+          "İlk akla gelen iki tarafı cos x'e bölmek: tan x = 1, x = π/4 + kπ. Doğru, ama bir şeyi atlamamak lazım. Bir denklemde bir şeye böldüğünüzde o şeyin sıfır olduğu durumu kaybedebilirsiniz. Burada cos x = 0 bir çözüm olabilir miydi? cos x = 0 ise sin x = ±1 olur, bu da sin x = cos x'i sağlamaz. Demek ki bölmekle hiçbir kök kaybetmedik, cevap x = π/4 + kπ.",
+          "Ama mesela sin x · cos x = sin x denkleminde iki tarafı sin x'e bölerseniz cos x = 1 kalır ve sin x = 0 olan kökleri (0, π, …) kaybedersiniz. Doğrusu her şeyi bir tarafa toplayıp çarpanlarına ayırmaktır: sin x (cos x − 1) = 0, buradan sin x = 0 veya cos x = 1."
+        ],
+        [],
+        2
+      ],
+      [
+        "sik-yapilan-hatalar",
+        "Sık yapılan hatalar",
+        [
+          "Bu konuda kaybedilen puanların neredeyse tamamı şu beş hatadan geliyor:",
+          "İkinci kökü unutmak. sin x = 1/2 için sadece π/6 yazmak. Birim çemberde yüksekliği 1/2 olan iki nokta var, ikisi de cevap.",
+          "Periyodu unutmak. \"Genel çözüm\" isteniyorsa 2kπ (tanjantta kπ) mutlaka yazılacak.",
+          "Tanjantta 2kπ yazmak. Tanjantın periyodu π'dir.",
+          "Katlı açıda bölmeyi yanlış yapmak. sin 2x denkleminde önce 2x bulunur, sonra her şey (2kπ dahil) 2'ye bölünür.",
+          "Bir ifadeye bölerken kök kaybetmek. Mümkünse bölme yerine çarpanlara ayırın.",
+          "Son bir tavsiye: her çözümden sonra birim çemberi çizip köklerinizi işaretleyin. \"Yüksekliği negatif olan noktalar alt yarıda olmalı\" gibi basit bir kontrol, işaret hatalarının çoğunu anında yakalar."
+        ],
+        [],
+        2
+      ]
+    ],
+    "publishedAt": "2026-10-24",
+    "updatedAt": "2026-10-24",
+    "level": "Lise temeli",
+    "readingTime": 8,
+    "preserveLineBreaks": true,
+    "keywords": [
+      "trigonometrik denklemler",
+      "konu anlatımı",
+      "çözümlü örnekler"
+    ]
+  },
+  {
+    "slug": "trigonometri-toplam-fark-yarim-aci-formulleri",
+    "shortTitle": "Toplam–Fark ve Yarım Açı",
+    "title": "Trigonometride Toplam–Fark ve Yarım Açı Formülleri",
+    "category": "Trigonometri",
+    "symbol": "sin(a+b)",
+    "formula": "2 sin a cos a",
+    "description": "Trigonometride toplam–fark, iki kat açı ve yarım açı formüllerini türetilişleri, işaret koşulları ve çözümlü örneklerle öğrenin.",
+    "summary": "Açıların toplamı, farkı ve yarısı için uygun özdeşliği seç; bölge işaretlerini ve formüllerin tanım koşullarını koru.",
+    "intro": [
+      "Temel özdeşlikler yazısında sin²x + cos²x = 1 gibi, tek bir açının kendi içindeki ilişkileri gördük. Şimdi şu soruyu soracağız: iki açıyı toplarsak ne olur? sin 75° kaçtır mesela? Tablomuzda 75 yok ama 75 = 45 + 30 ve ikisi de tabloda var. Keşke sin(45° + 30°) = sin 45° + sin 30° diyebilseydik. Diyemeyiz. Bunu hemen görelim: sin(30° + 60°) = sin 90° = 1, oysa sin 30° + sin 60° = 1/2 + √3/2 ≈ 1,37. Tutmuyor. Sinüs, toplamı parçalara dağıtmaz. Bu yazı, toplamı doğru şekilde \"açmanın\" formüllerini ve bu formüllerin nereden geldiğini anlatıyor."
+    ],
+    "sections": [
+      [
+        "formuller",
+        "Formüller",
+        [
+          "Önce hepsini bir arada göreyim diyorsanız işte buradalar; ama lütfen aşağıda türetilişini de okuyun, çünkü ezberlenen formül sınavda işaret hatasıyla gider.",
+          "cos(a − b) = cos a · cos b + sin a · sin b\ncos(a + b) = cos a · cos b − sin a · sin b\nsin(a + b) = sin a · cos b + cos a · sin b\nsin(a − b) = sin a · cos b − cos a · sin b\ntan(a + b) = (tan a + tan b) / (1 − tan a · tan b)\ntan(a − b) = (tan a − tan b) / (1 + tan a · tan b)",
+          "İşaretleri aklınızda tutmak için iki gözlem: kosinüste işaret ters döner (toplamda eksi, farkta artı), sinüste işaret aynı kalır (toplamda artı, farkta eksi). Kosinüs kendi türünü eşleştirir (cos·cos ve sin·sin), sinüs karıştırır (sin·cos ve cos·sin)."
+        ],
+        [],
+        2
+      ],
+      [
+        "formuller-nereden-geliyor",
+        "Formüller nereden geliyor?",
+        [
+          "Tek bir formülü türeteceğiz, diğerleri ondan çıkıyor. Türeteceğimiz formül cos(a − b).",
+          "Birim çemberde iki nokta alalım. Biri a açısında: P(cos a, sin a). Diğeri b açısında: Q(cos b, sin b). Bu iki nokta arasındaki uzaklığın karesini uzaklık formülüyle yazalım:",
+          "|PQ|² = (cos a − cos b)² + (sin a − sin b)²",
+          "Parantezleri açıp sin² + cos² = 1 kullanırsak:",
+          "|PQ|² = cos²a − 2cos a cos b + cos²b + sin²a − 2sin a sin b + sin²b\n      = (cos²a + sin²a) + (cos²b + sin²b) − 2(cos a cos b + sin a sin b)\n      = 2 − 2(cos a cos b + sin a sin b)",
+          "Şimdi aynı iki noktayı, aralarındaki açı değişmeden, çemberde döndürelim; Q noktasını (1, 0)'a getirelim. O zaman P, (a − b) açısına gelir: P'(cos(a − b), sin(a − b)) ve Q'(1, 0). Döndürmek uzaklığı değiştirmez. Uzaklığın karesi:",
+          "|P'Q'|² = (cos(a − b) − 1)² + sin²(a − b) = cos²(a − b) − 2cos(a − b) + 1 + sin²(a − b) = 2 − 2cos(a − b)",
+          "İki uzaklık eşit olduğu için:",
+          "2 − 2cos(a − b) = 2 − 2(cos a cos b + sin a sin b)",
+          "Buradan cos(a − b) = cos a cos b + sin a sin b. İlk formül çıktı.",
+          "Diğerleri artık küçük adımlar:",
+          "cos(a + b) için b yerine −b yazın. cos(−b) = cos b ve sin(−b) = −sin b olduğundan cos(a + b) = cos a cos b − sin a sin b. İşte kosinüsteki eksi buradan geliyor: sinüsün tek fonksiyon olmasından.",
+          "sin(a + b) için şu numarayı kullanın: sin θ = cos(π/2 − θ). O halde sin(a + b) = cos(π/2 − a − b) = cos((π/2 − a) − b). Şimdi bu, az önce bulduğumuz fark formülü: cos(π/2 − a) cos b + sin(π/2 − a) sin b = sin a cos b + cos a sin b.",
+          "sin(a − b) için yine b yerine −b.",
+          "tan(a + b) için sin(a + b)/cos(a + b) yazıp pay ve paydayı cos a cos b'ye bölün.",
+          "Bir kez bu zinciri kendi elinizle yazın. Sonra işaretleri hiç karıştırmazsınız, çünkü neden öyle olduğunu bilirsiniz.",
+          "Tanjantın toplam, fark ve iki kat açı formüllerinde tanjantların ve kesirlerin tanımlı olması gerekir; sıfır payda oluşturan açılar ayrıca kontrol edilir."
+        ],
+        [],
+        2
+      ],
+      [
+        "ilk-uygulama-tabloda-olmayan-acilar",
+        "İlk uygulama: tabloda olmayan açılar",
+        [
+          "sin 75° = sin(45° + 30°) = sin 45° cos 30° + cos 45° sin 30°\n       = (√2/2)(√3/2) + (√2/2)(1/2) = (√6 + √2)/4",
+          "cos 15° = cos(45° − 30°) = cos 45° cos 30° + sin 45° sin 30° = (√6 + √2)/4",
+          "İkisinin aynı çıkması tesadüf değil: 15° ile 75° birbirini 90°'ye tamamlıyor, sin 75° = cos 15° olmalıydı zaten. Böyle çapraz kontroller yapmak sağlam bir alışkanlık.",
+          "tan 105° = tan(60° + 45°) = (√3 + 1)/(1 − √3·1) = (√3 + 1)/(1 − √3). Paydayı rasyonel yaparsanız −2 − √3 çıkar. Negatif olması mantıklı, 105° ikinci bölgede ve orada tanjant negatif."
+        ],
+        [],
+        2
+      ],
+      [
+        "iki-kat-aci-formulleri",
+        "İki kat açı formülleri",
+        [
+          "Toplam formülünde b = a alırsanız kendiliğinden ortaya çıkar:",
+          "sin 2a = 2 sin a cos a\ncos 2a = cos²a − sin²a\ntan 2a = 2 tan a / (1 − tan²a)",
+          "cos 2a'nın iki farklı kılığı daha var ve ikisi de sık kullanılır. sin²a = 1 − cos²a yazarsanız:",
+          "cos 2a = 2cos²a − 1",
+          "cos²a = 1 − sin²a yazarsanız:",
+          "cos 2a = 1 − 2sin²a",
+          "Hangisini kullanacağınızı soru söyler: elinizde sadece kosinüs varsa birinci, sadece sinüs varsa ikinci.",
+          "Örnek: sin x = 3/5 ve x ikinci bölgede olsun. sin 2x ve cos 2x kaçtır?",
+          "Önce cos x lazım. sin²x + cos²x = 1'den cos²x = 1 − 9/25 = 16/25, cos x = ±4/5. İkinci bölgede kosinüs negatif, o yüzden cos x = −4/5. Bu adımı atlayıp cos x = 4/5 almak, bu sorudaki en yaygın hata.",
+          "sin 2x = 2 · (3/5) · (−4/5) = −24/25\ncos 2x = cos²x − sin²x = 16/25 − 9/25 = 7/25",
+          "Küçük bir kontrol: (−24/25)² + (7/25)² = 576/625 + 49/625 = 1. 2x de bir açı, onun sinüs ve kosinüsü de özdeşliği sağlamalı; sağlıyor."
+        ],
+        [],
+        2
+      ],
+      [
+        "yarim-aci-formulleri",
+        "Yarım açı formülleri",
+        [
+          "cos 2a = 2cos²a − 1 formülünü cos²a için çözerseniz cos²a = (1 + cos 2a)/2 çıkar. Burada 2a yerine a, a yerine a/2 yazarsanız yarım açı formülü:",
+          "cos²(a/2) = (1 + cos a)/2\nsin²(a/2) = (1 − cos a)/2\ntan(a/2) = sin a / (1 + cos a) = (1 − cos a) / sin a",
+          "Bu kesirli yazımlar yalnız kendi paydaları sıfır değilken kullanılabilir. Örneğin a = 0 için ilk kesir 0 verirken ikinci kesir 0/0 olduğundan tanımsızdır; eşitlik zinciri ortak tanım kümesinde geçerlidir.",
+          "Bu formüllerin kare olduğuna dikkat. sin(a/2)'yi bulmak için karekök alacaksınız ve karekökün işaretini formül söylemez, a/2 açısının hangi bölgede olduğu söyler. Bu yüzden soruda açının bölgesi verilir ya da sizden çıkarmanız beklenir.",
+          "Örnek: cos 22,5° kaçtır?",
+          "22,5 = 45/2. cos²(22,5°) = (1 + cos 45°)/2 = (1 + √2/2)/2 = (2 + √2)/4. Açı birinci bölgede, kosinüs pozitif:",
+          "cos 22,5° = √(2 + √2) / 2",
+          "Örnek: cos x = 1/3 ve x dar açı ise sin(x/2) kaçtır?",
+          "sin²(x/2) = (1 − 1/3)/2 = (2/3)/2 = 1/3. x dar açı ise x/2 de dar açı, sinüs pozitif: sin(x/2) = √(1/3) = √3/3."
+        ],
+        [],
+        2
+      ],
+      [
+        "hangi-soruda-hangi-formul",
+        "Hangi soruda hangi formül?",
+        [
+          "Öğrenciler formülleri biliyor ama hangisini ne zaman kullanacağını kestiremiyor. Birkaç işaret:",
+          "Açı, tablodaki iki açının toplamı ya da farkı olarak yazılabiliyorsa (15°, 75°, 105°, 7π/12 gibi), toplam–fark formülü.",
+          "Soruda hem x hem 2x bir arada geçiyorsa, 2x'li terimi iki kat açı formülüyle x cinsine indirin. Denklemler bu şekilde tek açıya iner.",
+          "Açı, tablodaki bir açının yarısı ise (22,5°, π/8, 15° gibi), yarım açı. 15° için iki yol da çalışır; hangisi kolaysa.",
+          "sin²x veya cos²x gibi kareli ifadeleri kareden kurtarmak istiyorsanız (ileride türev ve integralde çok lazım olacak), cos²x = (1 + cos 2x)/2 ve sin²x = (1 − cos 2x)/2. Bu, yarım açı formülünün başka bir kılığı.",
+          "sin a cos b gibi bir çarpımı toplam haline getirmek isterseniz, toplam ve fark formüllerini alt alta yazıp toplayın: sin(a + b) + sin(a − b) = 2 sin a cos b. Bu \"çarpımı toplama çevirme\" formülleri ayrıca ezberlenmez, buradan iki satırda çıkar."
+        ],
+        [],
+        2
+      ],
+      [
+        "isaret-hatalari-nerede-neden",
+        "İşaret hataları: nerede, neden",
+        [
+          "Bu konuda kaybedilen puanın büyük kısmı işaret hatası ve neredeyse hepsi şu listeden:",
+          "cos(a + b)'de ortadaki işareti artı yazmak. Kosinüs toplamda eksi verir. Nedeni: formülü b yerine −b yazarak elde ettik ve sin(−b) = −sin b.",
+          "cos 2a = cos²a + sin²a yazmak. Bu 1'e eşittir, formül değildir. Doğrusu cos²a − sin²a.",
+          "tan(a + b) paydasında 1 + tan a tan b yazmak. Toplamda payda 1 − tan a tan b. Payda ile paydaki işaretler zıttır; bunu aklınızda \"payda inatçıdır, tersini yapar\" diye tutabilirsiniz.",
+          "Yarım açıda kareköke işaret vermemek. Bölgeye bakın.",
+          "Bir bölgedeki açının kosinüsünü (ya da sinüsünü) her zaman pozitif almak. Özdeşlikten cos x = ±4/5 çıktığında bölge hangi işareti istiyorsa onu seçin.",
+          "Formül bulduğunuz sonucu bir de bölgeyle karşılaştırın: 105° ikinci bölgedeyse tanjantı negatif çıkmalı; 22,5° birinci bölgedeyse her şey pozitif. Bu basit kontrol, işaret hatalarının çoğunu hesap bitmeden yakalar."
+        ],
+        [],
+        2
+      ]
+    ],
+    "publishedAt": "2026-10-24",
+    "updatedAt": "2026-10-24",
+    "level": "Lise temeli",
+    "readingTime": 8,
+    "preserveLineBreaks": true,
+    "keywords": [
+      "toplam–fark ve yarım açı",
+      "konu anlatımı",
+      "çözümlü örnekler"
+    ]
+  },
+  {
+    "slug": "ikinci-dereceden-denklemler",
+    "shortTitle": "İkinci Dereceden Denklemler",
+    "title": "İkinci Dereceden Denklemler: Diskriminant, Kökler ve Çözümlü Örnekler",
+    "category": "Fonksiyonlar",
+    "symbol": "Δ",
+    "formula": "b² − 4ac",
+    "description": "İkinci dereceden denklemleri çarpanlara ayırma, kök formülü ve diskriminantla çözün; toplam–çarpım ve yerine koymayla kontrol edin.",
+    "summary": "Önce denklemi ax² + bx + c = 0 biçimine getir. Kökleri bulduktan sonra hem işlemleri hem problemin koşullarını kontrol et.",
+    "intro": [
+      "Birinci dereceden denklemleri biliyorsunuz: 3x − 5 = 7 gibi. x'i yalnız bırakırsınız, tek bir cevap çıkar. Şimdi x'in karesinin de bulunduğu denklemlere geçiyoruz:",
+      "ax² + bx + c = 0,  a ≠ 0",
+      "Buna ikinci dereceden denklem diyoruz; \"ikinci derece\" x'in en büyük kuvvetinin 2 olmasından geliyor. a ≠ 0 şartı önemli, çünkü a sıfır olursa x² terimi kaybolur ve denklem birinci dereceye düşer. Bu denklemi sağlayan x değerlerine kök diyoruz ve ilk yenilik şu: artık iki kök olabilir.",
+      "Neden iki? x² = 9 denklemini düşünün. 3'ün karesi de 9, −3'ün karesi de 9. İki farklı sayı aynı kareyi veriyor; dolayısıyla \"karesi 9 olan sayı\" sorusunun iki cevabı var. Kare alma işlemi iki farklı girişi aynı çıkışa götürdüğü için (fonksiyonlar konusundan hatırlayacaksınız, x² bire bir değildir) geri döndüğümüzde iki yol çıkıyor. Bu yazıda bu kökleri bulmanın üç yolunu ve bulduktan sonra nasıl kontrol edeceğinizi anlatacağım."
+    ],
+    "sections": [
+      [
+        "birinci-yol-carpanlara-ayirma",
+        "Birinci yol: çarpanlara ayırma",
+        [
+          "Şu gerçekle başlayalım: iki sayının çarpımı sıfırsa, o sayılardan en az biri sıfırdır. Başka türlü çarpım sıfır olamaz. Bütün yöntem bu cümleye dayanıyor.",
+          "x² + 5x + 6 = 0 denklemini ele alalım. Eğer sol tarafı iki parantezin çarpımı olarak yazabilirsek, \"çarpım sıfır\" kuralını kullanırız. Şöyle iki sayı arıyoruz: çarpımları 6 (sabit terim), toplamları 5 (x'in katsayısı). 2 ve 3. O halde:",
+          "x² + 5x + 6 = (x + 2)(x + 3)",
+          "İsterseniz parantezleri açıp kontrol edin: x² + 3x + 2x + 6. Doğru. Şimdi:",
+          "(x + 2)(x + 3) = 0  →  x + 2 = 0 veya x + 3 = 0  →  x = −2 veya x = −3",
+          "Kökler −2 ve −3. Burada klasik bir dikkatsizlik var: parantezde +2 görünce kökü +2 sanmak. Parantezi sıfır yapan sayı −2'dir. Her zaman \"bu parantezi sıfır yapan x kaç?\" diye sorun.",
+          "İşaretli bir örnek: x² − x − 12 = 0. Çarpımı −12, toplamı −1 olan iki sayı: −4 ve 3. (x − 4)(x + 3) = 0, kökler 4 ve −3."
+        ],
+        [],
+        2
+      ],
+      [
+        "ortak-carpan-ve-kare-farki",
+        "Ortak çarpan ve kare farkı",
+        [
+          "Sabit terim yoksa iş daha kolay: x² − 4x = 0. Ortak çarpan x'i dışarı alın: x(x − 4) = 0. Kökler 0 ve 4.",
+          "Burada bir tuzak var ve her yıl birilerini yakalıyor. Bazı öğrenciler \"iki tarafı x'e bölerim\" deyip x − 4 = 0, x = 4 buluyor. Köklerden biri kayboldu. x'e böldüğünüz anda x = 0 olma ihtimalini silip atıyorsunuz. Bilinmeyene asla bölmeyin, çarpan olarak dışarı alın.",
+          "Kare farkı da bilmeniz gereken bir kalıp: x² − 9 = (x − 3)(x + 3). Yani x² − 9 = 0'ın kökleri 3 ve −3. Genel olarak x² − k² = (x − k)(x + k)."
+        ],
+        [],
+        3
+      ],
+      [
+        "ikinci-yol-kok-formulu-ve-nereden-geldigi",
+        "İkinci yol: kök formülü (ve nereden geldiği)",
+        [
+          "Çarpanlara ayırma güzel ama her denklem kolayca ayrılmıyor. x² + 4x + 1 = 0'ı deneyin: çarpımı 1, toplamı 4 olan tam sayı yok. Bunun için her denklemde çalışan bir formül var. Formülü vereceğim ama önce nereden geldiğini göstermek istiyorum, çünkü formülün içindeki her parçanın bir nedeni var.",
+          "Fikir şu: sol tarafı bir tam kareye benzetmek. ax² + bx + c = 0 ile başlayalım.",
+          "Önce a'ya bölelim: x² + (b/a)x + c/a = 0.",
+          "Sabit terimi karşıya atalım: x² + (b/a)x = −c/a.",
+          "Sol tarafı tam kare yapmak için x'in katsayısının yarısının karesini, yani (b/2a)² = b²/4a²'yi iki tarafa ekleyelim:",
+          "x² + (b/a)x + b²/4a² = b²/4a² − c/a",
+          "Sol taraf artık (x + b/2a)². Sağ tarafı paydaları eşitleyerek toplayalım:",
+          "(x + b/2a)² = (b² − 4ac) / 4a²",
+          "Karekök alalım (iki işaret, çünkü karesi aynı olan iki sayı var):",
+          "x + b/2a = ± √(b² − 4ac) / 2a",
+          "Ve x'i yalnız bırakalım:",
+          "x = (−b ± √(b² − 4ac)) / 2a",
+          "İşte formül. Kökün içindeki ifade o kadar önemli ki ona ayrı bir isim verilmiş: diskriminant, Δ (delta) ile gösterilir:",
+          "Δ = b² − 4ac,  x = (−b ± √Δ) / 2a",
+          "Örnek: 2x² − 7x + 3 = 0",
+          "a = 2, b = −7, c = 3. Δ = (−7)² − 4·2·3 = 49 − 24 = 25.",
+          "x = (7 ± √25) / 4 = (7 ± 5) / 4",
+          "x₁ = 12/4 = 3,  x₂ = 2/4 = 1/2",
+          "Burada −b'ye dikkat edin: b = −7 olduğu için −b = 7. b negatifken bu adımda hata yapmak çok yaygın. Formülü uygularken a, b, c'yi işaretleriyle birlikte, önce ayrı bir yere yazın.",
+          "Örnek: x² + 4x + 1 = 0 (çarpanlarına ayrılmayan denklem)",
+          "Δ = 16 − 4 = 12. x = (−4 ± √12) / 2. √12 = 2√3 olduğundan x = (−4 ± 2√3)/2 = −2 ± √3.",
+          "Kökler −2 + √3 ve −2 − √3. Tam sayı değil ama gayet gerçek sayılar."
+        ],
+        [],
+        2
+      ],
+      [
+        "diskriminant-ne-anlatiyor",
+        "Diskriminant ne anlatıyor?",
+        [
+          "Formülde √Δ var. Karekökün içine ne tür bir sayı girdiği her şeyi belirliyor:",
+          "Δ > 0 ise √Δ pozitif bir sayıdır, ± sayesinde iki farklı kök çıkar. Örnek: 2x² − 7x + 3, Δ = 25, kökler 3 ve 1/2.",
+          "Δ = 0 ise √Δ = 0, ± bir şey değiştirmez, tek kök çıkar: x = −b/2a. Buna çift kök ya da çakışık kök denir; aslında iki kök var ama ikisi aynı sayı. Örnek: x² − 6x + 9 = 0, Δ = 36 − 36 = 0, x = 3. Zaten (x − 3)² = 0 diye de yazılabilir.",
+          "Δ < 0 ise negatif sayının karekökü gerçek sayılarda yoktur, denklemin gerçek kökü yoktur. Örnek: 3x² + 2x + 5 = 0, Δ = 4 − 60 = −56. Bu denklemi hiçbir gerçek sayı sağlamaz.",
+          "Bunun geometrik anlamını parabol yazısında göreceksiniz: Δ, y = ax² + bx + c grafiğinin x eksenini kaç noktada kestiğini söylüyor. İki noktada, teğet olarak bir noktada ya da hiç.",
+          "Diskriminant soruları bazen tersten gelir: \"x² − 6x + m = 0 denkleminin çift kökü olması için m kaç olmalı?\" Δ = 36 − 4m = 0 → m = 9."
+        ],
+        [],
+        2
+      ],
+      [
+        "ucuncu-yol-kokler-ile-katsayilar-arasindaki-iliski",
+        "Üçüncü yol: kökler ile katsayılar arasındaki ilişki",
+        [
+          "Kökleri x₁ ve x₂ olan bir denklemde şu iki eşitlik her zaman sağlanır:",
+          "x₁ + x₂ = −b/a\nx₁ · x₂ = c/a",
+          "Nereden geliyor? Kök formülündeki iki kökü toplayın: ± kısımları birbirini götürür, (−2b)/2a = −b/a kalır. Çarpımı için biraz daha uğraşmak gerekir ama (−b + √Δ)(−b − √Δ) = b² − Δ = 4ac, bunu 4a²'ye bölünce c/a.",
+          "Bu iki eşitlik iki işe yarar.",
+          "Birincisi kök kontrolü. 2x² − 7x + 3 = 0 için 3 ve 1/2 bulmuştuk. Toplam 7/2, −b/a = 7/2. Çarpım 3/2, c/a = 3/2. İkisi de tutuyor, kökler doğru. Bu kontrol beş saniye sürer ve hesap hatasını anında yakalar.",
+          "İkincisi, kökleri bilinen denklemi yazmak. Kökleri 2 ve −5 olan denklem: toplam −3, çarpım −10. Denklem: x² − (toplam)x + (çarpım) = 0, yani x² + 3x − 10 = 0. Dikkat: toplamın önünde eksi var."
+        ],
+        [],
+        2
+      ],
+      [
+        "kok-kontrolu-buldugunuz-sayi-gercekten-kok-mu",
+        "Kök kontrolü: bulduğunuz sayı gerçekten kök mü?",
+        [
+          "En güvenilir kontrol en basit olanı: bulduğunuz sayıyı denklemde yerine koyun, sıfır çıkmalı.",
+          "2x² − 7x + 3 için x = 3: 2·9 − 21 + 3 = 18 − 21 + 3 = 0. Tamam.\nx = 1/2: 2·(1/4) − 7/2 + 3 = 1/2 − 7/2 + 3 = −3 + 3 = 0. Tamam.",
+          "Yerine koyma işlemi size iki şey kazandırır: yanlış kökü anında görürsünüz ve köklü ya da kesirli köklerde kendinize güvenirsiniz."
+        ],
+        [],
+        2
+      ],
+      [
+        "toplu-cozumlu-ornekler",
+        "Toplu çözümlü örnekler",
+        [
+          "Örnek 1: x² − 5x = 0\nx(x − 5) = 0 → x = 0 veya x = 5. (x'e bölmedik, dışarı aldık.)",
+          "Örnek 2: x² − 16 = 0\nKare farkı: (x − 4)(x + 4) = 0 → x = 4 veya x = −4. İsterseniz x² = 16, x = ±4 diye de düşünebilirsiniz.",
+          "Örnek 3: 3x² + 10x − 8 = 0\nΔ = 100 + 96 = 196 = 14². x = (−10 ± 14)/6 → x₁ = 4/6 = 2/3, x₂ = −24/6 = −4.\nKontrol: toplam 2/3 − 4 = −10/3 = −b/a ✓, çarpım −8/3 = c/a ✓.",
+          "Örnek 4: x² + x + 1 = 0\nΔ = 1 − 4 = −3 < 0. Gerçek kök yok.",
+          "Örnek 5: Kökleri 3 ve −1 olan ikinci dereceden denklemi yazınız.\nToplam 2, çarpım −3. x² − 2x − 3 = 0. Kontrol için çarpanlara ayırın: (x − 3)(x + 1), evet.",
+          "Örnek 6: Bir dikdörtgenin uzun kenarı kısa kenarından 3 cm fazla ve alanı 40 cm². Kenarlar kaç cm?\nKısa kenar x olsun, uzun kenar x + 3. Alan: x(x + 3) = 40 → x² + 3x − 40 = 0. Çarpımı −40, toplamı 3: 8 ve −5. (x + 8)(x − 5) = 0 → x = 5 veya x = −8. Uzunluk negatif olamaz, x = 5. Kenarlar 5 ve 8.\nBu örneğin dersi: matematiksel olarak iki kök var ama gerçek dünyanın şartı birini eliyor. Kelime problemlerinde bulduğunuz kökü her zaman anlamına göre süzün."
+        ],
+        [],
+        2
+      ],
+      [
+        "sik-yapilan-hatalar",
+        "Sık yapılan hatalar",
+        [
+          "Bilinmeyene bölmek. x² = 5x'te x'e bölüp x = 5 demek; x = 0 kökü kaybolur.",
+          "−b'nin işareti. b = −7 ise formülde +7 yazılır.",
+          "4ac'nin işareti. c negatifse −4ac pozitif olur: Δ = b² − 4·a·(−8) = b² + 32a gibi. Çarpımı önce ayrı hesaplayın.",
+          "Paydadaki 2a'da a'yı unutmak. a = 2 ise payda 4.",
+          "Parantezdeki sayının ters işaretlisinin kök olduğunu unutmak. (x + 2) = 0 ise x = −2.",
+          "Δ = 0 için \"kök yok\" demek. Kök var, tek ve çakışık.",
+          "Bütün bunların panzehiri aynı: bulduğunuz kökü yerine koyun ya da toplam–çarpım kontrolünü yapın. Bir sonraki yazıda bu denklemin grafiğini, yani parabolü çizeceğiz ve köklerin aslında grafiğin x eksenini kestiği yerler olduğunu göreceğiz."
+        ],
+        [],
+        2
+      ]
+    ],
+    "publishedAt": "2026-10-24",
+    "updatedAt": "2026-10-24",
+    "level": "Lise temeli",
+    "readingTime": 9,
+    "preserveLineBreaks": true,
+    "keywords": [
+      "i̇kinci dereceden denklemler",
+      "konu anlatımı",
+      "çözümlü örnekler"
+    ]
+  },
+  {
+    "slug": "parabol-konu-anlatimi",
+    "shortTitle": "Parabol",
+    "title": "Parabol: Tepe Noktası, Kökler ve Grafik Çizimi",
+    "category": "Fonksiyonlar",
+    "symbol": "x²",
+    "formula": "r = −b/(2a)",
+    "description": "Parabolün tepe noktasını, simetri eksenini, köklerini ve işaretini bulun; adım adım örneklerle ikinci derece fonksiyon grafiği çizin.",
+    "summary": "Kolların yönü, eksen kesişimleri ve tepe noktası parabolü çizmenin temelidir. Köklerle işaret tablosunu birlikte yorumla.",
+    "intro": [
+      "Bir önceki yazıda ax² + bx + c = 0 denklemini çözdük. Şimdi aynı ifadeyi bir fonksiyon olarak ele alıyoruz:",
+      "f(x) = ax² + bx + c,  a ≠ 0",
+      "Her x için bir y üretiyor; bu noktaları düzleme işaretlersek bir eğri çıkıyor. O eğrinin adı parabol. Bu yazıda parabolün şeklini neyin belirlediğini, en önemli noktasını (tepe noktası) nasıl bulacağımızı ve bir parabolü beş dakikada nasıl çizeceğimizi anlatacağım. Sonunda da grafiğin size \"f(x) nerede pozitif, nerede negatif\" sorusunu nasıl bedavaya cevapladığını göreceğiz."
+    ],
+    "sections": [
+      [
+        "en-basit-parabol-y-x2",
+        "En basit parabol: y = x²",
+        [
+          "Elle birkaç nokta hesaplayalım:",
+          "x = −3 → 9, x = −2 → 4, x = −1 → 1, x = 0 → 0, x = 1 → 1, x = 2 → 4, x = 3 → 9",
+          "Bunları işaretleyip birleştirince U şeklinde bir eğri çıkar. Üç şeyi fark edin. Birincisi, eğri en alt noktasına x = 0'da iniyor; bu noktaya tepe noktası diyoruz (U ters de olsa adı tepe). İkincisi, grafik y eksenine göre simetrik: −2 ile 2 aynı yüksekliğe çıkıyor. Tepe noktasından geçen bu dikey doğruya simetri ekseni diyoruz. Üçüncüsü, tepe noktasından uzaklaştıkça eğri hızla dikleşiyor.",
+          "Bütün paraboller bu şeklin kaydırılmış, daraltılmış, genişletilmiş ya da ters çevrilmiş halidir. Şimdi a, b, c katsayılarının her birinin bu şekle ne yaptığını görelim."
+        ],
+        [],
+        2
+      ],
+      [
+        "katsayilar-grafigi-nasil-degistirir",
+        "Katsayılar grafiği nasıl değiştirir?",
+        [],
+        [],
+        2
+      ],
+      [
+        "a-kollarin-yonu-ve-genisligi",
+        "a: kolların yönü ve genişliği",
+        [
+          "a pozitifse kollar yukarı bakar (gülen ağız), tepe noktası en alt noktadır. a negatifse kollar aşağı bakar (somurtan ağız), tepe noktası en üst noktadır. Bunu anlamak için şunu düşünün: x çok büyüdüğünde ax² terimi diğerlerini ezer; a pozitifse y çok büyük pozitif olur, negatifse çok büyük negatif.",
+          "a'nın büyüklüğü de genişliği belirler. y = 3x²'de x = 1 için y = 3, y = x²'de y = 1. Yani 3x² daha hızlı yükselir, daha dar görünür. y = (1/2)x² ise daha yavaş yükselir, daha geniş. Kural: |a| büyüdükçe parabol daralır, küçüldükçe genişler."
+        ],
+        [],
+        3
+      ],
+      [
+        "c-y-eksenini-kestigi-nokta",
+        "c: y eksenini kestiği nokta",
+        [
+          "x = 0 koyun: f(0) = c. Yani parabol y eksenini her zaman (0, c) noktasında keser. Grafiği çizerken ilk işaretleyeceğiniz noktalardan biri bu. Çizim sorularında c'yi okumak genelde en kolay adımdır."
+        ],
+        [],
+        3
+      ],
+      [
+        "b-tepe-noktasinin-saga-sola-kaymasi",
+        "b: tepe noktasının sağa sola kayması",
+        [
+          "b'nin etkisi tek başına görülmez, a ile birlikte çalışır. b = 0 ise tepe noktası y ekseninin üstündedir (y = x² − 4 gibi). b sıfırdan farklıysa tepe noktası sağa ya da sola kayar. Ne kadar ve hangi yöne kaydığını birazdan tepe noktası formülüyle hesaplayacağız."
+        ],
+        [],
+        3
+      ],
+      [
+        "tepe-noktasi",
+        "Tepe noktası",
+        [
+          "Tepe noktasının x koordinatını bulmanın en kısa yolu:",
+          "r = −b / 2a",
+          "Nereden geliyor? Parabol simetrik olduğu için tepe noktası, varsa iki kökün tam ortasındadır. Kökler toplamı −b/a idi (ikinci derece yazısından); ortalaması −b/2a. Kök olmasa bile formül aynı şekilde çalışır, çünkü simetri her zaman var.",
+          "Tepe noktasının y koordinatı için bulduğunuz r'yi fonksiyonda yerine koyarsınız:",
+          "k = f(r)",
+          "Tepe noktası T(r, k), simetri ekseni x = r doğrusu.",
+          "Örnek: f(x) = x² − 4x + 3\nr = −(−4)/(2·1) = 2. k = f(2) = 4 − 8 + 3 = −1. Tepe noktası (2, −1), simetri ekseni x = 2.",
+          "Burada −b'nin işaretine dikkat edin; b = −4 iken r = 4/2 = 2. Bu örnekte a pozitif olduğu için b negatifken r pozitif çıkar; genel durumda −b/(2a) oranının işareti birlikte incelenir. Çok sık karıştırılır.",
+          "Tepe noktasını bulmanın ikinci bir yolu da var: tam kareye tamamlamak. x² − 4x + 3 = (x − 2)² − 1 yazılabilir (açıp kontrol edin). (x − 2)² hiçbir zaman negatif olmaz ve en küçük değerini x = 2'de alır, orada 0'dır; dolayısıyla f'nin en küçük değeri −1, x = 2'de. Bu yazıma tepe noktası biçimi denir:",
+          "f(x) = a(x − r)² + k",
+          "Bu biçimde tepe noktası doğrudan okunur. Parantezin içindeki işarete dikkat: (x − 2)² ise r = 2, (x + 3)² ise r = −3."
+        ],
+        [],
+        2
+      ],
+      [
+        "kokler-parabolun-x-eksenini-kestigi-yerler",
+        "Kökler: parabolün x eksenini kestiği yerler",
+        [
+          "y = 0 olduğu yerler x eksenini kestiğiniz yerlerdir. y = 0 koyunca ax² + bx + c = 0 çıkar; yani kökler, bir önceki yazıda çözdüğümüz denklemin kökleridir. Demek ki o yazıdaki diskriminant tartışması burada bir resme dönüşüyor:",
+          "Δ > 0: iki farklı kök, parabol x eksenini iki noktada keser.\nΔ = 0: çakışık kök, parabol x eksenine sadece dokunur, tepe noktası tam eksenin üstündedir.\nΔ < 0: gerçek kök yok, parabol x eksenine hiç değmez; a > 0 ise tamamen eksenin üstünde, a < 0 ise tamamen altındadır.",
+          "x² − 4x + 3 için kökleri bulalım: çarpımı 3, toplamı −4 olan sayılar −1 ve −3; (x − 1)(x − 3) = 0, kökler 1 ve 3. Tepe noktasının x'i olan 2, tam bu ikisinin ortasında. Simetriyi görüyorsunuz.",
+          "Kökleri bildiğinizde parabolü şöyle de yazabilirsiniz:",
+          "f(x) = a(x − x₁)(x − x₂)",
+          "Bu da üçüncü biçim. Üç biçimin her biri bir şeyi açıkça gösterir: standart biçim c'yi (y-kesişimi), tepe biçimi tepe noktasını, çarpanlı biçim kökleri. Soruya göre uygun olanı seçersiniz."
+        ],
+        [],
+        2
+      ],
+      [
+        "parabol-nasil-cizilir-adim-adim",
+        "Parabol nasıl çizilir? Adım adım",
+        [
+          "Her parabolü aynı beş adımla çizebilirsiniz. Örnek olarak f(x) = x² − 4x + 3'ü çizelim.",
+          "Adım 1, a'nın işareti: a = 1 > 0, kollar yukarı. Daha çizmeden şekli biliyoruz.",
+          "Adım 2, y-kesişimi: c = 3, nokta (0, 3).",
+          "Adım 3, kökler: 1 ve 3, noktalar (1, 0) ve (3, 0).",
+          "Adım 4, tepe noktası: (2, −1).",
+          "Adım 5, simetrik nokta: (0, 3) noktasının simetri ekseni x = 2'ye göre yansıması (4, 3). Bedavaya bir nokta daha.",
+          "Şimdi bu beş noktayı işaretleyip kolları yukarı bakan düzgün bir U ile birleştirin. Köşeli çizmeyin, tepe noktası yumuşak bir dönüştür.",
+          "İkinci örnek: f(x) = −2x² + 4x + 6",
+          "Adım 1: a = −2 < 0, kollar aşağı.\nAdım 2: c = 6, nokta (0, 6).\nAdım 3: −2x² + 4x + 6 = 0; her tarafı −2'ye bölelim: x² − 2x − 3 = 0, (x − 3)(x + 1) = 0, kökler 3 ve −1.\nAdım 4: r = −4/(2·(−2)) = 1, k = f(1) = −2 + 4 + 6 = 8. Tepe noktası (1, 8). Köklerin ortası (3 + (−1))/2 = 1, tutuyor.\nAdım 5: (0, 6)'nın x = 1'e göre simetriği (2, 6).",
+          "Kolları aşağı bakan, tepesi (1, 8)'de, x eksenini −1 ve 3'te kesen bir parabol.",
+          "Kök bulunamayan bir örnek: f(x) = x² + 2x + 3. Δ = 4 − 12 < 0, kök yok. Tepe: r = −1, k = 1 − 2 + 3 = 2. Tepe (−1, 2), kollar yukarı, y-kesişimi (0, 3), simetriği (−2, 3). Parabol tamamen x ekseninin üstünde. Kök yok diye paniklemeyin; tepe noktası ve iki simetrik nokta çizim için fazlasıyla yeter."
+        ],
+        [],
+        2
+      ],
+      [
+        "isaret-incelemesi-f-x-nerede-pozitif-nerede-negatif",
+        "İşaret incelemesi: f(x) nerede pozitif, nerede negatif?",
+        [
+          "Grafik elinizdeyken bu sorunun cevabı gözle görülür: parabol x ekseninin üstündeyse f(x) > 0, altındaysa f(x) < 0, kestiği yerlerde 0.",
+          "f(x) = x² − 4x + 3 için: kollar yukarı, kökler 1 ve 3. Köklerin dışında (x < 1 veya x > 3) parabol eksenin üstünde, pozitif. Kökler arasında (1 < x < 3) eksenin altında, negatif.",
+          "Bunu grafik çizmeden de yapmanın yolu işaret tablosu. Sayı doğrusuna kökleri yazın; en dıştaki bölgelere a'nın işaretini, kökler arasına ters işareti koyun:",
+          "x:        ...   1   ...   3   ...\nf(x):      +    0    −    0    +",
+          "Kural: kolların yönü dışarıdaki işareti belirler; kökler arası ters döner. a < 0 olsaydı dışarıda eksi, arada artı olurdu.",
+          "Bu bilgi eşitsizlik sorularında doğrudan cevap: x² − 4x + 3 > 0 eşitsizliğinin çözümü x < 1 veya x > 3; x² − 4x + 3 ≤ 0 eşitsizliğinin çözümü 1 ≤ x ≤ 3.",
+          "Kök olmayan durumda (Δ < 0) parabol ekseni hiç geçmediği için her yerde aynı işareti alır: a'nın işareti. x² + 2x + 3 her x için pozitiftir. Çift kök durumunda ise sadece kökte sıfır olur, diğer her yerde a'nın işaretindedir."
+        ],
+        [],
+        2
+      ],
+      [
+        "en-buyuk-ve-en-kucuk-deger",
+        "En büyük ve en küçük değer",
+        [
+          "Kollar yukarıysa parabolün en alçak noktası tepe noktasıdır: f'nin en küçük değeri k, bu değere x = r'de ulaşılır. Kollar aşağıysa tepe noktası en yüksek noktadır: en büyük değer k.",
+          "Bu, uygulama sorularının kalbi. Örnek: Yukarı atılan bir topun yüksekliği h(t) = −5t² + 20t (metre, saniye). Top en fazla kaç metreye çıkar?",
+          "a = −5 < 0, kollar aşağı, tepe noktası en yüksek yer. r = −20/(2·(−5)) = 2 saniye. k = h(2) = −20 + 40 = 20 metre. Top 2. saniyede 20 metreye çıkıp inişe geçer. Kökler t = 0 ve t = 4; yani yerden kalkıp 4 saniye sonra yere düşüyor, tepe noktası tam ortada, 2. saniyede."
+        ],
+        [],
+        2
+      ],
+      [
+        "tureve-kucuk-bir-kopru",
+        "Türeve küçük bir köprü",
+        [
+          "Tepe noktasının bir özelliği daha var: orada eğrinin eğimi sıfırdır. Çıkış bitmiş, iniş başlamamıştır; bir anlığına yatay. Türev konusuna geldiğinizde, türevlenebilir bir fonksiyonun tanım aralığının içindeki yerel ekstremumlarında türevin sıfır olduğunu öğreneceksiniz. Türevin sıfır olması tek başına ekstremum için yeterli değildir; uç noktalar ve türevin olmadığı noktalar da ayrıca incelenir. Parabolde ekstremum noktası x = −b/(2a)'dır. Yani bugün formülle bulduğunuz şeyi ileride çok daha genel bir araçla yeniden bulacaksınız. Bu yazıdaki simetri eksenini, tepe noktasını ve işaret tablosunu iyi anlarsanız, türevde grafik çizerken aynı fikirleri sadece daha karmaşık eğrilere uyguladığınızı göreceksiniz."
+        ],
+        [],
+        2
+      ],
+      [
+        "sik-yapilan-hatalar",
+        "Sık yapılan hatalar",
+        [
+          "r = −b/2a'da işareti karıştırmak. b = −4 ise r = +4/2a.",
+          "Tepe noktasını her zaman y ekseninin üstünde sanmak. Sadece b = 0 iken öyle.",
+          "a'nın işaretine bakmadan çizmek. Kolların yönü ilk kararınız olmalı.",
+          "Kök yoksa çizilemez sanmak. Tepe noktası, y-kesişimi ve simetriği yeter.",
+          "İşaret tablosunda dıştaki bölgelere a'nın işaretini koymamak. Her zaman önce dışarıyı a'ya göre yazın, aradakini ters çevirin.",
+          "(x + 3)² görünce r = 3 demek. r = −3'tür, parantezi sıfır yapan sayı.",
+          "Son söz: parabol sorusu aldığınızda sırayla a'nın işareti, c, kökler, tepe noktası, simetrik nokta. Bu beş adım otomatikleştiğinde grafik soruları hesap sorusuna dönüşür ve hesap sorusu da, bir önceki yazıdaki yöntemlerle, zaten elinizin altında."
+        ],
+        [],
+        2
+      ]
+    ],
+    "publishedAt": "2026-10-24",
+    "updatedAt": "2026-10-24",
+    "level": "Lise temeli",
+    "readingTime": 9,
+    "preserveLineBreaks": true,
+    "keywords": [
+      "parabol",
+      "konu anlatımı",
+      "çözümlü örnekler"
+    ]
+  }
+]

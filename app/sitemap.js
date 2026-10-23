@@ -75,7 +75,7 @@ export default function sitemap() {
         url: `${baseUrl}/makaleler/${slug}`,
         lastModified: new Date(`${getLessonUpdatedAt(slug, publishedAt || '2026-08-27')}T00:00:00+03:00`),
         changeFrequency: 'monthly', priority: 0.8,
-        alternates: languageAlternates(`/makaleler/${slug}`, `/en/articles/${englishVersion.slug}`),
+        ...(englishVersion ? { alternates: languageAlternates(`/makaleler/${slug}`, `/en/articles/${englishVersion.slug}`) } : {}),
       };
     }),
   ];

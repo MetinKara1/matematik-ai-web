@@ -52,7 +52,7 @@ export default async function DerivativeArticlePage({ params }) {
     seriesLinks,
     toc: [...source.sections.map(([id, heading]) => ({ id, label: heading })), ...(slug === 'turevin-geometrik-yorumu' ? geometricPracticeToc : [])],
   };
-  return <IntegralTopicArticle article={article}>{source.sections.map(([id, heading, paragraphs, formulas]) => (
-    <section id={id} key={id}><h2>{heading}</h2>{paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{formulas.length > 0 && <div className={`article-math${formulas.length > 1 ? ' article-math-lines' : ''}`}>{formulas.map((formula) => <span key={formula} dangerouslySetInnerHTML={{ __html: formula }} />)}</div>}</section>
+  return <IntegralTopicArticle article={article}>{source.sections.map(([id, heading, paragraphs, formulas, headingLevel]) => (
+    <section id={id} key={id}>{headingLevel === 3 ? <h3>{heading}</h3> : <h2>{heading}</h2>}{paragraphs.map((paragraph) => <p style={source.preserveLineBreaks ? { whiteSpace: 'pre-wrap' } : undefined} key={paragraph}>{paragraph}</p>)}{formulas.length > 0 && <div className={`article-math${formulas.length > 1 ? ' article-math-lines' : ''}`}>{formulas.map((formula) => <span key={formula} dangerouslySetInnerHTML={{ __html: formula }} />)}</div>}</section>
   ))}{slug === 'turevin-geometrik-yorumu' && <GeometricDerivativePractice />}</IntegralTopicArticle>;
 }
