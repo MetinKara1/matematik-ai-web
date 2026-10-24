@@ -44,7 +44,7 @@ export default async function DerivativeArticlePage({ params }) {
     categoryArticles[currentIndex - 1],
     categoryArticles[currentIndex + 1],
     categoryArticles[0],
-  ].filter(Boolean).filter((item, index, items) => items.findIndex(({ slug: itemSlug }) => itemSlug === item.slug) === index);
+  ].filter(item => item && item.slug !== slug).filter((item, index, items) => items.findIndex(({ slug: itemSlug }) => itemSlug === item.slug) === index);
   const article = {
     ...source, languageHref: englishArticles.find(item => item.trSlug === slug) ? `/en/articles/${englishArticles.find(item => item.trSlug === slug).slug}` : undefined, updatedDisplayDate: source.updatedAt ? new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Istanbul' }).format(new Date(`${source.updatedAt}T12:00:00+03:00`)) : null, category: source.category || 'Türev', image: '/assets/og/turev-konu-anlatimi.jpg', date: publishedAt, displayDate,
     datePublished: `${publishedAt}T00:00:00+03:00`,

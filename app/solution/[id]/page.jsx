@@ -32,10 +32,9 @@ export async function generateMetadata({ params }) {
 
 export default async function SolutionPage({ params }) {
   const { id } = await params;
-  try {
-    const question = await getQuestion(id);
-    return <SolutionPageClient solutionId={id} initialQuestion={question} />;
-  } catch (error) {
-    return <SolutionPageClient solutionId={id} initialError={error.message} />;
-  }
+  let question = null;
+  let initialError = '';
+  try { question = await getQuestion(id); }
+  catch (error) { initialError = error.message; }
+  return <SolutionPageClient solutionId={id} initialQuestion={question} initialError={initialError} />;
 }

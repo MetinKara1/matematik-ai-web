@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { serializeStructuredData, applicationIdentity, publisherIdentity } from '../../lib/structuredData';
 import PublicHeader from '../../components/public/PublicHeader';
 import PublicFooter from '../../components/public/PublicFooter';
@@ -39,13 +40,13 @@ export default function EnglishHomePage() {
         <h2 className="section-title" id="study-guides-title">Start with a worked math guide</h2>
         <p className="section-description">Review a rule, follow an example, then use it in your own problem.</p>
         <div className="features-grid">
-          <a className="feature-card" href="/en/articles/derivative-rules"><h3>Derivative rules</h3><p>Learn the power, product, quotient, and chain rules.</p></a>
-          <a className="feature-card" href="/en/articles/differentiability-and-continuity"><h3>Differentiability and continuity</h3><p>Understand why a continuous function may still have no derivative.</p></a>
-          <a className="feature-card" href="/en/articles/integration-rules"><h3>Integration rules</h3><p>Work from basic antiderivatives to choosing an integration method.</p></a>
+          <Link className="feature-card" href="/en/articles/derivative-rules"><h3>Derivative rules</h3><p>Learn the power, product, quotient, and chain rules.</p></Link>
+          <Link className="feature-card" href="/en/articles/differentiability-and-continuity"><h3>Differentiability and continuity</h3><p>Understand why a continuous function may still have no derivative.</p></Link>
+          <Link className="feature-card" href="/en/articles/integration-rules"><h3>Integration rules</h3><p>Work from basic antiderivatives to choosing an integration method.</p></Link>
         </div>
-        <p className="landing-content-links"><a href="/en/articles">Browse all math articles →</a></p>
+        <p className="landing-content-links"><Link href="/en/articles">Browse all math articles →</Link></p>
       </div></section>
-      <section className="cta-section" id="download"><div className="container"><h2 className="cta-title">Start solving and learning</h2><p className="cta-description">Use MatAI on iPhone or iPad. The Android version is coming soon.</p><p className="landing-content-links"><a href="/en/ai-math-solver">Explore the AI Math Solver</a><span aria-hidden="true">·</span><a href="/en/articles">Read math guides</a></p></div></section>
+      <section className="cta-section" id="download"><div className="container"><h2 className="cta-title">Start solving and learning</h2><p className="cta-description">Use MatAI on iPhone or iPad. The Android version is coming soon.</p><p className="landing-content-links"><Link href="/en/ai-math-solver">Explore the AI Math Solver</Link><span aria-hidden="true">·</span><Link href="/en/articles">Read math guides</Link></p></div></section>
     </main><PublicFooter locale="en" />
   </div>;
 }

@@ -18,10 +18,12 @@ export default function SiteAnalytics({ measurementId }) {
   const allowed = enabled && productionHost && publicPath && consent === 'granted';
   const en = pathname?.startsWith('/en');
   useEffect(() => {
-    setProductionHost(window.location.hostname === 'matematik-ai.com');
-    try { const saved = localStorage.getItem(consentStorageKey); if (['granted', 'denied'].includes(saved)) setConsent(saved); } catch { /* Consent remains unset when storage is unavailable. */ }
+    const initial = setTimeout(() => {
+      setProductionHost(window.location.hostname === 'matematik-ai.com');
+      try { const saved = localStorage.getItem(consentStorageKey); if (['granted', 'denied'].includes(saved)) setConsent(saved); } catch { /* Consent remains unset when storage is unavailable. */ }
+    }, 0);
     function sync(event) { if (event.key === consentStorageKey) setConsent(['granted', 'denied'].includes(event.newValue) ? event.newValue : null); }
-    window.addEventListener('storage', sync); return () => window.removeEventListener('storage', sync);
+    window.addEventListener('storage', sync); return () => { clearTimeout(initial); window.removeEventListener('storage', sync); };
   }, []);
   useEffect(() => {
     if (!enabled) return;

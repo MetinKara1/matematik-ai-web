@@ -18,7 +18,8 @@ import { lessonPractice, lessonPracticeToc, getLessonUpdatedAt } from '../../lib
 
 const appStoreLink = 'https://apps.apple.com/us/app/matai-yapay-zeka-matematik/id6756010761';
 
-export default function IntegralTopicArticle({ article, children }) {
+export default function IntegralTopicArticle({ article: sourceArticle, children }) {
+  let article = sourceArticle;
   const topic = getArticleTopic(article.slug);
   const englishVersion = englishArticles.find((item) => item.trSlug === article.slug);
   const languageHref = englishVersion ? `/en/articles/${englishVersion.slug}` : undefined;

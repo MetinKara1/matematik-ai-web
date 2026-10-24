@@ -14,11 +14,9 @@ function Users() {
   const [totalPages, setTotalPages] = useState(0);
   const [hasMore, setHasMore] = useState(false);
 
-  useEffect(() => {
-    loadUsers();
-  }, [currentPage]);
 
-  const loadUsers = async () => {
+
+  async function loadUsers() {
     setLoading(true);
     setError('');
     try {
@@ -47,7 +45,12 @@ function Users() {
     } finally {
       setLoading(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    const task = setTimeout(() => { void loadUsers(); }, 0);
+    return () => clearTimeout(task);
+  }, [currentPage]);
 
   const handleDelete = async (id) => {
     if (!window.confirm('Bu kullanıcıyı silmek istediğinize emin misiniz?')) {

@@ -15,10 +15,11 @@ function Subscribers() {
   const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
-    loadSubscribers();
+    const task = setTimeout(() => { void loadSubscribers(); }, 0);
+    return () => clearTimeout(task);
   }, [currentPage]);
 
-  const loadSubscribers = async () => {
+  async function loadSubscribers() {
     setLoading(true);
     setError('');
     try {
@@ -34,7 +35,7 @@ function Subscribers() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   const handleCancel = async (id) => {
     if (!window.confirm('Bu aboneliği iptal etmek istediğinize emin misiniz?')) {

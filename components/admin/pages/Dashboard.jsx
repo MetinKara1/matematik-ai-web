@@ -13,11 +13,13 @@ function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  useEffect(() => {
-    loadDashboardData();
-  }, []);
 
-  const loadDashboardData = async () => {
+
+  const formatNumber = (num) => {
+    return new Intl.NumberFormat('tr-TR').format(num);
+  };
+
+  async function loadDashboardData() {
     setLoading(true);
     setError('');
     try {
@@ -66,11 +68,14 @@ function Dashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
-  const formatNumber = (num) => {
-    return new Intl.NumberFormat('tr-TR').format(num);
-  };
+  useEffect(() => {
+    const task = setTimeout(() => { void loadDashboardData(); }, 0);
+    return () => clearTimeout(task);
+  }, []);
+
+
 
   const maxValue = chartData.length > 0 ? Math.max(...chartData.map(d => d.value || 0)) : 1;
 

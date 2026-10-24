@@ -1,3 +1,4 @@
+import OctoberLessonDiagram from './OctoberLessonDiagram';
 const diagrams = {
   'fonksiyonlar-ve-grafikler': 'parabola',
   'artan-azalan-fonksiyonlar': 'parabola',
@@ -35,6 +36,7 @@ function curve(fn, min, max, X, Y) {
   }).join(' ');
 }
 export default function LessonDiagram({ slug }) {
+  if (['bileske-fonksiyon-ve-ters-fonksiyon', 'trigonometrik-denklemler', 'trigonometri-toplam-fark-yarim-aci-formulleri', 'ikinci-dereceden-denklemler', 'parabol-konu-anlatimi', 'trigonometrik-integraller'].includes(slug)) return <OctoberLessonDiagram slug={slug}/>;
   const kind = diagrams[slug];
   if (!kind) return null;
   const [title, desc, caption] = descriptions[kind];

@@ -11,11 +11,7 @@ function SolutionPage({ solutionId, initialQuestion = null, initialError = '' })
   const [loading, setLoading] = useState(!initialQuestion && !initialError);
   const [error, setError] = useState(initialError);
 
-  useEffect(() => {
-    if (id && !initialQuestion && !initialError) {
-      loadSolution(id);
-    }
-  }, [id, initialQuestion, initialError]);
+
 
   useEffect(() => {
     // Update meta tags for sharing
@@ -60,7 +56,7 @@ function SolutionPage({ solutionId, initialQuestion = null, initialError = '' })
     }
   }, [question, id]);
 
-  const loadSolution = async (solutionId) => {
+  async function loadSolution(solutionId) {
     setLoading(true);
     setError('');
     try {
@@ -74,7 +70,14 @@ function SolutionPage({ solutionId, initialQuestion = null, initialError = '' })
     } finally {
       setLoading(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    if (id && !initialQuestion && !initialError) {
+      const task = setTimeout(() => { void loadSolution(id); }, 0);
+      return () => clearTimeout(task);
+    }
+  }, [id, initialQuestion, initialError]);
 
   const handleShare = () => {
     const url = window.location.href;

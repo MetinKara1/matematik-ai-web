@@ -54,7 +54,7 @@ export default function OneTimePurchases() {
     }
   }, [environment, page, search, status]);
 
-  useEffect(() => { loadPurchases(); }, [loadPurchases]);
+  useEffect(() => { const task = setTimeout(() => { void loadPurchases(); }, 0); return () => clearTimeout(task); }, [loadPurchases]);
 
   const applySearch = (event) => {
     event.preventDefault();

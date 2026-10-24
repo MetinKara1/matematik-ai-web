@@ -15,10 +15,11 @@ function Feedback() {
   const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
-    loadFeedbacks();
+    const task = setTimeout(() => { void loadFeedbacks(); }, 0);
+    return () => clearTimeout(task);
   }, [currentPage]);
 
-  const loadFeedbacks = async () => {
+  async function loadFeedbacks() {
     setLoading(true);
     setError('');
     try {
@@ -44,7 +45,7 @@ function Feedback() {
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   const handleDelete = async (id) => {
     if (!window.confirm('Bu geri bildirimi silmek istediğinize emin misiniz?')) {
