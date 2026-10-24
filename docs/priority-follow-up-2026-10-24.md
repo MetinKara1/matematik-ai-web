@@ -14,3 +14,6 @@
 
 ## Account-dependent checks
 The current browser is not signed into Search Console. Updated sitemap and canonical checks do not prove Google indexing. GA4 uses the existing MatAI stream G-M171TYP0FN; consent UI/script behavior can be checked publicly, but reception in Realtime/DebugView and recent performance figures require the Google account session. No new GA4 property, measurement ID or key event was invented.
+
+## Production verification
+The Worker version is recorded in the chat deployment log. The new integral lesson, integral-hub link and sitemap entry were verified in the live browser. A new parabola self-check was opened and its answer/explanation rendered correctly. The production GA4 script uses the existing MatAI ID, and allow/withdrawal controls work. A previously loaded Google script can remain in the DOM after withdrawal; its presence alone does not prove ongoing collection. Realtime/DebugView delivery remains unverified without the Google account.
