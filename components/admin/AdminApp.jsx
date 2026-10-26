@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import WebsiteContent from './pages/WebsiteContent';
 import Feedback from './pages/Feedback';
 import Login from './pages/Login';
 import SolvedQuestions from './pages/SolvedQuestions';
@@ -51,6 +52,7 @@ export default function AdminApp() {
           <Route path="one-time-purchases" element={<OneTimePurchases />} />
           <Route path="solved-questions" element={<SolvedQuestions />} />
           <Route path="feedback" element={<Feedback />} />
+          <Route path="website-content" element={<WebsiteContent />} />
         </Route>
       </Routes>
     </BrowserRouter>

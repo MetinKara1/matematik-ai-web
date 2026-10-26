@@ -22,6 +22,7 @@ function Layout({ onLogout }) {
       icon: "✅",
     },
     { path: "/malcolmX/feedback", label: "Geri Bildirimler", icon: "💬" },
+    { path: "/malcolmX/website-content", label: "Web Sitesi İçerikleri", icon: "🌐" },
   ];
 
   const isActive = (path) => location.pathname === path;

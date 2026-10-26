@@ -17,3 +17,5 @@ yarn-error.log*
 /public/ai-markdown/
 /public/llms.txt
 /public/llms-full.txt
+
+/public/content-inventory.json
