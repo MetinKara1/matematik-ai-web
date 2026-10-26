@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { inventorySites, inventoryStats } from '../lib/website-inventory.mjs';
-const labels = { home: 'Ana sayfa', guide: 'Rehber / makale', hub: 'İçerik listesi', card: 'Kart sayfası', player: 'Oyuncu sayfası', category: 'Spor kategorisi', tool: 'Araştırma aracı', landing: 'Ürün / tarama sayfası', info: 'Kurumsal / destek', resource: 'Çalışma kaynağı' };
+const labels = { home: 'Ana sayfa', guide: 'Rehber / makale', hub: 'İçerik listesi', card: 'Kart sayfası', player: 'Oyuncu sayfası', category: 'Kategori', tool: 'Hesaplama aracı', landing: 'Ürün / tarama sayfası', info: 'Kurumsal / destek', resource: 'Çalışma kaynağı' };
 const languages = { en: 'English', tr: 'Türkçe', es: 'Español', de: 'Deutsch', fr: 'Français' };
 const date = (value) => value ? new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/Istanbul' }).format(new Date(value)) : 'Belirtilmemiş';
 export default function WebsiteInventory({ showHeading = true, endpoint = '/api/admin-proxy/website-content', requestHeaders }) {
