@@ -1,0 +1,24 @@
+.instagram-questions-page { min-height:100vh; background:#f5f5fc; }
+.instagram-questions-main { max-width:1080px; margin:0 auto; padding:145px 24px 72px; }
+.instagram-questions-intro { max-width:740px; margin-bottom:40px; }
+.instagram-questions-eyebrow { color:#5b4bd4; font-weight:750; font-size:.9rem; letter-spacing:.035em; }
+.instagram-questions-intro h1 { color:#191531; font-size:clamp(2.3rem,6vw,4.2rem); line-height:1.12; letter-spacing:-.045em; margin:14px 0 20px; }
+.instagram-questions-intro p { color:#625d76; font-size:1.15rem; line-height:1.7; max-width:630px; }
+.instagram-questions-count { display:inline-block; margin-top:20px; border:1px solid #ded9f3; border-radius:999px; padding:7px 14px; color:#675b8b; font-size:.85rem; }
+.instagram-questions-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; align-items:start; }
+.instagram-question-card { overflow:hidden; background:white; border:1px solid #e7e4f1; border-radius:24px; box-shadow:0 10px 35px #20144708; }
+.instagram-question-image { display:block; position:relative; background:#04132b; }
+.instagram-question-image img { display:block; width:100%; height:auto; }
+.instagram-question-latest { position:absolute; top:16px; left:16px; color:#112b31; background:#a4f5e7; border-radius:999px; padding:5px 12px; font-size:.78rem; font-weight:800; }
+.instagram-question-copy { padding:26px; }
+.instagram-question-meta { display:flex; flex-wrap:wrap; gap:6px 14px; justify-content:space-between; color:#746b87; font-size:.77rem; }
+.instagram-question-copy h2 { margin:13px 0 12px; color:#211b38; font-size:1.6rem; line-height:1.25; letter-spacing:-.025em; }
+.instagram-question-copy p { color:#6a6379; line-height:1.65; }
+.instagram-question-action { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:24px; padding:14px 18px; border-radius:12px; background:#6250d9; color:white; font-weight:750; }
+.instagram-question-action:hover { background:#4f3fc1; }
+.instagram-question-action:focus-visible,.instagram-question-image:focus-visible { outline:3px solid #14b8a6; outline-offset:4px; }
+.instagram-questions-practice { margin-top:38px; padding:28px; border-radius:20px; background:#ece9fa; color:#332659; }
+.instagram-questions-practice h2 { font-size:1.25rem; margin-bottom:6px; }
+.instagram-questions-practice p { color:#6a5c83; }
+.instagram-questions-practice a { display:inline-block; margin-top:12px; color:#5542bb; font-weight:750; }
+@media(max-width:680px) { .instagram-questions-main { padding:112px 18px 48px; }.instagram-questions-intro { margin-bottom:28px; }.instagram-questions-grid { grid-template-columns:1fr; gap:24px; }.instagram-question-copy { padding:22px; }.instagram-questions-intro p { font-size:1rem; } }

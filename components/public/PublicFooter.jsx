@@ -12,6 +12,7 @@ export default function PublicFooter({ locale = 'tr' }) {
             <Link href="/en/articles">Articles</Link>
             <Link href="/">Türkçe</Link>
           </> : <>
+            <Link href="/instagram">Instagram Soru Çözümleri</Link>
             <Link href="/hakkimizda">Hakkımızda</Link>
             <Link href="/icerik-politikasi">İçerik Politikası</Link>
             <Link href="/konular">Konu Merkezleri</Link>
