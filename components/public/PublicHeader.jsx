@@ -45,6 +45,14 @@ export default function PublicHeader({ locale = "tr", languageHref }) {
             <a href={isEnglish ? "/en/articles" : "/makaleler"} onClick={closeMenu}>{labels.articles}</a>
             {!isEnglish && <a href="/hakkimizda" onClick={closeMenu}>{labels.about}</a>}
             <a href={languageHref || (isEnglish ? "/" : "/en")} aria-label={languageLabel} title={languageLabel} hrefLang={isEnglish ? "tr" : "en"} lang={isEnglish ? "tr" : "en"} onClick={closeMenu}>{languageHref ? (isEnglish ? "TR" : "EN") : (isEnglish ? "TR ana sayfa" : "EN home")}</a>
+            <span className="landing-header-social">
+              <a href="https://www.instagram.com/matai.app" target="_blank" rel="noopener noreferrer" aria-label="MatAI Instagram (@matai.app)" title="MatAI Instagram (@matai.app)" onClick={closeMenu}>
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://www.youtube.com/@mataiapp" target="_blank" rel="noopener noreferrer" aria-label="MatAI YouTube (@mataiapp)" title="MatAI YouTube (@mataiapp)" onClick={closeMenu}>
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.56 31.56 0 0 0 0 12a31.56 31.56 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.56 31.56 0 0 0 24 12a31.56 31.56 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+              </a>
+            </span>
           </nav>
 
           <a

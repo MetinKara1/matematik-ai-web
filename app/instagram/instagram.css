@@ -22,3 +22,11 @@
 .instagram-questions-practice p { color:#6a5c83; }
 .instagram-questions-practice a { display:inline-block; margin-top:12px; color:#5542bb; font-weight:750; }
 @media(max-width:680px) { .instagram-questions-main { padding:112px 18px 48px; }.instagram-questions-intro { margin-bottom:28px; }.instagram-questions-grid { grid-template-columns:1fr; gap:24px; }.instagram-question-copy { padding:22px; }.instagram-questions-intro p { font-size:1rem; } }
+
+.instagram-questions-meta-row { display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; margin-top:20px; }
+.instagram-questions-meta-row .instagram-questions-count { margin-top:0; }
+.instagram-questions-channels { display:flex; flex-wrap:wrap; gap:10px; }
+.instagram-channel-link { display:inline-flex; align-items:center; gap:7px; padding:7px 14px; border-radius:999px; font-size:.85rem; font-weight:750; border:1px solid #ded9f3; background:white; color:#332659; transition:transform .15s, border-color .15s; }
+.instagram-channel-link:hover { transform:translateY(-1px); border-color:#6250d9; }
+.instagram-channel-ig svg { color:#e1306c; }
+.instagram-channel-yt svg { color:#ff0000; }
