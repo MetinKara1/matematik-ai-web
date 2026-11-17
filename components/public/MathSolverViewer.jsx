@@ -107,9 +107,19 @@ export default function MathSolverViewer() {
   const [solution, setSolution] = useState(null);
   const [isProUser, setIsProUser] = useState(false);
   const [dragOver, setDragOver] = useState(false);
+  const [justSolved, setJustSolved] = useState(false);
 
   const fileInputRef = useRef(null);
   const textInputRef = useRef(null);
+  const solutionRef = useRef(null);
+
+  function scrollToSolution() {
+    setTimeout(() => {
+      if (solutionRef.current) {
+        solutionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 80);
+  }
 
   // Initialize with default sample solution on mount
   useEffect(() => {
@@ -181,9 +191,9 @@ export default function MathSolverViewer() {
   async function solveUploadedFile(file) {
     setLoading(true);
     setError('');
+    const startTime = Date.now();
 
     try {
-      // Simulate/call API
       const res = await fetch('/api/math-solver', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -194,15 +204,27 @@ export default function MathSolverViewer() {
       });
 
       const data = await res.json();
+      const elapsed = Date.now() - startTime;
+      if (elapsed < 400) {
+        await new Promise((r) => setTimeout(r, 400 - elapsed));
+      }
+
       if (data.success && data.solution) {
         setSolution(data.solution);
       } else {
         const fallback = solveMathImage({ fileName: file.name });
         setSolution(fallback);
       }
+
+      setJustSolved(true);
+      setTimeout(() => setJustSolved(false), 3500);
+      scrollToSolution();
     } catch {
       const fallback = solveMathImage({ fileName: file.name });
       setSolution(fallback);
+      setJustSolved(true);
+      setTimeout(() => setJustSolved(false), 3500);
+      scrollToSolution();
     } finally {
       setLoading(false);
     }
@@ -216,14 +238,40 @@ export default function MathSolverViewer() {
       label: sample.label
     });
     setPhotoPreviewUrl(null);
+    setTypedFormula(sample.formula);
     setLoading(true);
 
     setTimeout(() => {
       const solved = solveMathImage({ sampleId: sample.id });
       setSolution(solved);
-      setTypedFormula(sample.formula);
+      setJustSolved(true);
+      setTimeout(() => setJustSolved(false), 3500);
       setLoading(false);
-    }, 200);
+      scrollToSolution();
+    }, 300);
+  }
+
+  async function handleSolveSelectedPhoto() {
+    setLoading(true);
+    setError('');
+    const startTime = Date.now();
+
+    try {
+      const sampleId = selectedPhoto?.id || 'integral';
+      const solved = solveMathImage({ sampleId, fileName: selectedPhoto?.name });
+
+      const elapsed = Date.now() - startTime;
+      if (elapsed < 400) {
+        await new Promise((r) => setTimeout(r, 400 - elapsed));
+      }
+
+      setSolution(solved);
+      setJustSolved(true);
+      setTimeout(() => setJustSolved(false), 3500);
+      scrollToSolution();
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function handleSolveTyped(e) {
@@ -235,10 +283,16 @@ export default function MathSolverViewer() {
 
     setLoading(true);
     setError('');
+    const startTime = Date.now();
 
     try {
       const res = await fetch(`/api/math-solver?q=${encodeURIComponent(typedFormula)}`);
       const data = await res.json();
+
+      const elapsed = Date.now() - startTime;
+      if (elapsed < 400) {
+        await new Promise((r) => setTimeout(r, 400 - elapsed));
+      }
 
       if (data.success && data.solution) {
         setSolution(data.solution);
@@ -246,9 +300,16 @@ export default function MathSolverViewer() {
         const clientSolved = solveMathProblem(typedFormula);
         setSolution(clientSolved);
       }
+
+      setJustSolved(true);
+      setTimeout(() => setJustSolved(false), 3500);
+      scrollToSolution();
     } catch {
       const clientSolved = solveMathProblem(typedFormula);
       setSolution(clientSolved);
+      setJustSolved(true);
+      setTimeout(() => setJustSolved(false), 3500);
+      scrollToSolution();
     } finally {
       setLoading(false);
     }
@@ -442,6 +503,33 @@ export default function MathSolverViewer() {
                 />
               </div>
             )}
+
+            {/* Prominent Tab 1 Solve Button */}
+            <div className="tab1-solve-cta-container">
+              <button
+                type="button"
+                disabled={loading}
+                className="tab1-solve-btn primary-action-glow"
+                onClick={handleSolveSelectedPhoto}
+              >
+                {loading ? (
+                  <span className="btn-loading-content">
+                    <span className="btn-spinner" />
+                    <span>Yapay Zekâ Soruyu Çözüyor...</span>
+                  </span>
+                ) : (
+                  <span className="btn-normal-content">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                    <span>Adım Adım Çöz →</span>
+                  </span>
+                )}
+              </button>
+              <span className="tab1-solve-hint">
+                1. Adım ücretsiz önizleme ile anında listelenir.
+              </span>
+            </div>
           </div>
         )}
 
@@ -489,9 +577,16 @@ export default function MathSolverViewer() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="unslop-solve-btn"
+                  className="unslop-solve-btn primary-action-glow"
                 >
-                  {loading ? 'Çözülüyor...' : 'Adım Adım Çöz →'}
+                  {loading ? (
+                    <span className="btn-loading-content">
+                      <span className="btn-spinner" />
+                      <span>Çözülüyor...</span>
+                    </span>
+                  ) : (
+                    <span>Adım Adım Çöz →</span>
+                  )}
                 </button>
               </div>
 
@@ -569,7 +664,15 @@ export default function MathSolverViewer() {
             RESULTS AREA (SOLUTION CARDS + POLAR PAYWALL)
            ======================================================== */}
         {solution && (
-          <div className="unslop-solution-wrapper">
+          <div ref={solutionRef} className="unslop-solution-wrapper">
+            {/* Visual Success Confirmation Toast */}
+            {justSolved && (
+              <div className="solve-success-toast">
+                <span className="toast-icon">✓</span>
+                <span>Soru başarıyla analiz edildi! 1. Adım ve formül açıklamaları aşağıda hazırlandı.</span>
+              </div>
+            )}
+
             {/* Metadata Bar */}
             <div className="unslop-solution-meta">
               <div className="meta-pills">
