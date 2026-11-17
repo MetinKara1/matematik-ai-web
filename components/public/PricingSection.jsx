@@ -16,7 +16,7 @@ export default function PricingSection() {
             Matematik Başarınız İçin Doğru Planı Seçin
           </h2>
           <p className="pricing-sub-heading">
-            İster tek bir sınav haftası için esnek paket, ister tüm dönem için yıllık indirimli plan. Gizli ücret veya taahhüt yok.
+            İster her ay yenilenen esnek paket, ister tüm dönem için yıllık indirimli plan. Gizli ücret veya taahhüt yok.
           </p>
         </div>
 

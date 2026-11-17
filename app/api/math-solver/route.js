@@ -2,6 +2,7 @@ import { sanitizeMathQuery } from '../../../lib/sanitizeMath.mjs';
 import { solveMathProblem, solveMathImage } from '../../../lib/mathSolverEngine.mjs';
 import {
   APP_STORE_URL,
+  POLAR_CHECKOUT_MONTHLY,
   POLAR_CHECKOUT_WEEKLY,
   POLAR_CHECKOUT_ANNUAL
 } from '../../../lib/pricing.mjs';
@@ -47,6 +48,7 @@ export async function GET(request) {
             'MatAI matematik çözümleri eğitim ve pratik destek amaçlıdır. Sıfır kişisel veri ilkesiyle işlenir ve saklanmaz.'
         },
         appStoreUrl: APP_STORE_URL,
+        polarCheckoutMonthly: POLAR_CHECKOUT_MONTHLY,
         polarCheckoutWeekly: POLAR_CHECKOUT_WEEKLY,
         polarCheckoutAnnual: POLAR_CHECKOUT_ANNUAL
       },
@@ -105,6 +107,7 @@ export async function POST(request) {
               'MatAI fotoğraf çözümleri eğitim ve pratik destek amaçlıdır. Sıfır kişisel veri ilkesiyle işlenir ve saklanmaz.'
           },
           appStoreUrl: APP_STORE_URL,
+          polarCheckoutMonthly: POLAR_CHECKOUT_MONTHLY,
           polarCheckoutWeekly: POLAR_CHECKOUT_WEEKLY,
           polarCheckoutAnnual: POLAR_CHECKOUT_ANNUAL
         },
@@ -154,6 +157,7 @@ export async function POST(request) {
             'MatAI matematik çözümleri eğitim ve pratik destek amaçlıdır. Sıfır kişisel veri ilkesiyle işlenir ve saklanmaz.'
         },
         appStoreUrl: APP_STORE_URL,
+        polarCheckoutMonthly: POLAR_CHECKOUT_MONTHLY,
         polarCheckoutWeekly: POLAR_CHECKOUT_WEEKLY,
         polarCheckoutAnnual: POLAR_CHECKOUT_ANNUAL
       },

@@ -148,13 +148,14 @@ test('pricing: plans and checkout URLs are configured properly', () => {
   assert.ok(Array.isArray(PRICING_PLANS));
   assert.equal(PRICING_PLANS.length, 3);
 
-  const [free, weekly, annual] = PRICING_PLANS;
+  const [free, monthly, annual] = PRICING_PLANS;
   assert.equal(free.id, 'free');
   assert.equal(free.price, '₺0');
 
-  assert.equal(weekly.id, 'weekly');
-  assert.equal(weekly.price, '₺79');
-  assert.ok(weekly.ctaHref.includes('polar'));
+  assert.equal(monthly.id, 'monthly');
+  assert.equal(monthly.price, '₺79');
+  assert.equal(monthly.period, 'aylık');
+  assert.ok(monthly.ctaHref.includes('polar'));
 
   assert.equal(annual.id, 'annual');
   assert.equal(annual.price, '₺499');
