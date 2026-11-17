@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { sanitizeMathQuery } from '../lib/sanitizeMath.mjs';
-import { solveMathProblem } from '../lib/mathSolverEngine.mjs';
+import { solveMathProblem, solveMathImage } from '../lib/mathSolverEngine.mjs';
 import { PRICING_PLANS, POLAR_CHECKOUT_WEEKLY, POLAR_CHECKOUT_ANNUAL, APP_STORE_URL } from '../lib/pricing.mjs';
 
 test('sanitizeMathQuery: allows valid mathematical expressions and LaTeX syntax', () => {
@@ -132,6 +132,16 @@ test('solveMathProblem: dynamic fallback classifies arbitrary derivative', () =>
   assert.ok(sol);
   assert.equal(sol.topic.includes('Türev'), true);
   assert.equal(sol.requiresPro, true);
+});
+
+test('solveMathImage: solves sample photo question presets', () => {
+  const sol = solveMathImage({ sampleId: 'integral', fileName: 'ayt-integral.png' });
+  assert.ok(sol);
+  assert.equal(sol.detectionSource, 'photo_ocr');
+  assert.equal(sol.detectedFileName, 'ayt-integral.png');
+  assert.ok(sol.problem.includes('e^x'));
+  assert.equal(sol.step1.stepNumber, 1);
+  assert.equal(sol.lockedSteps.length, 3);
 });
 
 test('pricing: plans and checkout URLs are configured properly', () => {
