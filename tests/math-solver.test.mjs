@@ -144,6 +144,27 @@ test('solveMathImage: solves sample photo question presets', () => {
   assert.equal(sol.lockedSteps.length, 3);
 });
 
+test('solveMathProblem: supports full English localization for topics, rules, and steps', () => {
+  const solEn = solveMathProblem('\\int x e^x dx', 'en');
+  assert.ok(solEn);
+  assert.equal(solEn.topic, 'Calculus — Integration by Parts');
+  assert.equal(solEn.difficulty, 'Intermediate');
+  assert.ok(solEn.ruleApplied.includes('Integration by Parts Formula (LIATE Rule)'));
+  assert.equal(solEn.step1.title, 'Choosing Variables u and dv (LIATE Rule)');
+  assert.ok(solEn.step1.explanation.includes('LIATE order'));
+  assert.equal(solEn.lockedSteps[0].title, 'Applying the Integration by Parts Formula');
+
+  const imgEn = solveMathImage({ sampleId: 'integral', locale: 'en' });
+  assert.ok(imgEn);
+  assert.equal(imgEn.detectedFileName, 'math-question.png');
+  assert.equal(imgEn.topic, 'Calculus — Integration by Parts');
+  assert.equal(imgEn.step1.title, 'Choosing Variables u and dv (LIATE Rule)');
+
+  const quadEn = solveMathProblem('2x^2 - 5x + 2 = 0', { locale: 'en' });
+  assert.equal(quadEn.topic, 'Algebra — Quadratic Equations');
+  assert.equal(quadEn.step1.title, 'Identifying Coefficients and Discriminant Setup');
+});
+
 test('pricing: plans and checkout URLs are configured properly', () => {
   assert.ok(Array.isArray(PRICING_PLANS));
   assert.equal(PRICING_PLANS.length, 3);

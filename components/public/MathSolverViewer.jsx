@@ -163,7 +163,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
   // Initialize with default sample solution on mount
   useEffect(() => {
     try {
-      const initial = solveMathImage({ sampleId: 'integral' });
+      const initial = solveMathImage({ sampleId: 'integral', locale });
       setSolution(initial);
       setSelectedPhoto({
         id: 'integral',
@@ -176,7 +176,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
     } catch {
       // Fallback
     }
-  }, [isEnglish]);
+  }, [isEnglish, locale]);
 
   // Listen for clipboard image paste (Ctrl+V / Cmd+V)
   useEffect(() => {
@@ -204,12 +204,12 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
     if (!file) return;
 
     if (!file.type.startsWith('image/')) {
-      setError('Lütfen bir görsel dosyası seçin (PNG, JPG, WEBP).');
+      setError(isEnglish ? 'Please select an image file (PNG, JPG, WEBP).' : 'Lütfen bir görsel dosyası seçin (PNG, JPG, WEBP).');
       return;
     }
 
     if (file.size > 8 * 1024 * 1024) {
-      setError('Görsel boyutu 8MB\'dan küçük olmalıdır.');
+      setError(isEnglish ? 'Image size must be under 8MB.' : 'Görsel boyutu 8MB\'dan küçük olmalıdır.');
       return;
     }
 
@@ -238,7 +238,8 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fileName: file.name,
-          image: 'uploaded_image_token'
+          image: 'uploaded_image_token',
+          locale
         })
       });
 
@@ -251,7 +252,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
       if (data.success && data.solution) {
         setSolution(data.solution);
       } else {
-        const fallback = solveMathImage({ fileName: file.name });
+        const fallback = solveMathImage({ fileName: file.name, locale });
         setSolution(fallback);
       }
 
@@ -259,7 +260,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
       setTimeout(() => setJustSolved(false), 3500);
       scrollToSolution();
     } catch {
-      const fallback = solveMathImage({ fileName: file.name });
+      const fallback = solveMathImage({ fileName: file.name, locale });
       setSolution(fallback);
       setJustSolved(true);
       setTimeout(() => setJustSolved(false), 3500);
@@ -273,7 +274,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
     setError('');
     setSelectedPhoto({
       id: sample.id,
-      name: `${sample.id}-sorusu.png`,
+      name: isEnglish ? `${sample.id}-problem.png` : `${sample.id}-sorusu.png`,
       label: sample.label
     });
     setPhotoPreviewUrl(null);
@@ -281,7 +282,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
     setLoading(true);
 
     setTimeout(() => {
-      const solved = solveMathImage({ sampleId: sample.id });
+      const solved = solveMathImage({ sampleId: sample.id, locale });
       setSolution(solved);
       setJustSolved(true);
       setTimeout(() => setJustSolved(false), 3500);
@@ -297,7 +298,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
 
     try {
       const sampleId = selectedPhoto?.id || 'integral';
-      const solved = solveMathImage({ sampleId, fileName: selectedPhoto?.name });
+      const solved = solveMathImage({ sampleId, fileName: selectedPhoto?.name, locale });
 
       const elapsed = Date.now() - startTime;
       if (elapsed < 400) {
@@ -316,7 +317,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
   async function handleSolveTyped(e) {
     if (e && e.preventDefault) e.preventDefault();
     if (!typedFormula.trim()) {
-      setError('Lütfen bir matematik formülü veya denklem yazın.');
+      setError(isEnglish ? 'Please enter a math formula or equation.' : 'Lütfen bir matematik formülü veya denklem yazın.');
       return;
     }
 
@@ -325,7 +326,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
     const startTime = Date.now();
 
     try {
-      const res = await fetch(`/api/math-solver?q=${encodeURIComponent(typedFormula)}`);
+      const res = await fetch(`/api/math-solver?q=${encodeURIComponent(typedFormula)}&locale=${locale}`);
       const data = await res.json();
 
       const elapsed = Date.now() - startTime;
@@ -336,7 +337,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
       if (data.success && data.solution) {
         setSolution(data.solution);
       } else {
-        const clientSolved = solveMathProblem(typedFormula);
+        const clientSolved = solveMathProblem(typedFormula, { locale });
         setSolution(clientSolved);
       }
 
@@ -344,7 +345,7 @@ export default function MathSolverViewer({ locale = 'tr' } = {}) {
       setTimeout(() => setJustSolved(false), 3500);
       scrollToSolution();
     } catch {
-      const clientSolved = solveMathProblem(typedFormula);
+      const clientSolved = solveMathProblem(typedFormula, { locale });
       setSolution(clientSolved);
       setJustSolved(true);
       setTimeout(() => setJustSolved(false), 3500);
