@@ -1165,3 +1165,298 @@
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   Pricing Section & Polar Pro Plans Styles
+   ========================================================================== */
+
+.matai-pricing-section {
+  width: 100%;
+  padding: 5rem 1.5rem;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  color: #0f172a;
+}
+
+.matai-pricing-section .container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.pricing-header-center {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.pricing-tag {
+  display: inline-block;
+  background: #e0e7ff;
+  color: #4338ca;
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.pricing-main-heading {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 850;
+  color: #0f172a;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-sub-heading {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  align-items: stretch;
+  max-width: 1140px;
+  margin: 0 auto 3.5rem;
+}
+
+.matai-pricing-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.matai-pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.matai-pricing-card.highlighted-plan {
+  border: 2px solid #6366f1;
+  background: #ffffff;
+  box-shadow: 0 16px 40px rgba(99, 102, 241, 0.15);
+  transform: scale(1.02);
+}
+
+.matai-pricing-card.highlighted-plan:hover {
+  transform: scale(1.02) translateY(-4px);
+}
+
+.pricing-plan-badge {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.plan-name-block {
+  margin-bottom: 1.25rem;
+}
+
+.plan-name {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+
+.plan-description {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  min-height: 2.7rem;
+}
+
+.plan-price-block {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.plan-price-amount {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.plan-price-period {
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: #64748b;
+}
+
+.plan-cta-button {
+  display: block;
+  text-align: center;
+  padding: 0.85rem 1.25rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  transition: all 0.15s ease;
+}
+
+.cta-primary {
+  background: #4f46e5;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.32);
+}
+
+.cta-primary:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.42);
+}
+
+.cta-secondary {
+  background: #f1f5f9;
+  color: #334155 !important;
+  border: 1px solid #e2e8f0;
+}
+
+.cta-secondary:hover {
+  background: #e2e8f0;
+  color: #0f172a !important;
+}
+
+.plan-features-list {
+  flex: 1;
+}
+
+.features-group-title {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.85rem;
+}
+
+.plan-features-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.feature-item.included {
+  color: #334155;
+}
+
+.feature-item.included svg {
+  color: #10b981;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feature-item.excluded {
+  color: #94a3b8;
+  opacity: 0.75;
+}
+
+.feature-item.excluded svg {
+  color: #cbd5e1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Fair Solve Guarantee Card */
+.fair-solve-guarantee-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.guarantee-icon {
+  color: #4f46e5;
+  background: #eef2ff;
+  padding: 0.75rem;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.guarantee-text h4 {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+
+.guarantee-text p {
+  font-size: 0.94rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0 0 0.45rem;
+}
+
+.guarantee-text small {
+  display: block;
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+@media (max-width: 960px) {
+  .pricing-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+  .matai-pricing-card.highlighted-plan {
+    transform: none;
+  }
+  .matai-pricing-card.highlighted-plan:hover {
+    transform: translateY(-4px);
+  }
+  .fair-solve-guarantee-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .guarantee-icon {
+    margin: 0 auto;
+  }
+}
