@@ -52,6 +52,13 @@
     grid-column: span 3;
   }
 }
+
+@media (max-width: 640px) {
+  .topic-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
 .topic-card { padding: 25px; display: flex; flex-direction: column; border: 1px solid #dce2ee; background: #fff; border-radius: 16px; text-decoration: none; color: #18233b; }
 .topic-card:hover, .topic-routes > a:hover { border-color: #a393d3; box-shadow: 0 6px 20px #443c7c0a; }
 .topic-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; font-size: .75rem; color: #788198; }

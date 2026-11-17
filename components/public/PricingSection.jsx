@@ -1,27 +1,41 @@
 'use client';
 
 import {
-  PRICING_PLANS,
-  FAIR_SOLVE_GUARANTEE,
+  getPricingPlans,
+  getFairSolveGuarantee,
   APP_STORE_URL
 } from '../../lib/pricing.mjs';
 
-export default function PricingSection() {
+export default function PricingSection({ locale = 'tr' }) {
+  const isEnglish = locale === 'en';
+  const plans = getPricingPlans(locale);
+  const guarantee = getFairSolveGuarantee(locale);
+
   return (
-    <section className="matai-pricing-section" id="pricing" aria-label="MatAI Pro Abonelik Planları">
+    <section
+      className="matai-pricing-section"
+      id="pricing"
+      aria-label={isEnglish ? 'MatAI Pro Subscription Plans' : 'MatAI Pro Abonelik Planları'}
+    >
       <div className="container">
         <div className="pricing-header-center">
-          <span className="pricing-tag">FİYATLANDIRMA & PRO PLANLAR</span>
+          <span className="pricing-tag">
+            {isEnglish ? 'PRICING & PRO PLANS' : 'FİYATLANDIRMA & PRO PLANLAR'}
+          </span>
           <h2 className="pricing-main-heading">
-            Matematik Başarınız İçin Doğru Planı Seçin
+            {isEnglish
+              ? 'Choose the Right Plan for Your Math Success'
+              : 'Matematik Başarınız İçin Doğru Planı Seçin'}
           </h2>
           <p className="pricing-sub-heading">
-            İster her ay yenilenen esnek paket, ister tüm dönem için yıllık indirimli plan. Gizli ücret veya taahhüt yok.
+            {isEnglish
+              ? 'Whether a flexible monthly subscription or a discounted annual pass. No hidden fees or commitments.'
+              : 'İster her ay yenilenen esnek paket, ister tüm dönem için yıllık indirimli plan. Gizli ücret veya taahhüt yok.'}
           </p>
         </div>
 
         <div className="pricing-cards-grid">
-          {PRICING_PLANS.map((plan) => (
+          {plans.map((plan) => (
             <div
               key={plan.id}
               className={`matai-pricing-card ${plan.highlighted ? 'highlighted-plan' : ''}`}
@@ -50,7 +64,9 @@ export default function PricingSection() {
               </a>
 
               <div className="plan-features-list">
-                <div className="features-group-title">Dahil Olan Özellikler:</div>
+                <div className="features-group-title">
+                  {isEnglish ? 'Included Features:' : 'Dahil Olan Özellikler:'}
+                </div>
                 <ul>
                   {plan.features.map((feat, idx) => (
                     <li key={idx} className="feature-item included">
@@ -85,9 +101,9 @@ export default function PricingSection() {
             </svg>
           </div>
           <div className="guarantee-text">
-            <h4>{FAIR_SOLVE_GUARANTEE.title}</h4>
-            <p>{FAIR_SOLVE_GUARANTEE.description}</p>
-            <small>{FAIR_SOLVE_GUARANTEE.privacyNote}</small>
+            <h4>{guarantee.title}</h4>
+            <p>{guarantee.description}</p>
+            <small>{guarantee.privacyNote}</small>
           </div>
         </div>
       </div>

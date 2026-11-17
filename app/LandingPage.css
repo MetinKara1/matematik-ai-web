@@ -577,9 +577,12 @@
   align-items: center;
   flex-wrap: wrap;
   gap: .75rem;
-  margin: 2.25rem auto 0;
+  margin: 2.75rem auto 0;
   color: #64748b;
   font-size: .95rem;
+  position: relative;
+  z-index: 1;
+  clear: both;
 }
 .cta-section .landing-content-links {
   margin: 1rem auto 2.25rem;

@@ -7,36 +7,39 @@ import 'katex/dist/katex.min.css';
 import { solveMathProblem, solveMathImage } from '../../lib/mathSolverEngine.mjs';
 import {
   APP_STORE_URL,
+  POLAR_CHECKOUT_MONTHLY,
   POLAR_CHECKOUT_WEEKLY,
-  POLAR_CHECKOUT_ANNUAL
+  POLAR_CHECKOUT_ANNUAL,
+  POLAR_CHECKOUT_MONTHLY_USD,
+  POLAR_CHECKOUT_ANNUAL_USD
 } from '../../lib/pricing.mjs';
 
 const appQrCode = '/assets/matai-ios-qr.png';
 
 // Visual Math Keyboard Symbols for users who don't know LaTeX
 const MATH_KEYBOARD_SYMBOLS = [
-  { label: 'x²', insert: '^2', desc: 'Kare' },
-  { label: 'xⁿ', insert: '^{}', desc: 'Kuvvet' },
-  { label: '√x', insert: '\\sqrt{}', desc: 'Karekök' },
-  { label: 'a/b', insert: '\\frac{}{}', desc: 'Kesir' },
-  { label: '∫', insert: '\\int ', desc: 'İntegral' },
-  { label: 'd/dx', insert: '\\frac{d}{dx}', desc: 'Türev' },
+  { label: 'x²', insert: '^2', desc: 'Square' },
+  { label: 'xⁿ', insert: '^{}', desc: 'Power' },
+  { label: '√x', insert: '\\sqrt{}', desc: 'Square Root' },
+  { label: 'a/b', insert: '\\frac{}{}', desc: 'Fraction' },
+  { label: '∫', insert: '\\int ', desc: 'Integral' },
+  { label: 'd/dx', insert: '\\frac{d}{dx}', desc: 'Derivative' },
   { label: 'lim', insert: '\\lim_{x \\to 0} ', desc: 'Limit' },
-  { label: 'sin', insert: '\\sin()', desc: 'Sinüs' },
-  { label: 'cos', insert: '\\cos()', desc: 'Kosinüs' },
-  { label: 'tan', insert: '\\tan()', desc: 'Tanjant' },
-  { label: 'ln', insert: '\\ln()', desc: 'Doğal Log' },
-  { label: 'log', insert: '\\log()', desc: 'Logaritma' },
+  { label: 'sin', insert: '\\sin()', desc: 'Sine' },
+  { label: 'cos', insert: '\\cos()', desc: 'Cosine' },
+  { label: 'tan', insert: '\\tan()', desc: 'Tangent' },
+  { label: 'ln', insert: '\\ln()', desc: 'Natural Log' },
+  { label: 'log', insert: '\\log()', desc: 'Logarithm' },
   { label: 'π', insert: '\\pi', desc: 'Pi' },
-  { label: '∞', insert: '\\infty', desc: 'Sonsuz' },
-  { label: '±', insert: '\\pm', desc: 'Artı Eksi' },
+  { label: '∞', insert: '\\infty', desc: 'Infinity' },
+  { label: '±', insert: '\\pm', desc: 'Plus-Minus' },
   { label: 'Δ', insert: '\\Delta', desc: 'Delta' },
-  { label: '( )', insert: '()', desc: 'Parantez' },
-  { label: '=', insert: ' = ', desc: 'Eşittir' }
+  { label: '( )', insert: '()', desc: 'Parentheses' },
+  { label: '=', insert: ' = ', desc: 'Equals' }
 ];
 
 // Curated question presets for instant testing without needing an immediate photo
-const SAMPLE_QUESTIONS = [
+const SAMPLE_QUESTIONS_TR = [
   {
     id: 'integral',
     label: 'Kısmi İntegrasyon',
@@ -64,6 +67,37 @@ const SAMPLE_QUESTIONS = [
     formula: '\\frac{d}{dx}(x^3 \\ln x)',
     badge: 'Türev Kuralları',
     description: 'x³ · ln(x) ifadesinin türevi'
+  }
+];
+
+const SAMPLE_QUESTIONS_EN = [
+  {
+    id: 'integral',
+    label: 'Integration by Parts',
+    formula: '\\int x e^x dx',
+    badge: 'Calculus',
+    description: 'Indefinite integral of x · e^x'
+  },
+  {
+    id: 'equation',
+    label: 'Quadratic Equation',
+    formula: '2x^2 - 5x + 2 = 0',
+    badge: 'Algebra',
+    description: 'Discriminant (Δ) and finding roots'
+  },
+  {
+    id: 'limit',
+    label: '0/0 Indeterminate Limit',
+    formula: '\\lim_{x \\to 0} \\frac{\\sin x}{x}',
+    badge: 'Calculus / L\'Hôpital',
+    description: 'Trigonometric indeterminate limit'
+  },
+  {
+    id: 'derivative',
+    label: 'Product Rule Derivative',
+    formula: '\\frac{d}{dx}(x^3 \\ln x)',
+    badge: 'Derivative Rules',
+    description: 'Derivative of x³ · ln(x)'
   }
 ];
 
@@ -97,7 +131,12 @@ function FormattedRule({ rule }) {
   return <span className="rule-text-content">{rule}</span>;
 }
 
-export default function MathSolverViewer() {
+export default function MathSolverViewer({ locale = 'tr' } = {}) {
+  const isEnglish = locale === 'en';
+  const sampleQuestions = isEnglish ? SAMPLE_QUESTIONS_EN : SAMPLE_QUESTIONS_TR;
+  const checkoutMonthly = isEnglish ? POLAR_CHECKOUT_MONTHLY_USD : POLAR_CHECKOUT_MONTHLY;
+  const checkoutAnnual = isEnglish ? POLAR_CHECKOUT_ANNUAL_USD : POLAR_CHECKOUT_ANNUAL;
+
   const [activeTab, setActiveTab] = useState('photo'); // 'photo' | 'type' | 'mobile'
   const [selectedPhoto, setSelectedPhoto] = useState(null); // File or sample object
   const [photoPreviewUrl, setPhotoPreviewUrl] = useState(null);
@@ -128,8 +167,8 @@ export default function MathSolverViewer() {
       setSolution(initial);
       setSelectedPhoto({
         id: 'integral',
-        name: 'ayt-integral-sorusu.png',
-        label: 'Kısmi İntegrasyon Sorusu'
+        name: isEnglish ? 'calculus-integral-problem.png' : 'ayt-integral-sorusu.png',
+        label: isEnglish ? 'Integration by Parts Problem' : 'Kısmi İntegrasyon Sorusu'
       });
 
       const storedLicense = localStorage.getItem('matai_pro_license');
@@ -137,7 +176,7 @@ export default function MathSolverViewer() {
     } catch {
       // Fallback
     }
-  }, []);
+  }, [isEnglish]);
 
   // Listen for clipboard image paste (Ctrl+V / Cmd+V)
   useEffect(() => {
@@ -340,15 +379,17 @@ export default function MathSolverViewer() {
   }
 
   return (
-    <section className="math-solver-unslop-section" id="math-solver-widget" aria-label="MatAI Matematik Soru Çözücü">
+    <section className="math-solver-unslop-section" id="math-solver-widget" aria-label={isEnglish ? "MatAI Math Solver" : "MatAI Matematik Soru Çözücü"}>
       <div className="math-solver-wide-canvas">
         {/* Clean, Human Top Headline */}
         <div className="unslop-header">
           <h1 className="unslop-title">
-            Matematik Sorularını Fotoğraftan Adım Adım Çözün
+            {isEnglish ? 'Solve Math Problems from Photo Step by Step' : 'Matematik Sorularını Fotoğraftan Adım Adım Çözün'}
           </h1>
           <p className="unslop-subtext">
-            Soru bankası, ders notu veya sınav sorusunun fotoğrafını yükleyin. Yapay zekâ adım adım çözüm yöntemini hemen çıkarsın.
+            {isEnglish
+              ? 'Upload a photo of your textbook, homework, or exam problem. AI analyzes and provides step-by-step guidance instantly.'
+              : 'Soru bankası, ders notu veya sınav sorusunun fotoğrafını yükleyin. Yapay zekâ adım adım çözüm yöntemini hemen çıkarsın.'}
           </p>
 
           {/* Clean Segmented Tab Switcher */}
@@ -365,7 +406,7 @@ export default function MathSolverViewer() {
                 <circle cx="8.5" cy="8.5" r="1.5" />
                 <polyline points="21 15 16 10 5 21" />
               </svg>
-              <span>1. Fotoğraf ile Çöz (Önerilen)</span>
+              <span>{isEnglish ? '1. Solve with Photo (Recommended)' : '1. Fotoğraf ile Çöz (Önerilen)'}</span>
             </button>
 
             <button
@@ -380,7 +421,7 @@ export default function MathSolverViewer() {
                 <line x1="9" y1="20" x2="15" y2="20" />
                 <line x1="12" y1="4" x2="12" y2="20" />
               </svg>
-              <span>2. Formül & Sembollerle Yaz</span>
+              <span>{isEnglish ? '2. Type Formula & Symbols' : '2. Formül & Sembollerle Yaz'}</span>
             </button>
 
             <button
@@ -394,7 +435,7 @@ export default function MathSolverViewer() {
                 <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
                 <line x1="12" y1="18" x2="12.01" y2="18" />
               </svg>
-              <span>3. iPhone Kamerası</span>
+              <span>{isEnglish ? '3. iPhone Camera' : '3. iPhone Kamerası'}</span>
             </button>
           </div>
         </div>
@@ -436,13 +477,19 @@ export default function MathSolverViewer() {
 
                 <div className="dropzone-text-group">
                   <h3 className="dropzone-main-title">
-                    Matematik sorusu fotoğrafını buraya sürükleyin
+                    {isEnglish ? 'Drag & drop a math problem photo here' : 'Matematik sorusu fotoğrafını buraya sürükleyin'}
                   </h3>
                   <p className="dropzone-sub">
-                    veya <strong>bilgisayarınızdan bir görsel seçin</strong> (PNG, JPG, WEBP)
+                    {isEnglish ? (
+                      <>or <strong>choose an image from your computer</strong> (PNG, JPG, WEBP)</>
+                    ) : (
+                      <>veya <strong>bilgisayarınızdan bir görsel seçin</strong> (PNG, JPG, WEBP)</>
+                    )}
                   </p>
                   <span className="dropzone-paste-hint">
-                    💡 İpucu: Ekran görüntüsü aldıysanız klavyeden doğrudan <strong>Ctrl+V</strong> / <strong>Cmd+V</strong> ile yapıştırabilirsiniz.
+                    {isEnglish
+                      ? '💡 Tip: If you took a screenshot, you can paste directly using Ctrl+V / Cmd+V.'
+                      : '💡 İpucu: Ekran görüntüsü aldıysanız klavyeden doğrudan Ctrl+V / Cmd+V ile yapıştırabilirsiniz.'}
                   </span>
                 </div>
 
@@ -454,16 +501,18 @@ export default function MathSolverViewer() {
                     fileInputRef.current?.click();
                   }}
                 >
-                  Fotoğraf Seç
+                  {isEnglish ? 'Select Photo' : 'Fotoğraf Seç'}
                 </button>
               </div>
             </div>
 
             {/* Selected Photo Card & Sample Pills */}
             <div className="sample-questions-row">
-              <span className="sample-label">Fotoğrafınız yok mu? Bir örnekle hemen deneyin:</span>
+              <span className="sample-label">
+                {isEnglish ? 'No photo handy? Try a sample problem:' : 'Fotoğrafınız yok mu? Bir örnekle hemen deneyin:'}
+              </span>
               <div className="sample-pills-list">
-                {SAMPLE_QUESTIONS.map((s) => (
+                {sampleQuestions.map((s) => (
                   <button
                     key={s.id}
                     type="button"
@@ -481,7 +530,7 @@ export default function MathSolverViewer() {
               <div className="selected-photo-status">
                 <div className="photo-info">
                   <span className="status-dot" />
-                  <span>Seçili Soru: <strong>{selectedPhoto.label || selectedPhoto.name}</strong></span>
+                  <span>{isEnglish ? 'Selected Problem:' : 'Seçili Soru:'} <strong>{selectedPhoto.label || selectedPhoto.name}</strong></span>
                   {selectedPhoto.size && <small>({selectedPhoto.size})</small>}
                 </div>
                 <button
@@ -489,7 +538,7 @@ export default function MathSolverViewer() {
                   className="change-photo-btn"
                   onClick={removeSelectedPhoto}
                 >
-                  Değiştir
+                  {isEnglish ? 'Change' : 'Değiştir'}
                 </button>
               </div>
             )}
@@ -498,7 +547,7 @@ export default function MathSolverViewer() {
               <div className="custom-photo-preview-wrap">
                 <img
                   src={photoPreviewUrl}
-                  alt="Yüklenen soru fotoğrafı önizlemesi"
+                  alt={isEnglish ? 'Uploaded problem photo preview' : 'Yüklenen soru fotoğrafı önizlemesi'}
                   className="uploaded-question-thumb"
                 />
               </div>
@@ -515,19 +564,19 @@ export default function MathSolverViewer() {
                 {loading ? (
                   <span className="btn-loading-content">
                     <span className="btn-spinner" />
-                    <span>Yapay Zekâ Soruyu Çözüyor...</span>
+                    <span>{isEnglish ? 'AI is Solving the Problem...' : 'Yapay Zekâ Soruyu Çözüyor...'}</span>
                   </span>
                 ) : (
                   <span className="btn-normal-content">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                       <polygon points="5 3 19 12 5 21 5 3" />
                     </svg>
-                    <span>Adım Adım Çöz →</span>
+                    <span>{isEnglish ? 'Solve Step by Step →' : 'Adım Adım Çöz →'}</span>
                   </span>
                 )}
               </button>
               <span className="tab1-solve-hint">
-                1. Adım ücretsiz önizleme ile anında listelenir.
+                {isEnglish ? 'Step 1 is listed immediately with a free preview.' : '1. Adım ücretsiz önizleme ile anında listelenir.'}
               </span>
             </div>
           </div>
@@ -539,14 +588,18 @@ export default function MathSolverViewer() {
         {activeTab === 'type' && (
           <div className="type-solver-panel">
             <div className="type-explainer">
-              <h3>Matematik Klavyesi ile Sorunu Yaz</h3>
-              <p>KaTeX veya kodlama bilmenize gerek yok. Aşağıdaki sembollere tıklayarak sorunuzu kolayca oluşturun.</p>
+              <h3>{isEnglish ? 'Write Your Problem with Math Keyboard' : 'Matematik Klavyesi ile Sorunu Yaz'}</h3>
+              <p>
+                {isEnglish
+                  ? 'No LaTeX or programming syntax needed. Click the symbols below to build your math problem easily.'
+                  : 'KaTeX veya kodlama bilmenize gerek yok. Aşağıdaki sembollere tıklayarak sorunuzu kolayca oluşturun.'}
+              </p>
             </div>
 
             {/* Interactive Visual Symbol Toolbar */}
             <div className="visual-math-toolbar">
               <div className="toolbar-header">
-                <span>Hızlı Semboller (Tıklayınca Ekler):</span>
+                <span>{isEnglish ? 'Quick Symbols (Click to Insert):' : 'Hızlı Semboller (Tıklayınca Ekler):'}</span>
               </div>
               <div className="toolbar-buttons-grid">
                 {MATH_KEYBOARD_SYMBOLS.map((sym, idx) => (
@@ -571,7 +624,7 @@ export default function MathSolverViewer() {
                   type="text"
                   value={typedFormula}
                   onChange={(e) => setTypedFormula(e.target.value)}
-                  placeholder="Örn: 2x^2 - 5x + 2 = 0 veya \int x e^x dx"
+                  placeholder={isEnglish ? 'e.g. 2x^2 - 5x + 2 = 0 or \\int x e^x dx' : 'Örn: 2x^2 - 5x + 2 = 0 veya \\int x e^x dx'}
                   className="unslop-formula-input"
                 />
                 <button
@@ -582,17 +635,17 @@ export default function MathSolverViewer() {
                   {loading ? (
                     <span className="btn-loading-content">
                       <span className="btn-spinner" />
-                      <span>Çözülüyor...</span>
+                      <span>{isEnglish ? 'Solving...' : 'Çözülüyor...'}</span>
                     </span>
                   ) : (
-                    <span>Adım Adım Çöz →</span>
+                    <span>{isEnglish ? 'Solve Step by Step →' : 'Adım Adım Çöz →'}</span>
                   )}
                 </button>
               </div>
 
               {/* Real-Time Live Math Render Box */}
               <div className="live-preview-box">
-                <span className="live-preview-label">Canlı Formül Görünümü:</span>
+                <span className="live-preview-label">{isEnglish ? 'Live Formula Preview:' : 'Canlı Formül Görünümü:'}</span>
                 <div className="live-preview-render">
                   <SafeMath math={typedFormula} displayMode={true} />
                 </div>
@@ -607,24 +660,28 @@ export default function MathSolverViewer() {
         {activeTab === 'mobile' && (
           <div className="mobile-guide-panel">
             <div className="mobile-guide-content">
-              <h3>iPhone Kamerasını Soruya Tutun, 1 Saniyede Çözülsün</h3>
-              <p>Bilgisayarda formül yazmakla vakit kaybetmeyin. MatAI iOS uygulaması el yazısını ve kitap baskılarını kameradan anında tanır.</p>
+              <h3>{isEnglish ? 'Point your iPhone Camera at the Problem to Solve in 1 Second' : 'iPhone Kamerasını Soruya Tutun, 1 Saniyede Çözülsün'}</h3>
+              <p>
+                {isEnglish
+                  ? 'Skip typing formulas on your computer. The MatAI iOS app instantly recognizes handwriting and textbook print directly from the camera.'
+                  : 'Bilgisayarda formül yazmakla vakit kaybetmeyin. MatAI iOS uygulaması el yazısını ve kitap baskılarını kameradan anında tanır.'}
+              </p>
 
               <div className="mobile-steps-inline">
                 <div className="step-item">
                   <div className="step-num">1</div>
-                  <strong>Fotoğrafı Çek</strong>
-                  <p>Soruyu vizörün içine ortalayın.</p>
+                  <strong>{isEnglish ? 'Capture Problem' : 'Fotoğrafı Çek'}</strong>
+                  <p>{isEnglish ? 'Center the problem in the camera frame.' : 'Soruyu vizörün içine ortalayın.'}</p>
                 </div>
                 <div className="step-item">
                   <div className="step-num">2</div>
-                  <strong>Yapay Zekâ Tanısın</strong>
-                  <p>OCR motoru formülü algılar.</p>
+                  <strong>{isEnglish ? 'AI Recognition' : 'Yapay Zekâ Tanısın'}</strong>
+                  <p>{isEnglish ? 'OCR engine detects the math formula.' : 'OCR motoru formülü algılar.'}</p>
                 </div>
                 <div className="step-item">
                   <div className="step-num">3</div>
-                  <strong>Adım Adım Öğren</strong>
-                  <p>Tüm işlem basamakları cebinizde.</p>
+                  <strong>{isEnglish ? 'Learn Step by Step' : 'Adım Adım Öğren'}</strong>
+                  <p>{isEnglish ? 'All calculation steps in your pocket.' : 'Tüm işlem basamakları cebinizde.'}</p>
                 </div>
               </div>
 
@@ -639,14 +696,14 @@ export default function MathSolverViewer() {
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                   </svg>
                   <div>
-                    <small>iPhone için Ücretsiz İndir</small>
-                    <strong>App Store&apos;da Aç</strong>
+                    <small>{isEnglish ? 'Free Download for iPhone' : 'iPhone için Ücretsiz İndir'}</small>
+                    <strong>{isEnglish ? 'Open on App Store' : 'App Store\'da Aç'}</strong>
                   </div>
                 </a>
 
                 <div className="mobile-qr-inline">
                   <Image src={appQrCode} alt="MatAI App Store QR Kod" width={90} height={90} className="qr-thumb" />
-                  <span>Kameranızla Tarayın</span>
+                  <span>{isEnglish ? 'Scan with your iPhone' : 'Kameranızla Tarayın'}</span>
                 </div>
               </div>
             </div>
@@ -669,7 +726,7 @@ export default function MathSolverViewer() {
             {justSolved && (
               <div className="solve-success-toast">
                 <span className="toast-icon">✓</span>
-                <span>Soru başarıyla analiz edildi! 1. Adım ve formül açıklamaları aşağıda hazırlandı.</span>
+                <span>{isEnglish ? 'Problem analyzed successfully! Step 1 and formula explanations ready below.' : 'Soru başarıyla analiz edildi! 1. Adım ve formül açıklamaları aşağıda hazırlandı.'}</span>
               </div>
             )}
 
@@ -679,12 +736,12 @@ export default function MathSolverViewer() {
                 <span className="unslop-topic-pill">{solution.topic}</span>
                 <span className="unslop-difficulty-pill">{solution.difficulty}</span>
               </div>
-              <span className="unslop-total-steps">Toplam {solution.totalSteps} Adım</span>
+              <span className="unslop-total-steps">{isEnglish ? `Total ${solution.totalSteps} Steps` : `Toplam ${solution.totalSteps} Adım`}</span>
             </div>
 
             {/* Problem Card */}
             <div className="unslop-problem-box">
-              <span className="problem-eyebrow">İNCELENEN PROBLEM</span>
+              <span className="problem-eyebrow">{isEnglish ? 'ANALYZED PROBLEM' : 'İNCELENEN PROBLEM'}</span>
               <div className="problem-math-render">
                 <SafeMath math={solution.problem} displayMode={true} />
               </div>
@@ -703,7 +760,7 @@ export default function MathSolverViewer() {
             {/* Step 1: Free Preview */}
             <div className="unslop-step-card free-step">
               <div className="step-tag-row">
-                <span className="free-step-tag">✓ 1. ADIM (ÜCRETSİZ ÖNİZLEME)</span>
+                <span className="free-step-tag">{isEnglish ? '✓ STEP 1 (FREE PREVIEW)' : '✓ 1. ADIM (ÜCRETSİZ ÖNİZLEME)'}</span>
                 <h3 className="step-name">{solution.step1.title}</h3>
               </div>
               <p className="step-desc">{solution.step1.explanation}</p>
@@ -716,12 +773,12 @@ export default function MathSolverViewer() {
             {isProUser ? (
               <div className="unslop-unlocked-section">
                 <div className="unlocked-banner">
-                  <span>✓ MatAI Pro Lisansınız Aktif — Tüm Adımlar Görüntüleniyor</span>
+                  <span>{isEnglish ? '✓ MatAI Pro License Active — All Steps Unlocked' : '✓ MatAI Pro Lisansınız Aktif — Tüm Adımlar Görüntüleniyor'}</span>
                 </div>
                 {solution.lockedSteps.map((step) => (
                   <div key={step.stepNumber} className="unslop-step-card unlocked-step">
                     <div className="step-tag-row">
-                      <span className="unlocked-tag">ADIM {step.stepNumber}</span>
+                      <span className="unlocked-tag">{isEnglish ? `STEP ${step.stepNumber}` : `ADIM ${step.stepNumber}`}</span>
                       <h3 className="step-name">{step.title}</h3>
                     </div>
                     <p className="step-desc">{step.teaser}</p>
@@ -729,7 +786,7 @@ export default function MathSolverViewer() {
                 ))}
                 {solution.fullSolutionAnswer && (
                   <div className="unslop-final-answer">
-                    <strong>Nihai Matematiksel Çözüm:</strong>
+                    <strong>{isEnglish ? 'Final Mathematical Solution:' : 'Nihai Matematiksel Çözüm:'}</strong>
                     <div className="final-formula">
                       <SafeMath math={solution.fullSolutionAnswer} displayMode={true} />
                     </div>
@@ -743,7 +800,7 @@ export default function MathSolverViewer() {
                   {solution.lockedSteps.map((step) => (
                     <div key={step.stepNumber} className="unslop-step-card locked-step">
                       <div className="step-tag-row">
-                        <span className="locked-tag">🔒 ADIM {step.stepNumber}</span>
+                        <span className="locked-tag">{isEnglish ? `🔒 STEP ${step.stepNumber}` : `🔒 ADIM ${step.stepNumber}`}</span>
                         <h3 className="step-name">{step.title}</h3>
                       </div>
                       <p className="step-desc">{step.teaser}</p>
@@ -758,34 +815,34 @@ export default function MathSolverViewer() {
                       <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
-                    <span>Kalan {solution.lockedSteps.length} Adım ve Nihai Sonuç Kilitli</span>
+                    <span>{isEnglish ? `Remaining ${solution.lockedSteps.length} Steps & Final Answer Locked` : `Kalan ${solution.lockedSteps.length} Adım ve Nihai Sonuç Kilitli`}</span>
                   </div>
 
                   <h4 className="clean-paywall-heading">
-                    Sınavda Tam Puan Almak İçin Tüm Çözüm Adımlarını Açın
+                    {isEnglish ? 'Unlock All Solution Steps to Ace Your Exams' : 'Sınavda Tam Puan Almak İçin Tüm Çözüm Adımlarını Açın'}
                   </h4>
                   <p className="clean-paywall-text">
-                    Ara işlem basamakları, çarpanlara ayırma, değişken dönüşümleri ve sağlamaları inceleyerek konuyu tam kavrayın.
+                    {isEnglish ? 'Review intermediate calculations, factoring, substitutions, and verifications to master the concept.' : 'Ara işlem basamakları, çarpanlara ayırma, değişken dönüşümleri ve sağlamaları inceleyerek konuyu tam kavrayın.'}
                   </p>
 
                   <div className="clean-paywall-actions">
                     <a
-                      href={POLAR_CHECKOUT_WEEKLY}
+                      href={checkoutMonthly}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="clean-paywall-primary-btn"
                     >
-                      <span>Pro&apos;ya Geç — Adımları Aç</span>
-                      <span className="price-bubble">₺79&apos;dan başlayan fiyatlarla</span>
+                      <span>{isEnglish ? 'Upgrade to Pro — Unlock Steps' : 'Pro\'ya Geç — Adımları Aç'}</span>
+                      <span className="price-bubble">{isEnglish ? 'Plans from $2.99 / mo' : '₺79\'dan başlayan fiyatlarla'}</span>
                     </a>
 
                     <a href="/activate" className="clean-paywall-secondary-link">
-                      Zaten Lisansınız Var mı? Etkinleştirin →
+                      {isEnglish ? 'Already have a license? Activate →' : 'Zaten Lisansınız Var mı? Etkinleştirin →'}
                     </a>
                   </div>
 
                   <span className="clean-guarantee-text">
-                    Adil Çözüm Güvencesi • Güvenli Polar Ödeme • Anında Erişim
+                    {isEnglish ? 'Fair Solution Guarantee • Secure Polar Checkout • Instant Access' : 'Adil Çözüm Güvencesi • Güvenli Polar Ödeme • Anında Erişim'}
                   </span>
                 </div>
               </div>
@@ -796,9 +853,9 @@ export default function MathSolverViewer() {
         {/* Bottom Mobile Recommendation Banner */}
         <div className="unslop-mobile-banner">
           <div className="banner-left">
-            <span className="banner-tag">SORU KİTAPTA VEYA DEFTERDE Mİ?</span>
-            <h4>iPhone Kamerasını Soruya Tutun, Saniyeler İçinde Çözülsün</h4>
-            <p>Formül yazmakla veya bilgisayara fotoğraf aktarmakla uğraşmayın. MatAI iOS uygulaması el yazısını ve kitapları doğrudan kameradan okur.</p>
+            <span className="banner-tag">{isEnglish ? 'QUESTION IN A BOOK OR NOTEBOOK?' : 'SORU KİTAPTA VEYA DEFTERDE Mİ?'}</span>
+            <h4>{isEnglish ? 'Point your iPhone Camera at the Problem to Solve in Seconds' : 'iPhone Kamerasını Soruya Tutun, Saniyeler İçinde Çözülsün'}</h4>
+            <p>{isEnglish ? 'Skip typing formulas or transferring photos to your computer. The MatAI iOS app reads handwriting and printed text directly from the camera.' : 'Formül yazmakla veya bilgisayara fotoğraf aktarmakla uğraşmayın. MatAI iOS uygulaması el yazısını ve kitapları doğrudan kameradan okur.'}</p>
             <div className="banner-action-row">
               <a
                 href={APP_STORE_URL}
@@ -806,15 +863,15 @@ export default function MathSolverViewer() {
                 rel="noopener noreferrer"
                 className="banner-appstore-link"
               >
-                App Store&apos;dan İndir
+                {isEnglish ? 'Download on App Store' : 'App Store\'dan İndir'}
               </a>
-              <span className="banner-app-rating">★★★★★ 4.9 Puan • Sınavlara Hazırlık</span>
+              <span className="banner-app-rating">{isEnglish ? '★★★★★ 4.9 Rating • Exam Preparation' : '★★★★★ 4.9 Puan • Sınavlara Hazırlık'}</span>
             </div>
           </div>
 
           <div className="banner-right">
             <Image src={appQrCode} alt="MatAI iOS QR Kodu" width={100} height={100} className="banner-qr-image" />
-            <small>iPhone ile Tarayın</small>
+            <small>{isEnglish ? 'Scan with your iPhone' : 'iPhone ile Tarayın'}</small>
           </div>
         </div>
 
@@ -824,7 +881,7 @@ export default function MathSolverViewer() {
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           </svg>
           <span>
-            <strong>Sıfır Kişisel Veri Güvencesi:</strong> MatAI sorularınızı hiçbir kişisel bilgiyle eşleştirmez. KVKK, GDPR ve CCPA veri mahremiyeti standartlarına tam uyumludur. Matematik çözümleri eğitim ve pratik amaçlıdır.
+            <strong>{isEnglish ? 'Zero Personal Data Guarantee:' : 'Sıfır Kişisel Veri Güvencesi:'}</strong> {isEnglish ? 'MatAI never links your questions with personal data. Fully compliant with GDPR, CCPA, and KVKK privacy standards. Math solutions are for educational and practice purposes.' : 'MatAI sorularınızı hiçbir kişisel bilgiyle eşleştirmez. KVKK, GDPR ve CCPA veri mahremiyeti standartlarına tam uyumludur. Matematik çözümleri eğitim ve pratik amaçlıdır.'}
           </span>
         </div>
       </div>
