@@ -21,6 +21,11 @@ function Layout({ onLogout }) {
       label: "Çözülen Sorular",
       icon: "✅",
     },
+    {
+      path: "/malcolmX/content-questions",
+      label: "Sosyal Medya Soruları",
+      icon: "📱",
+    },
     { path: "/malcolmX/feedback", label: "Geri Bildirimler", icon: "💬" },
     { path: "/malcolmX/website-content", label: "Web Sitesi İçerikleri", icon: "🌐" },
   ];

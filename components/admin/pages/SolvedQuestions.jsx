@@ -18,8 +18,14 @@ function AiSource({ question }) {
   const provider = question.AiProvider ?? question.aiProvider;
   const model = question.AiModel ?? question.aiModel;
   const fallback = question.AiIsFallback ?? question.aiIsFallback;
+  const badgeClass =
+    provider === 'Qwen' ? 'qwen'
+    : provider === 'OpenAI' ? 'openai'
+    : provider === 'Anthropic' ? 'anthropic'
+    : provider === 'MatAI İçerik' ? 'content'
+    : 'unknown';
   return <div className="ai-source">
-    <span className={`ai-source-badge ${provider === 'Qwen' ? 'qwen' : provider === 'OpenAI' ? 'openai' : 'unknown'}`}>{provider || "Kaydedilmemiş"}</span>
+    <span className={`ai-source-badge ${badgeClass}`}>{provider || "Kaydedilmemiş"}</span>
     {model && <span className="ai-source-model">{model}</span>}
     {fallback && <span className="ai-source-fallback">Fallback</span>}
   </div>;
@@ -131,7 +137,8 @@ function SolutionDetail({ question, onClose }) {
   );
 }
 
-export default function SolvedQuestions() {
+export default function SolvedQuestions({ source = "users" }) {
+  const isContent = source === "content";
   const [searchTerm, setSearchTerm] = useState("");
   const [refreshVersion, setRefreshVersion] = useState(0);
   const [questions, setQuestions] = useState([]);
@@ -142,7 +149,7 @@ export default function SolvedQuestions() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [hasMore, setHasMore] = useState(false);
-  const pageSize = 10;
+  const pageSize = isContent ? 25 : 10;
 
   useEffect(() => {
     let active = true;
@@ -153,6 +160,7 @@ export default function SolvedQuestions() {
         const response = await solvedQuestionsAPI.getAll({
           page: currentPage,
           pageSize,
+          source,
         });
         if (!active) return;
         const data =
@@ -176,7 +184,7 @@ export default function SolvedQuestions() {
     return () => {
       active = false;
     };
-  }, [currentPage, refreshVersion]);
+  }, [currentPage, refreshVersion, source, pageSize]);
 
   const handleDelete = async (event, id) => {
     event.stopPropagation();
@@ -204,15 +212,23 @@ export default function SolvedQuestions() {
     <div className="page-container solved-questions-page">
       <div className="admin-page-intro">
         <div>
-          <span className="admin-eyebrow">MatAI kayıtları</span>
-          <h2>Çözülmüş sorular</h2>
+          <span className="admin-eyebrow">
+            {isContent ? "Sosyal medya içerikleri" : "MatAI kayıtları"}
+          </span>
+          <h2>
+            {isContent
+              ? "Instagram soru çözümleri"
+              : "Çözülmüş sorular (Kullanıcılar)"}
+          </h2>
           <p>
-            Soruya tıklayarak matematiksel çözümü ve tüm adımları inceleyin.
+            {isContent
+              ? "Instagram gönderileri ve matematik-ai.com/instagram soru merkezi için hazırlanan içerik çözümleri."
+              : "Gerçek kullanıcıların uygulama üzerinden çözdürdüğü sorular. Soruya tıklayarak çözümü ve adımları inceleyin."}
           </p>
         </div>
         <div className="admin-intro-count">
           <strong>{totalCount}</strong>
-          <span>toplam çözüm</span>
+          <span>{isContent ? "içerik sorusu" : "kullanıcı çözümü"}</span>
         </div>
       </div>
       <div className="page-header">

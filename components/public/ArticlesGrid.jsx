@@ -11,8 +11,6 @@ export default function ArticlesGrid({ articles, locale = 'tr', basePath = '/mak
   const allFilter = filters[0];
   const [activeFilter, setActiveFilter] = useState(allFilter);
   const filtered = activeFilter === allFilter ? articles : articles.filter(({ category }) => category === activeFilter);
-  const visible = filtered.slice(0, 6);
-  const remaining = filtered.slice(6);
 
   const selectFilter = (filter) => {
     setActiveFilter(filter);
@@ -34,13 +32,9 @@ export default function ArticlesGrid({ articles, locale = 'tr', basePath = '/mak
       </div>
 
       <div className="articles-wide-list">
-        {visible.map(renderCard)}
+        {filtered.map(renderCard)}
       </div>
 
-      {remaining.length > 0 && <details className="articles-more" key={activeFilter}>
-        <summary>{isEnglish ? 'More articles' : 'Diğer makaleler'} <span>{remaining.length}</span></summary>
-        <div className="articles-wide-list">{remaining.map(renderCard)}</div>
-      </details>}
       {filtered.length === 0 && <p className="articles-empty">{isEnglish ? 'No articles are available in this category yet.' : 'Bu kategoride henüz makale bulunmuyor.'}</p>}
     </>
   );

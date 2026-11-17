@@ -50,7 +50,8 @@ export default function AdminApp() {
           <Route path="users" element={<Users />} />
           <Route path="subscribers" element={<Subscribers />} />
           <Route path="one-time-purchases" element={<OneTimePurchases />} />
-          <Route path="solved-questions" element={<SolvedQuestions />} />
+          <Route path="solved-questions" element={<SolvedQuestions key="users" source="users" />} />
+          <Route path="content-questions" element={<SolvedQuestions key="content" source="content" />} />
           <Route path="feedback" element={<Feedback />} />
           <Route path="website-content" element={<WebsiteContent />} />
         </Route>

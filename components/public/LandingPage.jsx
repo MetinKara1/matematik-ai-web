@@ -3,6 +3,9 @@ import Image from "next/image";
 import PublicHeader from "./PublicHeader";
 import PublicFooter from "./PublicFooter";
 import MathToolCards from "./MathToolCards";
+import TopicCards from "./TopicCards";
+import MathSolverViewer from "./MathSolverViewer";
+import PricingSection from "./PricingSection";
 
 const logo = "/assets/MatAI-logo.png";
 const appQrCode = "/assets/matai-ios-qr.png";
@@ -65,6 +68,9 @@ function LandingPage() {
   return (
     <div className="landing-page">
       <PublicHeader languageHref="/en" /><main>
+
+      {/* Top Interactive AI Math Solver & Mobile Scanner Widget */}
+      <MathSolverViewer />
 
       {/* Hero Section */}
       <section className="hero-section" id="how-it-works">
@@ -192,6 +198,26 @@ function LandingPage() {
           </div>
         </div>
       </section>
+
+      {/* Topic Hubs & Study Resources Section */}
+      <section className="features-section" aria-labelledby="home-topics-heading">
+        <div className="container">
+          <h2 className="section-title" id="home-topics-heading">Konu Merkezleri ve Çalışma Rehberleri</h2>
+          <TopicCards />
+          <p className="landing-content-links">
+            <Link href="/konular">Tüm konu merkezleri</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/makaleler">Konu anlatımları ve makaleler</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/kaynaklar">Yazdırılabilir çalışma kağıtları</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/instagram">Instagram soru çözümleri</Link>
+          </p>
+        </div>
+      </section>
+
+      {/* Pricing & Polar Pro Plans */}
+      <PricingSection />
 
       {/* CTA Section */}
       <section className="cta-section" id="download">

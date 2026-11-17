@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { BlockMath, InlineMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
+import { normalizeSharedQuestion } from '../../lib/sharedSolutionImage.mjs';
 import { solvedQuestionsAPI } from '../../lib/api';
 
 function SolutionPage({ solutionId, initialQuestion = null, initialError = '' }) {
@@ -13,48 +14,7 @@ function SolutionPage({ solutionId, initialQuestion = null, initialError = '' })
 
 
 
-  useEffect(() => {
-    // Update meta tags for sharing
-    if (question) {
-      // Update document title
-      document.title = `Matematik Soru Çözümü - ${question.Question ? question.Question.substring(0, 60) : 'Soru'}`;
-      
-      // Update or create meta tags
-      const updateMetaTag = (name, content, isProperty = false) => {
-        const attribute = isProperty ? 'property' : 'name';
-        let meta = document.querySelector(`meta[${attribute}="${name}"]`);
-        if (!meta) {
-          meta = document.createElement('meta');
-          meta.setAttribute(attribute, name);
-          document.head.appendChild(meta);
-        }
-        meta.setAttribute('content', content);
-      };
-
-      const siteUrl = window.location.origin;
-      const solutionUrl = `${siteUrl}/solution/${id}`;
-      const imageUrl = question.ImageUri || `${siteUrl}/og-image-default.jpg`;
-      const description = question.Solution 
-        ? question.Solution.substring(0, 200) 
-        : 'Matematik soru çözümü detayları';
-
-      // Open Graph tags
-      updateMetaTag('og:title', question.Question ? question.Question.substring(0, 60) : 'Matematik Soru Çözümü', true);
-      updateMetaTag('og:description', description, true);
-      updateMetaTag('og:image', imageUrl, true);
-      updateMetaTag('og:url', solutionUrl, true);
-      updateMetaTag('og:type', 'article', true);
-
-      // Twitter Card tags
-      updateMetaTag('twitter:card', 'summary_large_image');
-      updateMetaTag('twitter:title', question.Question ? question.Question.substring(0, 60) : 'Matematik Soru Çözümü');
-      updateMetaTag('twitter:description', description);
-      updateMetaTag('twitter:image', imageUrl);
-
-      // Standard meta tags
-      updateMetaTag('description', description);
-    }
-  }, [question, id]);
+  const [imageFailed, setImageFailed] = useState(false);
 
   async function loadSolution(solutionId) {
     setLoading(true);
@@ -62,7 +22,8 @@ function SolutionPage({ solutionId, initialQuestion = null, initialError = '' })
     try {
       // Public endpoint - no auth required
       const response = await solvedQuestionsAPI.getPublicById(solutionId);
-      setQuestion(response);
+      setQuestion(normalizeSharedQuestion(response, solutionId));
+      setImageFailed(false);
     } catch (err) {
       const errorMessage = err.message || 'Soru çözümü yüklenirken bir hata oluştu';
       setError(errorMessage);
@@ -253,25 +214,16 @@ function SolutionPage({ solutionId, initialQuestion = null, initialError = '' })
           </button>
         </div>
 
-        {/* Question Image */}
-        {question.ImageUri && (
+        {/* The stable HTTP image URL works for browsers and WhatsApp crawlers. */}
+        {(question.HasImage || question.ImageUri) && (
           <div className="solution-image-container">
-            <img 
-              src={question.ImageUri} 
-              alt="Soru görseli" 
-              className="solution-image"
-              onClick={() => {
-                const newWindow = window.open();
-                newWindow.document.write(`
-                  <html>
-                    <head><title>Soru Görseli</title></head>
-                    <body style="margin:0; padding:20px; background:#f5f5f5; display:flex; justify-content:center; align-items:center; min-height:100vh;">
-                      <img src="${question.ImageUri}" style="max-width:100%; height:auto; box-shadow:0 4px 6px rgba(0,0,0,0.1);" />
-                    </body>
-                  </html>
-                `);
-              }}
-            />
+            {question.ImageUri && !imageFailed ? (
+              <a href={question.ImageUri} target="_blank" rel="noopener noreferrer" aria-label="Soru görselini tam boyutta aç">
+                <img src={question.ImageUri} alt="Soru görseli" className="solution-image" onError={() => setImageFailed(true)} />
+              </a>
+            ) : (
+              <p className="solution-image-unavailable" role="status">Bu kayıtta soru görseline ulaşılamıyor. Soru metni ve çözüm aşağıda yer alıyor.</p>
+            )}
           </div>
         )}
 

@@ -930,6 +930,8 @@
 .ai-source-badge { padding: 4px 8px; border-radius: 8px; font-size: 12px; font-weight: 700; background: #eef2f7; color: #475569; }
 .ai-source-badge.qwen { background: #eee9ff; color: #6543b5; }
 .ai-source-badge.openai { background: #e4f5ed; color: #18734d; }
+.ai-source-badge.anthropic { background: #fdf0e6; color: #b45309; }
+.ai-source-badge.content { background: #e0f2fe; color: #0369a1; }
 .ai-source-model { font-size: 12px; color: var(--text-secondary); overflow-wrap: anywhere; }
 .ai-source-fallback { padding: 3px 6px; border-radius: 6px; font-size: 11px; background: #fff1d6; color: #8a5700; }
 .solution-detail-scroll > .ai-source { margin-bottom: 16px; }

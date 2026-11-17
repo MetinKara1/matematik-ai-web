@@ -53,8 +53,11 @@ export default function EnglishHomePage() {
           <Link className="feature-card" href="/en/articles/derivative-rules"><h3>Derivative rules</h3><p>Learn the power, product, quotient, and chain rules.</p></Link>
           <Link className="feature-card" href="/en/articles/differentiability-and-continuity"><h3>Differentiability and continuity</h3><p>Understand why a continuous function may still have no derivative.</p></Link>
           <Link className="feature-card" href="/en/articles/integration-rules"><h3>Integration rules</h3><p>Work from basic antiderivatives to choosing an integration method.</p></Link>
+          <Link className="feature-card" href="/en/articles/integral-formulas"><h3>Integral formulas</h3><p>Essential indefinite and definite integral formulas with examples.</p></Link>
+          <Link className="feature-card" href="/en/guides/ayt-parameter-quadratic-problems"><h3>Quadratic parameter problems</h3><p>Discriminant, vertex, and root relationships in exam questions.</p></Link>
+          <Link className="feature-card" href="/en/news/2026-fields-medal-winners"><h3>2026 Fields Medal winners</h3><p>Meet the four mathematicians recognized at ICM 2026.</p></Link>
         </div>
-        <p className="landing-content-links"><Link href="/en/articles">Browse all math articles →</Link></p>
+        <p className="landing-content-links"><Link href="/en/articles">Browse all math articles &amp; guides →</Link></p>
       </div></section>
       <section className="cta-section" id="download"><div className="container"><h2 className="cta-title">Start solving and learning</h2><p className="cta-description">Use MatAI on iPhone or iPad. The Android version is coming soon.</p><p className="landing-content-links"><Link href="/en/ai-math-solver">Explore the AI Math Solver</Link><span aria-hidden="true">·</span><Link href="/en/articles">Read math guides</Link></p></div></section>
     </main><PublicFooter locale="en" />

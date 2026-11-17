@@ -20,6 +20,8 @@ export default function PublicFooter({ locale = 'tr' }) {
             <Link href="/araclar">Matematik Araçları</Link>
             <Link href="/kaynaklar">Çalışma Kağıtları</Link>
           </>}
+          <Link href="/privacy-policy">{isEnglish ? 'Privacy Policy' : 'Gizlilik Politikası'}</Link>
+          <Link href="/support">{isEnglish ? 'Support' : 'Destek'}</Link>
         </nav>
       </div>
       <p className="public-footer-copy">© 2026 MatAI. {isEnglish ? 'All rights reserved.' : 'Tüm hakları saklıdır.'}</p>
