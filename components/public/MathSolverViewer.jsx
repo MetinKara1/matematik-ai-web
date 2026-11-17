@@ -35,6 +35,22 @@ function SafeMath({ math, displayMode = false }) {
   }
 }
 
+function FormattedRule({ rule }) {
+  if (!rule) return null;
+  const colonIndex = rule.indexOf(':');
+  if (colonIndex !== -1) {
+    const title = rule.slice(0, colonIndex).trim();
+    const formula = rule.slice(colonIndex + 1).trim();
+    return (
+      <span className="rule-text-content">
+        <span className="rule-title-label">{title}: </span>
+        <SafeMath math={formula} />
+      </span>
+    );
+  }
+  return <span className="rule-text-content">{rule}</span>;
+}
+
 export default function MathSolverViewer() {
   const [activeTab, setActiveTab] = useState('web'); // 'web' | 'camera'
   const [query, setQuery] = useState('\\int x e^x dx');
@@ -253,7 +269,7 @@ export default function MathSolverViewer() {
                     <div className="rule-icon">💡</div>
                     <div className="rule-content">
                       <strong>Uygulanan Matematiksel Yöntem:</strong>
-                      <p><SafeMath math={solution.ruleApplied} /></p>
+                      <p><FormattedRule rule={solution.ruleApplied} /></p>
                     </div>
                   </div>
                 )}

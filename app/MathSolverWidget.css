@@ -108,10 +108,26 @@
   color: #1e293b;
 }
 
+.math-solver-tab[aria-selected="false"] {
+  background: transparent !important;
+  color: #475569 !important;
+  box-shadow: none !important;
+}
+
+.math-solver-tab[aria-selected="true"],
 .math-solver-tab.active {
-  background: #ffffff;
-  color: #4338ca;
-  box-shadow: 0 4px 12px rgba(67, 56, 202, 0.12);
+  background: #ffffff !important;
+  color: #4338ca !important;
+  box-shadow: 0 4px 12px rgba(67, 56, 202, 0.12) !important;
+}
+
+.rule-title-label {
+  font-weight: 750;
+  color: #15803d;
+}
+
+.rule-text-content {
+  display: inline-block;
 }
 
 .tab-badge {
