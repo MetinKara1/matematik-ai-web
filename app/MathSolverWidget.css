@@ -524,6 +524,28 @@
 .live-preview-render {
   font-size: 1.3rem;
   color: #0f172a;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  padding-bottom: 0.2rem;
+}
+
+.live-preview-render::-webkit-scrollbar {
+  height: 5px;
+}
+
+.live-preview-render::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.live-preview-render::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
 }
 
 /* ==========================================================================
@@ -710,6 +732,9 @@
   border-radius: 14px;
   padding: 1.25rem 1.6rem;
   margin-bottom: 1.25rem;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .problem-eyebrow {
@@ -724,6 +749,28 @@
 .problem-math-render {
   font-size: 1.45rem;
   color: #0f172a;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  padding-bottom: 0.25rem;
+}
+
+.problem-math-render::-webkit-scrollbar {
+  height: 5px;
+}
+
+.problem-math-render::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.problem-math-render::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
 }
 
 .unslop-rule-box {
@@ -801,10 +848,32 @@
 .step-formula-box {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 0.85rem 1.25rem;
-  font-size: 1.2rem;
+  font-size: 1.18rem;
   color: #1e1b4b;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  box-sizing: border-box;
+}
+
+.step-formula-box::-webkit-scrollbar {
+  height: 5px;
+}
+
+.step-formula-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.step-formula-box::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
 }
 
 /* Paywall Section */
@@ -978,6 +1047,9 @@
   padding: 1.4rem 1.75rem;
   margin-top: 1.25rem;
   text-align: center;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .unslop-final-answer strong {
@@ -993,6 +1065,28 @@
   font-size: 1.45rem;
   font-weight: 800;
   color: #0f172a;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  padding-bottom: 0.25rem;
+}
+
+.final-formula::-webkit-scrollbar {
+  height: 5px;
+}
+
+.final-formula::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.final-formula::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
 }
 
 /* Mobile Recommendation Banner */
@@ -1163,6 +1257,55 @@
   .unslop-legal-footer {
     flex-direction: column;
     text-align: center;
+  }
+
+  .unslop-step-card {
+    padding: 1.15rem 1rem;
+    border-radius: 14px;
+    margin-bottom: 0.85rem;
+  }
+
+  .step-formula-box {
+    padding: 0.75rem 0.85rem;
+    font-size: 1.05rem;
+    border-radius: 10px;
+  }
+
+  .unslop-problem-box {
+    padding: 1rem 1rem;
+    border-radius: 12px;
+  }
+
+  .problem-math-render {
+    font-size: 1.25rem;
+  }
+
+  .step-name {
+    font-size: 1rem;
+    word-break: break-word;
+  }
+
+  .step-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    word-break: break-word;
+  }
+
+  .unslop-rule-box {
+    padding: 0.85rem 1rem;
+    gap: 0.65rem;
+  }
+
+  .rule-content-wrap {
+    font-size: 0.88rem;
+  }
+
+  .unslop-final-answer {
+    padding: 1.1rem 1rem;
+  }
+
+  .final-formula {
+    font-size: 1.2rem;
   }
 }
 

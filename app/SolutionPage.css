@@ -109,15 +109,53 @@
 .solution-content .katex-display,
 .step-content .katex-display {
   margin: 1.5rem 0;
+  max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  padding-bottom: 4px;
+}
+
+.question-content .katex-display::-webkit-scrollbar,
+.solution-content .katex-display::-webkit-scrollbar,
+.step-content .katex-display::-webkit-scrollbar {
+  height: 5px;
+}
+
+.question-content .katex-display::-webkit-scrollbar-thumb,
+.solution-content .katex-display::-webkit-scrollbar-thumb,
+.step-content .katex-display::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
 }
 
 .question-content .katex-display > .katex,
 .solution-content .katex-display > .katex,
 .step-content .katex-display > .katex {
   display: inline-block;
+  min-width: 0;
+  max-width: 100%;
   text-align: initial;
+}
+
+.question-content .katex-display > .katex > .katex-html,
+.solution-content .katex-display > .katex > .katex-html,
+.step-content .katex-display > .katex > .katex-html {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0;
+  max-width: 100%;
+  white-space: normal;
+}
+
+.question-content .katex-display > .katex > .katex-html > .base,
+.solution-content .katex-display > .katex > .katex-html > .base,
+.step-content .katex-display > .katex > .katex-html > .base {
+  white-space: nowrap;
 }
 
 /* Math block container */

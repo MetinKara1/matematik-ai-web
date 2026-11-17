@@ -127,3 +127,48 @@ input, textarea, select { outline: 0; font-family: inherit; }
 .hero-social-youtube:hover { border-color: #fca5a5; background: #fef2f2; color: #dc2626; box-shadow: 0 6px 16px rgba(220, 38, 38, 0.12); }
 .hero-social-youtube:hover strong { color: #b91c1c; }
 @media (max-width: 968px) { .hero-social-channels { justify-content: center; } }
+
+/* Global KaTeX Mobile Containment & Soft Wrapping */
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  padding-bottom: 2px;
+}
+
+.katex-display::-webkit-scrollbar {
+  height: 5px;
+}
+
+.katex-display::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.katex-display::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.katex-display > .katex {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.katex-display > .katex > .katex-html {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0;
+  max-width: 100%;
+  white-space: normal;
+  text-align: initial;
+}
+
+.katex-display > .katex > .katex-html > .base {
+  white-space: nowrap;
+}
+
