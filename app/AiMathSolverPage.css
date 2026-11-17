@@ -1,6 +1,4 @@
 .solver-landing-page { min-height: 100vh; color: #29263a; background: #f8f7fc; }
-.solver-landing-page > .public-header { padding-bottom: .25rem; background: linear-gradient(125deg, #5369d4, #704394); }
-.solver-landing-page > .public-header .landing-header-inner { background: rgba(46,35,103,.66); }
 .solver-hero { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(340px,.92fr); align-items: center; gap: clamp(2.5rem,6vw,6rem); padding: 3.75rem max(1.5rem,calc((100vw - 1296px)/2)) 4.75rem; color: #fff; background: linear-gradient(125deg,#5369d4,#704394); }
 .solver-kicker, .solver-section-heading > span { color: #f5dc77; font-size: .78rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .solver-hero h1 { max-width: 720px; margin: .75rem 0 1rem; font-size: clamp(2.5rem,4.6vw,4.2rem); line-height: 1.03; letter-spacing: -.055em; text-wrap: balance; }
@@ -55,7 +53,6 @@
   .solver-final-cta { margin-inline: 1rem; align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 640px) {
-  .solver-landing-page > .public-header { padding-bottom: .15rem; }
   .solver-hero { padding: 2.5rem 1.15rem 3.25rem; }
   .solver-hero h1 { font-size: 2.35rem; }
   .solver-actions { flex-direction: column; }
